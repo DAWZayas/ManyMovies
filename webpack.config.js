@@ -10,16 +10,21 @@ module.exports = {
     './src/index.jsx'
   ],
   module: {
-    loaders: [{
-      test: /\.jsx?$/,
-      exclude: /node_modules/,
-      loaders: [ 'react-hot', 'babel?optional[]=runtime', 'eslint' ]
-    }, {
-      test: /\.css$/,
-      loader: 'style!css!autoprefixer?browsers=last 2 versions'
-    },
-    { test: /\.(png|woff|woff2|eot|ttf|svg)$/,
-      loader: 'url-loader?limit=100000' }]
+    loaders:
+    [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loaders: [ 'react-hot', 'babel?optional[]=runtime', 'eslint' ]
+      },
+      {
+        test: /\.css$/,
+        loader: 'style!css!autoprefixer?browsers=last 2 versions'
+      },
+      { test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+        loader: 'url-loader?limit=100000'
+      }
+    ]
   },
   eslint: {
     formatter: friendlyFormatter,
