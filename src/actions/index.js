@@ -20,6 +20,14 @@ export function setDefaultLists(lists) {
   };
 }
 
+export function createList(title, desc) {
+  return {
+    type: CREATE_LIST,
+    title,
+    desc
+  };
+}
+
 export function deleteList(id){
   return {
     type: DELETE_LIST,
@@ -27,10 +35,25 @@ export function deleteList(id){
   };
 }
 
-export function creteList(title, desc) {
-  return {
-    type: CREATE_LIST,
-    title,
-    desc
+export function editList(id, title){
+  return{
+    type: EDIT_LIST,
+    id,
+    title
+  };
+}
+
+export function addElement(id, title) {
+  return{
+    type: ADD_ELEMENT,
+    id,
+    title
+  };
+}
+
+export function removeElement(id) {
+  return{
+    type: REMOVE_ELEMENT,
+    id
   };
 }
