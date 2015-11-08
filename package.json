@@ -1,5 +1,5 @@
 {
-  "name": "React-redux-boilerplate",
+  "name": "ManyMovies",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
@@ -9,6 +9,10 @@
     "test:watch": "npm run test -- --watch",
     "lint": "./node_modules/.bin/eslint --ext=jsx --ext=js src/ test/",
     "dist": "rm -rf dist/bundle.js dist/*.svg && ./node_modules/.bin/webpack --config webpack.production.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DAWZayas/ManyMovies"
   },
   "author": "",
   "license": "ISC",
@@ -38,6 +42,7 @@
     "babel-runtime": "^5.8.29",
     "bootstrap": "^3.3.5",
     "history": "^1.13.0",
+    "node-uuid": "^1.4.3",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
     "react-modal-bootstrap": "^0.5.0",

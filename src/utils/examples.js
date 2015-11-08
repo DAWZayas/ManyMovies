@@ -1,22 +1,18 @@
-import { getId, getSlug } from './index';
-
-let historyId = getId();
-let watchedId = getId();
-let collectionId = getId();
+import { getId } from './index';
 
 export const lists = {
-  [historyId]: {
-    slug: getSlug('History', historyId),
+  [getId()]: {
+    slug: 'history',
     title: 'History',
     custom: false
   },
-  [watchedId]: {
-    slug: getSlug('Watched', watchedId),
+  [getId()]: {
+    slug: 'watched',
     title: 'Watched',
     custom: false
   },
-  [collectionId]: {
-    slug: getSlug('Collection', collectionId),
+  [getId()]: {
+    slug: 'collection',
     title: 'Collection',
     custom: false
   }

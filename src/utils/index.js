@@ -1,6 +1,6 @@
-//TODO
-//                   () => string
-export const getId = () => '1';
-//     (State, title, id) => string
-export const getSlug = () => '1';
+import uuid from 'node-uuid';
 
+export const getId = () => uuid.v1();
+
+//     (collection, id) => string
+export const getSlug = (collection, title, id) => title + id;
