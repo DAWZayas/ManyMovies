@@ -1,19 +1,22 @@
 import { getId } from './index';
 
-export const lists = {
+export const defaultLists = {
   [getId()]: {
-    slug: 'history',
     title: 'History',
+    slug: 'history',
+    desc: 'A list of watched movies',
     custom: false
   },
   [getId()]: {
-    slug: 'watched',
-    title: 'Watched',
+    title: 'WatchList',
+    slug: 'watchlist',
+    desc: 'A list of pending movies',
     custom: false
   },
   [getId()]: {
-    slug: 'collection',
     title: 'Collection',
+    slug: 'collection',
+    desc: 'A list of collected movies',
     custom: false
   }
 };

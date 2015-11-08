@@ -1,7 +1,8 @@
 import { SET_DEFAULT_LISTS, CREATE_LIST, DELETE_LIST, EDIT_LIST, ADD_ELEMENT, REMOVE_ELEMENT } from '../actions';
 import { getId, getSlug} from '../utils';
+import { defaultLists } from '../utils/examples';
 
-const setDefaultLists = (state, lists) => Object.assign({}, lists);
+const setDefaultLists = state => Object.assign({}, state, defaultLists);
 
 function createList(state, title, desc) {
   let id = getId();
@@ -10,12 +11,12 @@ function createList(state, title, desc) {
     [id]:
       {
         title,
-        desc,
         slug,
+        desc,
         custom: true
       }
     };
-  Object.assign({}, state, newList);
+  return Object.assign({}, state, newList);
 }
 
 function deleteList(state, id){
@@ -47,7 +48,7 @@ function removeElement(state, id) {
 export default function (state = {}, action) {
   switch (action.type) {
     case SET_DEFAULT_LISTS:
-      return setDefaultLists(state, action.lists);
+      return setDefaultLists(state);
     case CREATE_LIST:
       return createList(state, action.title, action.desc);
     case DELETE_LIST:
