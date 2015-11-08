@@ -33,5 +33,15 @@ describe('getSlug', () => {
       expect(slug5).to.equal('baz-baz');
       expect(slug6).to.equal('caz');
     });
+
+    it('will be unique in the collection', () => {
+      const title = 'collection';
+      const id = getId();
+      const slug = getSlug(defaultLists, title, id);
+
+      expect(slug).to.equal(`${title}-${id}`);
+    });
+
   });
+
 });
