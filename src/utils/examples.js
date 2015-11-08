@@ -1,23 +1,23 @@
 import { getId } from './index';
 
-export const lists = [ 
-  {
-    id: getId(),
+let historyId = getId();
+let watchedId = getId();
+let collectionId = getId();
+
+export const lists = {
+  [historyId]: {
+    slug: getSlug('History', historyId),
     title: 'History',
     custom: false
   },
-  {
-    id: getId(),
-    title: 'Watched'
+  [watchedId]: {
+    slug: getSlug('Watched', watchedId),
+    title: 'Watched',
     custom: false
   },
-  {
-    id: getId(),
-    title: 'Collections',
+  [collectionId]: {
+    slug: getSlug('Collection', collectionId),
+    title: 'Collection',
     custom: false
   }
-];
-
-export const initialState = {
-  lists
-};
+}
