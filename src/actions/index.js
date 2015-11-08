@@ -12,7 +12,6 @@ export const REMOVE_ELEMENT = 'REMOVE_ELEMENT';
 /**
 * List action creators
 */
-
 export function setDefaultLists(lists) {
   return {
     type: SET_DEFAULT_LISTS,

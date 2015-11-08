@@ -1,4 +1,4 @@
-import { getId } from './index';
+import { getId, getSlug } from './index';
 
 let historyId = getId();
 let watchedId = getId();
@@ -20,4 +20,4 @@ export const lists = {
     title: 'Collection',
     custom: false
   }
-}
+};

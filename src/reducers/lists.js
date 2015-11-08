@@ -33,8 +33,7 @@ function addElement(state, title){
   let newElement = {
     [id]:
     {
-     title  
-    }
+     title    }
   };
   Object.assign({}, state, newElement);
 }
@@ -58,7 +57,7 @@ export default function (state = {}, action) {
     case ADD_ELEMENT:
       return addElement(state, action.title);
     case REMOVE_ELEMENT:
-      return removeElement(state, action.id);   
+      return removeElement(state, action.id);
     default:
       return state;
   }
