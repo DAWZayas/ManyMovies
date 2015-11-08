@@ -20,7 +20,7 @@ describe('getSlug', () => {
       const title4 = 'Bar';
       const slug4 = getSlug(defaultLists, title4, id);
 
-      const title5 = 'Baz*/+?¿)(&%$·"!|@#¬[]{}´;:,.-_><\'\\Baz';
+      const title5 = 'Baz*/+?¿)(&%$·"!|@#¬[ ]{}´;:,.-_><\'\\Baz';
       const slug5 = getSlug(defaultLists, title5, id);
 
       const title6 = 'çaz';
@@ -32,6 +32,14 @@ describe('getSlug', () => {
       expect(slug4).to.equal('bar');
       expect(slug5).to.equal('baz-baz');
       expect(slug6).to.equal('caz');
+    });
+
+    it('will be the id if the title can\'t be formated', () => {
+      const id = getId();
+      const title = '*/+?¿)(&%$·"!|@#¬[ ]{}´;:,.-_><\'\\';
+      const slug = getSlug(defaultLists, title, id);
+
+      expect(slug).to.equal(id);
     });
 
     it('will be unique in the collection', () => {
