@@ -62,7 +62,7 @@ describe('utils tests', () => {
       expect(slug2).to.equal('eeee');
       expect(slug3).to.equal('iiii');
       expect(slug4).to.equal('oooo');
-      expect(slug5).to.equal('oooo');
+      expect(slug5).to.equal('uuuu');
     });
 
     it('will change ç and ñ characters', () => {
