@@ -26,12 +26,16 @@ describe('getSlug', () => {
       const title6 = 'çaz';
       const slug6 = getSlug(defaultLists, title6, id);
 
+      const title7 = 'àáâä';
+      const slug7 = getSlug(defaultLists, title7, id);
+
       expect(slug).to.equal('foo');
       expect(slug2).to.equal('n');
       expect(slug3).to.equal('foo-foo');
       expect(slug4).to.equal('bar');
       expect(slug5).to.equal('baz-baz');
       expect(slug6).to.equal('caz');
+      expect(slug7).to.equal('aaaa');
     });
 
     it('will be the id if the title can\'t be formated', () => {
@@ -53,8 +57,8 @@ describe('getSlug', () => {
   });
 });
 
-describe('all trim', () => {
-  describe.skip('all trim tests', () => {
+describe.skip('all trim', () => {
+  describe('all trim tests', () => {
     it('will trim white spaces at the beggining', () => {
       const text = ' foo';
       const trimmed = allTrim(text);
