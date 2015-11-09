@@ -2,7 +2,8 @@
 
 import chai from 'chai';
 import { getSlug /*,getId*/ } from '../../src/utils';
-import { setDefaultLists, createList, /* deleteList, editList, addElement, removeElement */}  from '../../src/actions';
+import { createCustomList } from '../../src/utils/lists';
+import { setDefaultLists, createList, deleteList, editList/*, addElement, removeElement */}  from '../../src/actions';
 import { defaultLists } from '../../src/utils/examples';
 import reducer from '../../src/reducers';
 
@@ -26,14 +27,9 @@ describe('lists reducer tests', () => {
     it('will add a list to the state', () => {
       const initialState = reducer(undefined, setDefaultLists());
       const title = 'Marvel movies';
-      const desc = '';
-      const slug = getSlug(initialState, title);
-      const newList = {
-        title,
-        slug,
-        desc,
-        custom: true
-      };
+      const desc = 'This list is awesome';
+      const slug = getSlug(initialState, 'Marvel movies');
+      const newList = createCustomList('Marvel movies', slug, 'This list is awesome');
       const nextState = reducer(initialState, createList(title, desc));
       expect(nextState.lists).to.containOneLike(newList);
     });
@@ -43,15 +39,52 @@ describe('lists reducer tests', () => {
       const title = '  Marvel   movies  ';
       const desc = ' This   list is   awesome ';
       const slug = getSlug(initialState, 'Marvel movies');
-      const newList = {
-        title: 'Marvel movies',
-        slug,
-        desc: 'This list is awesome',
-        custom: true
-      };
+      const newList = createCustomList('Marvel movies', slug, 'This list is awesome');
       const nextState = reducer(initialState, createList(title, desc));
       expect(nextState.lists).to.containOneLike(newList);
     });
+
+    it('will delete a list from the state', () => {
+      const initialState = reducer(undefined, setDefaultLists());
+      //Add a list
+      const title = 'Marvel movies';
+      const desc = '';
+      const middleState = reducer(initialState, createList(title, desc));
+      //Get the id of the added list
+      const lists = middleState.lists;
+      let listId;
+      for (let key in lists) {
+        if (lists.hasOwnProperty(key)) {
+          if (lists[key].title === title){
+            listId = key;
+          }
+        }
+      }
+      //Remove the list
+      const finalState = reducer(middleState, deleteList(listId));
+      expect(finalState).to.eql(initialState);
+    });
+
+    it('will edit the name of a list', () => {
+      const initialState = reducer(undefined, setDefaultLists());
+      //Add a list
+      const title = 'Marvel movies';
+      const desc = '';
+      const middleState = reducer(initialState, createList(title, desc));
+      //Get the id of the added list
+      const lists = middleState.lists;
+      let listId;
+      for (let key in lists) {
+        if (lists.hasOwnProperty(key)) {
+          if (lists[key].title === title){
+            listId = key;
+          }
+        }
+      }
+      console.log(listId);
+      //
+    });
+
   });
 /*
     it('will add a list to the state', () => {

@@ -25,8 +25,8 @@ function deleteList(state, id){
   return newState;
 }
 
-function editList(state, id, title) {
-  return state.map( lists => id === lists.id ? Object.assign({}, lists, { title:  title}) : lists );
+function editList(state, id, title, desc) {
+  return state.map( lists => id === lists.id ? Object.assign({}, lists, { title, desc }) : lists );
 }
 
 function addElement(state, title){
@@ -54,7 +54,7 @@ export default function (state = {}, action) {
     case DELETE_LIST:
       return deleteList(state, action.id);
     case EDIT_LIST:
-      return editList(state, action.id, action.title);
+      return editList(state, action.id, action.title, action.desc);
     case ADD_ELEMENT:
       return addElement(state, action.title);
     case REMOVE_ELEMENT:

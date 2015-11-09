@@ -17,6 +17,6 @@ export const defaultLists = {
     title: 'Collection',
     slug: 'collection',
     desc: 'A list of collected movies',
-    custom: false
+    custom: false,
   }
 };
