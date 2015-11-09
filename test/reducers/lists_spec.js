@@ -3,7 +3,7 @@
 import chai from 'chai';
 import { getSlug /*,getId*/ } from '../../src/utils';
 import { createCustomList } from '../../src/utils/lists';
-import { setDefaultLists, createList, deleteList, editList/*, addElement, removeElement */}  from '../../src/actions';
+import { setDefaultLists, createList, deleteList, editList }  from '../../src/actions';
 import { defaultLists } from '../../src/utils/examples';
 import reducer from '../../src/reducers';
 
@@ -23,7 +23,7 @@ describe('lists reducer tests', () => {
     });
   });
 
-  describe('create list test', () => {
+  describe('modify lists test', () => {
     it('will add a list to the state', () => {
       const initialState = reducer(undefined, setDefaultLists());
       const title = 'Marvel movies';
@@ -65,7 +65,7 @@ describe('lists reducer tests', () => {
       expect(finalState).to.eql(initialState);
     });
 
-    it('will edit the name of a list', () => {
+    it('will edit a list', () => {
       const initialState = reducer(undefined, setDefaultLists());
       //Add a list
       const title = 'Marvel movies';
@@ -81,31 +81,14 @@ describe('lists reducer tests', () => {
           }
         }
       }
-      console.log(listId);
-      //
-    });
+      //Edit the listItem
+      const finalState = reducer(middleState, editList(listId, { title: 'DC movies', desc: 'Much better than Marvel movies' }));
+      const slug = getSlug(middleState, 'DC movies');
 
+      expect(finalState.lists[listId].title).to.equal('DC movies', 'Title should change');
+      expect(finalState.lists[listId].slug).to.equal(slug, 'Slug should change');
+      expect(finalState.lists[listId].desc).to.equal('Much better than Marvel movies', 'Desc should change');
+    });
   });
-/*
-    it('will add a list to the state', () => {
-      const initialState = reducer(undefined, setDefaultLists());
-      const nextState = reducer(initialState, createList('Marvel movies'));
-    });
-/*
-    it('will be the id if the title can\'t be formated', () => {
-      const id = getId();
-      const title = '/+*?¿)(&%$·"!|@#¬[ ]{}´;:,.-_><\'\\';
-      const slug = getSlug(defaultLists, title, id);
 
-      expect(slug).to.equal(id);
-    });
-
-    it('will be unique in the collection', () => {
-      const title = 'collection';
-      const id = getId();
-      const slug = getSlug(defaultLists, title, id);
-
-      expect(slug).to.equal(`${title}-${id}`);
-    });
-*/
 });

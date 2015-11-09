@@ -6,8 +6,9 @@ export const CREATE_LIST = 'CREATE_LIST';
 export const DELETE_LIST = 'DELETE_LIST';
 export const EDIT_LIST = 'EDIT_LIST';
 
-export const ADD_ELEMENT = 'ADD_ELEMENT';
-export const REMOVE_ELEMENT = 'REMOVE_ELEMENT';
+export const SET_DEFAULT_ENTRIES = 'SET_DEFAULT_ENTRIES';
+export const ADD_ENTRY = 'ADD_ENTRY';
+export const REMOVE_ENTRY = 'REMOVE_ENTRY';
 
 /**
 * List action creators
@@ -34,26 +35,37 @@ export function deleteList(id){
   };
 }
 
-export function editList(id, title, desc){
+export function editList(id, options){
   return{
     type: EDIT_LIST,
     id,
-    title,
-    desc
+    options
   };
 }
 
-export function addElement(id, title) {
-  return{
-    type: ADD_ELEMENT,
-    id,
-    title
+
+/**
+* Entries action creators
+*/
+
+export function setDefaultEntries(entries) {
+  return {
+    type: SET_DEFAULT_ENTRIES,
+    entries
   };
 }
 
-export function removeElement(id) {
+export function addEntry(idCollection, entry) {
   return{
-    type: REMOVE_ELEMENT,
+    type: ADD_ENTRY,
+    idCollection,
+    entry
+  };
+}
+
+export function removeEntry(id) {
+  return{
+    type: REMOVE_ENTRY,
     id
   };
 }
