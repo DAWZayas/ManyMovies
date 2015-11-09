@@ -1,7 +1,7 @@
 'use strict';
 
 import chai from 'chai';
-import { getSlug /*,getId*/ } from '../../src/utils';
+import { getSlug } from '../../src/utils';
 import { createCustomList } from '../../src/utils/lists';
 import { setDefaultLists, createList, deleteList, editList }  from '../../src/actions';
 import { defaultLists } from '../../src/utils/examples';

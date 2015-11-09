@@ -55,17 +55,18 @@ export function setDefaultEntries(entries) {
   };
 }
 
-export function addEntry(idCollection, entry) {
+export function addEntry(idCollection, id) {
   return{
     type: ADD_ENTRY,
     idCollection,
-    entry
+    id
   };
 }
 
-export function removeEntry(id) {
+export function removeEntry(idCollection, id) {
   return{
     type: REMOVE_ENTRY,
+    idCollection,
     id
   };
 }
