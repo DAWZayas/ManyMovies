@@ -1,8 +1,10 @@
+import { allTrim } from '../';
+
 export function createCustomList(title, slug, desc) {
   return {
-    title,
+    title: allTrim(title),
     slug,
-    desc,
+    desc: allTrim(desc),
     custom: true
   };
 }
