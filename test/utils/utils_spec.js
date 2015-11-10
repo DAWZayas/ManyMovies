@@ -129,7 +129,7 @@ describe('utils tests', () => {
   });
 });
 
-describe.skip('all trim', () => {
+describe('all trim', () => {
   describe('all trim tests', () => {
     it('will trim white spaces at the beggining', () => {
       const text = ' foo';
