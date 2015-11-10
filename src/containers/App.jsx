@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
 
 export default class App extends Component {
 
@@ -9,7 +10,8 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <h1>Welcome to my App</h1>
+        <h1>Welcome to my dasda App</h1>
+        <Link to="/lists">Show Lists</Link>
         {this.props.children}
       </div>
     );

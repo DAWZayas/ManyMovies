@@ -9,18 +9,21 @@ const COLLECTION_ID = getId();
 
 export const defaultLists = {
   [HISTORY_ID]: {
+    id: HISTORY_ID,
     title: 'History',
     slug: 'history',
     desc: 'A list of watched movies',
     custom: false
   },
   [WATCHLIST_ID]: {
+    id: WATCHLIST_ID,
     title: 'WatchList',
     slug: 'watchlist',
     desc: 'A list of pending movies',
     custom: false
   },
   [COLLECTION_ID]: {
+    id: COLLECTION_ID,
     title: 'Collection',
     slug: 'collection',
     desc: 'A list of collected movies',
