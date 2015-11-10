@@ -7,7 +7,7 @@ const setDefaultLists = state => Object.assign({}, state, defaultLists);
 
 function createList(state, title, desc) {
   let id = getId();
-  let slug = getSlug(state, title, id);
+  let slug = getSlug({lists: state}, title, id);
   let newList = createCustomList(title, slug, desc);
   return Object.assign({}, state, { [id] : newList });
 }
@@ -21,7 +21,7 @@ function deleteList(state, id){
 function editList(state, id, options) {
   let title = options.title || state[id].title;
   let desc = options.desc || state[id].desc;
-  let slug = getSlug(state, title, id);
+  let slug = getSlug(state.lists, title, id);
   let newList = createCustomList(title, slug, desc);
   return Object.assign({}, state, { [id] : newList });
 }

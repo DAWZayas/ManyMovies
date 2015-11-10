@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import { getSlug, getId, allTrim, slugText } from '../../src/utils';
-import defaultLists from '../../src/utils/examples';
+import { defaultLists } from '../../src/utils/examples';
 
 describe('utils tests', () => {
 
@@ -106,7 +106,6 @@ describe('utils tests', () => {
       const id = getId();
       const expected = slugText(title);
       const slug = getSlug(defaultLists, title, id);
-
       expect(slug).to.equal(expected);
     });
 
@@ -122,7 +121,6 @@ describe('utils tests', () => {
       const title = 'collection';
       const id = getId();
       const slug = getSlug(defaultLists, title, id);
-
       expect(slug).to.equal(`${title}-${id}`);
     });
 

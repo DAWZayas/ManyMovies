@@ -20,9 +20,12 @@ export const allTrim = string => string.trim().replace(/\s+/g, ' ');
 
 export function getSlug (collection, title, id){
   let slug = slugText(title);
-  for (let item in collection){
-    if (collection.hasOwnProperty(item)){
-      slug = (item.slug === slug) ? `${slug}-${id}` : slug;
+  if (slug === ''){
+    return id;
+  }
+  for (let key in collection){
+    if (collection.hasOwnProperty(key)){
+      slug = (collection[key].slug === slug) ? `${slug}-${id}` : slug;
     }
   }
   return slug;
