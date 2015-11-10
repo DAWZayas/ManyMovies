@@ -3,9 +3,18 @@ import uuid from 'node-uuid';
 export const getId = () => uuid.v1();
 
 export const slugText = string => string.toLowerCase()
-                                        .replace(/ñ/gi, 'ñ')
+                                        .replace(/[·\/_,:;. ]/gi, '-')
+                                        .replace(/[àáäâ]/gi, 'a')
+                                        .replace(/[èéëê]/gi, 'e')
+                                        .replace(/[ìíïî]/gi, 'i')
+                                        .replace(/[òóöô]/gi, 'o')
+                                        .replace(/[ùúüû]/gi, 'u')
+                                        .replace(/ñ/gi, 'n')
                                         .replace(/ç/gi, 'c')
-                                        .trim().replace(/\s+/g, '');
+                                        .replace(/[^\w-]/gi, '')
+                                        .replace(/(-)+/g, '-')
+                                        .replace(/^-/, '')
+                                        .replace(/-$/, '');
 
 export const allTrim = string => string.trim().replace(/\s+/g, ' ');
 

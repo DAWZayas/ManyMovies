@@ -4,7 +4,7 @@ import defaultLists from '../../src/utils/examples';
 
 describe('utils tests', () => {
 
-  describe.skip('slugText tests', () => {
+  describe('slugText tests', () => {
     it('will change to lower case the letters', () => {
       const text = 'FoO';
       const slug = slugText(text);
@@ -77,7 +77,7 @@ describe('utils tests', () => {
     });
 
     it('will delete another symbols', () => {
-      const text = '*/+?¿)(&%$"!|@#¬[]{}´><\'\\';
+      const text = '*+?¿)(&%$"!|@#¬[]{}´><\'\\';
       const slug = slugText(text);
       expect(slug).to.equal('');
     });
@@ -99,7 +99,7 @@ describe('utils tests', () => {
     });
   });
 
-  describe.skip('getSlug tests', () => {
+  describe('getSlug tests', () => {
 
     it('will be the title formated', () => {
       const title = 'foo';
