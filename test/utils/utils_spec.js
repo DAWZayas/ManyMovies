@@ -1,10 +1,10 @@
 import { expect } from 'chai';
 import { getSlug, getId, allTrim, slugText } from '../../src/utils';
-import defaultLists from '../../src/utils/examples';
+import { defaultLists } from '../../src/utils/examples';
 
 describe('utils tests', () => {
 
-  describe.skip('slugText tests', () => {
+  describe('slugText tests', () => {
     it('will change to lower case the letters', () => {
       const text = 'FoO';
       const slug = slugText(text);
@@ -77,7 +77,7 @@ describe('utils tests', () => {
     });
 
     it('will delete another symbols', () => {
-      const text = '*/+?¿)(&%$"!|@#¬[]{}´><\'\\';
+      const text = '*+?¿)(&%$"!|@#¬[]{}´><\'\\';
       const slug = slugText(text);
       expect(slug).to.equal('');
     });
@@ -99,14 +99,13 @@ describe('utils tests', () => {
     });
   });
 
-  describe.skip('getSlug tests', () => {
+  describe('getSlug tests', () => {
 
     it('will be the title formated', () => {
       const title = 'foo';
       const id = getId();
       const expected = slugText(title);
       const slug = getSlug(defaultLists, title, id);
-
       expect(slug).to.equal(expected);
     });
 
@@ -122,7 +121,6 @@ describe('utils tests', () => {
       const title = 'collection';
       const id = getId();
       const slug = getSlug(defaultLists, title, id);
-
       expect(slug).to.equal(`${title}-${id}`);
     });
 

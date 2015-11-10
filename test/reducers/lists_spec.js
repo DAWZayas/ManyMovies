@@ -28,7 +28,7 @@ describe('lists reducer tests', () => {
       const initialState = reducer(undefined, setDefaultLists());
       const title = 'Marvel movies';
       const desc = 'This list is awesome';
-      const slug = getSlug(initialState, 'Marvel movies');
+      const slug = getSlug(initialState.lists, 'Marvel movies');
       const newList = createCustomList('Marvel movies', slug, 'This list is awesome');
       const nextState = reducer(initialState, createList(title, desc));
       expect(nextState.lists).to.containOneLike(newList);
@@ -38,7 +38,7 @@ describe('lists reducer tests', () => {
       const initialState = reducer(undefined, setDefaultLists());
       const title = '  Marvel   movies  ';
       const desc = ' This   list is   awesome ';
-      const slug = getSlug(initialState, 'Marvel movies');
+      const slug = getSlug(initialState.lists, 'Marvel movies');
       const newList = createCustomList('Marvel movies', slug, 'This list is awesome');
       const nextState = reducer(initialState, createList(title, desc));
       expect(nextState.lists).to.containOneLike(newList);
@@ -83,7 +83,7 @@ describe('lists reducer tests', () => {
       }
       //Edit the listItem
       const finalState = reducer(middleState, editList(listId, { title: 'DC movies', desc: 'Much better than Marvel movies' }));
-      const slug = getSlug(middleState, 'DC movies');
+      const slug = getSlug(middleState.lists, 'DC movies');
 
       expect(finalState.lists[listId].title).to.equal('DC movies', 'Title should change');
       expect(finalState.lists[listId].slug).to.equal(slug, 'Slug should change');
