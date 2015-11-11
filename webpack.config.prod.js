@@ -1,6 +1,10 @@
-var webpack = require('webpack');
+'use strict';
+
+let webpack = require('webpack');
+let path = require('path');
 
 module.exports = {
+  devtool: 'source-map',
   entry: [
     './src/index.jsx'
   ],
@@ -9,7 +13,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'babel?optional[]=runtime'
+        loader: 'babel'
       },
       {
         test: /\.css$/,
@@ -24,14 +28,20 @@ module.exports = {
     extensions: ['', '.js', '.jsx']
   },
   output: {
-    path: __dirname + '/dist',
+    path: path.join(__dirname, 'dist'),
     publicPath: '/',
     filename: 'bundle.js'
   },
   plugins: [
+    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify('production'),
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compressor: {
+        warnings: false
       }
     })
   ]

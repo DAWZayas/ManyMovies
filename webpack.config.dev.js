@@ -1,11 +1,14 @@
-var webpack = require('webpack');
-var friendlyFormatter = require('eslint-friendly-formatter');
+'use strict';
+
+let webpack = require('webpack');
+let path = require('path');
+let friendlyFormatter = require('eslint-friendly-formatter');
 
 module.exports = {
+  devtool: 'eval',
   entry: [
-    'webpack-dev-server/client?http://localhost:8080',
-    'webpack/hot/only-dev-server',
-    './src/index.jsx'
+    'webpack-hot-middleware/client',
+    './src/index'
   ],
   module: {
     loaders:
@@ -13,7 +16,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loaders: [ 'react-hot', 'babel?optional[]=runtime', 'eslint' ]
+        loaders: [ 'babel', 'eslint' ]
       },
       {
         test: /\.css$/,
@@ -31,7 +34,7 @@ module.exports = {
     extensions: ['', '.js', '.jsx']
   },
   output: {
-    path: __dirname + '/dist',
+    path: path.join(__dirname, 'dist'),
     publicPath: '/',
     filename: 'bundle.js'
   },
@@ -42,10 +45,6 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify('development'),
-      }
-    })
+    new webpack.NoErrorsPlugin()
   ]
 };
