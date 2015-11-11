@@ -10,15 +10,12 @@ export const SET_DEFAULT_ENTRIES = 'SET_DEFAULT_ENTRIES';
 export const ADD_ENTRY = 'ADD_ENTRY';
 export const REMOVE_ENTRY = 'REMOVE_ENTRY';
 
+export const SET_DEFAULT_MOVIES = 'SET_DEFAULT_MOVIES';
+
 /**
 * List action creators
 */
-export function setDefaultLists(lists) {
-  return {
-    type: SET_DEFAULT_LISTS,
-    lists
-  };
-}
+export const setDefaultLists = lists => ({type: SET_DEFAULT_LISTS, lists});
 
 export function createList(title, desc) {
   return {
@@ -70,3 +67,9 @@ export function removeEntry(idCollection, id) {
     id
   };
 }
+
+/**
+* Movies action creators
+*/
+
+export const setDefaultMovies = movies => ({type: SET_DEFAULT_MOVIES, movies});

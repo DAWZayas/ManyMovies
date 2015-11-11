@@ -10,14 +10,18 @@ export default {
     },
     "sinopsis": "Princess Leia is captured and held hostage by the evil Imperial forces in their effort to take over the galactic Empire. Venturesome Luke Skywalker and dashing captain Han Solo team together with the loveable robot duo R2-D2 and C-3PO to rescue the beautiful princess and restore peace and justice in the Empire.",
     "runtime": 121,
-    "votes": 10995,
-    "rating": 8.80955,
+    "votes": 11017,
+    "rating": 8.80957,
     "genres": [
       "action",
       "adventure",
       "science-fiction"
     ],
-    "certification": "PG"
+    "certification": "PG",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/000/007/posters/thumb/a4f84e22e4.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/000/007/fanarts/thumb/4002770294.jpg"
+    }
   },
   "43": {
     "title": "American History X",
@@ -30,12 +34,16 @@ export default {
     },
     "sinopsis": "Derek Vineyard is paroled after serving 3 years in prison for killing two thugs who tried to break into/steal his truck. Through his brother, Danny Vineyard's narration, we learn that before going to prison, Derek was a skinhead and the leader of a violent white supremacist gang that committed acts of racial crime throughout L.A. and his actions greatly influenced Danny. Reformed and fresh out of prison, Derek severs contact with the gang and becomes determined to keep Danny from going down the same violent path as he did.",
     "runtime": 119,
-    "votes": 7631,
-    "rating": 8.70423,
+    "votes": 7641,
+    "rating": 8.70397,
     "genres": [
       "drama"
     ],
-    "certification": "R"
+    "certification": "R",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/000/043/posters/thumb/3943ed4449.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/000/043/fanarts/thumb/4144a111c1.jpg"
+    }
   },
   "54": {
     "title": "Raiders of the Lost Ark",
@@ -48,13 +56,17 @@ export default {
     },
     "sinopsis": "When Dr. Indiana Jones – the tweed-suited professor who just happens to be a celebrated archaeologist – is hired by the government to locate the legendary Ark of the Covenant, he finds himself up against the entire Nazi regime.",
     "runtime": 115,
-    "votes": 7681,
-    "rating": 8.6162,
+    "votes": 7690,
+    "rating": 8.61535,
     "genres": [
       "action",
       "adventure"
     ],
-    "certification": "PG"
+    "certification": "PG",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/000/054/posters/thumb/b9ff27d253.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/000/054/fanarts/thumb/92364e14b2.jpg"
+    }
   },
   "58": {
     "title": "Indiana Jones and the Last Crusade",
@@ -67,13 +79,17 @@ export default {
     },
     "sinopsis": "When Dr. Henry Jones Sr. suddenly goes missing while pursuing the Holy Grail, eminent archaeologist Indiana Jones must team up with Marcus Brody, Sallah, and Elsa Schneider to follow in his father's footsteps and stop the Nazis from recovering the power of eternal life.",
     "runtime": 127,
-    "votes": 6873,
-    "rating": 8.56293,
+    "votes": 6882,
+    "rating": 8.56248,
     "genres": [
       "action",
       "adventure"
     ],
-    "certification": "PG-13"
+    "certification": "PG-13",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/000/058/posters/thumb/00ea5e1cba.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/000/058/fanarts/thumb/0ec3217b12.jpg"
+    }
   },
   "70": {
     "title": "Leon: The Professional",
@@ -86,14 +102,18 @@ export default {
     },
     "sinopsis": "Leon, the top hit man in New York, has earned a rep as an effective \"cleaner\". But when his next-door neighbors are wiped out by a loose-cannon DEA agent, he becomes the unwilling custodian of 12-year-old Mathilda. Before long, Mathilda's thoughts turn to revenge, and she considers following in Leon's footsteps.",
     "runtime": 110,
-    "votes": 7603,
-    "rating": 8.801,
+    "votes": 7613,
+    "rating": 8.80047,
     "genres": [
       "crime",
       "drama",
       "thriller"
     ],
-    "certification": "R"
+    "certification": "R",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/000/070/posters/thumb/87f69b1a6f.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/000/070/fanarts/thumb/fba86f51ba.jpg"
+    }
   },
   "74": {
     "title": "Back to the Future",
@@ -106,15 +126,19 @@ export default {
     },
     "sinopsis": "Eighties teenager Marty McFly is accidentally sent back in time to 1955, inadvertently disrupting his parents' first meeting and attracting his mother's romantic interest. Marty must repair the damage to history by rekindling his parents' romance and - with the help of his eccentric inventor friend Doc Brown - return to 1985.",
     "runtime": 116,
-    "votes": 11958,
-    "rating": 8.77137,
+    "votes": 11976,
+    "rating": 8.77054,
     "genres": [
       "adventure",
       "comedy",
       "science-fiction",
       "family"
     ],
-    "certification": "PG"
+    "certification": "PG",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/000/074/posters/thumb/307ca57ebc.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/000/074/fanarts/thumb/8f0e2f8a82.jpg"
+    }
   },
   "120": {
     "title": "The Dark Knight",
@@ -127,15 +151,19 @@ export default {
     },
     "sinopsis": "Batman raises the stakes in his war on crime. With the help of Lt. Jim Gordon and District Attorney Harvey Dent, Batman sets out to dismantle the remaining criminal organizations that plague the streets. The partnership proves to be effective, but they soon find themselves prey to a reign of chaos unleashed by a rising criminal mastermind known to the terrified citizens of Gotham as the Joker.",
     "runtime": 152,
-    "votes": 20618,
-    "rating": 9.10593,
+    "votes": 20644,
+    "rating": 9.10604,
     "genres": [
       "action",
       "crime",
       "drama",
       "thriller"
     ],
-    "certification": "PG-13"
+    "certification": "PG-13",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/000/120/posters/thumb/8369bf0d4a.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/000/120/fanarts/thumb/f7884a908e.jpg"
+    }
   },
   "198": {
     "title": "The Godfather: Part II",
@@ -148,13 +176,17 @@ export default {
     },
     "sinopsis": "The continuing saga of the Corleone crime family tells the story of a young Vito Corleone growing up in Sicily and in 1910s New York; and follows Michael Corleone in the 1950s as he attempts to expand the family business into Las Vegas, Hollywood and Cuba",
     "runtime": 200,
-    "votes": 4847,
-    "rating": 8.8857,
+    "votes": 4852,
+    "rating": 8.88417,
     "genres": [
       "crime",
       "drama"
     ],
-    "certification": "R"
+    "certification": "R",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/000/198/posters/thumb/9eac522ceb.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/000/198/fanarts/thumb/877a59a05d.jpg"
+    }
   },
   "228": {
     "title": "Batman Begins",
@@ -167,14 +199,18 @@ export default {
     },
     "sinopsis": "Driven by tragedy, billionaire Bruce Wayne dedicates his life to uncovering and defeating the corruption that plagues his home, Gotham City.  Unable to work within the system, he instead creates a new identity, a symbol of fear for the criminal underworld - The Batman.",
     "runtime": 140,
-    "votes": 13880,
-    "rating": 8.44524,
+    "votes": 13894,
+    "rating": 8.44552,
     "genres": [
       "action",
       "crime",
       "drama"
     ],
-    "certification": "PG-13"
+    "certification": "PG-13",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/000/228/posters/thumb/0b13139416.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/000/228/fanarts/thumb/f2ddeff0d8.jpg"
+    }
   },
   "230": {
     "title": "The Silence of the Lambs",
@@ -187,14 +223,18 @@ export default {
     },
     "sinopsis": "FBI trainee Clarice Starling ventures into a maximum-security asylum to pick the diseased brain of Hannibal Lecter, a psychiatrist turned homicidal cannibal. Starling needs clues to help her capture a serial killer. Unfortunately, her Faustian relationship with Lecter soon leads to his escape, and now two deranged killers are on the loose.",
     "runtime": 118,
-    "votes": 7857,
-    "rating": 8.65928,
+    "votes": 7868,
+    "rating": 8.659,
     "genres": [
       "crime",
       "drama",
       "thriller"
     ],
-    "certification": "R"
+    "certification": "R",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/000/230/posters/thumb/f35ddddd35.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/000/230/fanarts/thumb/57f3232634.jpg"
+    }
   },
   "234": {
     "title": "The Shawshank Redemption",
@@ -207,13 +247,17 @@ export default {
     },
     "sinopsis": "Framed in the 1940s for the double murder of his wife and her lover, upstanding banker Andy Dufresne begins a new life at the Shawshank prison, where he puts his accounting skills to work for an amoral warden. During his long stretch in prison, Dufresne comes to be admired by the other inmates -- including an older prisoner named Red -- for his integrity and unquenchable sense of hope.",
     "runtime": 142,
-    "votes": 11334,
-    "rating": 9.29848,
+    "votes": 11343,
+    "rating": 9.29816,
     "genres": [
       "crime",
       "drama"
     ],
-    "certification": "R"
+    "certification": "R",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/000/234/posters/thumb/09c5e5bb62.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/000/234/fanarts/thumb/609240b889.jpg"
+    }
   },
   "309": {
     "title": "12 Angry Men",
@@ -226,12 +270,16 @@ export default {
     },
     "sinopsis": "The defense and the prosecution have rested and the jury is filing into the jury room to decide if a young Spanish-American is guilty or innocent of murdering his father. What begins as an open and shut case soon becomes a mini-drama of each of the jurors' prejudices and preconceptions about the trial, the accused, and each other.",
     "runtime": 96,
-    "votes": 2864,
-    "rating": 8.89665,
+    "votes": 2869,
+    "rating": 8.89822,
     "genres": [
       "drama"
     ],
-    "certification": ""
+    "certification": "",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/000/309/posters/thumb/19b8cb17bd.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/000/309/fanarts/thumb/a88f21ce98.jpg"
+    }
   },
   "358": {
     "title": "A Beautiful Mind",
@@ -244,13 +292,17 @@ export default {
     },
     "sinopsis": "At Princeton University, John Nash struggles to make a worthwhile contribution to serve as his legacy to the world of mathematics. He finally makes a revolutionary breakthrough that will eventually earn him the Nobel Prize. After graduate school he turns to teaching, becoming romantically involved with his student Alicia. Meanwhile the government asks his help with breaking Soviet codes, which soon gets him involved in a terrifying conspiracy plot. Nash grows more and more paranoid until a discovery that turns his entire world upside down. Now it is only with Alicia's help that he will be able to recover his mental strength and regain his status as the great mathematician we know him as today.",
     "runtime": 135,
-    "votes": 6929,
-    "rating": 8.35806,
+    "votes": 6939,
+    "rating": 8.35826,
     "genres": [
       "drama",
       "romance"
     ],
-    "certification": "PG-13"
+    "certification": "PG-13",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/000/358/posters/thumb/576127f46a.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/000/358/fanarts/thumb/bfcf0e55b2.jpg"
+    }
   },
   "383": {
     "title": "Good Will Hunting",
@@ -263,12 +315,16 @@ export default {
     },
     "sinopsis": "Will Hunting, a janitor at MIT, has a gift for mathematics but needs help from a psychologist to find direction in his life.",
     "runtime": 126,
-    "votes": 6223,
-    "rating": 8.50603,
+    "votes": 6231,
+    "rating": 8.50602,
     "genres": [
       "drama"
     ],
-    "certification": "R"
+    "certification": "R",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/000/383/posters/thumb/6e4e3f6373.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/000/383/fanarts/thumb/c547f52150.jpg"
+    }
   },
   "390": {
     "title": "The Green Mile",
@@ -281,14 +337,18 @@ export default {
     },
     "sinopsis": "A supernatural tale set on death row in a Southern prison, where gentle giant John Coffey possesses the mysterious power to heal people's ailments. When the cellblock's head guard, Paul Edgecomb, recognizes Coffey's miraculous gift, he tries desperately to help stave off the condemned man's execution.",
     "runtime": 189,
-    "votes": 8033,
-    "rating": 8.69351,
+    "votes": 8044,
+    "rating": 8.69281,
     "genres": [
       "crime",
       "drama",
       "fantasy"
     ],
-    "certification": "R"
+    "certification": "R",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/000/390/posters/thumb/a247907720.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/000/390/fanarts/thumb/41110d9f59.jpg"
+    }
   },
   "402": {
     "title": "One Flew Over the Cuckoo's Nest",
@@ -301,12 +361,16 @@ export default {
     },
     "sinopsis": "While serving time for insanity at a state mental hospital, implacable rabble-rouser Randle Patrick McMurphy inspires his fellow patients to rebel against the authoritarian rule of head nurse Mildred Ratched.",
     "runtime": 133,
-    "votes": 3580,
-    "rating": 8.58073,
+    "votes": 3585,
+    "rating": 8.57992,
     "genres": [
       "drama"
     ],
-    "certification": "R"
+    "certification": "R",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/000/402/posters/thumb/687ff26dee.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/000/402/fanarts/thumb/a33cff3465.jpg"
+    }
   },
   "432": {
     "title": "Fight Club",
@@ -319,12 +383,16 @@ export default {
     },
     "sinopsis": "A ticking-time-bomb insomniac and a slippery soap salesman channel primal male aggression into a shocking new form of therapy. Their concept catches on, with underground \"fight clubs\" forming in every town, until an eccentric gets in the way and ignites an out-of-control spiral toward oblivion.",
     "runtime": 139,
-    "votes": 15906,
-    "rating": 9.01226,
+    "votes": 15925,
+    "rating": 9.01149,
     "genres": [
       "drama"
     ],
-    "certification": "R"
+    "certification": "R",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/000/432/posters/thumb/73f7237eec.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/000/432/fanarts/thumb/e73160e97e.jpg"
+    }
   },
   "481": {
     "title": "The Matrix",
@@ -337,15 +405,19 @@ export default {
     },
     "sinopsis": "Thomas A. Anderson is a man living two lives. By day he is an average computer programmer and by night a malevolent hacker known as Neo, who finds himself targeted by the police when he is contacted by Morpheus, a legendary computer hacker, who reveals the shocking truth about our reality.",
     "runtime": 136,
-    "votes": 17491,
-    "rating": 8.98073,
+    "votes": 17507,
+    "rating": 8.98069,
     "genres": [
       "action",
       "adventure",
       "science-fiction",
       "thriller"
     ],
-    "certification": "R"
+    "certification": "R",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/000/481/posters/thumb/373310d2ee.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/000/481/fanarts/thumb/6c353577dd.jpg"
+    }
   },
   "505": {
     "title": "The Usual Suspects",
@@ -358,14 +430,18 @@ export default {
     },
     "sinopsis": "Following a truck hijack in New York, five conmen are arrested and brought together for questioning. As none of them is guilty, they plan a revenge operation against the police. The operation goes well, but then the influence of a legendary mastermind criminal called Keyser Söze is felt. It becomes clear that each one of them has wronged Söze at some point and must pay back now. The payback job leaves 27 men dead in a boat explosion, but the real question arises now: Who actually is Keyser Söze?",
     "runtime": 106,
-    "votes": 6498,
-    "rating": 8.81487,
+    "votes": 6505,
+    "rating": 8.81445,
     "genres": [
       "crime",
       "drama",
       "thriller"
     ],
-    "certification": "R"
+    "certification": "R",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/000/505/posters/thumb/6646ad2de1.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/000/505/fanarts/thumb/3937599fed.jpg"
+    }
   },
   "516": {
     "title": "Catch Me If You Can",
@@ -378,13 +454,17 @@ export default {
     },
     "sinopsis": "Frank W. Abagnale Jr. is a cunning con man -- posing as a doctor, lawyer and pilot all before turning 21. He's also a deft forger, and his work attracts the attention of FBI agent Carl Hanratty, who makes it his mission to put Frank behind bars. But Frank not only eludes capture, he revels in the pursuit, even taking time to taunt Carl by phone.",
     "runtime": 141,
-    "votes": 7190,
-    "rating": 8.25522,
+    "votes": 7199,
+    "rating": 8.25462,
     "genres": [
       "crime",
       "drama"
     ],
-    "certification": "PG-13"
+    "certification": "PG-13",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/000/516/posters/thumb/4a9828242f.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/000/516/fanarts/thumb/c37020926a.jpg"
+    }
   },
   "546": {
     "title": "Harry Potter and the Chamber of Secrets",
@@ -397,14 +477,18 @@ export default {
     },
     "sinopsis": "Everyone's favorite novice wizard, Harry Potter, continues his high-flying adventures at Hogwarts. This time around, Harry ignores warnings not to return to school - that is, if he values his life - to investigate a mysterious series of attacks with Ron and Hermione.",
     "runtime": 161,
-    "votes": 8511,
-    "rating": 7.8704,
+    "votes": 8519,
+    "rating": 7.87006,
     "genres": [
       "adventure",
       "fantasy",
       "family"
     ],
-    "certification": "PG"
+    "certification": "PG",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/000/546/posters/thumb/7e6f10df7d.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/000/546/fanarts/thumb/d771177812.jpg"
+    }
   },
   "595": {
     "title": "V for Vendetta",
@@ -417,14 +501,18 @@ export default {
     },
     "sinopsis": "In a world in which Great Britain has become a fascist state, a masked vigilante known only as \"V\" conducts guerrilla warfare against the oppressive British government. When \"V\" rescues a young woman from the secret police, he finds in her an ally with whom he can continue his fight to free the people of Britain.",
     "runtime": 132,
-    "votes": 10402,
-    "rating": 8.48818,
+    "votes": 10410,
+    "rating": 8.48751,
     "genres": [
       "action",
       "fantasy",
       "thriller"
     ],
-    "certification": "R"
+    "certification": "R",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/000/595/posters/thumb/b9dbae9136.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/000/595/fanarts/thumb/e4d72ffc1e.jpg"
+    }
   },
   "612": {
     "title": "Goodfellas",
@@ -437,13 +525,17 @@ export default {
     },
     "sinopsis": "Henry Hill is a small time gangster, who takes part in a robbery with Jimmy Conway and Tommy De Vito, two other gangsters who have set their sights a bit higher. His two partners kill off everyone else involved in the robbery, and slowly start to climb up through the hierarchy of the Mob. Henry, however, is badly affected by his partners success, but will he stoop low enough to bring about the downfall of Jimmy and Tommy?",
     "runtime": 146,
-    "votes": 4984,
-    "rating": 8.74197,
+    "votes": 4990,
+    "rating": 8.74088,
     "genres": [
       "crime",
       "drama"
     ],
-    "certification": "R"
+    "certification": "R",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/000/612/posters/thumb/bd3b12e9d5.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/000/612/fanarts/thumb/696976945c.jpg"
+    }
   },
   "650": {
     "title": "Se7en",
@@ -456,14 +548,18 @@ export default {
     },
     "sinopsis": "Two homicide detectives are on a desperate hunt for a serial killer whose crimes are based on the \"seven deadly sins\" in this dark and haunting film that takes viewers from the tortured remains of one victim to the next. The seasoned Det. Sommerset researches each sin in an effort to get inside the killer's mind, while his novice partner, Mills, scoffs at his efforts to unravel the case.",
     "runtime": 127,
-    "votes": 9812,
-    "rating": 8.72697,
+    "votes": 9824,
+    "rating": 8.7273,
     "genres": [
       "crime",
       "mystery",
       "thriller"
     ],
-    "certification": "R"
+    "certification": "R",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/000/650/posters/thumb/b0e28495c2.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/000/650/fanarts/thumb/a1dcd97b07.jpg"
+    }
   },
   "851": {
     "title": "The Prestige",
@@ -476,14 +572,18 @@ export default {
     },
     "sinopsis": "A mysterious story of two magicians whose intense rivalry leads them on a life-long battle for supremacy -- full of obsession, deceit and jealousy with dangerous and deadly consequences.",
     "runtime": 130,
-    "votes": 8634,
-    "rating": 8.56915,
+    "votes": 8645,
+    "rating": 8.569,
     "genres": [
       "drama",
       "mystery",
       "thriller"
     ],
-    "certification": "PG-13"
+    "certification": "PG-13",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/000/851/posters/thumb/15617edab2.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/000/851/fanarts/thumb/c448b3703c.jpg"
+    }
   },
   "1266": {
     "title": "Star Wars: Episode V - The Empire Strikes Back",
@@ -496,14 +596,18 @@ export default {
     },
     "sinopsis": "The epic saga continues as Luke Skywalker, in hopes of defeating the evil Galactic Empire, learns the ways of the Jedi from aging master Yoda. But Darth Vader is more determined than ever to capture Luke. Meanwhile, rebel leader Princess Leia, cocky Han Solo, Chewbacca, and droids C-3PO and R2-D2 are thrown into various stages of capture, betrayal and despair.",
     "runtime": 124,
-    "votes": 10049,
-    "rating": 8.9191,
+    "votes": 10075,
+    "rating": 8.91851,
     "genres": [
       "action",
       "adventure",
       "science-fiction"
     ],
-    "certification": "PG"
+    "certification": "PG",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/001/266/posters/thumb/33004e8ae5.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/001/266/fanarts/thumb/d961475d32.jpg"
+    }
   },
   "1267": {
     "title": "Star Wars: Episode VI - Return of the Jedi",
@@ -516,14 +620,18 @@ export default {
     },
     "sinopsis": "As Rebel leaders map their strategy for an all-out attack on the Emperor's newer, bigger Death Star. Han Solo remains frozen in the cavernous desert fortress of Jabba the Hutt, the most loathsome outlaw in the universe, who is also keeping Princess Leia as a slave girl. Now a master of the Force, Luke Skywalker rescues his friends, but he cannot become a true Jedi Knight until he wages his own crucial battle against Darth Vader, who has sworn to win Luke over to the dark side of the Force.",
     "runtime": 135,
-    "votes": 9762,
-    "rating": 8.76286,
+    "votes": 9777,
+    "rating": 8.76271,
     "genres": [
       "action",
       "adventure",
       "science-fiction"
     ],
-    "certification": "PG"
+    "certification": "PG",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/001/267/posters/thumb/80c956258c.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/001/267/fanarts/thumb/57469dd637.jpg"
+    }
   },
   "1268": {
     "title": "Star Wars: Episode I - The Phantom Menace",
@@ -536,14 +644,18 @@ export default {
     },
     "sinopsis": "Stranded on the desert planet Tatooine after rescuing young Queen Amidala from the impending invasion of Naboo, Jedi apprentice Obi-Wan Kenobi and his Jedi Master discover nine-year-old Anakin Skywalker, a young slave unusually strong in the Force.",
     "runtime": 136,
-    "votes": 7657,
-    "rating": 7.04231,
+    "votes": 7678,
+    "rating": 7.04272,
     "genres": [
       "action",
       "adventure",
       "science-fiction"
     ],
-    "certification": "PG"
+    "certification": "PG",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/001/268/posters/thumb/cf1b45b8f8.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/001/268/fanarts/thumb/4804bf9086.jpg"
+    }
   },
   "5405": {
     "title": "How to Train Your Dragon",
@@ -556,15 +668,19 @@ export default {
     },
     "sinopsis": "As the son of a Viking leader on the cusp of manhood, shy Hiccup Horrendous Haddock III faces a rite of passage: he must kill a dragon to prove his warrior mettle. But after downing a feared dragon, he realizes that he no longer wants to destroy it, and instead befriends the beast – which he names Toothless – much to the chagrin of his warrior father",
     "runtime": 98,
-    "votes": 10354,
-    "rating": 8.46417,
+    "votes": 10361,
+    "rating": 8.46434,
     "genres": [
       "adventure",
       "animation",
       "fantasy",
       "family"
     ],
-    "certification": "PG"
+    "certification": "PG",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/005/405/posters/thumb/77020ebf5e.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/005/405/fanarts/thumb/0e381f2924.jpg"
+    }
   },
   "5631": {
     "title": "Hocus Pocus",
@@ -577,14 +693,18 @@ export default {
     },
     "sinopsis": "After 300 years of slumber, three sister witches are accidentally resurrected in Salem on Halloween night, and it us up to three kids and their newfound feline friend to put an end to the witches' reign of terror once and for all.",
     "runtime": 96,
-    "votes": 963,
-    "rating": 7.5919,
+    "votes": 964,
+    "rating": 7.58921,
     "genres": [
       "comedy",
       "fantasy",
       "family"
     ],
-    "certification": "PG"
+    "certification": "PG",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/005/631/posters/thumb/a7c2f7c8d4.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/005/631/fanarts/thumb/10595cb1cd.jpg"
+    }
   },
   "6491": {
     "title": "The Santa Clause",
@@ -597,15 +717,19 @@ export default {
     },
     "sinopsis": "Scott Calvin is an ordinary man, who accidentally causes Santa Claus to fall from his roof on Christmas Eve and is knocked unconscious. When he and his young son finish Santa's trip and deliveries, they go to the North Pole, where Scott learns he must become the new Santa and convince those he loves that he is indeed, Father Christmas.",
     "runtime": 97,
-    "votes": 960,
-    "rating": 7.06458,
+    "votes": 964,
+    "rating": 7.06535,
     "genres": [
       "comedy",
       "drama",
       "fantasy",
       "family"
     ],
-    "certification": "PG"
+    "certification": "PG",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/006/491/posters/thumb/d61cf463cb.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/006/491/fanarts/thumb/1920f020c3.jpg"
+    }
   },
   "13937": {
     "title": "The Cabin in the Woods",
@@ -618,13 +742,17 @@ export default {
     },
     "sinopsis": "Five college friends spend the weekend at a remote cabin in the woods, where they get more than they bargained for. Together, they must discover the truth behind the cabin in the woods.",
     "runtime": 95,
-    "votes": 4519,
-    "rating": 7.28967,
+    "votes": 4525,
+    "rating": 7.2895,
     "genres": [
       "horror",
       "thriller"
     ],
-    "certification": "R"
+    "certification": "R",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/013/937/posters/thumb/138ef91a09.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/013/937/fanarts/thumb/b200d9f6af.jpg"
+    }
   },
   "24221": {
     "title": "Skyfall",
@@ -637,14 +765,18 @@ export default {
     },
     "sinopsis": "When Bond's latest assignment goes gravely wrong and agents around the world are exposed, MI6 is attacked forcing M to relocate the agency. These events cause her authority and position to be challenged by Gareth Mallory (Ralph Fiennes), the new Chairman of the Intelligence and Security Committee. With MI6 now compromised from both inside and out, M is left with one ally she can trust: Bond. 007 takes to the shadows - aided only by field agent, Eve (Naomie Harris) - following a trail to the mysterious Silva (Javier Bardem), whose lethal and hidden motives have yet to reveal themselves.",
     "runtime": 143,
-    "votes": 9453,
-    "rating": 7.86544,
+    "votes": 9488,
+    "rating": 7.86488,
     "genres": [
       "action",
       "adventure",
       "thriller"
     ],
-    "certification": "PG-13"
+    "certification": "PG-13",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/024/221/posters/thumb/57f3d77d2c.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/024/221/fanarts/thumb/6e9b126b49.jpg"
+    }
   },
   "28880": {
     "title": "Ghostbusters",
@@ -665,7 +797,11 @@ export default {
       "science-fiction",
       "horror"
     ],
-    "certification": ""
+    "certification": "",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/028/880/posters/thumb/330c776a0a.jpg",
+      "fanart": null
+    }
   },
   "34097": {
     "title": "The Hobbit: An Unexpected Journey",
@@ -678,14 +814,18 @@ export default {
     },
     "sinopsis": "Bilbo Baggins, a hobbit enjoying his quiet life, is swept into an epic quest by Gandalf the Grey and thirteen dwarves who seek to reclaim their mountain home from Smaug, the dragon.",
     "runtime": 169,
-    "votes": 13814,
-    "rating": 8.08636,
+    "votes": 13824,
+    "rating": 8.08637,
     "genres": [
       "action",
       "adventure",
       "fantasy"
     ],
-    "certification": "PG-13"
+    "certification": "PG-13",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/034/097/posters/thumb/6e72c9eacb.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/034/097/fanarts/thumb/c828bb3a35.jpg"
+    }
   },
   "50131": {
     "title": "Django Unchained",
@@ -698,13 +838,17 @@ export default {
     },
     "sinopsis": "With the help of a German bounty hunter, a freed slave sets out to rescue his wife from a brutal Mississippi plantation owner.",
     "runtime": 165,
-    "votes": 13821,
-    "rating": 8.57246,
+    "votes": 13835,
+    "rating": 8.57217,
     "genres": [
       "drama",
       "western"
     ],
-    "certification": "R"
+    "certification": "R",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/050/131/posters/thumb/591333804f.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/050/131/fanarts/thumb/1e3e990d1e.jpg"
+    }
   },
   "51342": {
     "title": "The Hunger Games",
@@ -717,14 +861,18 @@ export default {
     },
     "sinopsis": "Every year in the ruins of what was once North America, the nation of Panem forces each of its twelve districts to send a teenage boy and girl to compete in the Hunger Games.  Part twisted entertainment, part government intimidation tactic, the Hunger Games are a nationally televised event in which “Tributes” must fight with one another until one survivor remains.  Pitted against highly-trained Tributes who have prepared for these Games their entire lives, Katniss is forced to rely upon her sharp instincts as well as the mentorship of drunken former victor Haymitch Abernathy.  If she’s ever to return home to District 12, Katniss must make impossible choices in the arena that weigh survival against humanity and life against love. The world will be watching.",
     "runtime": 142,
-    "votes": 14049,
-    "rating": 7.64503,
+    "votes": 14062,
+    "rating": 7.64536,
     "genres": [
       "adventure",
       "fantasy",
       "science-fiction"
     ],
-    "certification": "PG-13"
+    "certification": "PG-13",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/051/342/posters/thumb/9aee4af5cf.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/051/342/fanarts/thumb/5e7323b2b5.jpg"
+    }
   },
   "56360": {
     "title": "Mad Max: Fury Road",
@@ -737,14 +885,18 @@ export default {
     },
     "sinopsis": "An apocalyptic story set in the furthest reaches of our planet, in a stark desert landscape where humanity is broken, and most everyone is crazed fighting for the necessities of life. Within this world exist two rebels on the run who just might be able to restore order. There's Max, a man of action and a man of few words, who seeks peace of mind following the loss of his wife and child in the aftermath of the chaos. And Furiosa, a woman of action and a woman who believes her path to survival may be achieved if she can make it across the desert back to her childhood homeland.",
     "runtime": 120,
-    "votes": 8831,
-    "rating": 8.01823,
+    "votes": 8861,
+    "rating": 8.01806,
     "genres": [
       "action",
       "adventure",
       "thriller"
     ],
-    "certification": "R"
+    "certification": "R",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/056/360/posters/thumb/81486c7fea.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/056/360/fanarts/thumb/9fa7570f17.jpg"
+    }
   },
   "56494": {
     "title": "Hotel Transylvania",
@@ -757,15 +909,19 @@ export default {
     },
     "sinopsis": "Dracula, who operates a high-end resort away from the human world, goes into overprotective mode when a boy discovers the resort and falls for the count's teen-aged daughter.",
     "runtime": 91,
-    "votes": 4015,
-    "rating": 7.56438,
+    "votes": 4022,
+    "rating": 7.56216,
     "genres": [
       "animation",
       "comedy",
       "fantasy",
       "family"
     ],
-    "certification": "PG"
+    "certification": "PG",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/056/494/posters/thumb/ea82748766.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/056/494/fanarts/thumb/3bd70e8f34.jpg"
+    }
   },
   "56580": {
     "title": "Avatar 2",
@@ -785,7 +941,11 @@ export default {
       "adventure",
       "fantasy"
     ],
-    "certification": ""
+    "certification": "",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/056/580/posters/thumb/a0a743689e.jpg",
+      "fanart": null
+    }
   },
   "57181": {
     "title": "The Intouchables",
@@ -798,13 +958,17 @@ export default {
     },
     "sinopsis": "A true story of two men who should never have met - a quadriplegic aristocrat who was injured in a paragliding accident and a young man from the projects.",
     "runtime": 112,
-    "votes": 7256,
-    "rating": 8.82208,
+    "votes": 7265,
+    "rating": 8.82189,
     "genres": [
       "comedy",
       "drama"
     ],
-    "certification": "R"
+    "certification": "R",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/057/181/posters/thumb/3ea7accb6c.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/057/181/fanarts/thumb/2080f3341b.jpg"
+    }
   },
   "62544": {
     "title": "Avatar 3",
@@ -825,7 +989,11 @@ export default {
       "fantasy",
       "science-fiction"
     ],
-    "certification": ""
+    "certification": "",
+    "images": {
+      "poster": null,
+      "fanart": null
+    }
   },
   "65508": {
     "title": "Terminator Genisys",
@@ -838,15 +1006,19 @@ export default {
     },
     "sinopsis": "The year is 2029. John Connor, leader of the resistance continues the war against the machines. At the Los Angeles offensive, John's fears of the unknown future begin to emerge when TECOM spies reveal a new plot by SkyNet that will attack him from both fronts; past and future, and will ultimately change warfare forever.",
     "runtime": 125,
-    "votes": 4781,
-    "rating": 7.19661,
+    "votes": 4825,
+    "rating": 7.1942,
     "genres": [
       "action",
       "adventure",
       "science-fiction",
       "thriller"
     ],
-    "certification": "PG-13"
+    "certification": "PG-13",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/065/508/posters/thumb/5090c0dd9f.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/065/508/fanarts/thumb/8d103d1587.jpg"
+    }
   },
   "71938": {
     "title": "Avengers: Age of Ultron",
@@ -859,14 +1031,18 @@ export default {
     },
     "sinopsis": "When Tony Stark tries to jumpstart a dormant peacekeeping program, things go awry and Earth’s Mightiest Heroes are put to the ultimate test as the fate of the planet hangs in the balance. As the villainous Ultron emerges, it is up to The Avengers to stop him from enacting his terrible plans, and soon uneasy alliances and unexpected action pave the way for an epic and unique global adventure.",
     "runtime": 141,
-    "votes": 8504,
-    "rating": 7.8957,
+    "votes": 8548,
+    "rating": 7.89401,
     "genres": [
       "science-fiction",
       "action",
       "adventure"
     ],
-    "certification": "PG-13"
+    "certification": "PG-13",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/071/938/posters/thumb/de2265af49.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/071/938/fanarts/thumb/ffe37563ca.jpg"
+    }
   },
   "73582": {
     "title": "Ant-Man",
@@ -879,15 +1055,19 @@ export default {
     },
     "sinopsis": "Armed with the astonishing ability to shrink in scale but increase in strength, con-man Scott Lang must embrace his inner-hero and help his mentor, Dr. Hank Pym, protect the secret behind his spectacular Ant-Man suit from a new generation of towering threats. Against seemingly insurmountable obstacles, Pym and Lang must plan and pull off a heist that will save the world.",
     "runtime": 115,
-    "votes": 2909,
-    "rating": 7.88347,
+    "votes": 3085,
+    "rating": 7.86353,
     "genres": [
       "action",
       "science-fiction",
       "adventure",
       "comedy"
     ],
-    "certification": "PG-13"
+    "certification": "PG-13",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/073/582/posters/thumb/a4928f0a14.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/073/582/fanarts/thumb/2ebdc44580.jpg"
+    }
   },
   "86997": {
     "title": "Prometheus 2",
@@ -905,7 +1085,11 @@ export default {
     "genres": [
       "science-fiction"
     ],
-    "certification": ""
+    "certification": "",
+    "images": {
+      "poster": null,
+      "fanart": null
+    }
   },
   "87254": {
     "title": "Finding Dory",
@@ -918,14 +1102,18 @@ export default {
     },
     "sinopsis": "Taking place a year after finding Nemo, Dory goes on a journey to reunite with her family.",
     "runtime": 0,
-    "votes": 9,
-    "rating": 7.44444,
+    "votes": 10,
+    "rating": 6.8,
     "genres": [
       "adventure",
       "animation",
       "comedy"
     ],
-    "certification": "G"
+    "certification": "G",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/087/254/posters/thumb/69e78c087d.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/087/254/fanarts/thumb/0276b2f0dd.jpg"
+    }
   },
   "89543": {
     "title": "The Hunger Games: Mockingjay - Part 2",
@@ -945,7 +1133,11 @@ export default {
       "science-fiction",
       "action"
     ],
-    "certification": "PG-13"
+    "certification": "PG-13",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/089/543/posters/thumb/2b08ebbaac.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/089/543/fanarts/thumb/1a43c85057.jpg"
+    }
   },
   "91374": {
     "title": "Jurassic World",
@@ -958,15 +1150,19 @@ export default {
     },
     "sinopsis": "Twenty-two years after the events of Jurassic Park, Isla Nublar now features a fully functioning dinosaur theme park, Jurassic World, as originally envisioned by John Hammond.",
     "runtime": 124,
-    "votes": 8390,
-    "rating": 7.35721,
+    "votes": 8443,
+    "rating": 7.35367,
     "genres": [
       "action",
       "adventure",
       "science-fiction",
       "thriller"
     ],
-    "certification": "PG-13"
+    "certification": "PG-13",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/091/374/posters/thumb/a889280b4a.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/091/374/fanarts/thumb/d6a3959e2e.jpg"
+    }
   },
   "92230": {
     "title": "Edge of Tomorrow",
@@ -979,13 +1175,17 @@ export default {
     },
     "sinopsis": "Major Bill Cage is an officer who has never seen a day of combat when he is unceremoniously demoted and dropped into combat. Cage is killed within minutes, managing to take an alpha alien down with him. He awakens back at the beginning of the same day and is forced to fight and die again... and again - as physical contact with the alien has thrown him into a time loop.",
     "runtime": 113,
-    "votes": 12535,
-    "rating": 8.02856,
+    "votes": 12555,
+    "rating": 8.02851,
     "genres": [
       "action",
       "science-fiction"
     ],
-    "certification": "PG-13"
+    "certification": "PG-13",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/092/230/posters/thumb/79bacf0239.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/092/230/fanarts/thumb/6031096cea.jpg"
+    }
   },
   "92356": {
     "title": "Uncanny",
@@ -998,14 +1198,18 @@ export default {
     },
     "sinopsis": "For ten years, inventor David Kressen has lived in seclusion with his inventions, including Adam, a robot with incredible lifelike human qualities. When reporter Joy Andrews is given access to their unconventional facility, she is alternately repelled and attracted to the scientist and his creation. But as Adam exhibits emergent behavior of anger and jealousy towards her, she finds herself increasingly entangled in a web of deception where no one’s motives are easily decipherable.",
     "runtime": 91,
-    "votes": 37,
-    "rating": 6.75676,
+    "votes": 42,
+    "rating": 6.7619,
     "genres": [
       "drama",
       "science-fiction",
       "thriller"
     ],
-    "certification": ""
+    "certification": "",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/092/356/posters/thumb/0bf7ff3717.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/092/356/fanarts/thumb/30ccfd43e4.jpg"
+    }
   },
   "93870": {
     "title": "Kung Fu Panda 3",
@@ -1025,7 +1229,11 @@ export default {
       "adventure",
       "animation"
     ],
-    "certification": ""
+    "certification": "",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/093/870/posters/thumb/1599d6c05d.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/093/870/fanarts/thumb/2efc9317e3.jpg"
+    }
   },
   "93923": {
     "title": "Paperman",
@@ -1038,14 +1246,18 @@ export default {
     },
     "sinopsis": "An urban office worker finds that paper airplanes are instrumental in meeting a girl in ways he never expected.",
     "runtime": 7,
-    "votes": 1142,
-    "rating": 8.55254,
+    "votes": 1147,
+    "rating": 8.551,
     "genres": [
       "animation",
       "romance",
       "family"
     ],
-    "certification": "G"
+    "certification": "G",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/093/923/posters/thumb/011495578d.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/093/923/fanarts/thumb/ce388fef48.jpg"
+    }
   },
   "94024": {
     "title": "Star Wars: Episode VII - The Force Awakens",
@@ -1058,15 +1270,19 @@ export default {
     },
     "sinopsis": "A continuation of the saga created by George Lucas, set thirty years after Star Wars: Episode VI – Return of the Jedi.",
     "runtime": 136,
-    "votes": 77,
-    "rating": 8.64935,
+    "votes": 78,
+    "rating": 8.66667,
     "genres": [
       "action",
       "adventure",
       "fantasy",
       "science-fiction"
     ],
-    "certification": ""
+    "certification": "",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/094/024/posters/thumb/45feef2558.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/094/024/fanarts/thumb/707a0ae2ab.jpg"
+    }
   },
   "94232": {
     "title": "Justice League",
@@ -1087,7 +1303,11 @@ export default {
       "science-fiction",
       "fantasy"
     ],
-    "certification": ""
+    "certification": "",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/094/232/posters/thumb/1e20ffaea0.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/094/232/fanarts/thumb/f02a2631ca.jpg"
+    }
   },
   "98998": {
     "title": "Inside Out",
@@ -1100,14 +1320,18 @@ export default {
     },
     "sinopsis": "Growing up can be a bumpy road, and it's no exception for Riley, who is uprooted from her Midwest life when her father starts a new job in San Francisco. Like all of us, Riley is guided by her emotions - Joy, Fear, Anger, Disgust and Sadness. The emotions live in Headquarters, the control center inside Riley's mind, where they help advise her through everyday life. As Riley and her emotions struggle to adjust to a new life in San Francisco, turmoil ensues in Headquarters. Although Joy, Riley's main and most important emotion, tries to keep things positive, the emotions conflict on how best to navigate a new city, house and school.",
     "runtime": 94,
-    "votes": 5244,
-    "rating": 8.37071,
+    "votes": 5344,
+    "rating": 8.36808,
     "genres": [
       "animation",
       "comedy",
       "family"
     ],
-    "certification": "PG"
+    "certification": "PG",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/098/998/posters/thumb/09e0ae33aa.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/098/998/fanarts/thumb/dd51480cb4.jpg"
+    }
   },
   "99886": {
     "title": "Dallas Buyers Club",
@@ -1120,13 +1344,17 @@ export default {
     },
     "sinopsis": "Loosely based on the true-life tale of Ron Woodroof, a drug-taking, women-loving, homophobic man who in 1986 was diagnosed with HIV/AIDS and given thirty days to live.",
     "runtime": 117,
-    "votes": 5765,
-    "rating": 8.18716,
+    "votes": 5769,
+    "rating": 8.18755,
     "genres": [
       "drama",
       "history"
     ],
-    "certification": "R"
+    "certification": "R",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/099/886/posters/thumb/fae6888e32.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/099/886/fanarts/thumb/f00001fabb.jpg"
+    }
   },
   "102156": {
     "title": "Interstellar",
@@ -1139,13 +1367,17 @@ export default {
     },
     "sinopsis": "Interstellar chronicles the adventures of a group of explorers who make use of a newly discovered wormhole to surpass the limitations on human space travel and conquer the vast distances involved in an interstellar voyage.",
     "runtime": 169,
-    "votes": 13724,
-    "rating": 8.54707,
+    "votes": 13755,
+    "rating": 8.54744,
     "genres": [
       "science-fiction",
       "drama"
     ],
-    "certification": "PG-13"
+    "certification": "PG-13",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/102/156/posters/thumb/d9cb9de8ed.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/102/156/fanarts/thumb/18cbbaf604.jpg"
+    }
   },
   "102924": {
     "title": "Tomorrowland",
@@ -1158,8 +1390,8 @@ export default {
     },
     "sinopsis": "Bound by a shared destiny, a bright, optimistic teen bursting with scientific curiosity and a former boy-genius inventor jaded by disillusionment embark on a danger-filled mission to unearth the secrets of an enigmatic place somewhere in time and space that exists in their collective memory as \"Tomorrowland.\"",
     "runtime": 130,
-    "votes": 3916,
-    "rating": 7.12385,
+    "votes": 3951,
+    "rating": 7.12377,
     "genres": [
       "science-fiction",
       "adventure",
@@ -1167,7 +1399,11 @@ export default {
       "action",
       "mystery"
     ],
-    "certification": "PG"
+    "certification": "PG",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/102/924/posters/thumb/b815c77c8d.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/102/924/fanarts/thumb/46fb909513.jpg"
+    }
   },
   "106666": {
     "title": "Fantastic Four",
@@ -1180,14 +1416,18 @@ export default {
     },
     "sinopsis": "Four young outsiders teleport to a dangerous universe, which alters their physical form in shocking ways. Their lives irrevocably upended, the team must learn to harness their daunting new abilities and work together to save Earth from a former friend turned enemy.",
     "runtime": 100,
-    "votes": 2659,
-    "rating": 5.71832,
+    "votes": 2712,
+    "rating": 5.72013,
     "genres": [
       "action",
       "adventure",
       "science-fiction"
     ],
-    "certification": "PG-13"
+    "certification": "PG-13",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/106/666/posters/thumb/473dd506bc.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/106/666/fanarts/thumb/3719ebd0cc.jpg"
+    }
   },
   "106667": {
     "title": "Pirates of the Caribbean: Dead Men Tell No Tales",
@@ -1203,7 +1443,11 @@ export default {
     "votes": 48,
     "rating": 8.41667,
     "genres": [],
-    "certification": ""
+    "certification": "",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/106/667/posters/thumb/4017eee638.jpg",
+      "fanart": null
+    }
   },
   "112404": {
     "title": "Big Hero 6",
@@ -1216,8 +1460,8 @@ export default {
     },
     "sinopsis": "The special bond that develops between plus-sized inflatable robot Baymax, and prodigy Hiro Hamada, who team up with a group of friends to form a band of high-tech heroes.",
     "runtime": 102,
-    "votes": 9043,
-    "rating": 8.23908,
+    "votes": 9060,
+    "rating": 8.23962,
     "genres": [
       "action",
       "animation",
@@ -1225,7 +1469,11 @@ export default {
       "adventure",
       "family"
     ],
-    "certification": "PG"
+    "certification": "PG",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/112/404/posters/thumb/5c9e3c0629.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/112/404/fanarts/thumb/bf3eed7e93.jpg"
+    }
   },
   "112447": {
     "title": "Mission: Impossible – Rogue Nation",
@@ -1238,14 +1486,18 @@ export default {
     },
     "sinopsis": "Ethan and team take on their most impossible mission yet, eradicating the Syndicate - an International rogue organization as highly skilled as they are, committed to destroying the IMF.",
     "runtime": 131,
-    "votes": 3413,
-    "rating": 7.65631,
+    "votes": 3508,
+    "rating": 7.65593,
     "genres": [
       "action",
       "adventure",
       "thriller"
     ],
-    "certification": "PG-13"
+    "certification": "PG-13",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/112/447/posters/thumb/659b64dc43.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/112/447/fanarts/thumb/fe2e38b16f.jpg"
+    }
   },
   "114333": {
     "title": "Star Wars: Episode VIII",
@@ -1266,7 +1518,11 @@ export default {
       "fantasy",
       "science-fiction"
     ],
-    "certification": ""
+    "certification": "",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/114/333/posters/thumb/7188bc426b.jpg",
+      "fanart": null
+    }
   },
   "114335": {
     "title": "Star Wars: Episode IX",
@@ -1287,7 +1543,11 @@ export default {
       "fantasy",
       "science-fiction"
     ],
-    "certification": ""
+    "certification": "",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/114/335/posters/thumb/4531069a6b.jpg",
+      "fanart": null
+    }
   },
   "118174": {
     "title": "Star Trek Beyond",
@@ -1307,7 +1567,11 @@ export default {
       "adventure",
       "science-fiction"
     ],
-    "certification": ""
+    "certification": "",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/118/174/posters/thumb/7e11a4657e.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/118/174/fanarts/thumb/0a18580ebf.jpg"
+    }
   },
   "120033": {
     "title": "No Escape",
@@ -1320,13 +1584,17 @@ export default {
     },
     "sinopsis": "In their new overseas home, an American family soon finds themselves caught in the middle of a coup, and they frantically look for a safe escape in an environment where foreigners are being immediately executed.",
     "runtime": 103,
-    "votes": 527,
-    "rating": 7.35674,
+    "votes": 592,
+    "rating": 7.34628,
     "genres": [
       "thriller",
       "action"
     ],
-    "certification": "R"
+    "certification": "R",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/120/033/posters/thumb/4b71b37729.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/120/033/fanarts/thumb/eaeb52fa8d.jpg"
+    }
   },
   "126852": {
     "title": "The Man from U.N.C.L.E.",
@@ -1339,14 +1607,18 @@ export default {
     },
     "sinopsis": "At the height of the Cold War, a mysterious criminal organization plans to use nuclear weapons and technology to upset the fragile balance of power between the United States and Soviet Union. CIA agent Napoleon Solo and KGB agent Illya Kuryakin are forced to put aside their hostilities and work together to stop the evildoers in their tracks. The duo's only lead is the daughter of a missing German scientist, whom they must find soon to prevent a global catastrophe.",
     "runtime": 116,
-    "votes": 1632,
-    "rating": 7.68566,
+    "votes": 1769,
+    "rating": 7.67835,
     "genres": [
       "action",
       "adventure",
       "comedy"
     ],
-    "certification": "PG-13"
+    "certification": "PG-13",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/126/852/posters/thumb/91d5d93908.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/126/852/fanarts/thumb/8a8a357e8b.jpg"
+    }
   },
   "127828": {
     "title": "The Imitation Game",
@@ -1359,15 +1631,19 @@ export default {
     },
     "sinopsis": "Based on the real life story of legendary cryptanalyst Alan Turing, the film portrays the nail-biting race against time by Turing and his brilliant team of code-breakers at Britain's top-secret Government Code and Cypher School at Bletchley Park, during the darkest days of World War II.",
     "runtime": 113,
-    "votes": 8559,
-    "rating": 8.29513,
+    "votes": 8581,
+    "rating": 8.29565,
     "genres": [
       "drama",
       "history",
       "thriller",
       "war"
     ],
-    "certification": "PG-13"
+    "certification": "PG-13",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/127/828/posters/thumb/0fb0ce2879.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/127/828/fanarts/thumb/146ad7cf0a.jpg"
+    }
   },
   "128378": {
     "title": "Spectre",
@@ -1380,14 +1656,18 @@ export default {
     },
     "sinopsis": "A cryptic message from Bond’s past sends him on a trail to uncover a sinister organization. While M battles political forces to keep the secret service alive, Bond peels back the layers of deceit to reveal the terrible truth behind SPECTRE.",
     "runtime": 148,
-    "votes": 445,
-    "rating": 7.13708,
+    "votes": 561,
+    "rating": 7.15152,
     "genres": [
       "action",
       "adventure",
       "crime"
     ],
-    "certification": "PG-13"
+    "certification": "PG-13",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/128/378/posters/thumb/3a05e7391f.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/128/378/fanarts/thumb/401b051d49.jpg"
+    }
   },
   "129583": {
     "title": "Batman v Superman: Dawn of Justice",
@@ -1408,7 +1688,11 @@ export default {
       "fantasy",
       "science-fiction"
     ],
-    "certification": ""
+    "certification": "",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/129/583/posters/thumb/18f901c0fa.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/129/583/fanarts/thumb/45c5d7b5b1.jpg"
+    }
   },
   "130970": {
     "title": "Minions",
@@ -1421,15 +1705,19 @@ export default {
     },
     "sinopsis": "Minions Stuart, Kevin and Bob are recruited by Scarlet Overkill, a super-villain who, alongside her inventor husband Herb, hatches a plot to take over the world.",
     "runtime": 91,
-    "votes": 3804,
-    "rating": 7.33438,
+    "votes": 3856,
+    "rating": 7.33091,
     "genres": [
       "adventure",
       "animation",
       "comedy",
       "family"
     ],
-    "certification": "PG"
+    "certification": "PG",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/130/970/posters/thumb/baa71aa408.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/130/970/fanarts/thumb/58994fad62.jpg"
+    }
   },
   "133346": {
     "title": "Fifty Shades of Grey",
@@ -1442,13 +1730,17 @@ export default {
     },
     "sinopsis": "When college senior Anastasia Steele steps in for her sick roommate to interview prominent businessman Christian Grey for their campus paper, little does she realize the path her life will take. Christian, as enigmatic as he is rich and powerful, finds himself strangely drawn to Ana, and she to him. Though sexually inexperienced, Ana plunges headlong into an affair -- and learns that Christian's true sexual proclivities push the boundaries of pain and pleasure.",
     "runtime": 125,
-    "votes": 3406,
-    "rating": 4.95948,
+    "votes": 3410,
+    "rating": 4.96012,
     "genres": [
       "drama",
       "romance"
     ],
-    "certification": "R"
+    "certification": "R",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/133/346/posters/thumb/c2aed8360d.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/133/346/fanarts/thumb/c2cb028001.jpg"
+    }
   },
   "139438": {
     "title": "Home",
@@ -1461,8 +1753,8 @@ export default {
     },
     "sinopsis": "When Earth is taken over by the overly-confident Boov, an alien race in search of a new place to call home, all humans are promptly relocated, while all Boov get busy reorganizing the planet. But when one resourceful girl, Tip (Rihanna), manages to avoid capture, she finds herself the accidental accomplice of a banished Boov named Oh (Jim Parsons). The two fugitives realize there’s a lot more at stake than intergalactic relations as they embark on the road trip of a lifetime.",
     "runtime": 94,
-    "votes": 2847,
-    "rating": 7.51071,
+    "votes": 2857,
+    "rating": 7.51068,
     "genres": [
       "animation",
       "comedy",
@@ -1470,7 +1762,11 @@ export default {
       "science-fiction",
       "family"
     ],
-    "certification": "PG"
+    "certification": "PG",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/139/438/posters/thumb/da8365d5ee.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/139/438/fanarts/thumb/5b00932409.jpg"
+    }
   },
   "145648": {
     "title": "Self/less",
@@ -1483,14 +1779,18 @@ export default {
     },
     "sinopsis": "An extremely wealthy elderly man dying from cancer undergoes a radical medical procedure that transfers his consciousness to the body of a healthy young man but everything may not be as good as it seems when he starts to uncover the mystery of the body's origins and the secret organization that will kill to keep its secrets.",
     "runtime": 116,
-    "votes": 1450,
-    "rating": 7.19034,
+    "votes": 1484,
+    "rating": 7.19272,
     "genres": [
       "science-fiction",
       "thriller",
       "mystery"
     ],
-    "certification": "PG-13"
+    "certification": "PG-13",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/145/648/posters/thumb/e2d8a7b5ae.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/145/648/fanarts/thumb/66cc48d2bc.jpg"
+    }
   },
   "145711": {
     "title": "Spy",
@@ -1503,14 +1803,18 @@ export default {
     },
     "sinopsis": "A desk-bound CIA analyst volunteers to go undercover to infiltrate the world of a deadly arms dealer, and prevent diabolical global disaster.",
     "runtime": 120,
-    "votes": 3933,
-    "rating": 7.37757,
+    "votes": 3954,
+    "rating": 7.37759,
     "genres": [
       "comedy",
       "action",
       "crime"
     ],
-    "certification": "R"
+    "certification": "R",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/145/711/posters/thumb/f817d42018.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/145/711/fanarts/thumb/07d004a4ce.jpg"
+    }
   },
   "149047": {
     "title": "Whiplash",
@@ -1523,12 +1827,16 @@ export default {
     },
     "sinopsis": "Under the direction of a ruthless instructor, a talented young drummer begins to pursue perfection at any cost, even his humanity.",
     "runtime": 105,
-    "votes": 5223,
-    "rating": 8.54624,
+    "votes": 5239,
+    "rating": 8.54533,
     "genres": [
       "drama"
     ],
-    "certification": "R"
+    "certification": "R",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/149/047/posters/thumb/d569260fc0.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/149/047/fanarts/thumb/2c71270fa1.jpg"
+    }
   },
   "149999": {
     "title": "X-Men: Apocalypse",
@@ -1549,7 +1857,11 @@ export default {
       "fantasy",
       "science-fiction"
     ],
-    "certification": ""
+    "certification": "",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/149/999/posters/thumb/c8edb98ca1.jpg",
+      "fanart": null
+    }
   },
   "151163": {
     "title": "Hitman: Agent 47",
@@ -1562,14 +1874,18 @@ export default {
     },
     "sinopsis": "An assassin teams up with a woman to help her find her father and uncover the mysteries of her ancestry.",
     "runtime": 96,
-    "votes": 1117,
-    "rating": 7.02596,
+    "votes": 1158,
+    "rating": 7.02763,
     "genres": [
       "action",
       "crime",
       "thriller"
     ],
-    "certification": "R"
+    "certification": "R",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/151/163/posters/thumb/a3b8d9bbe9.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/151/163/fanarts/thumb/b60d8c8a73.jpg"
+    }
   },
   "153969": {
     "title": "Everest",
@@ -1582,14 +1898,18 @@ export default {
     },
     "sinopsis": "Inspired by the incredible events surrounding a treacherous attempt to reach the summit of the world's highest mountain, \"Everest\" documents the awe-inspiring journey of two different expeditions challenged beyond their limits by one of the fiercest snowstorms ever encountered by mankind. Their mettle tested by the harshest of elements found on the planet, the climbers will face nearly impossible obstacles as a lifelong obsession becomes a breathtaking struggle for survival.",
     "runtime": 121,
-    "votes": 753,
-    "rating": 7.36521,
+    "votes": 773,
+    "rating": 7.37128,
     "genres": [
       "adventure",
       "drama",
       "thriller"
     ],
-    "certification": "PG-13"
+    "certification": "PG-13",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/153/969/posters/thumb/8a4860d778.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/153/969/fanarts/thumb/3e7be07e0e.jpg"
+    }
   },
   "154554": {
     "title": "San Andreas",
@@ -1602,14 +1922,18 @@ export default {
     },
     "sinopsis": "In the aftermath of a massive earthquake in California, a rescue-chopper pilot makes a dangerous journey across the state in order to rescue his estranged daughter.",
     "runtime": 107,
-    "votes": 4116,
-    "rating": 6.71501,
+    "votes": 4149,
+    "rating": 6.71294,
     "genres": [
       "action",
       "drama",
       "thriller"
     ],
-    "certification": "PG-13"
+    "certification": "PG-13",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/154/554/posters/thumb/5bf9d79249.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/154/554/fanarts/thumb/f649a691e8.jpg"
+    }
   },
   "157093": {
     "title": "Pixels",
@@ -1622,14 +1946,18 @@ export default {
     },
     "sinopsis": "Video game experts are recruited by the military to fight 1980s-era video game characters who've attacked New York.",
     "runtime": 105,
-    "votes": 2784,
-    "rating": 6.75826,
+    "votes": 2807,
+    "rating": 6.75062,
     "genres": [
       "comedy",
       "science-fiction",
       "action"
     ],
-    "certification": "PG-13"
+    "certification": "PG-13",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/157/093/posters/thumb/8feeaf9d94.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/157/093/fanarts/thumb/b5d835c644.jpg"
+    }
   },
   "162293": {
     "title": "Knock Knock",
@@ -1642,13 +1970,17 @@ export default {
     },
     "sinopsis": "When a devoted husband and father is left home alone for the weekend, two stranded young women unexpectedly knock on his door for help. What starts out as a kind gesture results in a dangerous seduction and a deadly game of cat and mouse.",
     "runtime": 99,
-    "votes": 804,
-    "rating": 5.52239,
+    "votes": 817,
+    "rating": 5.51775,
     "genres": [
       "horror",
       "thriller"
     ],
-    "certification": "R"
+    "certification": "R",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/162/293/posters/thumb/777e3bba7b.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/162/293/fanarts/thumb/99486485c0.jpg"
+    }
   },
   "163680": {
     "title": "Magic Mike XXL",
@@ -1661,14 +1993,18 @@ export default {
     },
     "sinopsis": "Three years after Mike bowed out of the stripper life at the top of his game, he and the remaining Kings of Tampa hit the road to Myrtle Beach to put on one last blow-out performance.",
     "runtime": 115,
-    "votes": 824,
-    "rating": 6.44782,
+    "votes": 831,
+    "rating": 6.44284,
     "genres": [
       "comedy",
       "drama",
       "music"
     ],
-    "certification": "R"
+    "certification": "R",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/163/680/posters/thumb/2e1b25401b.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/163/680/fanarts/thumb/b493a39f1e.jpg"
+    }
   },
   "169105": {
     "title": "Captain America: Civil War",
@@ -1681,14 +2017,18 @@ export default {
     },
     "sinopsis": "Following the events of Age of Ultron, the collective governments of the world pass an act designed to regulate all superhuman activity. This polarizes opinion amongst the Avengers, causing two factions to side with Iron Man or Captain America, which causes an epic battle between former allies",
     "runtime": 0,
-    "votes": 12,
-    "rating": 8.41667,
+    "votes": 13,
+    "rating": 8.53846,
     "genres": [
       "action",
       "science-fiction",
       "thriller"
     ],
-    "certification": ""
+    "certification": "",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/169/105/posters/thumb/8e4876066a.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/169/105/fanarts/thumb/2b83a1d8a5.jpg"
+    }
   },
   "169688": {
     "title": "Trainwreck",
@@ -1701,13 +2041,17 @@ export default {
     },
     "sinopsis": "Having thought that monogamy was never possible, a commitment-phobic career woman may have to face her fears when she meets a good guy.",
     "runtime": 125,
-    "votes": 1380,
-    "rating": 6.83841,
+    "votes": 1419,
+    "rating": 6.84144,
     "genres": [
       "comedy",
       "romance"
     ],
-    "certification": "R"
+    "certification": "R",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/169/688/posters/thumb/b4a0bb4dbc.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/169/688/fanarts/thumb/046a9f58bd.jpg"
+    }
   },
   "171149": {
     "title": "The Hateful Eight",
@@ -1725,7 +2069,11 @@ export default {
     "genres": [
       "western"
     ],
-    "certification": "R"
+    "certification": "R",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/171/149/posters/thumb/1e6780213b.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/171/149/fanarts/thumb/1011cea6a9.jpg"
+    }
   },
   "171753": {
     "title": "Selma",
@@ -1738,13 +2086,17 @@ export default {
     },
     "sinopsis": "\"Selma,\" as in Alabama, the place where segregation in the South was at its worst, leading to a march that ended in violence, forcing a famous statement by President Lyndon B. Johnson that ultimately led to the signing of the Civil Rights Act.",
     "runtime": 127,
-    "votes": 914,
-    "rating": 7.80853,
+    "votes": 916,
+    "rating": 7.80786,
     "genres": [
       "drama",
       "history"
     ],
-    "certification": "PG-13"
+    "certification": "PG-13",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/171/753/posters/thumb/3ebdf9a8dc.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/171/753/fanarts/thumb/cb082eddd7.jpg"
+    }
   },
   "172684": {
     "title": "The Last Witch Hunter",
@@ -1757,14 +2109,18 @@ export default {
     },
     "sinopsis": "The last remaining witch hunter battles against an uprising of witches in modern day New York.",
     "runtime": 106,
-    "votes": 239,
-    "rating": 6.80753,
+    "votes": 259,
+    "rating": 6.85714,
     "genres": [
       "action",
       "adventure",
       "fantasy"
     ],
-    "certification": "PG-13"
+    "certification": "PG-13",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/172/684/posters/thumb/aea4f304d0.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/172/684/fanarts/thumb/c26f1e2e01.jpg"
+    }
   },
   "174900": {
     "title": "Straight Outta Compton",
@@ -1777,13 +2133,17 @@ export default {
     },
     "sinopsis": "In 1987, five young men, using brutally honest rhymes and hardcore beats, put their frustration and anger about life in the most dangerous place in America into the most powerful weapon they had: their music. Taking us back to where it all began, Straight Outta Compton tells the true story of how these cultural rebels-armed only with their lyrics, swagger, bravado and raw talent-stood up to the authorities that meant to keep them down and formed the world's most dangerous group, N.W.A. And as they spoke the truth that no one had before and exposed life in the hood, their voice ignited a social revolution that is still reverberating today. Straight Outta Compton stars O’Shea Jackson Jr., Corey Hawkins and Jason Mitchell as Ice Cube, Dr. Dre and Eazy-E, and is directed by F. Gary Gray.",
     "runtime": 147,
-    "votes": 1044,
-    "rating": 8.22989,
+    "votes": 1053,
+    "rating": 8.23172,
     "genres": [
       "drama",
       "music"
     ],
-    "certification": "R"
+    "certification": "R",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/174/900/posters/thumb/84ef723e7c.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/174/900/fanarts/thumb/0fb0535654.jpg"
+    }
   },
   "178423": {
     "title": "Mr. Holmes",
@@ -1796,14 +2156,18 @@ export default {
     },
     "sinopsis": "The story is set in 1947, following a long-retired Holmes living in a Sussex village with his housekeeper and rising detective son. But then he finds himself haunted by an unsolved 50-year old case. Holmes' memory isn't what it used to be, so he only remembers fragments of the case: a confrontation with an angry husband, a secret bond with his beautiful but unstable wife.",
     "runtime": 103,
-    "votes": 625,
-    "rating": 7.2864,
+    "votes": 635,
+    "rating": 7.27244,
     "genres": [
       "crime",
       "drama",
       "mystery"
     ],
-    "certification": "PG"
+    "certification": "PG",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/178/423/posters/thumb/42a6453b0b.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/178/423/fanarts/thumb/d5bb56a719.jpg"
+    }
   },
   "179334": {
     "title": "The Revenant",
@@ -1822,7 +2186,11 @@ export default {
       "adventure",
       "drama"
     ],
-    "certification": ""
+    "certification": "",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/179/334/posters/thumb/5661189fd6.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/179/334/fanarts/thumb/0295bf1f7d.jpg"
+    }
   },
   "180775": {
     "title": "The Divergent Series: Ascendant",
@@ -1842,7 +2210,11 @@ export default {
       "science-fiction",
       "romance"
     ],
-    "certification": ""
+    "certification": "",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/180/775/posters/thumb/b7605b5be1.jpg",
+      "fanart": null
+    }
   },
   "181256": {
     "title": "Guardians of the Galaxy Vol. 2",
@@ -1862,7 +2234,11 @@ export default {
       "adventure",
       "science-fiction"
     ],
-    "certification": ""
+    "certification": "",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/181/256/posters/thumb/eac3af9179.jpg",
+      "fanart": null
+    }
   },
   "181312": {
     "title": "Thor: Ragnarok",
@@ -1883,7 +2259,11 @@ export default {
       "adventure",
       "fantasy"
     ],
-    "certification": "PG-13"
+    "certification": "PG-13",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/181/312/posters/thumb/bc157c1c7d.jpg",
+      "fanart": null
+    }
   },
   "183371": {
     "title": "The Martian",
@@ -1896,14 +2276,18 @@ export default {
     },
     "sinopsis": "During a manned mission to Mars, Astronaut Mark Watney is presumed dead after a fierce storm and left behind by his crew. But Watney has survived and finds himself stranded and alone on the hostile planet. With only meager supplies, he must draw upon his ingenuity, wit and spirit to subsist and find a way to signal to Earth that he is alive.",
     "runtime": 141,
-    "votes": 2307,
-    "rating": 8.31339,
+    "votes": 2352,
+    "rating": 8.31293,
     "genres": [
       "science-fiction",
       "adventure",
       "drama"
     ],
-    "certification": "PG-13"
+    "certification": "PG-13",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/183/371/posters/thumb/5cb08eb251.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/183/371/fanarts/thumb/7865040050.jpg"
+    }
   },
   "183702": {
     "title": "Paper Towns",
@@ -1916,14 +2300,18 @@ export default {
     },
     "sinopsis": "Quentin Jacobsen has spent a lifetime loving the magnificently adventurous Margo Roth Spiegelman from afar. So when she cracks open a window and climbs back into his life-dressed like a ninja and summoning him for an ingenious campaign of revenge-he follows. After their all-nighter ends and a new day breaks, Q arrives at school to discover that Margo, always an enigma, has now become a mystery. But Q soon learns that there are clues-and they're for him. Urged down a disconnected path, the closer he gets, the less Q sees of the girl he thought he knew.",
     "runtime": 109,
-    "votes": 1114,
-    "rating": 6.95691,
+    "votes": 1132,
+    "rating": 6.95318,
     "genres": [
       "adventure",
       "mystery",
       "romance"
     ],
-    "certification": "PG-13"
+    "certification": "PG-13",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/183/702/posters/thumb/a43bfdbbd7.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/183/702/fanarts/thumb/bc46e414ab.jpg"
+    }
   },
   "190430": {
     "title": "Deadpool",
@@ -1943,7 +2331,11 @@ export default {
       "science-fiction",
       "adventure"
     ],
-    "certification": "R"
+    "certification": "R",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/190/430/posters/thumb/b4856f51d9.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/190/430/fanarts/thumb/d7f1d4e150.jpg"
+    }
   },
   "190618": {
     "title": "The Age of Adaline",
@@ -1956,13 +2348,17 @@ export default {
     },
     "sinopsis": "After 29-year-old Adaline recovers from a nearly lethal accident, she inexplicably stops growing older. As the years stretch on and on, Adaline keeps her secret to herself  until she meets a man who changes her life.",
     "runtime": 112,
-    "votes": 1988,
-    "rating": 7.67354,
+    "votes": 1995,
+    "rating": 7.67268,
     "genres": [
       "drama",
       "romance"
     ],
-    "certification": "PG-13"
+    "certification": "PG-13",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/190/618/posters/thumb/44daeaf8de.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/190/618/fanarts/thumb/80cd8dd9fc.jpg"
+    }
   },
   "190987": {
     "title": "Maze Runner: The Scorch Trials",
@@ -1975,14 +2371,18 @@ export default {
     },
     "sinopsis": "Thomas and his fellow Gladers face their greatest challenge yet: searching for clues about the mysterious and powerful organization known as WCKD. Their journey takes them to the Scorch, a desolate landscape filled with unimaginable obstacles. Teaming up with resistance fighters, the Gladers take on WCKD’s vastly superior forces and uncover its shocking plans for them all.",
     "runtime": 132,
-    "votes": 1209,
-    "rating": 7.04963,
+    "votes": 1284,
+    "rating": 7.03894,
     "genres": [
       "science-fiction",
       "action",
       "thriller"
     ],
-    "certification": "PG-13"
+    "certification": "PG-13",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/190/987/posters/thumb/ce39b64e6e.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/190/987/fanarts/thumb/88baa62850.jpg"
+    }
   },
   "191797": {
     "title": "Avengers: Infinity War - Part I",
@@ -2002,7 +2402,11 @@ export default {
       "action",
       "adventure"
     ],
-    "certification": ""
+    "certification": "",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/191/797/posters/thumb/91967e4e9a.jpg",
+      "fanart": null
+    }
   },
   "191798": {
     "title": "Avengers: Infinity War - Part II",
@@ -2022,7 +2426,11 @@ export default {
       "adventure",
       "science-fiction"
     ],
-    "certification": ""
+    "certification": "",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/191/798/posters/thumb/b8db719ab4.jpg",
+      "fanart": null
+    }
   },
   "192487": {
     "title": "Wonder Woman",
@@ -2042,7 +2450,11 @@ export default {
       "adventure",
       "fantasy"
     ],
-    "certification": "PG-13"
+    "certification": "PG-13",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/192/487/posters/thumb/9d048dec89.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/192/487/fanarts/thumb/c367a24a8b.jpg"
+    }
   },
   "193079": {
     "title": "Suicide Squad",
@@ -2062,7 +2474,11 @@ export default {
       "crime",
       "science-fiction"
     ],
-    "certification": "PG-13"
+    "certification": "PG-13",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/193/079/posters/thumb/04c4e9b28f.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/193/079/fanarts/thumb/0a3d9e4797.jpg"
+    }
   },
   "193963": {
     "title": "Captain Marvel",
@@ -2082,7 +2498,11 @@ export default {
       "action",
       "adventure"
     ],
-    "certification": ""
+    "certification": "",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/193/963/posters/thumb/455f5d8d62.jpg",
+      "fanart": null
+    }
   },
   "193970": {
     "title": "Justice League: Part 2",
@@ -2102,7 +2522,11 @@ export default {
       "adventure",
       "science-fiction"
     ],
-    "certification": ""
+    "certification": "",
+    "images": {
+      "poster": null,
+      "fanart": null
+    }
   },
   "195144": {
     "title": "The Flash",
@@ -2123,7 +2547,11 @@ export default {
       "fantasy",
       "science-fiction"
     ],
-    "certification": ""
+    "certification": "",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/195/144/posters/thumb/6d35225c08.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/195/144/fanarts/thumb/ed56871ff1.jpg"
+    }
   },
   "195432": {
     "title": "Vacation",
@@ -2136,13 +2564,17 @@ export default {
     },
     "sinopsis": "Hoping to bring his family closer together and to recreate his childhood vacation for his own kids, a grown up Rusty Griswold takes his wife and their two sons on a cross-country road trip to the coolest theme park in America, Walley World. Needless to say, things don't go quite as planned.",
     "runtime": 99,
-    "votes": 1248,
-    "rating": 6.98397,
+    "votes": 1290,
+    "rating": 6.98062,
     "genres": [
       "adventure",
       "comedy"
     ],
-    "certification": "R"
+    "certification": "R",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/195/432/posters/thumb/e616b34fac.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/195/432/fanarts/thumb/452d2a024e.jpg"
+    }
   },
   "195642": {
     "title": "Southpaw",
@@ -2155,14 +2587,18 @@ export default {
     },
     "sinopsis": "Billy \"The Great\" Hope, the reigning junior middleweight boxing champion, has an impressive career, a loving wife and daughter, and a lavish lifestyle. However, when tragedy strikes, Billy hits rock bottom, losing his family, his house and his manager. He soon finds an unlikely savior in Tick Willis, a former fighter who trains the city's toughest amateur boxers. With his future on the line, Hope fights to reclaim the trust of those he loves the most.",
     "runtime": 123,
-    "votes": 2155,
-    "rating": 7.9123,
+    "votes": 2179,
+    "rating": 7.91097,
     "genres": [
       "action",
       "drama",
       "thriller"
     ],
-    "certification": "R"
+    "certification": "R",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/195/642/posters/thumb/019058b5ae.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/195/642/fanarts/thumb/402926f8a9.jpg"
+    }
   },
   "199249": {
     "title": "Me and Earl and the Dying Girl",
@@ -2175,13 +2611,17 @@ export default {
     },
     "sinopsis": "Greg is coasting through senior year of high school as anonymously as possible, avoiding social interactions like the plague while secretly making spirited, bizarre films with Earl, his only friend. But both his anonymity and friendship threaten to unravel when his mother forces him to befriend a classmate with leukemia.",
     "runtime": 104,
-    "votes": 863,
-    "rating": 7.96524,
+    "votes": 877,
+    "rating": 7.96009,
     "genres": [
       "drama",
       "comedy"
     ],
-    "certification": "PG-13"
+    "certification": "PG-13",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/199/249/posters/thumb/f35efd154f.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/199/249/fanarts/thumb/dbde07e0a0.jpg"
+    }
   },
   "209322": {
     "title": "The Gift",
@@ -2194,13 +2634,17 @@ export default {
     },
     "sinopsis": "A husband and wife try to reinvigorate their relationship but their lives are threatened by a \"friend\" from the husband's past who holds a horrifying secret about him, sending their world into a tailspin.",
     "runtime": 108,
-    "votes": 646,
-    "rating": 7.10217,
+    "votes": 674,
+    "rating": 7.08012,
     "genres": [
       "thriller",
       "mystery"
     ],
-    "certification": "R"
+    "certification": "R",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/209/322/posters/thumb/d1c8510cdd.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/209/322/fanarts/thumb/801dbbf328.jpg"
+    }
   },
   "213380": {
     "title": "400 Days",
@@ -2213,14 +2657,18 @@ export default {
     },
     "sinopsis": "4 would be astronauts spend 400 days in a land locked space simulator to test the psychological effects of deep space travel but, when something goes terribly wrong and they are forced to leave the simulation, they discover that everything on earth has changed. Is this real or is the simulation on a higher level than they could have ever imagined?",
     "runtime": 90,
-    "votes": 139,
-    "rating": 5.46763,
+    "votes": 155,
+    "rating": 5.47742,
     "genres": [
       "science-fiction",
       "thriller",
       "mystery"
     ],
-    "certification": null
+    "certification": null,
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/213/380/posters/thumb/073fe52bdf.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/213/380/fanarts/thumb/c2e2fc4b42.jpg"
+    }
   },
   "214598": {
     "title": "We Are Your Friends",
@@ -2233,12 +2681,16 @@ export default {
     },
     "sinopsis": "Cole, a 23-year-old DJ who struggles in the Hollywood's electronic dance music scene, has dreams of becoming a major record producer. Eventually, older DJ James, begins to mentor him, but Cole makes a connection with James' girlfriend, Sophie. When Cole's relationship with Sophie blossoms and his friendship with James begins to break down as a result, he is forced into difficult decisions over his future.",
     "runtime": 96,
-    "votes": 124,
-    "rating": 6.83871,
+    "votes": 128,
+    "rating": 6.85156,
     "genres": [
       "drama"
     ],
-    "certification": "R"
+    "certification": "R",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/214/598/posters/thumb/133f290d21.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/214/598/fanarts/thumb/05b304c214.jpg"
+    }
   },
   "217461": {
     "title": "Maze Runner: The Death Cure",
@@ -2259,7 +2711,11 @@ export default {
       "science-fiction",
       "thriller"
     ],
-    "certification": "PG-13"
+    "certification": "PG-13",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/217/461/posters/thumb/f9c57822a8.jpg",
+      "fanart": null
+    }
   },
   "221985": {
     "title": "Momentum",
@@ -2272,16 +2728,16 @@ export default {
     },
     "sinopsis": "When Alex, an infiltration expert with a secret past, accidentally reveals her identity during what should have been a routine heist, she quickly finds herself mixed up in a government conspiracy and entangled in a deadly game of cat-and-mouse with a master assassin and his team of killers.  Armed with her own set of lethal skills, Alex looks to exact revenge for her murdered friends while uncovering the truth.",
     "runtime": 96,
-    "votes": 234,
-    "rating": 6.89316,
+    "votes": 249,
+    "rating": 6.85944,
     "genres": [
       "thriller",
       "action"
     ],
-    "certification": ""
-  },
-  "images": {
-    "poster": "https://walter.trakt.us/images/movies/000/073/582/posters/thumb/a4928f0a14.jpg",
-    "fanart": "https://walter.trakt.us/images/movies/000/073/582/fanarts/thumb/2ebdc44580.jpg"
+    "certification": "",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/221/985/posters/thumb/c7778c9cfb.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/221/985/fanarts/thumb/307ae79517.jpg"
+    }
   }
 };

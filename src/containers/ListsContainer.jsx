@@ -6,7 +6,7 @@ import { createList, deleteList, editList } from '../actions';
 function mapStateToProps(state) {
   return {
     all: state,
-    lists: ['1', '2', '3', '4']
+    lists: { 1:'1', 2:'2', 3:'3', 4:'4' }
   };
 }
 
