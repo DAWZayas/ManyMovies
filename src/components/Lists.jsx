@@ -4,6 +4,8 @@ import ListItem from './ListItem';
 import FloatingActionButton from 'material-ui/lib/floating-action-button';
 import Dialog from '../../node_modules/material-ui/lib/dialog';
 import TextField from 'material-ui/lib/text-field';
+import FlatButton from 'material-ui/lib/flat-button';
+import { allTrim } from '../utils';
 import injectTapEventPlugin from "react-tap-event-plugin";
 injectTapEventPlugin();
 
@@ -26,24 +28,48 @@ export default class Lists extends Component {
     this.setState({editing: false});
   }
 
+  _handleRequestSubmit() {
+    const titleNode = this.refs.listTitle;
+    const descNode = this.refs.listDesc;
+    const title = allTrim(titleNode.getValue());
+    const desc = allTrim(descNode.getValue());
+    if (!title) {
+      titleNode.setErrorText('You must choose a title');
+      titleNode.setValue('');
+      titleNode.focus();
+    }else {
+      this.props.createList(title, desc);
+      this.setState({editing: false});
+    }
+  }
+
   render() {
     const { lists, handler } = this.props;
 
-    const dialogActions = [
-      { text: 'Cancel', onClick: this._handleRequestClose.bind(this), onTouchTap: this._handleRequestClose.bind(this) },
-      { text: 'Submit', onClick: this._handleRequestClose.bind(this), onTouchTap: this._handleRequestClose.bind(this), ref: 'submit' }
-    ];
+    let dialogActions = [
+      <FlatButton
+        key={0}
+        label="Cancel"
+        secondary
+        onTouchTap={this._handleRequestClose.bind(this)} />,
+      <FlatButton
+        key={1}
+        label="Submit"
+        primary
+        onTouchTap={this._handleRequestSubmit.bind(this)} />
+      ];
 
     const button = (<FloatingActionButton
-                      onClick={this._handleButtonClick.bind(this)}
+                      onTouchTap={this._handleButtonClick.bind(this)}
                       iconClassName="glyphicon glyphicon-plus"
                       mini
                     />);
 
     return (
       <div>
-        <div className="button-wrapper">{button}</div>
+        <div className="center-wrapper">{button}</div>
         <Dialog
+          className = "list-add-dialog"
           ref = "dialog"
           title="Add a list"
           actions={dialogActions}
@@ -51,7 +77,8 @@ export default class Lists extends Component {
           open={this.state.editing}
           onRequestClose={this._handleRequestClose.bind(this)}
           >
-          <TextField ref="ListTitle" floatingLabelText="Title" />
+          <TextField ref="listTitle" onEnterKeyDown={this._handleRequestSubmit.bind(this)} floatingLabelText="Title" style={{width: "100%"}}/>
+          <TextField ref="listDesc" floatingLabelText="Description" multiLine style={{width: "100%"}} rows={5}/>
         </Dialog>
         <List>
           {
@@ -70,7 +97,8 @@ export default class Lists extends Component {
 
 Lists.propTypes = {
   lists: PropTypes.array,
-  handler: PropTypes.func
+  handler: PropTypes.func,
+  createList: PropTypes.func
 };
 
 Lists.defaultProps = {

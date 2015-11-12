@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import UiListItem from 'material-ui/lib/lists/list-item';
 import Avatar from 'material-ui/lib/avatar';
+import injectTapEventPlugin from "react-tap-event-plugin";
+injectTapEventPlugin();
 
 export default class ListItem extends Component {
   handleTouchStart(list) {
@@ -21,7 +23,7 @@ export default class ListItem extends Component {
           leftAvatar={<Avatar>{firstLetter}</Avatar>}
           secondaryText="by you"
           style={{color:"red"}}
-          onClick={this.handleTouchStart(list)}
+          onTouchTap={this.handleTouchStart(list)}
           onTouchStart={this.handleTouchStart(list)}/>
     );
   }

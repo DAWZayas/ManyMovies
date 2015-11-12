@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { pushState } from 'redux-router';
+import { createList } from '../actions';
 import Lists from '../components/Lists';
 import _ from 'lodash';
 
@@ -13,7 +14,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    handler: path => dispatch(pushState(null, path))
+    handler: path => dispatch(pushState(null, path)),
+    createList: (title, desc) => dispatch(createList(title, desc))
   };
 }
 
