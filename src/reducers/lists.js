@@ -1,14 +1,14 @@
 import { SET_DEFAULT_LISTS, CREATE_LIST, DELETE_LIST, EDIT_LIST } from '../actions';
 import { getId, getSlug} from '../utils';
-import { createCustomList } from '../utils/lists';
 import { defaultLists } from '../utils/examples';
 
 const setDefaultLists = state => Object.assign({}, state, defaultLists);
 
 function createList(state, title, desc) {
   let id = getId();
-  let slug = getSlug({lists: state}, title, id);
-  let newList = createCustomList(title, slug, desc);
+  console.log(">>>>>>>>", state);
+  let slug = getSlug(state, title, id);
+  let newList = { id, title, slug, desc, custom: true };
   return Object.assign({}, state, { [id] : newList });
 }
 
@@ -22,7 +22,7 @@ function editList(state, id, options) {
   let title = options.title || state[id].title;
   let desc = options.desc || state[id].desc;
   let slug = getSlug(state.lists, title, id);
-  let newList = createCustomList(title, slug, desc);
+  let newList = { id, title, slug, desc, custom: true };
   return Object.assign({}, state, { [id] : newList });
 }
 
