@@ -1,4 +1,4 @@
-.film-cover{
+.film-cover, .card-text{
   width: 60%;
   margin-left: 5%;
 }
@@ -7,13 +7,21 @@ li{
   list-style: none;
 }
 
-.card-actions{
-  width: 60%;
-  margin-left: 5%;
+.movie-title{
+  text-align: left;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-left: 10%;
+  margin-right: 10%;
+  vertical-align: top;
+  font-family: 'Roboto Slab', serif;
 }
 
 .post-icon{
-  text-align: right;
+  margin-top: 2px;
+  text-align: left;
   margin-right: 10px;
   color: white;
 }
@@ -24,11 +32,11 @@ li{
 
 .post-collections-icon{
  background-color: #00796B;
- margin-right: 10px;
+ margin-right: 6px;
 }
 .post-history-icon{
   background-color: #512DA8;
-  margin-right: 10px;
+  margin-right: 6px;
 }
 .post-list-icon{
   background-color: #F44336;
@@ -36,6 +44,7 @@ li{
 
 .card-text{
   font-size: 14px;
+  font-family: 'Roboto Slab', serif;
 }
 
 .center-wrapper{
@@ -56,7 +65,7 @@ li{
   font-family: 'Material Icons';
   font-weight: normal;
   font-style: normal;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 1;
   letter-spacing: normal;
   text-transform: none;
