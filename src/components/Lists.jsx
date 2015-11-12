@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import List from 'material-ui/lib/lists/list';
 import ListItem from './ListItem';
 
 
@@ -13,21 +14,23 @@ export default class Lists extends Component {
 
   render() {
     const { lists } = this.props;
+    const { handler } = this.props;
     return (
-      <div>
+      <List>
         <h3>Lists title</h3>
         <ul className="lists-wrapper">
           {
-           Object.keys(lists).map( (key, index) =>  <ListItem key={index} list={lists[key]}/>)
+           Object.keys(lists).map( (key, index) =>  <ListItem key={index} list={lists[key]} handler={handler}/>)
           }
         </ul>
-      </div>
+      </List>
     );
   }
 }
 
 Lists.propTypes = {
-  lists: PropTypes.object
+  lists: PropTypes.object,
+  handler: PropTypes.func
 };
 
 Lists.defaultProps = {

@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { pushState } from 'redux-router';
 import Lists from '../components/Lists';
 
 function mapStateToProps(state) {
@@ -7,6 +8,13 @@ function mapStateToProps(state) {
   };
 }
 
+function mapDispatchToProps(dispatch) {
+  return {
+    handler: path => dispatch(pushState(null, path))
+  };
+}
+
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(Lists);
