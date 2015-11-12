@@ -20,7 +20,7 @@ export default class Lists extends Component {
         <h3>Lists title</h3>
         <ul className="lists-wrapper">
           {
-           Object.keys(lists).map( (key, index) =>  <ListItem key={index} list={lists[key]} handler={handler}/>)
+           lists.map( (list, index) =>  <ListItem key={index} list={list} handler={handler}/>)
           }
         </ul>
       </List>
@@ -29,10 +29,10 @@ export default class Lists extends Component {
 }
 
 Lists.propTypes = {
-  lists: PropTypes.object,
+  lists: PropTypes.array,
   handler: PropTypes.func
 };
 
 Lists.defaultProps = {
-  lists: {}
+  lists: []
 };

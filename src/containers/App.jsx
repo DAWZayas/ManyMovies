@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
-import MovieDetails from '../components/MovieDetails.jsx';
 
 export default class App extends Component {
 
@@ -13,7 +12,6 @@ export default class App extends Component {
       <div>
         <h1>Welcome to my App</h1>
         <Link to="/lists">Show Lists</Link>
-        <MovieDetails />
         {this.props.children}
       </div>
     );

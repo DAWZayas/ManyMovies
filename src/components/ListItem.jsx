@@ -13,16 +13,9 @@ export default class ListItem extends Component {
   render() {
     const { list } = this.props;
     const title = list.title;
-    const custom = list.custom;
-    if (custom){
-      return (
-        <UiListItem primaryText={title} onTouchStart={this.handleTouchStart(list)}/>
-      );
-    }else {
-      return (
-        <UiListItem primaryText={title} onTouchStart={this.handleTouchStart(list)}/>
-      );
-    }
+    return (
+        <UiListItem primaryText={title} onClick={this.handleTouchStart(list)} onTouchStart={this.handleTouchStart(list)}/>
+    );
   }
 }
 
@@ -34,4 +27,3 @@ ListItem.propTypes = {
 ListItem.defaultProps = {
   list: {}
 };
-//<Link to={`/lists/${list.slug}`}>{list.title}</Link>
