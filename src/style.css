@@ -1,0 +1,62 @@
+.film-cover{
+  width: 60%;
+  margin-left: 5%;
+}
+
+li{
+  list-style: none;
+}
+
+.card-actions{
+  width: 60%;
+  margin-left: 5%;
+}
+
+.post-icon{
+  text-align: right;
+  margin-right: 10px;
+  color: white;
+}
+
+.post-icon button{
+  border: none;
+}
+
+.post-collections-icon{
+ background-color: #00796B;
+ margin-right: 10px;
+}
+.post-history-icon{
+  background-color: #512DA8;
+  margin-right: 10px;
+}
+.post-list-icon{
+  background-color: #F44336;
+}
+
+.card-text{
+  font-size: 14px;
+}
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Material Icons'), local('MaterialIcons-Regular'), url(https://fonts.gstatic.com/s/materialicons/v8/2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2) format('woff2');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
