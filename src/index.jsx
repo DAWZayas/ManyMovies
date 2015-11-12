@@ -6,6 +6,7 @@ import init from './utils/init';
 
 require('./style.css');
 require('bootstrap/dist/css/bootstrap.min.css');
+//require('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 const store = init();
 
