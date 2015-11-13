@@ -4,7 +4,6 @@ import AppBar from 'material-ui/lib/app-bar';
 import IconButton from 'material-ui/lib/icon-button';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import IconMenu from 'material-ui/lib/menus/icon-menu';
-import MovieDetails from '../components/MovieDetails.jsx';
 //import Menu from 'material-ui/lib/menus/menu';
 const injectTapEventPlugin = require("react-tap-event-plugin");
 injectTapEventPlugin();
@@ -24,15 +23,16 @@ export default class App extends Component {
         <AppBar title="ManyMovies"
                 style={style}
                 iconElementLeft={
-                  <IconMenu openDirection="bottom-right" iconButtonElement={<IconButton  iconClassName="glyphicon glyphicon-align-justify"/>}>
+                  <IconMenu openDirection="bottom-right" iconButtonElement={<IconButton iconClassName="glyphicon glyphicon-align-justify" />}>
                         <MenuItem primaryText="Lists" />
                         <MenuItem primaryText="History" />
                         <MenuItem primaryText="Collections" />
-                        <MenuItem primaryText="Movies" />
+                        <MenuItem primaryText="Movies"  />
                   </IconMenu>
         }/>
-        <MovieDetails />
-        <Link to="/lists">Show Lists</Link>
+        <Link to="/movie-details">Movie Details</Link> <br />
+        <Link to="/lists">Show Lists</Link> <br />
+        <Link to="/search">Search movie</Link>
         {this.props.children}
       </div>
     );
