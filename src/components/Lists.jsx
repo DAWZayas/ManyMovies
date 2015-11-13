@@ -14,12 +14,11 @@ export default class Lists extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      editing: false,
-      addDisabled: true
+      editing: false
     };
   }
 
-  _handleButtonClick() {
+  _handleButtonTouchTap() {
     this.setState({editing: !this.state.editing});
   }
 
@@ -45,21 +44,21 @@ export default class Lists extends Component {
   render() {
     const { lists, handler } = this.props;
 
-    let dialogActions = [
+    const dialogActions = [
       <FlatButton
         key={0}
         label="Cancel"
-        secondary
+        primary
         onTouchTap={this._handleRequestClose.bind(this)} />,
       <FlatButton
         key={1}
-        label="Submit"
-        primary
+        label="Add list"
+        secondary
         onTouchTap={this._handleRequestSubmit.bind(this)} />
       ];
 
     const button = (<FloatingActionButton
-                      onTouchTap={this._handleButtonClick.bind(this)}
+                      onTouchTap={this._handleButtonTouchTap.bind(this)}
                       iconClassName="glyphicon glyphicon-plus"
                       mini/>);
 

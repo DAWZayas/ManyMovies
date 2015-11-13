@@ -6,7 +6,6 @@ const setDefaultLists = state => Object.assign({}, state, defaultLists);
 
 function createList(state, title, desc) {
   let id = getId();
-  console.log(">>>>>>>>", state);
   let slug = getSlug(state, title, id);
   let newList = { id, title, slug, desc, custom: true };
   return Object.assign({}, state, { [id] : newList });
@@ -18,9 +17,7 @@ function deleteList(state, id){
   return newState;
 }
 
-function editList(state, id, options) {
-  let title = options.title || state[id].title;
-  let desc = options.desc || state[id].desc;
+function editList(state, id, title, desc) {
   let slug = getSlug(state.lists, title, id);
   let newList = { id, title, slug, desc, custom: true };
   return Object.assign({}, state, { [id] : newList });
@@ -35,7 +32,7 @@ export default function (state = {}, action) {
     case DELETE_LIST:
       return deleteList(state, action.id);
     case EDIT_LIST:
-      return editList(state, action.id, action.options);
+      return editList(state, action.id, action.title, action.desc);
     default:
       return state;
   }
