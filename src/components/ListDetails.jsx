@@ -1,13 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import Card from 'material-ui/lib/card/card';
 import FontIcon from 'material-ui/lib/font-icon';
-import CardHeader from 'material-ui/lib/card/card-header';
-import CardText from 'material-ui/lib/card/card-text';
+import CardTitle from 'material-ui/lib/card/card-title';
+import CardActions from 'material-ui/lib/card/card-actions';
 import Dialog from '../../node_modules/material-ui/lib/dialog';
 import { allTrim, getSlug } from '../utils';
 import TextField from 'material-ui/lib/text-field';
 import FlatButton from 'material-ui/lib/flat-button';
-import Avatar from 'material-ui/lib/avatar';
 import injectTapEventPlugin from "react-tap-event-plugin";
 injectTapEventPlugin();
 
@@ -76,24 +75,15 @@ export default class ListDetails extends Component {
           <TextField defaultValue={subtitle} ref="listDesc" floatingLabelText="Description" multiLine style={{width: "100%"}} rows={5}/>
         </Dialog>
           );
-    const title = (
-                    <div>
-                      <span className="lists-details-title">{listTitle}</span>
-                      <FontIcon onTouchTap={this._handleButtonTouchTap.bind(this)} style={{marginLeft: "2em"}} className="glyphicon glyphicon-edit"/>
-                      {dialog}
-                    </div>
-                  );
+
     return (
      <Card>
-      <CardHeader
-        title={title}
-        styleTitle={{width:"100%"}}
-        avatar={<Avatar style={{color:'red'}}>{listTitle[0]}</Avatar>}
-      />
-      <CardText>
-      {subtitle}
-    </CardText>
-     </Card>
+      <CardTitle title={listTitle} subtitle={subtitle}/>
+      <CardActions style={{float: "right"}}>
+        <FontIcon onTouchTap={this._handleButtonTouchTap.bind(this)} className="glyphicon glyphicon-edit"/>
+      </CardActions>
+      {dialog}
+    </Card>
     );
   }
 }
