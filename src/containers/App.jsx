@@ -31,7 +31,7 @@ export default class App extends Component {
                         <MenuItem primaryText="Movies" />
                   </IconMenu>
         }/>
-       <MovieDetails />
+        <MovieDetails />
         <Link to="/lists">Show Lists</Link>
         {this.props.children}
       </div>

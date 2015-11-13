@@ -54,17 +54,15 @@ li{
   text-align: center;
 }
 
-<<<<<<< HEAD
 .close-modal{
   margin-left: 60%;
 }
-=======
+
 .lists-details-title{
   line-height: 2em;
   font-size: 1.5em;
 }
 
->>>>>>> 2656e8b45ac6d73c8aaf26c6144281fe7de0ec50
 /**
 * MATERIAL ICONS
 */
@@ -91,16 +89,16 @@ li{
   -webkit-font-smoothing: antialiased;
 }
 
-// Rules for sizing the icon.
+/* Rules for sizing the icon.*/
 .material-icons.md-18 { font-size: 18px; }
 .material-icons.md-24 { font-size: 24px; }
 .material-icons.md-36 { font-size: 36px; }
 .material-icons.md-48 { font-size: 48px; }
 
-// Rules for using icons as black on a light background.
+/* Rules for using icons as black on a light background.*/
 .material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
 .material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
 
-// Rules for using icons as white on a dark background.
+/* Rules for using icons as white on a dark background.*/
 .material-icons.md-light { color: rgba(255, 255, 255, 1); }
 .material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }

@@ -45,16 +45,16 @@ export default class Lists extends Component {
     const { lists, handler } = this.props;
 
     const dialogActions = [
-      <FlatButton
-        key={0}
-        label="Cancel"
-        primary
-        onTouchTap={this._handleRequestClose.bind(this)} />,
-      <FlatButton
-        key={1}
-        label="Add list"
-        secondary
-        onTouchTap={this._handleRequestSubmit.bind(this)} />
+        <FlatButton
+          key={0}
+          label="Cancel"
+          primary
+          onTouchTap={this._handleRequestClose.bind(this)} />,
+        <FlatButton
+          key={1}
+          label="Add list"
+          secondary
+          onTouchTap={this._handleRequestSubmit.bind(this)} />
       ];
 
     const button = (<FloatingActionButton
