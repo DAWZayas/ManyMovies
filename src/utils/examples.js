@@ -44,5 +44,5 @@ export const defaultEntries = {
   [HISTORY_ID] : ['7', '70', '43'],
   [WATCHLIST_ID] : ['234', '432'],
   [COLLECTION_ID] : ['481', '505'],
-  [HARRY_POTTER_LIST_ID] : ['546']
+  [HARRY_POTTER_LIST_ID] : ['546', '234']
 };

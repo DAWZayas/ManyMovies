@@ -14,11 +14,11 @@ class ListDetailsContainer extends Component {
   }
 
   render() {
-    const { lists, list, editListAndNavigate } = this.props;
+    const { lists, list, editListAndNavigate, entries } = this.props;
     return (
       <div>
         <ListDetails lists={lists} list={list} editListAndNavigate={editListAndNavigate} />
-        <EntryList />
+        <EntryList entries={entries} />
       </div>
     );
   }

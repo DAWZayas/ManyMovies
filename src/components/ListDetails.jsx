@@ -72,8 +72,8 @@ export default class ListDetails extends Component {
           open={this.state.editing}
           onRequestClose={this._handleRequestClose.bind(this)}
           >
-          <TextField ref="listTitle" value={listTitle} onEnterKeyDown={this._handleRequestSubmit.bind(this)} floatingLabelText="Title" style={{width: "100%"}}/>
-          <TextField ref="listDesc" value={subtitle} floatingLabelText="Description" multiLine style={{width: "100%"}} rows={5}/>
+          <TextField defaultValue={listTitle} ref="listTitle" onEnterKeyDown={this._handleRequestSubmit.bind(this)} floatingLabelText="Title" style={{width: "100%"}}/>
+          <TextField defaultValue={subtitle} ref="listDesc" floatingLabelText="Description" multiLine style={{width: "100%"}} rows={5}/>
         </Dialog>
           );
     const title = (
