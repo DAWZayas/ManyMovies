@@ -32,14 +32,17 @@ li{
 
 .post-collections-icon{
  background-color: #00796B;
- margin-right: 6px;
+  margin-left: 58%;
+  /*margin-right: 6px;*/
 }
 .post-history-icon{
   background-color: #512DA8;
-  margin-right: 6px;
+  margin-left: 1%;
+  /*margin-right: 6px;*/
 }
 .post-list-icon{
   background-color: #F44336;
+  margin-left: 1%;
 }
 
 .card-text{
@@ -51,6 +54,9 @@ li{
   text-align: center;
 }
 
+.close-modal{
+  margin-left: 60%;
+}
 /**
 * MATERIAL ICONS
 */

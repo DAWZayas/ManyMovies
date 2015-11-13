@@ -9,7 +9,6 @@ import { allTrim } from '../utils';
 import injectTapEventPlugin from "react-tap-event-plugin";
 injectTapEventPlugin();
 
-
 export default class Lists extends Component {
 
   constructor(props) {
@@ -62,8 +61,7 @@ export default class Lists extends Component {
     const button = (<FloatingActionButton
                       onTouchTap={this._handleButtonClick.bind(this)}
                       iconClassName="glyphicon glyphicon-plus"
-                      mini
-                    />);
+                      mini/>);
 
     return (
       <div>
@@ -85,8 +83,7 @@ export default class Lists extends Component {
            lists.map((list, index) =>  (<ListItem
              key={index}
              list={list}
-             handler={handler}
-             />)
+             handler={handler}/>)
              )
           }
         </List>

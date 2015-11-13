@@ -4,6 +4,7 @@ import AppBar from 'material-ui/lib/app-bar';
 import IconButton from 'material-ui/lib/icon-button';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import IconMenu from 'material-ui/lib/menus/icon-menu';
+import MovieDetails from '../components/MovieDetails.jsx';
 //import Menu from 'material-ui/lib/menus/menu';
 const injectTapEventPlugin = require("react-tap-event-plugin");
 injectTapEventPlugin();
@@ -30,7 +31,7 @@ export default class App extends Component {
                         <MenuItem primaryText="Movies" />
                   </IconMenu>
         }/>
-
+       <MovieDetails />
         <Link to="/lists">Show Lists</Link>
         {this.props.children}
       </div>
