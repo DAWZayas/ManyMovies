@@ -4,7 +4,7 @@ import FontIcon from 'material-ui/lib/font-icon';
 import CardHeader from 'material-ui/lib/card/card-header';
 import CardText from 'material-ui/lib/card/card-text';
 import Dialog from '../../node_modules/material-ui/lib/dialog';
-import { allTrim } from '../utils';
+import { allTrim, getSlug } from '../utils';
 import TextField from 'material-ui/lib/text-field';
 import FlatButton from 'material-ui/lib/flat-button';
 import Avatar from 'material-ui/lib/avatar';
@@ -28,6 +28,7 @@ export default class ListDetails extends Component {
 
   _handleRequestSubmit() {
     const { id } = this.props.list;
+    const { lists } = this.props;
     const titleNode = this.refs.listTitle;
     const descNode = this.refs.listDesc;
     const title = allTrim(titleNode.getValue());
@@ -37,8 +38,8 @@ export default class ListDetails extends Component {
       titleNode.setValue('');
       titleNode.focus();
     }else {
-      this.props.editList(id, title, desc);
-      console.log('CACA');
+      const slug = getSlug(lists, title, id);
+      this.props.editListAndNavigate(id, title, desc, slug);
       this.setState({editing: false});
     }
   }
@@ -71,8 +72,8 @@ export default class ListDetails extends Component {
           open={this.state.editing}
           onRequestClose={this._handleRequestClose.bind(this)}
           >
-          <TextField ref="listTitle" onEnterKeyDown={this._handleRequestSubmit.bind(this)} floatingLabelText="Title" style={{width: "100%"}}/>
-          <TextField ref="listDesc" floatingLabelText="Description" multiLine style={{width: "100%"}} rows={5}/>
+          <TextField ref="listTitle" value={listTitle} onEnterKeyDown={this._handleRequestSubmit.bind(this)} floatingLabelText="Title" style={{width: "100%"}}/>
+          <TextField ref="listDesc" value={subtitle} floatingLabelText="Description" multiLine style={{width: "100%"}} rows={5}/>
         </Dialog>
           );
     const title = (
@@ -98,8 +99,9 @@ export default class ListDetails extends Component {
 }
 
 ListDetails.propTypes = {
+  lists: PropTypes.object,
   list: PropTypes.object,
-  editList: PropTypes.func
+  editListAndNavigate: PropTypes.func
 };
 
 ListDetails.defaultProps = {
