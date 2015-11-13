@@ -27,17 +27,18 @@ export default class ListDetails extends Component {
   }
 
   _handleRequestSubmit() {
+    const { id } = this.props.list;
     const titleNode = this.refs.listTitle;
     const descNode = this.refs.listDesc;
     const title = allTrim(titleNode.getValue());
     const desc = allTrim(descNode.getValue());
-    debugger;
     if (!title) {
       titleNode.setErrorText('You must choose a title');
       titleNode.setValue('');
       titleNode.focus();
     }else {
-      this.props.editList(title, desc);
+      this.props.editList(id, title, desc);
+      console.log('CACA');
       this.setState({editing: false});
     }
   }

@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { pushState } from 'redux-router';
 import { editList } from '../actions';
 import _ from 'lodash';
 
@@ -47,7 +48,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    editList: (title, desc) => dispatch(editList(title, desc))
+    handler: path => dispatch(pushState(null, path)),
+    editList: (id, title, desc) => dispatch(editList(id, title, desc))
   };
 }
 
