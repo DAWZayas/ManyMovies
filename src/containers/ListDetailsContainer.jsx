@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { editList } from '../actions';
+import { pushState } from 'redux-router';
+import { editListAndNavigate } from '../actions';
 import _ from 'lodash';
 
 import ListDetails from '../components/ListDetails';
@@ -13,19 +14,20 @@ class ListDetailsContainer extends Component {
   }
 
   render() {
-    const { list, editList } = this.props;
+    const { lists, list, editListAndNavigate, entries } = this.props;
     return (
       <div>
-        <ListDetails list={list} editList={editList} />
-        <EntryList />
+        <ListDetails lists={lists} list={list} editListAndNavigate={editListAndNavigate} />
+        <EntryList entries={entries} />
       </div>
     );
   }
 }
 
 ListDetailsContainer.propTypes = {
+  lists: PropTypes.object,
   list: PropTypes.object,
-  editList: PropTypes.func,
+  editListAndNavigate: PropTypes.func,
   entries: PropTypes.array
 };
 
@@ -42,12 +44,13 @@ function mapStateToProps(state) {
   const id = _.findKey(lists, { slug });
   const list = lists[id];
   const entries = allEntries[id];
-  return { list, entries };
+  return { lists, list, entries };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    editList: (title, desc) => dispatch(editList(title, desc))
+    handler: path => dispatch(pushState(null, path)),
+    editListAndNavigate: (id, title, desc, slug) => dispatch(editListAndNavigate(id, title, desc, slug))
   };
 }
 
