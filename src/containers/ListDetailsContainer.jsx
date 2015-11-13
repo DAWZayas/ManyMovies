@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { editList } from '../actions';
 import _ from 'lodash';
 
 import ListDetails from '../components/ListDetails';
@@ -12,10 +13,10 @@ class ListDetailsContainer extends Component {
   }
 
   render() {
-    const { list } = this.props;
+    const { list, editList } = this.props;
     return (
       <div>
-        <ListDetails list={list} />
+        <ListDetails list={list} editList={editList} />
         <EntryList />
       </div>
     );
@@ -24,6 +25,7 @@ class ListDetailsContainer extends Component {
 
 ListDetailsContainer.propTypes = {
   list: PropTypes.object,
+  editList: PropTypes.func,
   entries: PropTypes.array
 };
 
@@ -43,6 +45,13 @@ function mapStateToProps(state) {
   return { list, entries };
 }
 
+function mapDispatchToProps(dispatch) {
+  return {
+    editList: (title, desc) => dispatch(editList(title, desc))
+  };
+}
+
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(ListDetailsContainer);

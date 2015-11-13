@@ -51,6 +51,11 @@ li{
   text-align: center;
 }
 
+.lists-details-title{
+  line-height: 2em;
+  font-size: 1.5em;
+}
+
 /**
 * MATERIAL ICONS
 */

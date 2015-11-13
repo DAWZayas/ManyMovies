@@ -32,11 +32,12 @@ export function deleteList(id){
   };
 }
 
-export function editList(id, options){
+export function editList(id, title, desc){
   return{
     type: EDIT_LIST,
     id,
-    options
+    title,
+    desc
   };
 }
 
