@@ -5,7 +5,7 @@ import { editListAndNavigate, deleteListAndNavigate } from '../actions';
 import _ from 'lodash';
 
 import ListDetailsHead from '../components/ListDetailsHead';
-import EntryList from '../components/EntryList';
+import EntriesList from '../components/EntriesList';
 
 class ListDetailsContainer extends Component {
 
@@ -14,7 +14,7 @@ class ListDetailsContainer extends Component {
   }
 
   render() {
-    const { lists, list, editListAndNavigate, deleteListAndNavigate, entries } = this.props;
+    const { lists, list, editListAndNavigate, deleteListAndNavigate, entries, movies } = this.props;
     return (
       <div>
         <ListDetailsHead
@@ -23,7 +23,7 @@ class ListDetailsContainer extends Component {
           editListAndNavigate={editListAndNavigate}
           deleteListAndNavigate={deleteListAndNavigate}
         />
-        <EntryList entries={entries} />
+        <EntriesList entries={entries} movies={movies} />
       </div>
     );
   }
@@ -32,6 +32,7 @@ class ListDetailsContainer extends Component {
 ListDetailsContainer.propTypes = {
   lists: PropTypes.object,
   list: PropTypes.object,
+  movies: PropTypes.object,
   editListAndNavigate: PropTypes.func,
   deleteListAndNavigate: PropTypes.func,
   entries: PropTypes.array
@@ -39,18 +40,28 @@ ListDetailsContainer.propTypes = {
 
 ListDetailsContainer.defaultProps = {
   list: {},
+  movies: {},
   entries: []
 };
 
+function _getEntriesInList(state, id){
+  return state.entries[id];
+}
+
+function _getMoviesInList(state, id){
+  const entries = _getEntriesInList(state, id);
+  const allMovies = state.movies;
+  const movies = entries.reduce((prev, actual) => Object.assign(prev, _.pick(allMovies, actual)), {});
+  return movies;
+}
 
 function mapStateToProps(state) {
   const slug = state.router.params.listsSlug;
-  const allEntries = state.entries;
   const { lists } = state;
   const id = _.findKey(lists, { slug });
   const list = lists[id];
-  const entries = allEntries[id];
-  return { lists, list, entries };
+  const movies = _getMoviesInList(state, id);
+  return { lists, list, movies };
 }
 
 function mapDispatchToProps(dispatch) {
