@@ -35,10 +35,10 @@ export function deleteList(id){
   };
 }
 
-export function editListAndNavigate(idList, title, desc, slug) {
+export function deleteListAndNavigate(id){
   return dispatch => sequencer([
-      () => dispatch(editList(idList, title, desc)),
-      () => dispatch(pushState(null, `/lists/${slug}`))
+      () => dispatch(deleteList(id)),
+      () => dispatch(pushState(null, '/lists'))
     ]);
 }
 
@@ -51,6 +51,12 @@ export function editList(id, title, desc){
   };
 }
 
+export function editListAndNavigate(id, title, desc, slug) {
+  return dispatch => sequencer([
+      () => dispatch(editList(id, title, desc)),
+      () => dispatch(pushState(null, `/lists/${slug}`))
+    ]);
+}
 
 /**
 * Entries action creators

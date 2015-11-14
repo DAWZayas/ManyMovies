@@ -16,17 +16,27 @@ export default class ListDetailsHead extends Component {
     super(props);
     this.state = {
       editing: false,
+      deleting: false
     };
   }
+
   _handleEditButtonTouchTap() {
     this.setState({editing: true});
   }
 
-  _handleRequestClose() {
+  _handleRequestCloseEdit() {
     this.setState({editing: false});
   }
 
-  _handleRequestSubmit() {
+  _handleDeleteButtonTouchTap() {
+    this.setState({deleting: true});
+  }
+
+  _handleRequestCloseDelete() {
+    this.setState({deleting: false});
+  }
+
+  _handleRequestSubmitEdit() {
     const { id } = this.props.list;
     const { lists } = this.props;
     const titleNode = this.refs.listTitle;
@@ -44,35 +54,41 @@ export default class ListDetailsHead extends Component {
     }
   }
 
+  _handleRequestSubmitDelete() {
+    const { id } = this.props.list;
+    this.props.deleteListAndNavigate(id);
+    this.setState({editing: false});
+  }
+
   render() {
     const { list } = this.props;
     const listTitle = list.title;
     const subtitle = list.desc;
 
-    const dialogActions = [
+    const editDialogActions = [
       <FlatButton
         key={0}
         label="Cancel"
         primary
-        onTouchTap={this._handleRequestClose.bind(this)} />,
+        onTouchTap={this._handleRequestCloseEdit.bind(this)} />,
       <FlatButton
         key={1}
         label="Edit list"
         secondary
-        onTouchTap={this._handleRequestSubmit.bind(this)} />
+        onTouchTap={this._handleRequestSubmitEdit.bind(this)} />
       ];
 
     const editDialog = (
         <Dialog
           title="Edit a list"
-          actions={dialogActions}
+          actions={editDialogActions}
           open={this.state.editing}
-          onRequestClose={this._handleRequestClose.bind(this)}
+          onRequestClose={this._handleRequestCloseEdit.bind(this)}
           >
           <TextField
             defaultValue={listTitle}
             ref="listTitle"
-            onEnterKeyDown={this._handleRequestSubmit.bind(this)}
+            onEnterKeyDown={this._handleRequestSubmitEdit.bind(this)}
             floatingLabelText="Title"
             fullWidth
           />
@@ -86,6 +102,30 @@ export default class ListDetailsHead extends Component {
           />
         </Dialog>
           );
+
+    const deleteDialogActions = [
+      <FlatButton
+        key={0}
+        label="Cancel"
+        primary
+        onTouchTap={this._handleRequestCloseDelete.bind(this)} />,
+      <FlatButton
+        key={1}
+        label="Delete list"
+        secondary
+        onTouchTap={this._handleRequestSubmitDelete.bind(this)} />
+      ];
+
+    const deleteDialog = (
+        <Dialog
+          actions={deleteDialogActions}
+          open={this.state.deleting}
+          onRequestClose={this._handleRequestCloseDelete.bind(this)}
+          style={{textAlign: "justify"}}
+          >
+          Are you sure you want to remove the "{listTitle}" list?
+        </Dialog>
+        );
 
     return (
      <Card>
@@ -108,12 +148,13 @@ export default class ListDetailsHead extends Component {
         <IconButton
           iconClassName="glyphicon glyphicon-remove"
           iconStyle={{color:Color.red900}}
-          onTouchTap={this._handleEditButtonTouchTap.bind(this)}
+          onTouchTap={this._handleDeleteButtonTouchTap.bind(this)}
           tooltip="Delete list"
           tooltipPosition="top-center"
         />
       </CardActions>
       {editDialog}
+      {deleteDialog}
     </Card>
     );
   }
@@ -123,7 +164,7 @@ ListDetailsHead.propTypes = {
   lists: PropTypes.object,
   list: PropTypes.object,
   editListAndNavigate: PropTypes.func,
-  removeListAndNavigate: PropTypes.func
+  deleteListAndNavigate: PropTypes.func
 };
 
 ListDetailsHead.defaultProps = {

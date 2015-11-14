@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { pushState } from 'redux-router';
-import { editListAndNavigate } from '../actions';
+import { editListAndNavigate, deleteListAndNavigate } from '../actions';
 import _ from 'lodash';
 
 import ListDetailsHead from '../components/ListDetailsHead';
@@ -14,10 +14,15 @@ class ListDetailsContainer extends Component {
   }
 
   render() {
-    const { lists, list, editListAndNavigate, entries } = this.props;
+    const { lists, list, editListAndNavigate, deleteListAndNavigate, entries } = this.props;
     return (
       <div>
-        <ListDetailsHead lists={lists} list={list} editListAndNavigate={editListAndNavigate} />
+        <ListDetailsHead
+          lists={lists}
+          list={list}
+          editListAndNavigate={editListAndNavigate}
+          deleteListAndNavigate={deleteListAndNavigate}
+        />
         <EntryList entries={entries} />
       </div>
     );
@@ -28,6 +33,7 @@ ListDetailsContainer.propTypes = {
   lists: PropTypes.object,
   list: PropTypes.object,
   editListAndNavigate: PropTypes.func,
+  deleteListAndNavigate: PropTypes.func,
   entries: PropTypes.array
 };
 
@@ -50,7 +56,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     handler: path => dispatch(pushState(null, path)),
-    editListAndNavigate: (id, title, desc, slug) => dispatch(editListAndNavigate(id, title, desc, slug))
+    editListAndNavigate: (id, title, desc, slug) => dispatch(editListAndNavigate(id, title, desc, slug)),
+    deleteListAndNavigate: (id) => dispatch(deleteListAndNavigate(id))
   };
 }
 
