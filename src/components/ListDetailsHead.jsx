@@ -1,8 +1,9 @@
 import React, { Component, PropTypes } from 'react';
+import Color from 'material-ui/lib/styles/colors';
 import Card from 'material-ui/lib/card/card';
-import FontIcon from 'material-ui/lib/font-icon';
-import CardTitle from 'material-ui/lib/card/card-title';
 import CardActions from 'material-ui/lib/card/card-actions';
+import CardTitle from 'material-ui/lib/card/card-title';
+import IconButton from 'material-ui/lib/icon-button';
 import Dialog from '../../node_modules/material-ui/lib/dialog';
 import { allTrim, getSlug } from '../utils';
 import TextField from 'material-ui/lib/text-field';
@@ -10,15 +11,15 @@ import FlatButton from 'material-ui/lib/flat-button';
 import injectTapEventPlugin from "react-tap-event-plugin";
 injectTapEventPlugin();
 
-export default class ListDetails extends Component {
+export default class ListDetailsHead extends Component {
   constructor(props) {
     super(props);
     this.state = {
       editing: false,
     };
   }
-  _handleButtonTouchTap() {
-    this.setState({editing: !this.state.editing});
+  _handleEditButtonTouchTap() {
+    this.setState({editing: true});
   }
 
   _handleRequestClose() {
@@ -61,39 +62,70 @@ export default class ListDetails extends Component {
         onTouchTap={this._handleRequestSubmit.bind(this)} />
       ];
 
-    const dialog = (
+    const editDialog = (
         <Dialog
-          className = "list-add-dialog"
-          ref = "dialog"
           title="Edit a list"
           actions={dialogActions}
-          actionFocus="submit"
           open={this.state.editing}
           onRequestClose={this._handleRequestClose.bind(this)}
           >
-          <TextField defaultValue={listTitle} ref="listTitle" onEnterKeyDown={this._handleRequestSubmit.bind(this)} floatingLabelText="Title" style={{width: "100%"}}/>
-          <TextField defaultValue={subtitle} ref="listDesc" floatingLabelText="Description" multiLine style={{width: "100%"}} rows={5}/>
+          <TextField
+            defaultValue={listTitle}
+            ref="listTitle"
+            onEnterKeyDown={this._handleRequestSubmit.bind(this)}
+            floatingLabelText="Title"
+            fullWidth
+          />
+          <TextField
+            defaultValue={subtitle}
+            ref="listDesc"
+            floatingLabelText="Description"
+            multiLine
+            fullWidth
+            rows={5}
+          />
         </Dialog>
           );
 
     return (
      <Card>
-      <CardTitle title={listTitle} subtitle={subtitle}/>
-      <CardActions style={{float: "right"}}>
-        <FontIcon onTouchTap={this._handleButtonTouchTap.bind(this)} className="glyphicon glyphicon-edit"/>
+      <CardTitle
+        title={listTitle}
+        titleColor={Color.deepOrange500}
+        subtitle={subtitle}
+        subtitleStyle={{width: "90%", textAlign: "justify"}}
+        showExpandableButton/>
+      <CardActions
+        style={{display: "flex", width: "90%", justifyContent: "space-between", margin: "0 auto"}}
+        expandable>
+        <IconButton
+          iconClassName="glyphicon glyphicon-edit"
+          iconStyle={{color:Color.grey400}}
+          onTouchTap={this._handleEditButtonTouchTap.bind(this)}
+          tooltip="Edit list"
+          tooltipPosition="top-center"
+        />
+        <IconButton
+          iconClassName="glyphicon glyphicon-remove"
+          iconStyle={{color:Color.red900}}
+          onTouchTap={this._handleEditButtonTouchTap.bind(this)}
+          tooltip="Delete list"
+          tooltipPosition="top-center"
+        />
       </CardActions>
-      {dialog}
+      {editDialog}
     </Card>
     );
   }
 }
 
-ListDetails.propTypes = {
+ListDetailsHead.propTypes = {
   lists: PropTypes.object,
   list: PropTypes.object,
-  editListAndNavigate: PropTypes.func
+  editListAndNavigate: PropTypes.func,
+  removeListAndNavigate: PropTypes.func
 };
 
-ListDetails.defaultProps = {
+ListDetailsHead.defaultProps = {
   list: {}
 };

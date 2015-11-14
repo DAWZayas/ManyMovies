@@ -4,7 +4,7 @@ import { pushState } from 'redux-router';
 import { editListAndNavigate } from '../actions';
 import _ from 'lodash';
 
-import ListDetails from '../components/ListDetails';
+import ListDetailsHead from '../components/ListDetailsHead';
 import EntryList from '../components/EntryList';
 
 class ListDetailsContainer extends Component {
@@ -17,7 +17,7 @@ class ListDetailsContainer extends Component {
     const { lists, list, editListAndNavigate, entries } = this.props;
     return (
       <div>
-        <ListDetails lists={lists} list={list} editListAndNavigate={editListAndNavigate} />
+        <ListDetailsHead lists={lists} list={list} editListAndNavigate={editListAndNavigate} />
         <EntryList entries={entries} />
       </div>
     );

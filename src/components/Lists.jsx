@@ -49,34 +49,48 @@ export default class Lists extends Component {
           key={0}
           label="Cancel"
           primary
-          onTouchTap={this._handleRequestClose.bind(this)} />,
+          onTouchTap={this._handleRequestClose.bind(this)}
+        />,
         <FlatButton
           key={1}
           label="Add list"
           secondary
-          onTouchTap={this._handleRequestSubmit.bind(this)} />
+          onTouchTap={this._handleRequestSubmit.bind(this)}
+        />
       ];
 
     const button = (<FloatingActionButton
                       onTouchTap={this._handleButtonTouchTap.bind(this)}
                       iconClassName="glyphicon glyphicon-plus"
-                      mini/>);
+                      mini
+                    />);
 
-    return (
-      <div>
-        <div className="center-wrapper">{button}</div>
-        <Dialog
-          className = "list-add-dialog"
-          ref = "dialog"
+    const dialog = (<Dialog
           title="Add a list"
           actions={dialogActions}
           actionFocus="submit"
           open={this.state.editing}
           onRequestClose={this._handleRequestClose.bind(this)}
           >
-          <TextField ref="listTitle" onEnterKeyDown={this._handleRequestSubmit.bind(this)} floatingLabelText="Title" style={{width: "100%"}}/>
-          <TextField ref="listDesc" floatingLabelText="Description" multiLine style={{width: "100%"}} rows={5}/>
-        </Dialog>
+          <TextField
+            ref="listTitle"
+            onEnterKeyDown={this._handleRequestSubmit.bind(this)}
+            floatingLabelText="Title"
+            fullWidth
+            />
+          <TextField
+            ref="listDesc"
+            floatingLabelText="Description"
+            multiLine
+            fullWidth
+            rows={5}
+          />
+        </Dialog>);
+
+    return (
+      <div>
+        <div className="center-wrapper">{button}</div>
+        {dialog}
         <List>
           {
            lists.map((list, index) =>  (<ListItem
