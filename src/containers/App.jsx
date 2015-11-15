@@ -4,7 +4,6 @@ import AppBar from 'material-ui/lib/app-bar';
 import IconButton from 'material-ui/lib/icon-button';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import IconMenu from 'material-ui/lib/menus/icon-menu';
-//import Menu from 'material-ui/lib/menus/menu';
 const injectTapEventPlugin = require("react-tap-event-plugin");
 injectTapEventPlugin();
 
@@ -13,7 +12,6 @@ export default class App extends Component {
   constructor(props) {
     super(props);
   }
-
   render() {
     const style = {
       backgroundColor: 'orange'
@@ -22,12 +20,13 @@ export default class App extends Component {
       <div>
         <AppBar title="ManyMovies"
                 style={style}
-                iconElementLeft={
-                  <IconMenu openDirection="bottom-right" iconButtonElement={<IconButton  iconClassName="glyphicon glyphicon-align-justify"/>}>
-                        <MenuItem primaryText="Lists" />
-                        <MenuItem primaryText="History" />
+                showMenuIconButton={false}
+                iconElementRight={
+                  <IconMenu openDirection="bottom-left" iconButtonElement={<IconButton  iconClassName="glyphicon glyphicon-align-justify"/>}>
+                        <MenuItem primaryText="Lists" / >
+                        <MenuItem primaryText="History"  />
                         <MenuItem primaryText="Collections" />
-                        <MenuItem primaryText="Movies" />
+                        <MenuItem primaryText="Movies" onItemTouchTap={<Link to="/movies" />} />
                   </IconMenu>
         }/>
 
@@ -42,3 +41,5 @@ App.propTypes = {
   // Injected by React Router
   children: PropTypes.node
 };
+
+
