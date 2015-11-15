@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { pushState } from 'redux-router';
-import { editListAndNavigate, deleteListAndNavigate } from '../actions';
+import { editListAndNavigate, deleteListAndNavigate, removeEntry } from '../actions';
 import _ from 'lodash';
 
 import ListDetailsHead from '../components/ListDetailsHead';
@@ -14,7 +14,15 @@ class ListDetailsContainer extends Component {
   }
 
   render() {
-    const { lists, list, editListAndNavigate, deleteListAndNavigate, entries, movies } = this.props;
+    const {
+      lists,
+      list,
+      editListAndNavigate,
+      deleteListAndNavigate,
+      entries,
+      movies,
+      navitate
+    } = this.props;
     return (
       <div>
         <ListDetailsHead
@@ -23,19 +31,27 @@ class ListDetailsContainer extends Component {
           editListAndNavigate={editListAndNavigate}
           deleteListAndNavigate={deleteListAndNavigate}
         />
-        <EntriesList entries={entries} movies={movies} />
+        <EntriesList
+          navitate={navitate}
+          removeEntry={removeEntry}
+          list={list}
+          entries={entries}
+          movies={movies}
+        />
       </div>
     );
   }
 }
 
 ListDetailsContainer.propTypes = {
+  entries: PropTypes.array,
   lists: PropTypes.object,
   list: PropTypes.object,
   movies: PropTypes.object,
+  navitate: PropTypes.func,
   editListAndNavigate: PropTypes.func,
   deleteListAndNavigate: PropTypes.func,
-  entries: PropTypes.array
+  removeEntry: PropTypes.func
 };
 
 ListDetailsContainer.defaultProps = {
@@ -51,7 +67,7 @@ function _getEntriesInList(state, id){
 function _getMoviesInList(state, id){
   const entries = _getEntriesInList(state, id);
   const allMovies = state.movies;
-  const movies = entries.reduce((prev, actual) => Object.assign(prev, _.pick(allMovies, actual)), {});
+  const movies = entries ? entries.reduce((prev, actual) => Object.assign(prev, _.pick(allMovies, actual)), {}) : {};
   return movies;
 }
 
@@ -66,9 +82,10 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    handler: path => dispatch(pushState(null, path)),
+    navitate: path => dispatch(pushState(null, path)),
     editListAndNavigate: (id, title, desc, slug) => dispatch(editListAndNavigate(id, title, desc, slug)),
-    deleteListAndNavigate: (id) => dispatch(deleteListAndNavigate(id))
+    deleteListAndNavigate: (id) => dispatch(deleteListAndNavigate(id)),
+    removeEntry: (idList, id) => dispatch(removeEntry(idList, id))
   };
 }
 

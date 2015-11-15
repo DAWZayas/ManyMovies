@@ -78,6 +78,8 @@ export function addEntry(idCollection, id) {
 }
 
 export function removeEntry(idCollection, id) {
+  console.log('idCollection', idCollection);
+  console.log('id', id);
   return{
     type: REMOVE_ENTRY,
     idCollection,

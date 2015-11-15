@@ -11,6 +11,7 @@ const addEntry = (state, idCollection, id) => {
 };
 
 const removeEntry = (state, idCollection, id) => {
+  console.log('reducer!!!!!');
   let collectionEntries = state[idCollection];
   collectionEntries = _.without(collectionEntries, id);
   return Object.assign({}, state, { [idCollection]: collectionEntries });
@@ -33,6 +34,7 @@ export default function (state = {}, action) {
     case DELETE_LIST:
       return deleteList(state, action.id);
     default:
+      console.log("ACTIONTYPE", action.type);
       return state;
   }
 }
