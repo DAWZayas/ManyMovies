@@ -15,13 +15,13 @@ export default class MovieGrid extends Component {
   }
 
   render() {
-    const { movie, removeEntry, idList } = this.props;
+    const { movie, navigate, idList, removeEntry } = this.props;
     const year = movie.released.split('-')[0];
     return (
       <GridTile
         title={movie.title}
         subtitle={year}
-        onTouchTap={() => {console.log('caca');}}
+        onTouchTap={() => {navigate('lists');}}
         titleBackground="rgba(0, 0, 0, 0.60)"
         actionIcon={<IconButton
           iconStyle={{color: "white"}}
@@ -30,8 +30,7 @@ export default class MovieGrid extends Component {
           tooltip="Remove from list"
           onTouchTap={(e) => {
             e.stopPropagation();
-            console.log('CACAAAA');
-            removeEntry(idList, movie.ids.trakt);
+            removeEntry(idList, movie.ids.trakt.toString());
           }
         }>highlight_off</IconButton>}>
         <img src={this.state.src} alt={movie.title}/>
@@ -43,7 +42,8 @@ export default class MovieGrid extends Component {
 MovieGrid.propTypes = {
   idList: PropTypes.string,
   movie: PropTypes.object,
-  removeEntry: PropTypes.func
+  removeEntry: PropTypes.func,
+  navigate: PropTypes.func
 };
 
 MovieGrid.defaultProps = {

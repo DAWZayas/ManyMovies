@@ -21,7 +21,7 @@ class ListDetailsContainer extends Component {
       deleteListAndNavigate,
       entries,
       movies,
-      navitate
+      navigate
     } = this.props;
     return (
       <div>
@@ -32,7 +32,7 @@ class ListDetailsContainer extends Component {
           deleteListAndNavigate={deleteListAndNavigate}
         />
         <EntriesList
-          navitate={navitate}
+          navigate={navigate}
           removeEntry={removeEntry}
           list={list}
           entries={entries}
@@ -48,7 +48,7 @@ ListDetailsContainer.propTypes = {
   lists: PropTypes.object,
   list: PropTypes.object,
   movies: PropTypes.object,
-  navitate: PropTypes.func,
+  navigate: PropTypes.func,
   editListAndNavigate: PropTypes.func,
   deleteListAndNavigate: PropTypes.func,
   removeEntry: PropTypes.func
@@ -82,7 +82,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    navitate: path => dispatch(pushState(null, path)),
+    navigate: path => dispatch(pushState(null, path)),
     editListAndNavigate: (id, title, desc, slug) => dispatch(editListAndNavigate(id, title, desc, slug)),
     deleteListAndNavigate: (id) => dispatch(deleteListAndNavigate(id)),
     removeEntry: (idList, id) => dispatch(removeEntry(idList, id))

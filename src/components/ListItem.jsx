@@ -6,7 +6,7 @@ import injectTapEventPlugin from "react-tap-event-plugin";
 injectTapEventPlugin();
 
 export default class ListItem extends Component {
-  handleTouchStart(list) {
+  handleTouchTap(list) {
     const { handler } = this.props;
     const slug = list.slug;
     return function(){
@@ -24,8 +24,8 @@ export default class ListItem extends Component {
           leftAvatar={<Avatar>{firstLetter}</Avatar>}
           secondaryText="by you"
           style={{color: Color.deepOrange500}}
-          onTouchTap={this.handleTouchStart(list)}
-          onTouchStart={this.handleTouchStart(list)}/>
+          onTouchTap={this.handleTouchTap(list)}
+          />
     );
   }
 }

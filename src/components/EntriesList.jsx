@@ -28,7 +28,7 @@ export default class EntriesList extends Component {
   }
 
   render() {
-    const { movies, removeEntry, list } = this.props;
+    const { movies, removeEntry, list, navigate } = this.props;
     return (
       <GridList
         padding={0}
@@ -41,6 +41,7 @@ export default class EntriesList extends Component {
             <MovieGrid
               key={index}
               movie={movie}
+              navigate={navigate}
               removeEntry={removeEntry}
               idList={list.id}
             />)
@@ -53,7 +54,8 @@ export default class EntriesList extends Component {
 EntriesList.propTypes = {
   list: PropTypes.object,
   movies: PropTypes.object,
-  removeEntry: PropTypes.func
+  removeEntry: PropTypes.func,
+  navigate: PropTypes.func
 };
 
 EntriesList.defaultProps = {

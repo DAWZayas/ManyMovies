@@ -24,6 +24,7 @@ const deleteList = (state, id) => {
 };
 
 export default function (state = {}, action) {
+  console.log("ACTIONTYPE", action.type);
   switch (action.type) {
     case SET_DEFAULT_ENTRIES:
       return setDefaultEntries(state);
@@ -34,7 +35,6 @@ export default function (state = {}, action) {
     case DELETE_LIST:
       return deleteList(state, action.id);
     default:
-      console.log("ACTIONTYPE", action.type);
       return state;
   }
 }
