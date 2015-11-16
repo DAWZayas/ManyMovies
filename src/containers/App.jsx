@@ -4,6 +4,7 @@ import AppBar from 'material-ui/lib/app-bar';
 import { connect } from 'react-redux';
 import { pushState } from 'redux-router';
 import IconButton from 'material-ui/lib/icon-button';
+import Color from 'material-ui/lib/styles/colors';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import IconMenu from 'material-ui/lib/menus/icon-menu';
 import injectTapEventPlugin from "react-tap-event-plugin";
@@ -28,7 +29,7 @@ class App extends Component {
 
   render() {
     const style = {
-      backgroundColor: 'orange'
+      backgroundColor: Color.orange600
     };
 
     //const { navigate } = this.props;
