@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import GridList from 'material-ui/lib/grid-list/grid-list';
 import MovieGrid from './MovieGrid';
-import injectTapEventPlugin from "react-tap-event-plugin";
 import _ from 'lodash';
+import injectTapEventPlugin from "react-tap-event-plugin";
 injectTapEventPlugin();
 
 export default class EntriesList extends Component {
