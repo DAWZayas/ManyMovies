@@ -1,6 +1,10 @@
 import React from 'react';
 let SearchInput = require('react-search-input');
 export default React.createClass({
+  searchUpdated(term) {
+    this.setState({searchTerm: term}); // needed to force re-render
+  },
+
   render() {
     let movies = [
     {
@@ -41,8 +45,5 @@ export default React.createClass({
         }
       </div>
     );
-  },
-  searchUpdated(term) {
-    this.setState({searchTerm: term}); // needed to force re-render
   }
 });

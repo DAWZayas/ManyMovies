@@ -78,7 +78,7 @@ export function addEntry(idCollection, id) {
 }
 
 export function removeEntry(idCollection, id) {
-  return{
+  return {
     type: REMOVE_ENTRY,
     idCollection,
     id
