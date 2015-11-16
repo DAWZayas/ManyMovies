@@ -29,18 +29,17 @@ describe('lists reducer tests', () => {
       const title = 'Marvel movies';
       const desc = 'This list is awesome';
       const slug = getSlug(initialState.lists, 'Marvel movies');
-      const newList = createCustomList('Marvel movies', slug, 'This list is awesome');
       const nextState = reducer(initialState, createList(title, desc));
-      expect(nextState.lists).to.containOneLike(newList);
-    });
-
-    it('will trim and remove duplicated white spaces', () => {
-      const initialState = reducer(undefined, setDefaultLists());
-      const title = '  Marvel   movies  ';
-      const desc = ' This   list is   awesome ';
-      const slug = getSlug(initialState.lists, 'Marvel movies');
-      const newList = createCustomList('Marvel movies', slug, 'This list is awesome');
-      const nextState = reducer(initialState, createList(title, desc));
+      let listId;
+      const lists = nextState.lists;
+      for (let key in lists) {
+        if (lists.hasOwnProperty(key)) {
+          if (lists[key].title === title){
+            listId = key;
+          }
+        }
+      }
+      const newList = createCustomList('Marvel movies', slug, 'This list is awesome', listId);
       expect(nextState.lists).to.containOneLike(newList);
     });
 
@@ -82,9 +81,8 @@ describe('lists reducer tests', () => {
         }
       }
       //Edit the listItem
-      const finalState = reducer(middleState, editList(listId, { title: 'DC movies', desc: 'Much better than Marvel movies' }));
+      const finalState = reducer(middleState, editList(listId, 'DC movies', 'Much better than Marvel movies'));
       const slug = getSlug(middleState.lists, 'DC movies');
-
       expect(finalState.lists[listId].title).to.equal('DC movies', 'Title should change');
       expect(finalState.lists[listId].slug).to.equal(slug, 'Slug should change');
       expect(finalState.lists[listId].desc).to.equal('Much better than Marvel movies', 'Desc should change');

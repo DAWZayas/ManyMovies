@@ -1,3 +1,6 @@
+import { pushState } from 'redux-router';
+import sequencer from './sequencer';
+
 /*
 * Action types
 */
@@ -32,14 +35,28 @@ export function deleteList(id){
   };
 }
 
-export function editList(id, options){
+export function deleteListAndNavigate(id){
+  return dispatch => sequencer([
+      () => dispatch(deleteList(id)),
+      () => dispatch(pushState(null, '/lists'))
+    ]);
+}
+
+export function editList(id, title, desc){
   return{
     type: EDIT_LIST,
     id,
-    options
+    title,
+    desc
   };
 }
 
+export function editListAndNavigate(id, title, desc, slug) {
+  return dispatch => sequencer([
+      () => dispatch(editList(id, title, desc)),
+      () => dispatch(pushState(null, `/lists/${slug}`))
+    ]);
+}
 
 /**
 * Entries action creators

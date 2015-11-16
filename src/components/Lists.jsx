@@ -9,18 +9,16 @@ import { allTrim } from '../utils';
 import injectTapEventPlugin from "react-tap-event-plugin";
 injectTapEventPlugin();
 
-
 export default class Lists extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      editing: false,
-      addDisabled: true
+      editing: false
     };
   }
 
-  _handleButtonClick() {
+  _handleButtonTouchTap() {
     this.setState({editing: !this.state.editing});
   }
 
@@ -46,47 +44,59 @@ export default class Lists extends Component {
   render() {
     const { lists, handler } = this.props;
 
-    let dialogActions = [
-      <FlatButton
-        key={0}
-        label="Cancel"
-        secondary
-        onTouchTap={this._handleRequestClose.bind(this)} />,
-      <FlatButton
-        key={1}
-        label="Submit"
-        primary
-        onTouchTap={this._handleRequestSubmit.bind(this)} />
+    const dialogActions = [
+        <FlatButton
+          key={0}
+          label="Cancel"
+          primary
+          onTouchTap={this._handleRequestClose.bind(this)}
+        />,
+        <FlatButton
+          key={1}
+          label="Add list"
+          secondary
+          onTouchTap={this._handleRequestSubmit.bind(this)}
+        />
       ];
 
     const button = (<FloatingActionButton
-                      onTouchTap={this._handleButtonClick.bind(this)}
+                      onTouchTap={this._handleButtonTouchTap.bind(this)}
                       iconClassName="glyphicon glyphicon-plus"
                       mini
                     />);
 
-    return (
-      <div>
-        <div className="center-wrapper">{button}</div>
-        <Dialog
-          className = "list-add-dialog"
-          ref = "dialog"
+    const dialog = (<Dialog
           title="Add a list"
           actions={dialogActions}
           actionFocus="submit"
           open={this.state.editing}
           onRequestClose={this._handleRequestClose.bind(this)}
           >
-          <TextField ref="listTitle" onEnterKeyDown={this._handleRequestSubmit.bind(this)} floatingLabelText="Title" style={{width: "100%"}}/>
-          <TextField ref="listDesc" floatingLabelText="Description" multiLine style={{width: "100%"}} rows={5}/>
-        </Dialog>
+          <TextField
+            ref="listTitle"
+            onEnterKeyDown={this._handleRequestSubmit.bind(this)}
+            floatingLabelText="Title"
+            fullWidth
+            />
+          <TextField
+            ref="listDesc"
+            floatingLabelText="Description"
+            multiLine
+            fullWidth
+            rows={5}
+          />
+        </Dialog>);
+
+    return (
+      <div>
+        <div className="center-wrapper">{button}</div>
+        {dialog}
         <List>
           {
            lists.map((list, index) =>  (<ListItem
              key={index}
              list={list}
-             handler={handler}
-             />)
+             handler={handler}/>)
              )
           }
         </List>

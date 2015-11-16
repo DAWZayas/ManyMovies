@@ -32,14 +32,17 @@ li{
 
 .post-collections-icon{
  background-color: #00796B;
- margin-right: 6px;
+  margin-left: 58%;
+  /*margin-right: 6px;*/
 }
 .post-history-icon{
   background-color: #512DA8;
-  margin-right: 6px;
+  margin-left: 1%;
+  /*margin-right: 6px;*/
 }
 .post-list-icon{
   background-color: #F44336;
+  margin-left: 1%;
 }
 
 .card-text{
@@ -49,6 +52,15 @@ li{
 
 .center-wrapper{
   text-align: center;
+}
+
+.close-modal{
+  margin-left: 60%;
+}
+
+.lists-details-title{
+  line-height: 2em;
+  font-size: 1.5em;
 }
 
 /**
@@ -77,16 +89,16 @@ li{
   -webkit-font-smoothing: antialiased;
 }
 
-// Rules for sizing the icon.
+/* Rules for sizing the icon.*/
 .material-icons.md-18 { font-size: 18px; }
 .material-icons.md-24 { font-size: 24px; }
 .material-icons.md-36 { font-size: 36px; }
 .material-icons.md-48 { font-size: 48px; }
 
-// Rules for using icons as black on a light background.
+/* Rules for using icons as black on a light background.*/
 .material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
 .material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
 
-// Rules for using icons as white on a dark background.
+/* Rules for using icons as white on a dark background.*/
 .material-icons.md-light { color: rgba(255, 255, 255, 1); }
 .material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }

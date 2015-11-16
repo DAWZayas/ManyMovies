@@ -20,6 +20,7 @@ export default class App extends Component {
       <div>
         <AppBar title="ManyMovies"
                 style={style}
+<<<<<<< HEAD
                 showMenuIconButton={false}
                 iconElementRight={
                   <IconMenu openDirection="bottom-left" iconButtonElement={<IconButton  iconClassName="glyphicon glyphicon-align-justify"/>}>
@@ -27,10 +28,19 @@ export default class App extends Component {
                         <MenuItem primaryText="History"  />
                         <MenuItem primaryText="Collections" />
                         <MenuItem primaryText="Movies" onItemTouchTap={<Link to="/movies" />} />
+=======
+                iconElementLeft={
+                  <IconMenu openDirection="bottom-right" iconButtonElement={<IconButton iconClassName="glyphicon glyphicon-align-justify" />}>
+                        <MenuItem primaryText="Lists" />
+                        <MenuItem primaryText="History" />
+                        <MenuItem primaryText="Collections" />
+                        <MenuItem primaryText="Movies"  />
+>>>>>>> 5de60c406e93c613f41f894bc0c91247a9c22df5
                   </IconMenu>
         }/>
-
-        <Link to="/lists">Show Lists</Link>
+        <Link to="/movie-details">Movie Details</Link> <br />
+        <Link to="/lists">Show Lists</Link> <br />
+        <Link to="/search">Search movie</Link>
         {this.props.children}
       </div>
     );
