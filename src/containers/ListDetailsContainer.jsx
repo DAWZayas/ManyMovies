@@ -21,7 +21,8 @@ class ListDetailsContainer extends Component {
       deleteListAndNavigate,
       entries,
       movies,
-      navigate
+      navigate,
+      removeEntry
     } = this.props;
     return (
       <div>
@@ -85,7 +86,7 @@ function mapDispatchToProps(dispatch) {
     navigate: path => dispatch(pushState(null, path)),
     editListAndNavigate: (id, title, desc, slug) => dispatch(editListAndNavigate(id, title, desc, slug)),
     deleteListAndNavigate: (id) => dispatch(deleteListAndNavigate(id)),
-    removeEntry: (idList, id) => dispatch(removeEntry(idList, id))
+    removeEntry: (idCollection, id) => dispatch(removeEntry(idCollection, id))
   };
 }
 

@@ -37,9 +37,9 @@ export default class EntriesList extends Component {
         style={{ width: this.state.width, overflowY: "auto" }}
       >
         {
-          _.values(movies) && _.values(movies).map((movie, index) => (
+          _.values(movies) && _.values(movies).map((movie) => (
             <MovieGrid
-              key={index}
+              key={movie.ids.trakt}
               movie={movie}
               navigate={navigate}
               removeEntry={removeEntry}

@@ -78,14 +78,6 @@ export function addEntry(idCollection, id) {
 }
 
 export function removeEntry(idCollection, id) {
-  console.log('idCollection', idCollection);
-  console.log('id', id);
-  const action = {
-    type: REMOVE_ENTRY,
-    idCollection,
-    id
-  };
-  console.log('--------', action);
   return {
     type: REMOVE_ENTRY,
     idCollection,
