@@ -42,8 +42,7 @@ class App extends Component {
                     openDirection="bottom-left"
                     iconButtonElement={
                       <IconButton
-                        iconClassName="glyphicon glyphicon-align-justify"
-                      />
+                        iconClassName="glyphicon glyphicon-align-justify"/>
                     }
                     >
                       <MenuItem primaryText="Lists" onTouchTap={this._handleTouchTap.bind(this)} / >
@@ -51,8 +50,7 @@ class App extends Component {
                       <MenuItem primaryText="Collection" onTouchTap={this._handleTouchTap.bind(this)} />
                       <MenuItem primaryText="WatchList" onTouchTap={this._handleTouchTap.bind(this)} />
                       <MenuItem primaryText="Movies" onTouchTap={this._handleTouchTap.bind(this)} />
-                  </IconMenu>}
-        />
+                  </IconMenu>}/>
         <Link to="/movie-details">Movie Details</Link> <br />
         <Link to="/search">Search movie</Link>
         {this.props.children}

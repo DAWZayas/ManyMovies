@@ -21,7 +21,7 @@ export default class MovieGrid extends Component {
       <GridTile
         title={movie.title}
         subtitle={year}
-        onTouchTap={() => navigate('lists')}
+        onTouchTap={() => navigate('movie-details')}
         titleBackground="rgba(0, 0, 0, 0.60)"
         actionIcon={<IconButton
           iconStyle={{color: "white"}}
