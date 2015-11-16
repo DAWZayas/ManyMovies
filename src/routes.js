@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Redirect } from 'react-router';
+import { Route, Redirect, IndexRoute } from 'react-router';
 import ListsContainer from './containers/ListsContainer';
 import ListDetailsContainer from './containers/ListDetailsContainer';
 import MoviesContainer from './containers/MoviesContainer';
@@ -14,6 +14,7 @@ export default (
     <Route path="movies" component={MoviesContainer}/>
     <Route path="movie-details" component={MovieDetails} />
     <Route path="search" component={Searcher} />
+    <IndexRoute component={MoviesContainer} />
     <Redirect path="*" to="/" />
   </Route>
 );

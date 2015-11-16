@@ -52,8 +52,7 @@ class App extends Component {
                       <MenuItem primaryText="WatchList" onTouchTap={this._handleTouchTap.bind(this)} />
                       <MenuItem primaryText="Movies" onTouchTap={this._handleTouchTap.bind(this)} />
                   </IconMenu>}/>
-        <Link to="/movie-details">Movie Details</Link> <br />
-        <Link to="/search">Search movie</Link>
+        <Link to="/movie-details">Movie Details</Link>
         {this.props.children}
       </div>
     );
