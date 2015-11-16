@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { pushState } from 'redux-router';
-import { editListAndNavigate, deleteListAndNavigate, removeEntry } from '../actions';
+import { editListAndNavigate, deleteListAndNavigate, removeEntry, addEntry } from '../actions';
 import _ from 'lodash';
 
 import ListDetailsHead from '../components/ListDetailsHead';
@@ -22,7 +22,8 @@ class ListDetailsContainer extends Component {
       entries,
       movies,
       navigate,
-      removeEntry
+      removeEntry,
+      addEntry
     } = this.props;
     return (
       <div>
@@ -35,6 +36,7 @@ class ListDetailsContainer extends Component {
         <EntriesList
           navigate={navigate}
           removeEntry={removeEntry}
+          addEntry={addEntry}
           list={list}
           entries={entries}
           movies={movies}
@@ -52,7 +54,8 @@ ListDetailsContainer.propTypes = {
   navigate: PropTypes.func,
   editListAndNavigate: PropTypes.func,
   deleteListAndNavigate: PropTypes.func,
-  removeEntry: PropTypes.func
+  removeEntry: PropTypes.func,
+  addEntry: PropTypes.func
 };
 
 ListDetailsContainer.defaultProps = {
@@ -86,7 +89,8 @@ function mapDispatchToProps(dispatch) {
     navigate: path => dispatch(pushState(null, path)),
     editListAndNavigate: (id, title, desc, slug) => dispatch(editListAndNavigate(id, title, desc, slug)),
     deleteListAndNavigate: (id) => dispatch(deleteListAndNavigate(id)),
-    removeEntry: (idCollection, id) => dispatch(removeEntry(idCollection, id))
+    removeEntry: (idCollection, id) => dispatch(removeEntry(idCollection, id)),
+    addEntry: (idCollection, id) => dispatch(addEntry(idCollection, id))
   };
 }
 

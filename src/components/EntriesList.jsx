@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import GridList from 'material-ui/lib/grid-list/grid-list';
 import MovieGrid from './MovieGrid';
+import Snackbar from 'material-ui/lib/snackbar';
 import _ from 'lodash';
 import injectTapEventPlugin from "react-tap-event-plugin";
 injectTapEventPlugin();
@@ -27,8 +28,28 @@ export default class EntriesList extends Component {
     this.setState({ width: document.documentElement.clientWidth });
   }
 
+  _handleSnackBarRequest(idEntry){
+    this.setState({removedEntry: idEntry});
+    this.refs.snack.show();
+  }
+
+  _handleSnackBarUndo(){
+    const { addEntry, list } = this.props;
+    const { removedEntry } = this.state;
+    addEntry(list.id, removedEntry);
+    this.refs.snack.dismiss();
+  }
+
   render() {
     const { movies, removeEntry, list, navigate } = this.props;
+    const snackBar = (
+        <Snackbar
+        ref="snack"
+        message="Movie removed from list"
+        action="undo"
+        onActionTouchTap={this._handleSnackBarUndo.bind(this)}
+        />
+      );
     return (
       <GridList
         padding={0}
@@ -43,9 +64,11 @@ export default class EntriesList extends Component {
               movie={movie}
               navigate={navigate}
               removeEntry={removeEntry}
+              handleSnackBarRequest={this._handleSnackBarRequest.bind(this)}
               idList={list.id}
             />)
         )}
+      {snackBar}
       </GridList>
     );
   }
@@ -54,6 +77,7 @@ export default class EntriesList extends Component {
 EntriesList.propTypes = {
   list: PropTypes.object,
   movies: PropTypes.object,
+  addEntry: PropTypes.func,
   removeEntry: PropTypes.func,
   navigate: PropTypes.func
 };
