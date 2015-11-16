@@ -10,7 +10,10 @@ export default class MovieGrid extends Component {
     super(props);
     this.state = {src: defaultPosterSrc};
     const img = new Image();
-    img.onload = () => { this.setState({ src: img.src });};
+    img.onload = () => {
+      this.setState({ src: img.src });
+      img.onload = null;
+    };
     img.src = this.props.movie.images.poster;
   }
 
