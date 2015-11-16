@@ -3,8 +3,6 @@ import { pushState } from 'redux-router';
 import { setDefaultMovies } from '../actions';
 import App from './App';
 
-
-
 function mapDispatchToProps(dispatch) {
   return {
     handler: path => dispatch(pushState(null, path)),
