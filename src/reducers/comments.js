@@ -8,7 +8,7 @@ const setDefaultComment = state => Object.assign({}, state, defaultComments);
 
 function createComment(state, idCommented, text) {
   const id  = getId();
-  const newComment = { id, idCommented, text };
+  const newComment = { id, idCommented, text, time: Date() };
   return Object.assign({}, state, { [idCommented] : newComment });
 }
 

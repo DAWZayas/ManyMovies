@@ -70,7 +70,7 @@ export default class Movies extends Component {
           >
             <TableRow>
               <TableHeaderColumn colSpan="2" style={{textAlign: "center"}}>
-                Movies
+                Moviessss
               </TableHeaderColumn>
             </TableRow>
           </TableHeader>

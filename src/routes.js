@@ -5,7 +5,6 @@ import ListDetailsContainer from './containers/ListDetailsContainer';
 import MoviesContainer from './containers/MoviesContainer';
 import App from './containers/App';
 import MovieDetails from './components/MovieDetails';
-import Searcher from './components/Searcher';
 
 export default (
   <Route path="/" component={App}>
@@ -13,7 +12,6 @@ export default (
     <Route path="lists/:listsSlug" component={ListDetailsContainer} />
     <Route path="movies" component={MoviesContainer}/>
     <Route path="movie-details" component={MovieDetails} />
-    <Route path="search" component={Searcher} />
     <IndexRoute component={MoviesContainer} />
     <Redirect path="*" to="/" />
   </Route>
