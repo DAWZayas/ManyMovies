@@ -99,25 +99,25 @@ export const setDefaultMovies = movies => ({type: SET_DEFAULT_MOVIES, movies});
 /**
 *Comment action creators
 */
-export function createComment(idComment, text) {
+export function createComment(idCommented, text) {
   return {
     type: CREATE_COMMENT,
-    idComment,
+    idCommented,
     text
   };
 }
 
-export function deleteComment(idComment){
+export function deleteComment(id, idCommented){
   return {
     type: DELETE_COMMENT,
-    idComment
+    idCommented
   };
 }
 
-export function editComment(idComment, text) {
+export function editComment(id, idCommented, text) {
   return{
     type: EDIT_COMMENT,
-    idComment,
+    idCommented,
     text
   };
 }
