@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
 import AppBar from 'material-ui/lib/app-bar';
 import { connect } from 'react-redux';
 import { pushState } from 'redux-router';
@@ -52,7 +51,6 @@ class App extends Component {
                       <MenuItem primaryText="WatchList" onTouchTap={this._handleTouchTap.bind(this)} />
                       <MenuItem primaryText="Movies" onTouchTap={this._handleTouchTap.bind(this)} />
                   </IconMenu>}/>
-        <Link to="/movie-details">Movie Details</Link>
         {this.props.children}
       </div>
     );

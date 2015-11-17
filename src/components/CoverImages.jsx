@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import defaultPosterSrc from '../../images/mm-poster.png';
+import { connect } from 'react-redux';
 
 export default class CoverImages extends Component {
   constructor(props) {
@@ -26,3 +27,9 @@ CoverImages.propTypes = {
 CoverImages.defaultProps = {
   movie: {}
 };
+
+const mapStateToProps = () => ({});
+
+export default connect(
+  mapStateToProps
+)(CoverImages);
