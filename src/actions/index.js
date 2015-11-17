@@ -18,6 +18,7 @@ export const SET_DEFAULT_MOVIES = 'SET_DEFAULT_MOVIES';
 export const CREATE_COMMENT = 'CREATE_COMMENT';
 export const DELETE_COMMENT = 'DELETE_COMMENT';
 export const EDIT_COMMENT = 'EDIT_COMMENT';
+export const SET_DEFAULT_COMMENT = 'SET_DEFAULT_COMMENT';
 
 
 /**
@@ -99,6 +100,8 @@ export const setDefaultMovies = movies => ({type: SET_DEFAULT_MOVIES, movies});
 /**
 *Comment action creators
 */
+export const setDefaultComment = comments => ({type: SET_DEFAULT_COMMENT, comments});
+
 export function createComment(idCommented, text) {
   return {
     type: CREATE_COMMENT,
@@ -107,9 +110,10 @@ export function createComment(idCommented, text) {
   };
 }
 
-export function deleteComment(id, idCommented){
+export function removeComment(id, idCommented){
   return {
     type: DELETE_COMMENT,
+    id,
     idCommented
   };
 }
@@ -117,6 +121,7 @@ export function deleteComment(id, idCommented){
 export function editComment(id, idCommented, text) {
   return{
     type: EDIT_COMMENT,
+    id,
     idCommented,
     text
   };
