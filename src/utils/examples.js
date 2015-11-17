@@ -55,19 +55,19 @@ export const defaultComments = {
       {
         id: FIRST_COMMENT_ID,
         text: 'Hiiiiii',
-        time: Date(),
+        time: new Date(),
       },
       {
         id: SECOND_COMMENT_ID,
         text: 'Byeee',
-        time: Date()
+        time: new Date()
       }
     ],
   ['7'] : [
       {
         id: THIRD_COMMENT_ID,
         text: 'This movie is awesome',
-        time: Date()
+        time: new Date()
       }
     ]
 };

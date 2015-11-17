@@ -1,7 +1,9 @@
 import React, { Component, PropTypes } from 'react';
+import Colors from 'material-ui/lib/styles/colors';
 import List from 'material-ui/lib/lists/list';
 import ListItem from './ListItem';
 import FloatingActionButton from 'material-ui/lib/floating-action-button';
+import FontIcon from 'material-ui/lib/font-icon';
 import Dialog from '../../node_modules/material-ui/lib/dialog';
 import TextField from 'material-ui/lib/text-field';
 import FlatButton from 'material-ui/lib/flat-button';
@@ -59,11 +61,15 @@ export default class Lists extends Component {
         />
       ];
 
-    const button = (<FloatingActionButton
-                      onTouchTap={this._handleButtonTouchTap.bind(this)}
-                      iconClassName="glyphicon glyphicon-plus"
-                      mini
-                    />);
+    const button = (
+      <FloatingActionButton
+        onTouchTap={this._handleButtonTouchTap.bind(this)}
+        backgroundColor={Colors.deepOrange600}
+        mini
+      >
+        <FontIcon className="material-icons">add</FontIcon>
+      </FloatingActionButton>
+    );
 
     const dialog = (<Dialog
           title="Add a list"

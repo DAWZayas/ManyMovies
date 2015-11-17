@@ -1,9 +1,10 @@
 'use strict';
 
 import chai, { expect } from 'chai';
-import { setDefaultComments, createComment, removeComment, setDefaultLists, createList, deleteList }  from '../../src/actions';
+import { setDefaultComments, createComment, editComment, removeComment, setDefaultLists, createList, deleteList }  from '../../src/actions';
 import { defaultComments } from '../../src/utils/examples';
 import reducer from '../../src/reducers';
+import _ from 'lodash';
 chai.should();
 chai.use(require('chai-things'));
 
@@ -33,6 +34,25 @@ describe('comments reducer tests', () => {
 
       expect(finalState.comments[listId]).to.have.any.with.property('text', 'Awesome list');
     });
+  });
+
+  describe('edit a comment test', () => {
+    it('will edit the text of a comment', () => {
+      const initialState = reducer(undefined, setDefaultComments());
+      const middleState = reducer(initialState, setDefaultLists());
+      const comments = middleState.comments;
+      let commentedId;
+      for (let key in comments) {
+        if (comments.hasOwnProperty(key)) {
+          commentedId = key;
+        }
+      }
+      let commentId = comments[commentedId][0].id;
+      const finalState = reducer(middleState, editComment(commentId, commentedId, 'Good night'));
+      (finalState.comments[commentedId]).should.contain.a.thing.with.property('id', commentId);
+      const commentInFinalState = _.find(finalState.comments[commentedId], comment => comment.id === commentId );
+      expect(commentInFinalState).to.have.a.property('text', 'Good night');
+      });
   });
 
   describe('remove a comment test', () => {

@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import AppBar from 'material-ui/lib/app-bar';
 import { connect } from 'react-redux';
 import { pushState } from 'redux-router';
+import { Link } from 'react-router';
 import IconButton from 'material-ui/lib/icon-button';
 import Color from 'material-ui/lib/styles/colors';
 import MenuItem from 'material-ui/lib/menus/menu-item';
@@ -34,23 +35,27 @@ class App extends Component {
     //const { navigate } = this.props;
     return (
       <div>
-        <AppBar title="ManyMovies"
-                style={style}
-                showMenuIconButton={false}
-                iconElementRight={
-                  <IconMenu
-                    openDirection="bottom-left"
-                    iconButtonElement={
-                      <IconButton
-                        iconClassName="glyphicon glyphicon-align-justify"/>
-                    }
-                    >
-                      <MenuItem primaryText="Lists" onTouchTap={this._handleTouchTap.bind(this)} />
-                      <MenuItem primaryText="History" onTouchTap={this._handleTouchTap.bind(this)} />
-                      <MenuItem primaryText="Collection" onTouchTap={this._handleTouchTap.bind(this)} />
-                      <MenuItem primaryText="WatchList" onTouchTap={this._handleTouchTap.bind(this)} />
-                      <MenuItem primaryText="Movies" onTouchTap={this._handleTouchTap.bind(this)} />
-                  </IconMenu>}/>
+        <AppBar
+          title="ManyMovies"
+          style={style}
+          showMenuIconButton={false}
+          iconElementRight={
+            <IconMenu
+              openDirection="bottom-left"
+              iconButtonElement={
+                <IconButton
+                  iconClassName="glyphicon glyphicon-align-justify"/>
+              }
+            >
+              <MenuItem primaryText="Lists" onTouchTap={this._handleTouchTap.bind(this)} />
+              <MenuItem primaryText="History" onTouchTap={this._handleTouchTap.bind(this)} />
+              <MenuItem primaryText="Collection" onTouchTap={this._handleTouchTap.bind(this)} />
+              <MenuItem primaryText="WatchList" onTouchTap={this._handleTouchTap.bind(this)} />
+              <MenuItem primaryText="Movies" onTouchTap={this._handleTouchTap.bind(this)} />
+                  </IconMenu>
+                }
+        />
+        <Link to="/comment">Show Comment</Link>
         {this.props.children}
       </div>
     );

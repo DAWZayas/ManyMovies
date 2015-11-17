@@ -1,6 +1,6 @@
 import { SET_DEFAULT_COMMENT, CREATE_COMMENT, DELETE_COMMENT, EDIT_COMMENT, DELETE_LIST } from '../actions';
 import { getId } from '../utils';
-//import _ from 'lodash';
+import _ from 'lodash';
 import { defaultComments } from '../utils/examples';
 
 
@@ -8,19 +8,24 @@ const setDefaultComment = state => Object.assign({}, state, defaultComments);
 
 function createComment(state, idCommented, text) {
   const id  = getId();
-  const newComment = { id, idCommented, text, time: Date() };
+  const newComment = { id, idCommented, text, time: new Date() };
   return Object.assign({}, state, { [idCommented] : newComment });
 }
 
 function removeComment(state, id, idCommented){
   let collectionComments = state[idCommented];
-  //----- filter collectionComments = _.without(collectionComments, id)
+  let comment = _.find(collectionComments, (comment) => comment.id === id);
+  collectionComments = _.without(collectionComments, comment);
   return Object.assign({}, state, { [idCommented]: collectionComments });
 }
 
 function editComment(state, id, idCommented, text) {
-  let newComment = { idCommented, text };
-  return Object.assign({}, state, { [id] : newComment });
+  let collectionComments = state[idCommented];
+  let comment = _.find(collectionComments, (comment) => comment.id === id);
+  collectionComments = _.without(collectionComments, comment);
+  let newComment = { id, text, time: comment.time, modified: new Date() };
+  collectionComments = _.union(collectionComments, [newComment]);
+  return Object.assign({}, state, { [idCommented] : collectionComments });
 }
 
 function deleteList(state, id) {

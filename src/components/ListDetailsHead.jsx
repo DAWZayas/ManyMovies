@@ -139,19 +139,19 @@ export default class ListDetailsHead extends Component {
         style={{display: "flex", width: "90%", justifyContent: "space-between", margin: "0 auto"}}
         expandable>
         <IconButton
-          iconClassName="glyphicon glyphicon-edit"
+          iconClassName="material-icons"
           iconStyle={{color:Color.grey400}}
           onTouchTap={this._handleEditButtonTouchTap.bind(this)}
           tooltip="Edit list"
           tooltipPosition="top-center"
-        />
+        >edit</IconButton>
         <IconButton
-          iconClassName="glyphicon glyphicon-remove"
+          iconClassName="material-icons"
           iconStyle={{color:Color.red900}}
           onTouchTap={this._handleDeleteButtonTouchTap.bind(this)}
           tooltip="Delete list"
           tooltipPosition="top-center"
-        />
+        >clear</IconButton>
       </CardActions>
       {editDialog}
       {deleteDialog}

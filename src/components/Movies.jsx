@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import _ from 'lodash';
+import Color from 'material-ui/lib/styles/colors';
 import Table from 'material-ui/lib/table/table';
 import TableBody from 'material-ui/lib/table/table-body';
 import TableHeader from 'material-ui/lib/table/table-header';
@@ -69,8 +70,8 @@ export default class Movies extends Component {
             adjustForCheckbox={this.state.adjustForCheckbox}
           >
             <TableRow>
-              <TableHeaderColumn colSpan="2" style={{textAlign: "center"}}>
-                Moviessss
+              <TableHeaderColumn colSpan="2" style={{textAlign: "center", color: Color.deepOrange800, fontSize: "1.3em"}}>
+                Movies
               </TableHeaderColumn>
             </TableRow>
           </TableHeader>
