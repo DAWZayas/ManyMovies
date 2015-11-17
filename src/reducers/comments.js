@@ -14,7 +14,7 @@ function createComment(state, idCommented, text) {
 
 function removeComment(state, id, idCommented){
   let collectionComments = state[idCommented];
-  //----- filter collectionComments = _.without(collectionComments, id);
+  //----- filter collectionComments = _.without(collectionComments, id)
   return Object.assign({}, state, { [idCommented]: collectionComments });
 }
 
@@ -31,7 +31,7 @@ function deleteList(state, id) {
 
 export default function (state = {}, action) {
   switch (action.type) {
-  	case SET_DEFAULT_COMMENT:
+    case SET_DEFAULT_COMMENT:
       return setDefaultComment(state);
     case CREATE_COMMENT:
       return createComment (state, action.idCommented, action.text);

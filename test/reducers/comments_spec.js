@@ -1,9 +1,11 @@
 'use strict';
 
-import { expect } from 'chai';
-import { setDefaultComments, createComment, deleteComment, setDefaultLists }  from '../../src/actions';
+import chai, { expect } from 'chai';
+import { setDefaultComments, createComment, removeComment, setDefaultLists, createList, deleteList }  from '../../src/actions';
 import { defaultComments } from '../../src/utils/examples';
 import reducer from '../../src/reducers';
+chai.should();
+chai.use(require('chai-things'));
 
 describe('comments reducer tests', () => {
 
@@ -44,22 +46,16 @@ describe('comments reducer tests', () => {
           listId = key;
         }
       }
-      const listComments = allComments[listId];
-      let commentId;
-      for (let key in listComments) {
-        if (allComments.hasOwnProperty(key)) {
-          commentId = key;
-        }
-      }
-      const finalState = reducer(middleState, deleteComment(listId, commentId));
-      expect(finalState.entries[listId]).not.to.containOneLike('20');
+      let commentId = allComments[listId][0].id;
+      const finalState = reducer(middleState, removeComment(commentId, listId));
+      (finalState.comments[listId]).should.not.contain.a.thing.with.property('id', commentId);
     });
   });
 
-  describe('remove all entries test', () => {
-    it('will remove all entries when deleting a list', function() {
-      const stateWithEntries = reducer(undefined, setDefaultEntries());
-      const stateWithLists = reducer(stateWithEntries, setDefaultLists());
+  describe('remove all comments test', () => {
+    it('will remove all comments when deleting a list', function() {
+      const stateWithComments = reducer(undefined, setDefaultComments());
+      const stateWithLists = reducer(stateWithComments, setDefaultLists());
       const title = 'Marvel movies';
       const stateWithCustomList = reducer(stateWithLists, createList(title, 'An awesome movies list'));
       const lists = stateWithCustomList.lists;
@@ -71,9 +67,9 @@ describe('comments reducer tests', () => {
           }
         }
       }
-      const stateWithEntryInCustomList = reducer(stateWithCustomList, addEntry(listId, '73582'));
-      const stateWithoutCustomList = reducer(stateWithEntryInCustomList, deleteList(listId));
-      expect(stateWithoutCustomList.entries).to.not.have.any.keys(listId);
+      const stateWithCommentInCustomList = reducer(stateWithCustomList, createComment(listId, 'DC is better'));
+      const stateWithoutCustomList = reducer(stateWithCommentInCustomList, deleteList(listId));
+      expect(stateWithoutCustomList.comments).to.not.have.any.keys(listId);
     });
   });
 });
