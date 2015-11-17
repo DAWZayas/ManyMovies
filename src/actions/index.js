@@ -15,6 +15,11 @@ export const REMOVE_ENTRY = 'REMOVE_ENTRY';
 
 export const SET_DEFAULT_MOVIES = 'SET_DEFAULT_MOVIES';
 
+export const CREATE_COMMENT = 'CREATE_COMMENT';
+export const DELETE_COMMENT = 'DELETE_COMMENT';
+export const EDIT_COMMENT = 'EDIT_COMMENT';
+
+
 /**
 * List action creators
 */
@@ -90,3 +95,29 @@ export function removeEntry(idCollection, id) {
 */
 
 export const setDefaultMovies = movies => ({type: SET_DEFAULT_MOVIES, movies});
+
+/**
+*Comment action creators
+*/
+export function createComment(idComment, text) {
+  return {
+    type: CREATE_COMMENT,
+    idComment,
+    text
+  };
+}
+
+export function deleteComment(idComment){
+  return {
+    type: DELETE_COMMENT,
+    idComment
+  };
+}
+
+export function editComment(idComment, text) {
+  return{
+    type: EDIT_COMMENT,
+    idComment,
+    text
+  };
+}
