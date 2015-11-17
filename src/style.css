@@ -30,18 +30,6 @@ li{
   border: none;
 }
 
-.post-collections-icon{
- background-color: #00796B;
- margin-right: 6px;
-}
-.post-history-icon{
-  background-color: #512DA8;
-  margin-right: 6px;
-}
-.post-list-icon{
-  background-color: #F44336;
-}
-
 .card-text{
   font-size: 14px;
   font-family: 'Roboto Slab', serif;
