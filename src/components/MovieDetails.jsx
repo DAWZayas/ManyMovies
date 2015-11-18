@@ -6,7 +6,6 @@ import CardTitle from 'material-ui/lib/card/card-title';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import Color from 'material-ui/lib/styles/colors';
 import Comment from './Comment';
-import Searcher from './Searcher';
 import Table from 'material-ui/lib/table/table';
 import TableBody from 'material-ui/lib/table/table-body';
 import TableHeader from 'material-ui/lib/table/table-header';
@@ -16,13 +15,16 @@ import TableRowColumn from 'material-ui/lib/table/table-row-column';
 import Dialog from '../../node_modules/material-ui/lib/dialog';
 import injectTapEventPlugin from "react-tap-event-plugin";
 injectTapEventPlugin();
+
 export default class MovieDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
     AddHistory: false,
     AddCollection: false,
-    Added: false
+    Added: false,
+    maxFanartWidth: 1100,
+    fanartRatio: 1.78
     };
   }
   _handleHistoryTouchTap() {
@@ -113,15 +115,19 @@ export default class MovieDetails extends Component {
 
       const historyStyle = (this.state.AddHistory) ? {color: Color.white, backgroundColor: Color.deepPurple500, border: "2px solid #512DA8", margin: "1em" } : {color: Color.deepPurple500, border: "2px solid #512DA8", margin: "1em" };
       const collectionStyle = (this.state.AddCollection) ? {color: Color.white, backgroundColor: Color.teal500, border: "2px solid #00796B", margin: "1em"} : {color: Color.teal500, border: "2px solid #00796B", margin: "1em"};
+      const backWidth =  document.documentElement.clientWidth > this.state.maxFanartWidth ? this.state.maxFanartWidth : document.documentElement.clientWidth;
     return (
       <div>
-      <Searcher />
-      <Card style={{width: "100%", justifyContent: "space-between", margin: "0 auto"}} >
+      <Card >
           <CardMedia overlay={
-            <CardTitle style={{height: "80px", color: "white", fontSize: "24px"}}>
+            <CardTitle style={{height: "3em", color: "white", fontSize: "1.5em"}}>
               Titulooooooooo
             </CardTitle> }>
-            <img style={{opacity: "0.8"}} src="https://walter.trakt.us/images/movies/000/130/970/fanarts/thumb/58994fad62.jpg"/>
+            <div style={{
+              height: backWidth / this.state.fanartRatio,
+              textAlign:"center",
+              backgroundImage: "url('https://walter.trakt.us/images/movies/000/130/970/fanarts/thumb/58994fad62.jpg')",
+              backgroundSize:"cover"}}/>
           </CardMedia>
           <CardText>
           <div>
