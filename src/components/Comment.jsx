@@ -15,7 +15,7 @@ import injectTapEventPlugin from "react-tap-event-plugin";
 injectTapEventPlugin();
 
 
-export default class Comment extends Component {
+class Comment extends Component {
 
   constructor(props) {
     super(props);
@@ -32,12 +32,6 @@ export default class Comment extends Component {
   _handleTouchEdit() {
     this.setState({editing: true});
   }
-  _submitChanges(){
-    const { editComment, comment, idCommented } = this.props;
-    const { id } = comment;
-    const text = this.refs.comment.getValue();
-    editComment(id, idCommented, text);
-  }
 
   _handleTouchEditSubmit() {
     this._submitChanges();
@@ -46,6 +40,12 @@ export default class Comment extends Component {
 
   _handleTouchEditCancel() {
     this._stopEditing();
+  }
+
+  _handleTouchDelete(){
+    const { removeComment, comment, idCommented } = this.props;
+    const { id } = comment;
+    removeComment(id, idCommented);
   }
 
   _handleKeyDown(e){
@@ -57,6 +57,13 @@ export default class Comment extends Component {
     }else if (e.keyCode === 27){
       this._stopEditing();
     }
+  }
+
+  _submitChanges(){
+    const { editComment, comment, idCommented } = this.props;
+    const { id } = comment;
+    const text = this.refs.comment.getValue();
+    editComment(id, idCommented, text);
   }
 
   _stopEditing() {
@@ -78,7 +85,6 @@ export default class Comment extends Component {
         backgroundColor={Colors.deepOrange900}
       />
     );
-
     const modifiedTime = modified ? <div><small>Edited on {formatDate(modified)}</small></div> : '';
     const cardBody = this.state.editing ? (
       <CardText>
@@ -98,7 +104,6 @@ export default class Comment extends Component {
         {modifiedTime}
       </CardText>
     );
-
     const cardActions = this.state.editing ? (
       <CardActions style={{float: "right"}}>
           <IconButton
@@ -132,7 +137,8 @@ export default class Comment extends Component {
             iconClassName="material-icons"
             iconStyle={{color:Colors.red900}}
             tooltipPosition="top-left"
-            tooltip="Delete">
+            tooltip="Delete"
+            onTouchTap={this._handleTouchDelete.bind(this)}>
             clear
           </IconButton>
         </CardActions>
@@ -141,9 +147,7 @@ export default class Comment extends Component {
     return (
       <Card>
         <CardHeader
-          title="You"
-          titleColor={Colors.deepOrange900}
-          titleStyle={{fontWeight: "bold"}}
+          title={<p>Commented by <span style={{color: Colors.deepOrange900, fontWeight: "bold"}}>You</span></p>}
           subtitle={formatDate(time)}
           avatar={userAvatar}
         />
@@ -155,9 +159,9 @@ export default class Comment extends Component {
 }
 
 Comment.propTypes = {
-  commented: PropTypes.string,
   comment: PropTypes.object,
   editComment: PropTypes.func,
+  removeComment: PropTypes.func,
   idCommented: PropTypes.string
 };
 

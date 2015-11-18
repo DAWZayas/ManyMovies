@@ -3,10 +3,13 @@ import { connect } from 'react-redux';
 import { pushState } from 'redux-router';
 import { editListAndNavigate, deleteListAndNavigate, removeEntry, addEntry } from '../actions';
 import _ from 'lodash';
-
+import Colors from 'material-ui/lib/styles/colors';
+import Tabs from 'material-ui/lib/tabs/tabs';
+import Tab from 'material-ui/lib/tabs/tab';
 import ListDetailsHead from '../components/ListDetailsHead';
 import EntriesList from '../components/EntriesList';
 import Comment from '../components/Comment';
+import CommentAdder from '../components/CommentAdder';
 
 class ListDetailsContainer extends Component {
 
@@ -35,15 +38,26 @@ class ListDetailsContainer extends Component {
           editListAndNavigate={editListAndNavigate}
           deleteListAndNavigate={deleteListAndNavigate}
         />
-        <EntriesList
-          navigate={navigate}
-          removeEntry={removeEntry}
-          addEntry={addEntry}
-          list={list}
-          entries={entries}
-          movies={movies}
-        />
-        {comments.map((comment, index) => (<Comment key={index} idCommented={list.id} comment={comment}/>))}
+        <Tabs
+          inkBarStyle={{backgroundColor: Colors.deepOrange800, height:"0.3em", marginTop: "-0.3em"}}
+        >
+          <Tab style={{backgroundColor: Colors.orange600}}
+           label="Movies">
+            <EntriesList
+              navigate={navigate}
+              removeEntry={removeEntry}
+              addEntry={addEntry}
+              list={list}
+              entries={entries}
+              movies={movies}
+            />
+          </Tab>
+          <Tab style={{backgroundColor: Colors.orange600}}
+           label="Comments">
+            <CommentAdder idCommented={list.id}/>
+            {comments.map((comment, index) => (<Comment key={index} idCommented={list.id} comment={comment}/>))}
+          </Tab>
+        </Tabs>
       </div>
     );
   }

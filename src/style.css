@@ -36,6 +36,8 @@ li{
 }
 
 .center-wrapper{
+  margin-top: 1em;
+  margin-bottom: 1em;
   text-align: center;
 }
 

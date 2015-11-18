@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import AppBar from 'material-ui/lib/app-bar';
 import { connect } from 'react-redux';
 import { pushState } from 'redux-router';
-import { Link } from 'react-router';
 import IconButton from 'material-ui/lib/icon-button';
 import Color from 'material-ui/lib/styles/colors';
 import MenuItem from 'material-ui/lib/menus/menu-item';
@@ -55,7 +54,6 @@ class App extends Component {
                   </IconMenu>
                 }
         />
-        <Link to="/comment">Show Comment</Link>
         {this.props.children}
       </div>
     );

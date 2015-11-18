@@ -31,8 +31,7 @@ describe('comments reducer tests', () => {
         }
       }
       const finalState = reducer(middleState, createComment(listId, 'Awesome list'));
-
-      expect(finalState.comments[listId]).to.have.any.with.property('text', 'Awesome list');
+      (finalState.comments[listId]).should.contain.a.thing.with.property('text', 'Awesome list');
     });
   });
 
