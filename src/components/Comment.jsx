@@ -1,4 +1,6 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { removeComment, editComment } from '../actions';
 import Card from 'material-ui/lib/card/card';
 import CardText from 'material-ui/lib/card/card-text';
 import CardHeader from 'material-ui/lib/card/card-header';
@@ -13,12 +15,11 @@ import injectTapEventPlugin from "react-tap-event-plugin";
 injectTapEventPlugin();
 
 
-export default class Comment extends Component {
+class Comment extends Component {
 
   constructor(props) {
     super(props);
-    const { comment } = props;
-    this.state = { editing: false, comment };
+    this.state = { editing: false };
   }
 
   componentDidUpdate() {
@@ -33,6 +34,7 @@ export default class Comment extends Component {
   }
 
   _handleTouchEditSubmit() {
+    this._submitChanges();
     this._stopEditing();
   }
 
@@ -40,14 +42,28 @@ export default class Comment extends Component {
     this._stopEditing();
   }
 
+  _handleTouchDelete(){
+    const { removeComment, comment, idCommented } = this.props;
+    const { id } = comment;
+    removeComment(id, idCommented);
+  }
+
   _handleKeyDown(e){
     // Ctrl + Enter
     if (e.ctrlKey && e.keyCode === 13){
+      this._submitChanges();
       this._stopEditing();
     // ESC key
     }else if (e.keyCode === 27){
       this._stopEditing();
     }
+  }
+
+  _submitChanges(){
+    const { editComment, comment, idCommented } = this.props;
+    const { id } = comment;
+    const text = this.refs.comment.getValue();
+    editComment(id, idCommented, text);
   }
 
   _stopEditing() {
@@ -56,7 +72,7 @@ export default class Comment extends Component {
 
 
   render() {
-    const { time, text, modified } = this.state.comment;
+    const { time, text, modified } = this.props.comment;
     const userAvatar = (
       <Avatar
         icon={
@@ -69,7 +85,6 @@ export default class Comment extends Component {
         backgroundColor={Colors.deepOrange900}
       />
     );
-
     const modifiedTime = modified ? <div><small>Edited on {formatDate(modified)}</small></div> : '';
     const cardBody = this.state.editing ? (
       <CardText>
@@ -89,7 +104,6 @@ export default class Comment extends Component {
         {modifiedTime}
       </CardText>
     );
-
     const cardActions = this.state.editing ? (
       <CardActions style={{float: "right"}}>
           <IconButton
@@ -123,7 +137,8 @@ export default class Comment extends Component {
             iconClassName="material-icons"
             iconStyle={{color:Colors.red900}}
             tooltipPosition="top-left"
-            tooltip="Delete">
+            tooltip="Delete"
+            onTouchTap={this._handleTouchDelete.bind(this)}>
             clear
           </IconButton>
         </CardActions>
@@ -132,9 +147,7 @@ export default class Comment extends Component {
     return (
       <Card>
         <CardHeader
-          title="You"
-          titleColor={Colors.deepOrange900}
-          titleStyle={{fontWeight: "bold"}}
+          title={<p>Commented by <span style={{color: Colors.deepOrange900, fontWeight: "bold"}}>You</span></p>}
           subtitle={formatDate(time)}
           avatar={userAvatar}
         />
@@ -146,8 +159,10 @@ export default class Comment extends Component {
 }
 
 Comment.propTypes = {
-  commented: PropTypes.string,
-  comment: PropTypes.object
+  comment: PropTypes.object,
+  editComment: PropTypes.func,
+  removeComment: PropTypes.func,
+  idCommented: PropTypes.string
 };
 
 Comment.defaultProps = {
@@ -157,3 +172,20 @@ Comment.defaultProps = {
     modified: new Date()
   }
 };
+
+
+function mapStateToProps() {
+  return {};
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    removeComment: (id, idCommented) => dispatch(removeComment(id, idCommented)),
+    editComment: (id, idCommented, text) => dispatch(editComment(id, idCommented, text))
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Comment);

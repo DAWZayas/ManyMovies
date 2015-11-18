@@ -8,8 +8,9 @@ const setDefaultComment = state => Object.assign({}, state, defaultComments);
 
 function createComment(state, idCommented, text) {
   const id  = getId();
+  let collectionComments = state[idCommented];
   const newComment = { id, idCommented, text, time: new Date() };
-  return Object.assign({}, state, { [idCommented] : newComment });
+  return Object.assign({}, state, { [idCommented] : [newComment].concat(collectionComments)});
 }
 
 function removeComment(state, id, idCommented){
@@ -22,9 +23,10 @@ function removeComment(state, id, idCommented){
 function editComment(state, id, idCommented, text) {
   let collectionComments = state[idCommented];
   let comment = _.find(collectionComments, (comment) => comment.id === id);
-  collectionComments = _.without(collectionComments, comment);
+  let position = collectionComments.indexOf(comment);
   let newComment = { id, text, time: comment.time, modified: new Date() };
-  collectionComments = _.union(collectionComments, [newComment]);
+  collectionComments = collectionComments.slice(0);
+  collectionComments[position] = newComment;
   return Object.assign({}, state, { [idCommented] : collectionComments });
 }
 

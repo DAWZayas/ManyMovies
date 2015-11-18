@@ -3,9 +3,13 @@ import { connect } from 'react-redux';
 import { pushState } from 'redux-router';
 import { editListAndNavigate, deleteListAndNavigate, removeEntry, addEntry } from '../actions';
 import _ from 'lodash';
-
+import Colors from 'material-ui/lib/styles/colors';
+import Tabs from 'material-ui/lib/tabs/tabs';
+import Tab from 'material-ui/lib/tabs/tab';
 import ListDetailsHead from '../components/ListDetailsHead';
 import EntriesList from '../components/EntriesList';
+import Comment from '../components/Comment';
+import CommentAdder from '../components/CommentAdder';
 
 class ListDetailsContainer extends Component {
 
@@ -23,7 +27,8 @@ class ListDetailsContainer extends Component {
       movies,
       navigate,
       removeEntry,
-      addEntry
+      addEntry,
+      comments
     } = this.props;
     return (
       <div>
@@ -33,20 +38,33 @@ class ListDetailsContainer extends Component {
           editListAndNavigate={editListAndNavigate}
           deleteListAndNavigate={deleteListAndNavigate}
         />
-        <EntriesList
-          navigate={navigate}
-          removeEntry={removeEntry}
-          addEntry={addEntry}
-          list={list}
-          entries={entries}
-          movies={movies}
-        />
+        <Tabs
+          inkBarStyle={{backgroundColor: Colors.deepOrange800, height:"0.3em", marginTop: "-0.3em"}}
+        >
+          <Tab style={{backgroundColor: Colors.orange600}}
+           label="Movies">
+            <EntriesList
+              navigate={navigate}
+              removeEntry={removeEntry}
+              addEntry={addEntry}
+              list={list}
+              entries={entries}
+              movies={movies}
+            />
+          </Tab>
+          <Tab style={{backgroundColor: Colors.orange600}}
+           label="Comments">
+            <CommentAdder idCommented={list.id}/>
+            {comments.map((comment, index) => (<Comment key={index} idCommented={list.id} comment={comment}/>))}
+          </Tab>
+        </Tabs>
       </div>
     );
   }
 }
 
 ListDetailsContainer.propTypes = {
+  comments: PropTypes.array,
   entries: PropTypes.array,
   lists: PropTypes.object,
   list: PropTypes.object,
@@ -61,7 +79,8 @@ ListDetailsContainer.propTypes = {
 ListDetailsContainer.defaultProps = {
   list: {},
   movies: {},
-  entries: []
+  entries: [],
+  comments: []
 };
 
 function _getEntriesInList(state, id){
@@ -75,13 +94,18 @@ function _getMoviesInList(state, id){
   return movies;
 }
 
+function _getCommentsInList(state, id){
+  return state.comments[id];
+}
+
 function mapStateToProps(state) {
   const slug = state.router.params.listsSlug;
   const { lists } = state;
   const id = _.findKey(lists, { slug });
   const list = lists[id];
   const movies = _getMoviesInList(state, id);
-  return { lists, list, movies };
+  const comments = _getCommentsInList(state, id);
+  return { lists, list, movies, comments };
 }
 
 function mapDispatchToProps(dispatch) {
