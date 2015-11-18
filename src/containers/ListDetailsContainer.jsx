@@ -6,6 +6,7 @@ import _ from 'lodash';
 
 import ListDetailsHead from '../components/ListDetailsHead';
 import EntriesList from '../components/EntriesList';
+import Comment from '../components/Comment';
 
 class ListDetailsContainer extends Component {
 
@@ -23,7 +24,8 @@ class ListDetailsContainer extends Component {
       movies,
       navigate,
       removeEntry,
-      addEntry
+      addEntry,
+      comments
     } = this.props;
     return (
       <div>
@@ -41,12 +43,14 @@ class ListDetailsContainer extends Component {
           entries={entries}
           movies={movies}
         />
+        {comments.map((comment, index) => (<Comment key={index} idCommented={list.id} comment={comment}/>))}
       </div>
     );
   }
 }
 
 ListDetailsContainer.propTypes = {
+  comments: PropTypes.array,
   entries: PropTypes.array,
   lists: PropTypes.object,
   list: PropTypes.object,
@@ -61,7 +65,8 @@ ListDetailsContainer.propTypes = {
 ListDetailsContainer.defaultProps = {
   list: {},
   movies: {},
-  entries: []
+  entries: [],
+  comments: []
 };
 
 function _getEntriesInList(state, id){
@@ -75,13 +80,18 @@ function _getMoviesInList(state, id){
   return movies;
 }
 
+function _getCommentsInList(state, id){
+  return state.comments[id];
+}
+
 function mapStateToProps(state) {
   const slug = state.router.params.listsSlug;
   const { lists } = state;
   const id = _.findKey(lists, { slug });
   const list = lists[id];
   const movies = _getMoviesInList(state, id);
-  return { lists, list, movies };
+  const comments = _getCommentsInList(state, id);
+  return { lists, list, movies, comments };
 }
 
 function mapDispatchToProps(dispatch) {

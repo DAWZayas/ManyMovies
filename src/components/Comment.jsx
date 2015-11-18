@@ -1,4 +1,6 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { removeComment, editComment } from '../actions';
 import Card from 'material-ui/lib/card/card';
 import CardText from 'material-ui/lib/card/card-text';
 import CardHeader from 'material-ui/lib/card/card-header';
@@ -17,8 +19,7 @@ export default class Comment extends Component {
 
   constructor(props) {
     super(props);
-    const { comment } = props;
-    this.state = { editing: false, comment };
+    this.state = { editing: false };
   }
 
   componentDidUpdate() {
@@ -31,8 +32,15 @@ export default class Comment extends Component {
   _handleTouchEdit() {
     this.setState({editing: true});
   }
+  _submitChanges(){
+    const { editComment, comment, idCommented } = this.props;
+    const { id } = comment;
+    const text = this.refs.comment.getValue();
+    editComment(id, idCommented, text);
+  }
 
   _handleTouchEditSubmit() {
+    this._submitChanges();
     this._stopEditing();
   }
 
@@ -43,6 +51,7 @@ export default class Comment extends Component {
   _handleKeyDown(e){
     // Ctrl + Enter
     if (e.ctrlKey && e.keyCode === 13){
+      this._submitChanges();
       this._stopEditing();
     // ESC key
     }else if (e.keyCode === 27){
@@ -56,7 +65,7 @@ export default class Comment extends Component {
 
 
   render() {
-    const { time, text, modified } = this.state.comment;
+    const { time, text, modified } = this.props.comment;
     const userAvatar = (
       <Avatar
         icon={
@@ -147,7 +156,9 @@ export default class Comment extends Component {
 
 Comment.propTypes = {
   commented: PropTypes.string,
-  comment: PropTypes.object
+  comment: PropTypes.object,
+  editComment: PropTypes.func,
+  idCommented: PropTypes.string
 };
 
 Comment.defaultProps = {
@@ -157,3 +168,20 @@ Comment.defaultProps = {
     modified: new Date()
   }
 };
+
+
+function mapStateToProps() {
+  return {};
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    removeComment: (id, idCommented) => dispatch(removeComment(id, idCommented)),
+    editComment: (id, idCommented, text) => dispatch(editComment(id, idCommented, text))
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Comment);
