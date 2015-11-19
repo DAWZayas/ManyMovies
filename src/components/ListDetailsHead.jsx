@@ -127,17 +127,10 @@ export default class ListDetailsHead extends Component {
         </Dialog>
         );
 
-    return (
-     <Card>
-      <CardTitle
-        title={listTitle}
-        titleColor={Color.deepOrange500}
-        subtitle={subtitle}
-        subtitleStyle={{width: "90%", textAlign: "justify"}}
-        showExpandableButton/>
-      <CardActions
+    const custom = (list.custom);
+    const cardActions = custom ? (<CardActions
         style={{display: "flex", width: "90%", justifyContent: "space-between", margin: "0 auto"}}
-        expandable>
+        expandable={custom}>
         <IconButton
           iconClassName="material-icons"
           iconStyle={{color:Color.grey400}}
@@ -153,6 +146,17 @@ export default class ListDetailsHead extends Component {
           tooltipPosition="top-center"
         >clear</IconButton>
       </CardActions>
+      ) : '';
+
+    return (
+     <Card>
+      <CardTitle
+        title={listTitle}
+        titleColor={Color.deepOrange500}
+        subtitle={subtitle}
+        subtitleStyle={{width: "90%", textAlign: "justify"}}
+        showExpandableButton={custom}/>
+      {cardActions}
       {editDialog}
       {deleteDialog}
     </Card>
