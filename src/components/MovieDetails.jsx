@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Card from 'material-ui/lib/card/card';
 import CardMedia from'material-ui/lib/card/card-media';
 import CardText from 'material-ui/lib/card/card-text';
@@ -13,6 +13,7 @@ import TableHeaderColumn from 'material-ui/lib/table/table-header-column';
 import TableRow from 'material-ui/lib/table/table-row';
 import TableRowColumn from 'material-ui/lib/table/table-row-column';
 import Dialog from '../../node_modules/material-ui/lib/dialog';
+import FlatButton from 'material-ui/lib/flat-button';
 import injectTapEventPlugin from "react-tap-event-plugin";
 injectTapEventPlugin();
 
@@ -24,7 +25,12 @@ export default class MovieDetails extends Component {
     AddCollection: false,
     Added: false,
     maxFanartWidth: 1100,
-    fanartRatio: 1.78
+    fanartRatio: 1.78,
+    stripedRows: false,
+    showRowHover: false,
+    selectable: true,
+    multiSelectable: true,
+    deselectOnClickaway: true
     };
   }
   _handleHistoryTouchTap() {
@@ -58,59 +64,66 @@ export default class MovieDetails extends Component {
     });
   }
   render() {
-
+    const tableStyle = {fontWeight: "bold", color: Color.lightBlueA200, textAlign: "center"};
+    const submitAdd = [
+    <FlatButton
+        key={0}
+        label="Ok"
+        primary
+        onTouchTap={this._handleSubmitAddToList.bind(this)}
+    />
+    ];
     const addToList = (
       <Dialog
         title="Select a list"
         open={this.state.Added}
-        onRequestClose={this._handleSubmitAddToList.bind(this)}
+        actions={submitAdd}
       >
-    <Table
-      height={this.state.height}
-      fixedHeader={this.state.fixedHeader}
-      fixedFooter={this.state.fixedFooter}
-      selectable={this.state.selectable}
-      multiSelectable={this.state.multiSelectable}
-      onRowSelection={this._onRowSelection}>
-      <TableHeader enableSelectAll={this.state.enableSelectAll}>
-        <TableRow>
-          <TableHeaderColumn colSpan="3" tooltip="My lists" style={{textAlign: 'center'}}>
-            My lists
-          </TableHeaderColumn>
-        </TableRow>
-        <TableRow>
-          <TableHeaderColumn/>
-          <TableHeaderColumn tooltip="title">Title</TableHeaderColumn>
-          <TableHeaderColumn tooltip="desc">Description</TableHeaderColumn>
-        </TableRow>
-      </TableHeader>
-      <TableBody
-        deselectOnClickaway={this.state.deselectOnClickaway}
-        showRowHover={this.state.showRowHover}
-        stripedRows={this.state.stripedRows}>
-      <TableRow>
-          <TableRowColumn />
-          <TableRowColumn>Harry Potter</TableRowColumn>
-          <TableRowColumn>All the magic in Howarts</TableRowColumn>
-        </TableRow>
-        <TableRow>
-          <TableRowColumn />
-          <TableRowColumn>The Mortal instruments</TableRowColumn>
-          <TableRowColumn>blablab blabla blabla bla bla blalalalala</TableRowColumn>
-        </TableRow>
-      <TableRow>
-          <TableRowColumn />
-          <TableRowColumn>Harry Potter</TableRowColumn>
-          <TableRowColumn>All the magic in Howarts</TableRowColumn>
-        </TableRow>
-        <TableRow>
-          <TableRowColumn />
-          <TableRowColumn>The Mortal instruments</TableRowColumn>
-          <TableRowColumn>blablab blabla blabla bla bla blalalalala</TableRowColumn>
-        </TableRow>
-       </TableBody>
-       </Table>
-            </Dialog>
+        <Table
+          selectable={this.state.selectable}>
+          <TableHeader>
+            <TableRow>
+             <TableHeaderColumn colSpan="1" style={{textAlign: 'center'}}/>
+            </TableRow>
+          </TableHeader>
+          <TableBody
+            deselectOnClickaway={this.state.deselectOnClickaway}
+            showRowHover={this.state.showRowHover}
+            stripedRows={this.state.stripedRows}>
+          <TableRow>
+            <TableRowColumn style={tableStyle}>Watched</TableRowColumn>
+          </TableRow>
+          </TableBody>
+          </Table>
+        <Table
+          selectable={this.state.selectable}
+          multiSelectable={this.state.multiSelectable}>
+          <TableHeader enableSelectAll={this.state.enableSelectAll}>
+            <TableRow>
+              <TableHeaderColumn colSpan="1" style={{textAlign: 'center'}}>
+                My lists
+              </TableHeaderColumn>
+            </TableRow>
+          </TableHeader>
+          <TableBody
+            deselectOnClickaway={this.state.deselectOnClickaway}
+            showRowHover={this.state.showRowHover}
+            stripedRows={this.state.stripedRows}>
+          <TableRow>
+            <TableRowColumn style={tableStyle}>Harry Potter</TableRowColumn>
+          </TableRow>
+          <TableRow>
+            <TableRowColumn style={tableStyle}>The Mortal instruments</TableRowColumn>
+          </TableRow>
+          <TableRow>
+            <TableRowColumn style={tableStyle}>Harry Potter</TableRowColumn>
+          </TableRow>
+          <TableRow>
+            <TableRowColumn style={tableStyle}>The Mortal instruments</TableRowColumn>
+          </TableRow>
+          </TableBody>
+        </Table>
+      </Dialog>
               );
 
       const historyStyle = (this.state.AddHistory) ? {color: Color.white, backgroundColor: Color.deepPurple500, border: "2px solid #512DA8", margin: "1em" } : {color: Color.deepPurple500, border: "2px solid #512DA8", margin: "1em" };
@@ -121,7 +134,7 @@ export default class MovieDetails extends Component {
       <Card >
           <CardMedia overlay={
             <CardTitle style={{height: "3em", color: "white", fontSize: "1.5em"}}>
-              Titulooooooooo
+             Title
             </CardTitle> }>
             <div style={{
               height: backWidth / this.state.fanartRatio,
@@ -130,13 +143,17 @@ export default class MovieDetails extends Component {
               backgroundSize:"cover"}}/>
           </CardMedia>
           <CardText>
-          <div>
+          <div style={{display: "flex", width: "100%", margin: "0 auto"}}>
+            <div>
             <li> <img style={{border: "1px solid #727272", float:"left", height: "13em", marginRight: "2em"}} src="https://walter.trakt.us/images/movies/000/130/970/posters/thumb/baa71aa408.jpg"/> </li>
+            </div>
+            <div>
             <li> <span style={{color: Color.red500}}>Released: </span> 2015-07-10 </li>
             <li> <span style={{color: Color.red500}}>Runtime: </span> 91 </li>
             <li> <span style={{color: Color.red500}}>Genres: </span> adventure, animation, comedy, family </li>
             <li> <span style={{color: Color.red500}}>Certification: </span> PG </li>
             <li> <MenuItem href="http://youtube.com/watch?v=UvOSamXmU2E"><i className="material-icons">movie</i>Trailer</MenuItem> </li>
+            </div>
             </div>
           </CardText>
           <CardText style={{padding: "1em", fontSize: "1em", clear: "left"}}>
@@ -152,7 +169,7 @@ export default class MovieDetails extends Component {
                   primaryText="ADD TO COLLECTION"
                   onTouchTap={this.state.AddCollection ? this._handleDisableCollection.bind(this) : this._handleCollectionTouchTap.bind(this)}
         />
-        <MenuItem style={{color: Color.red500, border: "2PX solid #F44336", margin: "1em"}}
+        <MenuItem style={{color: Color.red500, border: "2px solid #F44336", margin: "1em"}}
                   primaryText="ADD TO LIST"
                   onTouchTap={this._handleAddToList.bind(this)}
         />
@@ -163,3 +180,13 @@ export default class MovieDetails extends Component {
     );
   }
 }
+
+MovieDetails.propTypes = {
+  list: PropTypes.object,
+  movies: PropTypes.object,
+  addEntry: PropTypes.func
+};
+
+MovieDetails.defaultProps = {
+  movies: []
+};
