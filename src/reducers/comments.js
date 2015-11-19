@@ -9,6 +9,7 @@ const setDefaultComment = state => Object.assign({}, state, defaultComments);
 function createComment(state, idCommented, text) {
   const id  = getId();
   let collectionComments = state[idCommented];
+  collectionComments = collectionComments ? collectionComments : [];
   const newComment = { id, idCommented, text, time: new Date() };
   return Object.assign({}, state, { [idCommented] : [newComment].concat(collectionComments)});
 }
