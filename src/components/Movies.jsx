@@ -30,20 +30,32 @@ export default class Movies extends Component {
     };
   }
 
+  _handleKeyDown(e){
+    if (e.keyCode === 27){
+      this.refs.search.clearValue();
+      this.refs.search.blur();
+      this._showSearchedMovies();
+    }
+  }
+
   _handleTouchTap(slug){
     console.log(slug);
     this.props.navigate('/lists');
   }
 
   _handleSearchChange(){
-    const listedMovies = _.pick(this.props.movies, this._isSearched, this);
-    this.setState({listedMovies});
+    this._showSearchedMovies();
   }
 
   _isSearched(value){
     const searchTerm = this.refs.search.getValue().toLowerCase().trim();
     const title = value.title.toLowerCase();
     return title.indexOf(searchTerm) !== -1;
+  }
+
+  _showSearchedMovies(){
+    const listedMovies = _.pick(this.props.movies, this._isSearched, this);
+    this.setState({listedMovies});
   }
 
   render() {
@@ -57,6 +69,7 @@ export default class Movies extends Component {
             style={{flexGrow: "20"}}
             hintText="Search a movie"
             onChange={this._handleSearchChange.bind(this)}
+            onKeyDown={this._handleKeyDown.bind(this)}
           />
         </Paper>
         <Table
