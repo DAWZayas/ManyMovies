@@ -22,6 +22,9 @@ export const DELETE_COMMENT = 'DELETE_COMMENT';
 export const EDIT_COMMENT = 'EDIT_COMMENT';
 export const SET_DEFAULT_COMMENT = 'SET_DEFAULT_COMMENT';
 
+export const EDIT_USER = 'EDIT_USER';
+export const SET_DEFAULT_USERS = 'SET_DEFAULT_USERS';
+
 
 /**
 * List action creators
@@ -131,5 +134,18 @@ export function editComment(id, idCommented, text) {
     id,
     idCommented,
     text
+  };
+}
+
+/**
+*Users action creators
+*/
+export const setDefaultUsers = users => ({type: SET_DEFAULT_USERS, users});
+
+export function editUser(userName, displayName){
+  return{
+    type: EDIT_USER,
+    userName,
+    displayName
   };
 }
