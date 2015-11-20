@@ -14,6 +14,7 @@ import TableRow from 'material-ui/lib/table/table-row';
 import TableRowColumn from 'material-ui/lib/table/table-row-column';
 import Dialog from '../../node_modules/material-ui/lib/dialog';
 import FlatButton from 'material-ui/lib/flat-button';
+import IconButton from 'material-ui/lib/icon-button';
 import injectTapEventPlugin from "react-tap-event-plugin";
 injectTapEventPlugin();
 
@@ -24,6 +25,7 @@ export default class MovieDetails extends Component {
     AddHistory: false,
     AddCollection: false,
     Added: false,
+    Like: false,
     maxFanartWidth: 1100,
     fanartRatio: 1.78,
     stripedRows: false,
@@ -63,6 +65,11 @@ export default class MovieDetails extends Component {
       Added: false
     });
   }
+  _handleLike(){
+    this.setState({
+      Like: true
+    });
+  }
   render() {
     const tableStyle = {fontWeight: "bold", color: Color.lightBlueA200, textAlign: "center"};
     const submitAdd = [
@@ -89,7 +96,7 @@ export default class MovieDetails extends Component {
           <TableBody
             deselectOnClickaway={this.state.deselectOnClickaway}
             showRowHover={this.state.showRowHover}
-            stripedRows={this.state.stripedRows}>
+          >
           <TableRow>
             <TableRowColumn style={tableStyle}>Watched</TableRowColumn>
           </TableRow>
@@ -129,12 +136,18 @@ export default class MovieDetails extends Component {
       const historyStyle = (this.state.AddHistory) ? {color: Color.white, backgroundColor: Color.deepPurple500, border: "2px solid #512DA8", margin: "1em" } : {color: Color.deepPurple500, border: "2px solid #512DA8", margin: "1em" };
       const collectionStyle = (this.state.AddCollection) ? {color: Color.white, backgroundColor: Color.teal500, border: "2px solid #00796B", margin: "1em"} : {color: Color.teal500, border: "2px solid #00796B", margin: "1em"};
       const backWidth =  document.documentElement.clientWidth > this.state.maxFanartWidth ? this.state.maxFanartWidth : document.documentElement.clientWidth;
+      //const likeBtnStyle = (this.state.Like) ? {color: red} : {color: white};
     return (
       <div>
       <Card >
           <CardMedia overlay={
             <CardTitle style={{height: "3em", color: "white", fontSize: "1.5em"}}>
              Title
+             <span>
+              <IconButton onTouchTap={this._handleLike.bind(this)}>
+                <i className="material-icons">favorite</i>
+              </IconButton>
+             </span>
             </CardTitle> }>
             <div style={{
               height: backWidth / this.state.fanartRatio,
@@ -182,11 +195,72 @@ export default class MovieDetails extends Component {
 }
 
 MovieDetails.propTypes = {
-  list: PropTypes.object,
-  movies: PropTypes.object,
+  lists: PropTypes.object,
+  movie: PropTypes.object,
   addEntry: PropTypes.func
 };
 
 MovieDetails.defaultProps = {
-  movies: []
+  movie: {
+    "title": "American History X",
+    "released": "1998-10-30",
+    "ids": {
+      "trakt": 43,
+      "slug": "american-history-x-1998",
+      "imdb": "tt0120586",
+      "tmdb": 73
+    },
+    "sinopsis": "Derek Vineyard is paroled after serving 3 years in prison for killing two thugs who tried to break into/steal his truck. Through his brother, Danny Vineyard's narration, we learn that before going to prison, Derek was a skinhead and the leader of a violent white supremacist gang that committed acts of racial crime throughout L.A. and his actions greatly influenced Danny. Reformed and fresh out of prison, Derek severs contact with the gang and becomes determined to keep Danny from going down the same violent path as he did.",
+    "runtime": 119,
+    "votes": 7659,
+    "rating": 8.70296,
+    "genres": [
+      "drama"
+    ],
+    "certification": "R",
+    "tagline": "Some Legacies Must End.",
+    "trailer": "http://youtube.com/watch?v=JsPW6Fj3BUI",
+    "images": {
+      "poster": "https://walter.trakt.us/images/movies/000/000/043/posters/thumb/3943ed4449.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/000/043/fanarts/thumb/4144a111c1.jpg"
+    }
+  },
+  likes: {likes:100, dislikes:20 },
+
+  historyList: {
+    id: '3',
+    title: 'History',
+    slug: 'history',
+    desc: 'A list of watched movies',
+    custom: false
+  },
+  collectionList: {
+    id: '4',
+    title: 'Collection',
+    slug: 'collection',
+    desc: 'A list of collected movies',
+    custom: false,
+  },
+  generalLists: [
+    {'2': {
+      id: '2',
+      title: 'WatchList',
+      slug: 'watchlist',
+      desc: 'A list of pending movies',
+      custom: false
+      }
+    },
+
+    {'1': {
+      id: '1',
+      title: 'Harry potter movies',
+      slug:'harry-potter-movies',
+      desc: 'All the magic in Howarts',
+      custom: true,
+      }
+    }
+  ],
+
+  userLikes: -1,
+  listedIn: ['1', '2', '3']
 };

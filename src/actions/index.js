@@ -12,6 +12,8 @@ export const EDIT_LIST = 'EDIT_LIST';
 export const SET_DEFAULT_ENTRIES = 'SET_DEFAULT_ENTRIES';
 export const ADD_ENTRY = 'ADD_ENTRY';
 export const REMOVE_ENTRY = 'REMOVE_ENTRY';
+export const ENTRY_LIKE = 'USER_LIKES';
+export const USER_LIKES = 'ENTRY_DISLIKE';
 
 export const SET_DEFAULT_MOVIES = 'SET_DEFAULT_MOVIES';
 
@@ -91,11 +93,16 @@ export function removeEntry(idCollection, id) {
   };
 }
 
+export const entryLikes = (id, likesCount) => ({type: ENTRY_LIKE, id, likesCount});
+
+export const userLikes = (id, userLikesCount) => ({type: USER_LIKES, id, userLikesCount});
+
 /**
 * Movies action creators
 */
 
 export const setDefaultMovies = movies => ({type: SET_DEFAULT_MOVIES, movies});
+
 
 /**
 *Comment action creators
