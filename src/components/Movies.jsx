@@ -43,6 +43,10 @@ export default class Movies extends Component {
     this.props.navigate('/lists');
   }
 
+  _handleSearchFocus(){
+    this.refs.search.clearValue();
+  }
+
   _handleSearchChange(){
     this._showSearchedMovies();
   }
@@ -69,6 +73,7 @@ export default class Movies extends Component {
             style={{flexGrow: "20"}}
             hintText="Search a movie"
             onChange={this._handleSearchChange.bind(this)}
+            onFocus={this._handleSearchFocus.bind(this)}
             onKeyDown={this._handleKeyDown.bind(this)}
           />
         </Paper>
