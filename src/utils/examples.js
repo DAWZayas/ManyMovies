@@ -10,6 +10,7 @@ const HARRY_POTTER_LIST_ID = getId();
 const FIRST_COMMENT_ID = getId();
 const SECOND_COMMENT_ID = getId();
 const THIRD_COMMENT_ID = getId();
+const  FIRST_USERNAME = 'Pepe';
 
 export const defaultLists = {
   [HISTORY_ID]: {
@@ -68,6 +69,15 @@ export const defaultComments = {
         id: THIRD_COMMENT_ID,
         text: 'This movie is awesome',
         time: new Date()
+      }
+    ]
+};
+
+export const defaultUsers = {
+  [FIRST_USERNAME] : [
+      {
+        userName: FIRST_USERNAME,
+        displayName: 'Pepito',
       }
     ]
 };
