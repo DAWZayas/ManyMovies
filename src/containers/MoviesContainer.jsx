@@ -1,4 +1,4 @@
-rimport { connect } from 'react-redux';
+import { connect } from 'react-redux';
 import { pushState } from 'redux-router';
 import Movies from '../components/Movies';
 

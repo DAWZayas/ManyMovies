@@ -14,7 +14,7 @@ import TableRow from 'material-ui/lib/table/table-row';
 import TableRowColumn from 'material-ui/lib/table/table-row-column';
 import Dialog from '../../node_modules/material-ui/lib/dialog';
 import FlatButton from 'material-ui/lib/flat-button';
-import IconButton from 'material-ui/lib/icon-button';
+//import IconButton from 'material-ui/lib/icon-button';
 import injectTapEventPlugin from "react-tap-event-plugin";
 injectTapEventPlugin();
 
@@ -143,11 +143,6 @@ export default class MovieDetails extends Component {
           <CardMedia overlay={
             <CardTitle style={{height: "3em", color: "white", fontSize: "1.5em"}}>
              Title
-             <span>
-              <IconButton onTouchTap={this._handleLike.bind(this)}>
-                <i className="material-icons">favorite</i>
-              </IconButton>
-             </span>
             </CardTitle> }>
             <div style={{
               height: backWidth / this.state.fanartRatio,

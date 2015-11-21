@@ -20,6 +20,12 @@ describe('comments reducer tests', () => {
   });
 
   describe('create a comment test', () => {
+    it('will create the first comment asociated to a list', () => {
+      const initialState = reducer(undefined, setDefaultComments());
+      const finalState = reducer(initialState, createComment('idNotFound', 'Awesome list'));
+      (finalState.comments['idNotFound']).should.contain.a.thing.with.property('text', 'Awesome list');
+      expect(finalState.comments['idNotFound'].length).to.equal(1);
+    });
     it('will create a comment asociated to a list', () => {
       const initialState = reducer(undefined, setDefaultComments());
       const middleState = reducer(initialState, setDefaultLists());
