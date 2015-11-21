@@ -45,6 +45,7 @@ export default class Movies extends Component {
 
   _handleSearchFocus(){
     this.refs.search.clearValue();
+    this._showSearchedMovies();
   }
 
   _handleSearchChange(){

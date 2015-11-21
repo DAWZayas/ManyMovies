@@ -10,6 +10,7 @@ const HARRY_POTTER_LIST_ID = getId();
 const FIRST_COMMENT_ID = getId();
 const SECOND_COMMENT_ID = getId();
 const THIRD_COMMENT_ID = getId();
+const FOURTH_COMMENT_ID = getId();
 const  FIRST_USERNAME = 'Pepe';
 
 export const defaultLists = {
@@ -57,18 +58,43 @@ export const defaultComments = {
         id: FIRST_COMMENT_ID,
         text: 'Hiiiiii',
         time: new Date(),
+        user: {
+          userName: 'Gotre1',
+          displayName: 'Gotrecillo',
+          avatarUrl: 'http://www.icare3d.org/images/AvatarTransp.png'
+        }
       },
       {
         id: SECOND_COMMENT_ID,
         text: 'Byeee',
-        time: new Date()
+        time: new Date(),
+        user: {
+          userName: 'Gotre',
+          displayName: 'Gotre',
+          avatarUrl: 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/6d/6d640a36a0edd460b5b32e18b9f8229fd634c65f_full.jpg'
+        },
+      },
+      {
+        id: FOURTH_COMMENT_ID,
+        text: 'I\'m shy',
+        time: new Date(),
+        user: {
+          userName: 'ShyBoy',
+          displayName: 'ShyBoy',
+          avatarUrl: ''
+        },
       }
     ],
   ['7'] : [
       {
         id: THIRD_COMMENT_ID,
         text: 'This movie is awesome',
-        time: new Date()
+        time: new Date(),
+        user: {
+          userName: 'Gotre',
+          displayName: 'Gotre',
+          avatarUrl: 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/6d/6d640a36a0edd460b5b32e18b9f8229fd634c65f_full.jpg'
+        },
       }
     ]
 };

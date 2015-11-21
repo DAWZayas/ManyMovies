@@ -87,7 +87,7 @@ class CommentAdder extends Component {
       />
     );
     const cardBody = (
-      <CardText>
+      <CardText style={{backgroundColor: Colors.grey200}}>
         <TextField
           onKeyDown={this._handleKeyDown.bind(this)}
           ref="comment"
@@ -121,10 +121,11 @@ class CommentAdder extends Component {
       ) : '';
 
     return (
-      <Card>
-        <CardText style={{fontSize: "1.5em"}}><b>Post</b> a new comment</CardText>
+      <Card style={{margin: "0 0 1em 0", backgroundColor: Colors.grey200}}>
+        <CardText style={{fontSize: "1.5em", backgroundColor: Colors.white }}><b>Post</b> a new comment</CardText>
         <CardHeader
-          title={<p>Commenting as <span style={{color: Colors.deepOrange900, fontWeight: "bold"}}>You</span></p>}
+          style={{backgroundColor: Colors.grey300}}
+          title={<span>Commenting as <span style={{color: Colors.deepOrange900, fontWeight: "bold"}}>{this.props.user.displayName}</span></span>}
           avatar={userAvatar}
         />
         {cardBody}
@@ -136,10 +137,12 @@ class CommentAdder extends Component {
 
 CommentAdder.propTypes = {
   createComment: PropTypes.func,
-  idCommented: PropTypes.string
+  idCommented: PropTypes.string,
+  user: PropTypes.object
 };
 
 CommentAdder.defaultProps = {
+  user: {displayName: 'Gotrecillo', avatarUrl: 'http://s7.postimg.org/hkvr9j747/hahaha.png'}
 };
 
 

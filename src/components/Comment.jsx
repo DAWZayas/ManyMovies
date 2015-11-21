@@ -7,10 +7,11 @@ import CardHeader from 'material-ui/lib/card/card-header';
 import CardActions from 'material-ui/lib/card/card-actions';
 import TextField from 'material-ui/lib/text-field';
 import Avatar from 'material-ui/lib/avatar';
-import FontIcon from 'material-ui/lib/font-icon';
 import IconButton from 'material-ui/lib/icon-button';
 import Colors from 'material-ui/lib/styles/colors';
 import { formatDate } from '../utils/date';
+import imageTo64 from '../utils/imageTo64';
+import defaultAvatar from '../../images/avatar.png';
 import injectTapEventPlugin from "react-tap-event-plugin";
 injectTapEventPlugin();
 
@@ -19,14 +20,14 @@ class Comment extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { editing: false };
+    const avatarSrc = defaultAvatar;
+    this.state = { editing: false, avatarSrc };
+    imageTo64('http://pickaface.net/includes/themes/clean/img/slide2.png', function(base64Img){
+      this.setState({avatarSrc: base64Img});
+    }.bind(this));
   }
 
-  componentDidUpdate() {
-    if (this.refs.comment) {
-      this.refs.comment.focus();
-      this.refs.comment._getInputNode().select();
-    }
+  componentDidMount(){
   }
 
   _handleTouchEdit() {
@@ -75,12 +76,7 @@ class Comment extends Component {
     const { time, text, modified } = this.props.comment;
     const userAvatar = (
       <Avatar
-        icon={
-          <FontIcon
-            className="material-icons">
-              face
-          </FontIcon>
-        }
+        src={this.state.avatarSrc}
         color={Colors.orange100}
         backgroundColor={Colors.deepOrange900}
       />
@@ -145,10 +141,12 @@ class Comment extends Component {
     );
 
     return (
-      <Card>
+      <Card style={{margin: "1em 0 0 0", backgroundColor: Colors.grey200}}>
         <CardHeader
-          title={<p>Commented by <span style={{color: Colors.deepOrange900, fontWeight: "bold"}}>You</span></p>}
+          style={{backgroundColor: Colors.grey300}}
+          title={<span>Commented by <span style={{color: Colors.deepOrange900, fontWeight: "bolder"}}>You</span></span>}
           subtitle={formatDate(time)}
+          subtitleStyle={{color: Colors.grey700}}
           avatar={userAvatar}
         />
         {cardBody}
@@ -160,6 +158,7 @@ class Comment extends Component {
 
 Comment.propTypes = {
   comment: PropTypes.object,
+  user: PropTypes.object,
   editComment: PropTypes.func,
   removeComment: PropTypes.func,
   idCommented: PropTypes.string
@@ -168,8 +167,17 @@ Comment.propTypes = {
 Comment.defaultProps = {
   comment:{
     text: 'This movie is awesome',
+    user: {
+      displayName: 'Gotrecillo',
+      avatarUrl: 'http://www.icare3d.org/images/AvatarTransp.png'
+    },
     time: new Date(),
     modified: new Date()
+  },
+  user:{
+    userName: 'Gotre1',
+    displayName: 'Gotrecillo',
+    avatarUrl: 'http://www.icare3d.org/images/AvatarTransp.png'
   }
 };
 
