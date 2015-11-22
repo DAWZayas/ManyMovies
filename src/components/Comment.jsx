@@ -10,7 +10,6 @@ import Avatar from 'material-ui/lib/avatar';
 import IconButton from 'material-ui/lib/icon-button';
 import Colors from 'material-ui/lib/styles/colors';
 import { formatDate } from '../utils/date';
-import gotrecilloAvatar from '../../images/gotrecilloAvatar.png';
 import injectTapEventPlugin from "react-tap-event-plugin";
 injectTapEventPlugin();
 
@@ -71,7 +70,7 @@ class Comment extends Component {
     const { time, text, modified } = this.props.comment;
     const userAvatar = (
       <Avatar
-        src={this.props.comment.user.avatarUrl}
+        src={this.props.creator.avatarUrl}
         color={Colors.orange100}
         backgroundColor={Colors.deepOrange900}
       />
@@ -139,7 +138,7 @@ class Comment extends Component {
       <Card style={{margin: "1em 0 0 0", backgroundColor: Colors.grey200}}>
         <CardHeader
           style={{backgroundColor: Colors.grey300}}
-          title={<span>Commented by <span style={{color: Colors.deepOrange900, fontWeight: "bolder"}}>{this.props.comment.user.displayName}</span></span>}
+          title={<span>Commented by <span style={{color: Colors.deepOrange900, fontWeight: "bolder"}}>{this.props.creator.displayName}</span></span>}
           subtitle={formatDate(time)}
           subtitleStyle={{color: Colors.grey700}}
           avatar={userAvatar}
@@ -153,32 +152,15 @@ class Comment extends Component {
 
 Comment.propTypes = {
   comment: PropTypes.object,
+  creator: PropTypes.object,
   user: PropTypes.object,
   editComment: PropTypes.func,
   removeComment: PropTypes.func,
   idCommented: PropTypes.string
 };
 
-Comment.defaultProps = {
-  comment:{
-    text: 'This movie is awesome',
-    user: {
-      displayName: 'Gotrecillo',
-      avatarUrl: gotrecilloAvatar
-    },
-    time: new Date(),
-    modified: new Date()
-  },
-  user:{
-    userName: 'Gotre1',
-    displayName: 'Gotrecillo',
-    avatarUrl: gotrecilloAvatar
-  }
-};
-
-
-function mapStateToProps() {
-  return {};
+function mapStateToProps(state, ownProp) {
+  return {creator: state.users[ownProp.comment.userName]};
 }
 
 function mapDispatchToProps(dispatch) {

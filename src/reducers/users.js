@@ -13,7 +13,7 @@ export default function (state = {}, action) {
     case SET_DEFAULT_USERS:
       return setDefaulUsers(state);
     case EDIT_USER:
-      return editUser(state, action.userName, action.displayName);
+      return editUser(state, action.user, action.newStats);
     default:
       return state;
   }

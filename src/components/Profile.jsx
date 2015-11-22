@@ -4,7 +4,7 @@ import TextField from 'material-ui/lib/text-field';
 import IconButton from 'material-ui/lib/icon-button';
 import Avatar from 'material-ui/lib/avatar';
 import RaisedButton from 'material-ui/lib/raised-button';
-import defaultAvatar from '../../images/avatar.png';
+import Snackbar from 'material-ui/lib/snackbar';
 import { allTrim } from '../utils';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
@@ -12,7 +12,7 @@ injectTapEventPlugin();
 export default class Profile extends Component {
   constructor(props) {
     super(props);
-    this.state = {avatarUri: defaultAvatar, displayName: props.user.displayName};
+    this.state = {avatarUri: props.user.avatarUrl, displayName: props.user.displayName};
   }
 
   _handleTouchTap(){
@@ -27,7 +27,8 @@ export default class Profile extends Component {
       displayNameNode.focus();
       displayNameNode.clearValue();
     }else {
-      //Here we call the action edit user passed as props via redux connect
+      this.props.editUser(this.props.user, {displayName, avatarUrl: this.state.avatarUri});
+      this.refs.snack.show();
     }
   }
 
@@ -46,8 +47,16 @@ export default class Profile extends Component {
   }
 
   render() {
+    const snack = (<Snackbar
+      action="X"
+      onActionTouchTap={() => {this.refs.snack.dismiss();}}
+      ref="snack"
+      message="Settings were saved correctly"
+      autoHideDuration={2000}
+    />);
     return (
       <div style={{textAlign: "center", padding:"1em 0 0 0"}}>
+        {snack}
         <Avatar
           size={200}
           src={this.state.avatarUri}
@@ -67,13 +76,12 @@ export default class Profile extends Component {
             underlineDisabledStyle={{borderStyle: "solid", borderWidth: "1px", borderColor: Color.grey300}}
             disabled
             />
-          <div style={{width: "0", overflow: "hidden"}}>
-            <input
-              onChange={this._handleFileChange.bind(this)}
-              ref="avatar"
-              type="file"
-              accept=".png"/>
-          </div>
+          <input
+            style={{display: "none"}}
+            onChange={this._handleFileChange.bind(this)}
+            ref="avatar"
+            type="file"
+            accept=".png"/>
           <IconButton
             style={{flexGrow: 1}}
             iconClassName="material-icons"
@@ -95,12 +103,4 @@ export default class Profile extends Component {
 Profile.propTypes = {
   user: PropTypes.object,
   editUser: PropTypes.func
-};
-
-Profile.defaultProps = {
-  user:{
-    userName: 'Gotre1',
-    displayName: 'Gotrecillo',
-    avatarUrl: 'http://www.icare3d.org/images/AvatarTransp.png'
-  }
 };

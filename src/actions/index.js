@@ -142,10 +142,10 @@ export function editComment(id, idCommented, text) {
 */
 export const setDefaultUsers = users => ({type: SET_DEFAULT_USERS, users});
 
-export function editUser(userName, displayName){
+export function editUser(user, newStats){
   return{
     type: EDIT_USER,
-    userName,
-    displayName
+    user,
+    newStats
   };
 }

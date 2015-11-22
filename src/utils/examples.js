@@ -61,31 +61,19 @@ export const defaultComments = {
         id: FIRST_COMMENT_ID,
         text: 'Hiiiiii',
         time: new Date(),
-        user: {
-          userName: 'Gotre1',
-          displayName: 'Gotrecillo',
-          avatarUrl: gotrecilloAvatar
-        }
+        userName: 'Gotre1',
       },
       {
         id: SECOND_COMMENT_ID,
         text: 'Byeee',
         time: new Date(),
-        user: {
-          userName: 'Gotre',
-          displayName: 'Gotre',
-          avatarUrl: gotreAvatar
-        },
+        userName: 'Gotre'
       },
       {
         id: FOURTH_COMMENT_ID,
         text: 'I\'m shy',
         time: new Date(),
-        user: {
-          userName: 'ShyBoy',
-          displayName: 'ShyBoy',
-          avatarUrl: defaultAvatar
-        },
+        userName: 'ShyBoy'
       }
     ],
   ['7'] : [
@@ -93,24 +81,30 @@ export const defaultComments = {
         id: THIRD_COMMENT_ID,
         text: 'This movie is awesome',
         time: new Date(),
-        user: {
-          userName: 'Gotre',
-          displayName: 'Gotre',
-          avatarUrl: gotreAvatar
-        },
+        userName: 'Gotre'
       }
     ]
 };
 
 export const defaultUsers = {
   [FIRST_USERNAME] : {
-        userName: FIRST_USERNAME,
-        displayName: 'Pepito',
-        avatarUrl: defaultAvatar
-      },
+    userName: FIRST_USERNAME,
+    displayName: 'Pepito',
+    avatarUrl: defaultAvatar
+  },
   'Gotre': {
-          userName: 'Gotre',
-          displayName: 'Gotre',
-          avatarUrl: gotreAvatar
+    userName: 'Gotre',
+    displayName: 'Gotre',
+    avatarUrl: gotreAvatar
+  },
+  'Gotre1': {
+    userName: 'Gotre1',
+    displayName: 'Gotrecillo',
+    avatarUrl: gotrecilloAvatar
+  },
+  'ShyBoy': {
+    userName: 'ShyBoy',
+    displayName: 'ShyBoy',
+    avatarUrl: defaultAvatar
   }
 };
