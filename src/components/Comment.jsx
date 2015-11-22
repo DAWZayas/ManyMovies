@@ -10,8 +10,7 @@ import Avatar from 'material-ui/lib/avatar';
 import IconButton from 'material-ui/lib/icon-button';
 import Colors from 'material-ui/lib/styles/colors';
 import { formatDate } from '../utils/date';
-import imageTo64 from '../utils/imageTo64';
-import defaultAvatar from '../../images/avatar.png';
+import gotrecilloAvatar from '../../images/gotrecilloAvatar.png';
 import injectTapEventPlugin from "react-tap-event-plugin";
 injectTapEventPlugin();
 
@@ -20,11 +19,7 @@ class Comment extends Component {
 
   constructor(props) {
     super(props);
-    const avatarSrc = defaultAvatar;
-    this.state = { editing: false, avatarSrc };
-    imageTo64('http://pickaface.net/includes/themes/clean/img/slide2.png', function(base64Img){
-      this.setState({avatarSrc: base64Img});
-    }.bind(this));
+    this.state = {editing: false};
   }
 
   componentDidMount(){
@@ -76,7 +71,7 @@ class Comment extends Component {
     const { time, text, modified } = this.props.comment;
     const userAvatar = (
       <Avatar
-        src={this.state.avatarSrc}
+        src={this.props.comment.user.avatarUrl}
         color={Colors.orange100}
         backgroundColor={Colors.deepOrange900}
       />
@@ -144,7 +139,7 @@ class Comment extends Component {
       <Card style={{margin: "1em 0 0 0", backgroundColor: Colors.grey200}}>
         <CardHeader
           style={{backgroundColor: Colors.grey300}}
-          title={<span>Commented by <span style={{color: Colors.deepOrange900, fontWeight: "bolder"}}>You</span></span>}
+          title={<span>Commented by <span style={{color: Colors.deepOrange900, fontWeight: "bolder"}}>{this.props.comment.user.displayName}</span></span>}
           subtitle={formatDate(time)}
           subtitleStyle={{color: Colors.grey700}}
           avatar={userAvatar}
@@ -169,7 +164,7 @@ Comment.defaultProps = {
     text: 'This movie is awesome',
     user: {
       displayName: 'Gotrecillo',
-      avatarUrl: 'http://www.icare3d.org/images/AvatarTransp.png'
+      avatarUrl: gotrecilloAvatar
     },
     time: new Date(),
     modified: new Date()
@@ -177,7 +172,7 @@ Comment.defaultProps = {
   user:{
     userName: 'Gotre1',
     displayName: 'Gotrecillo',
-    avatarUrl: 'http://www.icare3d.org/images/AvatarTransp.png'
+    avatarUrl: gotrecilloAvatar
   }
 };
 

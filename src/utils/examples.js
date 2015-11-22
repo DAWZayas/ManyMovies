@@ -1,5 +1,8 @@
 import { getId } from './index';
 import movies from './moviesData';
+import defaultAvatar from '../../images/avatar.png';
+import gotrecilloAvatar from '../../images/gotrecilloAvatar.png';
+import gotreAvatar from '../../images/gotreAvatar.png';
 
 export const defaultMovies = movies;
 
@@ -61,7 +64,7 @@ export const defaultComments = {
         user: {
           userName: 'Gotre1',
           displayName: 'Gotrecillo',
-          avatarUrl: 'http://www.icare3d.org/images/AvatarTransp.png'
+          avatarUrl: gotrecilloAvatar
         }
       },
       {
@@ -71,7 +74,7 @@ export const defaultComments = {
         user: {
           userName: 'Gotre',
           displayName: 'Gotre',
-          avatarUrl: 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/6d/6d640a36a0edd460b5b32e18b9f8229fd634c65f_full.jpg'
+          avatarUrl: gotreAvatar
         },
       },
       {
@@ -81,7 +84,7 @@ export const defaultComments = {
         user: {
           userName: 'ShyBoy',
           displayName: 'ShyBoy',
-          avatarUrl: ''
+          avatarUrl: defaultAvatar
         },
       }
     ],
@@ -93,17 +96,21 @@ export const defaultComments = {
         user: {
           userName: 'Gotre',
           displayName: 'Gotre',
-          avatarUrl: 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/6d/6d640a36a0edd460b5b32e18b9f8229fd634c65f_full.jpg'
+          avatarUrl: gotreAvatar
         },
       }
     ]
 };
 
 export const defaultUsers = {
-  [FIRST_USERNAME] : [
-      {
+  [FIRST_USERNAME] : {
         userName: FIRST_USERNAME,
         displayName: 'Pepito',
-      }
-    ]
+        avatarUrl: defaultAvatar
+      },
+  'Gotre': {
+          userName: 'Gotre',
+          displayName: 'Gotre',
+          avatarUrl: gotreAvatar
+  }
 };

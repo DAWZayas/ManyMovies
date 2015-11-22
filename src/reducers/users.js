@@ -3,9 +3,9 @@ import { defaultUsers } from '../utils/examples';
 
 const setDefaulUsers = state => Object.assign({}, state, defaultUsers);
 
-function editUser(state, userName, displayName) {
-  let newUser = {userName, displayName };
-  return Object.assign({}, state, { [userName] : newUser });
+function editUser(state, user, newStats) {
+  let newUser = Object.assign({}, user, newStats);
+  return Object.assign({}, state, { [user.userName] : newUser });
 }
 
 export default function (state = {}, action) {
