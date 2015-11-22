@@ -46,14 +46,14 @@ class App extends Component {
                   iconClassName="glyphicon glyphicon-align-justify"/>
               }
             >
-              <MenuItem primaryText="Profile"  />
+              <MenuItem primaryText="Profile" onTouchTap={this._handleTouchTap.bind(this)} />
               <MenuItem primaryText="Lists" onTouchTap={this._handleTouchTap.bind(this)} />
               <MenuItem primaryText="History" onTouchTap={this._handleTouchTap.bind(this)} />
               <MenuItem primaryText="Collection" onTouchTap={this._handleTouchTap.bind(this)} />
               <MenuItem primaryText="WatchList" onTouchTap={this._handleTouchTap.bind(this)} />
               <MenuItem primaryText="Movies" onTouchTap={this._handleTouchTap.bind(this)} />
-                  </IconMenu>
-                }
+            </IconMenu>
+            }
         />
         {this.props.children}
       </div>
