@@ -1,6 +1,7 @@
 import { Component, PropTypes } from 'react';
 import injectTapEventPlugin from "react-tap-event-plugin";
 import defaultPosterSrc from '../../images/mm-poster.png';
+import { connect } from 'react-redux';
 injectTapEventPlugin();
 
 export default class CoverImages extends Component {
@@ -14,6 +15,12 @@ export default class CoverImages extends Component {
     };
     img.src = this.props.movie.images.poster;
   }
+  render(){
+    const { movie } = this.props;
+    return(
+      <img src={this.state.src} alt={movie.title}/>
+    );
+  }
 }
 
 CoverImages.propTypes = {
@@ -23,3 +30,15 @@ CoverImages.propTypes = {
 CoverImages.defaultProps = {
   movie: {}
 };
+
+function mapStateToProps(state) {
+  const { movie } = state;
+  return {
+    movie
+  };
+}
+
+export default connect(
+  mapStateToProps,
+)(CoverImages);
+

@@ -1,8 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import Card from 'material-ui/lib/card/card';
-import CardMedia from'material-ui/lib/card/card-media';
-import CardText from 'material-ui/lib/card/card-text';
-import CardTitle from 'material-ui/lib/card/card-title';
+import MovieDetailsDescription from './MovieDetailsDescription';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import Color from 'material-ui/lib/styles/colors';
 import Comment from './Comment';
@@ -14,7 +11,6 @@ import TableRow from 'material-ui/lib/table/table-row';
 import TableRowColumn from 'material-ui/lib/table/table-row-column';
 import Dialog from '../../node_modules/material-ui/lib/dialog';
 import FlatButton from 'material-ui/lib/flat-button';
-//import IconButton from 'material-ui/lib/icon-button';
 import injectTapEventPlugin from "react-tap-event-plugin";
 injectTapEventPlugin();
 
@@ -32,7 +28,7 @@ export default class MovieDetails extends Component {
     showRowHover: false,
     selectable: true,
     multiSelectable: true,
-    deselectOnClickaway: true
+    deselectOnClickaway: true,
     };
   }
   _handleHistoryTouchTap() {
@@ -87,22 +83,6 @@ export default class MovieDetails extends Component {
         actions={submitAdd}
       >
         <Table
-          selectable={this.state.selectable}>
-          <TableHeader>
-            <TableRow>
-             <TableHeaderColumn colSpan="1" style={{textAlign: 'center'}}/>
-            </TableRow>
-          </TableHeader>
-          <TableBody
-            deselectOnClickaway={this.state.deselectOnClickaway}
-            showRowHover={this.state.showRowHover}
-          >
-          <TableRow>
-            <TableRowColumn style={tableStyle}>Watched</TableRowColumn>
-          </TableRow>
-          </TableBody>
-          </Table>
-        <Table
           selectable={this.state.selectable}
           multiSelectable={this.state.multiSelectable}>
           <TableHeader enableSelectAll={this.state.enableSelectAll}>
@@ -116,18 +96,9 @@ export default class MovieDetails extends Component {
             deselectOnClickaway={this.state.deselectOnClickaway}
             showRowHover={this.state.showRowHover}
             stripedRows={this.state.stripedRows}>
-          <TableRow>
-            <TableRowColumn style={tableStyle}>Harry Potter</TableRowColumn>
-          </TableRow>
-          <TableRow>
-            <TableRowColumn style={tableStyle}>The Mortal instruments</TableRowColumn>
-          </TableRow>
-          <TableRow>
-            <TableRowColumn style={tableStyle}>Harry Potter</TableRowColumn>
-          </TableRow>
-          <TableRow>
-            <TableRowColumn style={tableStyle}>The Mortal instruments</TableRowColumn>
-          </TableRow>
+            <TableRow>
+              <TableRowColumn style={tableStyle}>Harry Potter</TableRowColumn>
+            </TableRow>
           </TableBody>
         </Table>
       </Dialog>
@@ -135,40 +106,9 @@ export default class MovieDetails extends Component {
 
       const historyStyle = (this.state.AddHistory) ? {color: Color.white, backgroundColor: Color.deepPurple500, border: "2px solid #512DA8", margin: "1em" } : {color: Color.deepPurple500, border: "2px solid #512DA8", margin: "1em" };
       const collectionStyle = (this.state.AddCollection) ? {color: Color.white, backgroundColor: Color.teal500, border: "2px solid #00796B", margin: "1em"} : {color: Color.teal500, border: "2px solid #00796B", margin: "1em"};
-      const backWidth =  document.documentElement.clientWidth > this.state.maxFanartWidth ? this.state.maxFanartWidth : document.documentElement.clientWidth;
-      //const likeBtnStyle = (this.state.Like) ? {color: red} : {color: white};
     return (
       <div>
-      <Card >
-          <CardMedia overlay={
-            <CardTitle style={{height: "3em", color: "white", fontSize: "1.5em"}}>
-             Title
-            </CardTitle> }>
-            <div style={{
-              height: backWidth / this.state.fanartRatio,
-              textAlign:"center",
-              backgroundImage: "url('https://walter.trakt.us/images/movies/000/130/970/fanarts/thumb/58994fad62.jpg')",
-              backgroundSize:"cover"}}/>
-          </CardMedia>
-          <CardText>
-          <div style={{display: "flex", width: "100%", margin: "0 auto"}}>
-            <div>
-            <li> <img style={{border: "1px solid #727272", float:"left", height: "13em", marginRight: "2em"}} src="https://walter.trakt.us/images/movies/000/130/970/posters/thumb/baa71aa408.jpg"/> </li>
-            </div>
-            <div>
-            <li> <span style={{color: Color.red500}}>Released: </span> 2015-07-10 </li>
-            <li> <span style={{color: Color.red500}}>Runtime: </span> 91 </li>
-            <li> <span style={{color: Color.red500}}>Genres: </span> adventure, animation, comedy, family </li>
-            <li> <span style={{color: Color.red500}}>Certification: </span> PG </li>
-            <li> <MenuItem href="http://youtube.com/watch?v=UvOSamXmU2E"><i className="material-icons">movie</i>Trailer</MenuItem> </li>
-            </div>
-            </div>
-          </CardText>
-          <CardText style={{padding: "1em", fontSize: "1em", clear: "left"}}>
-           bbbbbb jhhhhhh ujjjjj hhhhkkkkkk ooooooo ooooooo uuuuuuuuuuuuuuu i i i i iiiiiiiiiiiiiiiii hgbhjdsbhhhhhhhhhhhhhhhhhhhhhhhhhhhhhMinions Stuart, Kevin and Bob are recruited by Scarlet Overkill, a super-villain who, alongside her inventor husband Herb, hatches a plot to take over the world.
-          </CardText>
-      </Card>
-      <div>
+      <MovieDetailsDescription/>
         <MenuItem style={historyStyle}
                   primaryText="ADD TO HISTORY"
                   onTouchTap={this.state.AddHistory ? this._handleDisableHistory.bind(this) : this._handleHistoryTouchTap.bind(this)}
@@ -181,7 +121,6 @@ export default class MovieDetails extends Component {
                   primaryText="ADD TO LIST"
                   onTouchTap={this._handleAddToList.bind(this)}
         />
-      </div>
       <Comment />
       {addToList}
       </div>
