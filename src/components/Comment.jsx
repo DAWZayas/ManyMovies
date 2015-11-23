@@ -21,7 +21,11 @@ class Comment extends Component {
     this.state = {editing: false};
   }
 
-  componentDidMount(){
+  componentDidUpdate(){
+    if (this.refs.comment) {
+      this.refs.comment.focus();
+      this.refs.comment._getInputNode().select();
+    }
   }
 
   _handleTouchEdit() {
@@ -134,6 +138,8 @@ class Comment extends Component {
         </CardActions>
     );
 
+    const userActions = this.props.user.userName === this.props.creator.userName ?
+      cardActions : '';
     return (
       <Card style={{margin: "1em 0 0 0", backgroundColor: Colors.grey200}}>
         <CardHeader
@@ -144,23 +150,24 @@ class Comment extends Component {
           avatar={userAvatar}
         />
         {cardBody}
-        {cardActions}
+        {userActions}
       </Card>
     );
   }
 }
 
 Comment.propTypes = {
+  user: PropTypes.object,
   comment: PropTypes.object,
   creator: PropTypes.object,
-  user: PropTypes.object,
   editComment: PropTypes.func,
   removeComment: PropTypes.func,
   idCommented: PropTypes.string
 };
 
 function mapStateToProps(state, ownProp) {
-  return {creator: state.users[ownProp.comment.userName]};
+  const user = state.users.Gotre;
+  return {creator: state.users[ownProp.comment.userName], user};
 }
 
 function mapDispatchToProps(dispatch) {

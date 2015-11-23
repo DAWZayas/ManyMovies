@@ -25,7 +25,8 @@ function editComment(state, id, idCommented, text) {
   let collectionComments = state[idCommented];
   let comment = _.find(collectionComments, (comment) => comment.id === id);
   let position = collectionComments.indexOf(comment);
-  let newComment = { id, text, time: comment.time, modified: new Date() };
+  //let newComment = { id, text, time: comment.time, modified: new Date() };
+  let newComment = Object.assign({}, comment, {text, modified: new Date()});
   collectionComments = collectionComments.slice(0);
   collectionComments[position] = newComment;
   return Object.assign({}, state, { [idCommented] : collectionComments });

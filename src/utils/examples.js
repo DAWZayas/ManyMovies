@@ -108,3 +108,35 @@ export const defaultUsers = {
     avatarUrl: defaultAvatar
   }
 };
+
+
+export const defaultUserRatings = {
+  'Gotre': {
+    '7': 7,
+    '40': 1,
+    '505': 10
+  },
+  'ShyBoy': {
+    '7': 10
+  },
+  'Gotre1': {
+    '7': 9,
+    '40': 2,
+  },
+};
+
+
+export const defaultMovieRatings = {
+  '7':{
+    totalVotes: 3,
+    totalNote: 28
+  },
+  '40': {
+    totalVotes: 2,
+    totalNote: 3
+  },
+  '505': {
+    totalVotes: 1,
+    totalNote: 10
+  }
+};

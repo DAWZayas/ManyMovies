@@ -28,6 +28,7 @@ export default class Profile extends Component {
       displayNameNode.clearValue();
     }else {
       this.props.editUser(this.props.user, {displayName, avatarUrl: this.state.avatarUri});
+      displayNameNode.setValue(displayName);
       this.refs.snack.show();
     }
   }
@@ -37,9 +38,9 @@ export default class Profile extends Component {
     this.refs.fileName.setValue(fileName);
     const reader = new FileReader();
     const file = this.refs.avatar.files[0];
-    reader.onload = (upload) => {
+    reader.onload = (e) => {
       this.setState({
-        avatarUri: upload.target.result
+        avatarUri: e.target.result
       });
     };
 
