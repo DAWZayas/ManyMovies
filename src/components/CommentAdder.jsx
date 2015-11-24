@@ -7,7 +7,6 @@ import CardHeader from 'material-ui/lib/card/card-header';
 import CardActions from 'material-ui/lib/card/card-actions';
 import TextField from 'material-ui/lib/text-field';
 import Avatar from 'material-ui/lib/avatar';
-import FontIcon from 'material-ui/lib/font-icon';
 import IconButton from 'material-ui/lib/icon-button';
 import Colors from 'material-ui/lib/styles/colors';
 import { allTrim } from '../utils';
@@ -57,7 +56,7 @@ class CommentAdder extends Component {
   _submitChanges(){
     const { createComment, idCommented } = this.props;
     const text = this.refs.comment.getValue();
-    createComment(idCommented, text);
+    createComment(idCommented, text, this.props.user.userName);
   }
 
   _submitChangesAndClear(){
@@ -76,14 +75,7 @@ class CommentAdder extends Component {
   render() {
     const userAvatar = (
       <Avatar
-        icon={
-          <FontIcon
-            className="material-icons">
-              face
-          </FontIcon>
-        }
-        color={Colors.orange100}
-        backgroundColor={Colors.deepOrange900}
+        src={this.props.user.avatarUrl}
       />
     );
     const cardBody = (
@@ -142,17 +134,17 @@ CommentAdder.propTypes = {
 };
 
 CommentAdder.defaultProps = {
-  user: {displayName: 'Gotrecillo', avatarUrl: 'http://s7.postimg.org/hkvr9j747/hahaha.png'}
 };
 
 
-function mapStateToProps() {
-  return {};
+function mapStateToProps(state) {
+  const user = state.users.Gotre;
+  return { user };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    createComment: (idCommented, text) => dispatch(createComment(idCommented, text))
+    createComment: (idCommented, text, userName) => dispatch(createComment(idCommented, text, userName))
   };
 }
 

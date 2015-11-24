@@ -112,11 +112,12 @@ export const setDefaultMovies = movies => ({type: SET_DEFAULT_MOVIES, movies});
 */
 export const setDefaultComments = comments => ({type: SET_DEFAULT_COMMENT, comments});
 
-export function createComment(idCommented, text) {
+export function createComment(idCommented, text, userName) {
   return {
     type: CREATE_COMMENT,
     idCommented,
-    text
+    text,
+    userName
   };
 }
 
