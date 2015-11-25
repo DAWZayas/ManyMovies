@@ -8,6 +8,8 @@ import CardActions from 'material-ui/lib/card/card-actions';
 import TextField from 'material-ui/lib/text-field';
 import Avatar from 'material-ui/lib/avatar';
 import IconButton from 'material-ui/lib/icon-button';
+import Dialog from 'material-ui/lib/dialog';
+import FlatButton from 'material-ui/lib/flat-button';
 import Colors from 'material-ui/lib/styles/colors';
 import { formatDate } from '../utils/date';
 import injectTapEventPlugin from "react-tap-event-plugin";
@@ -18,7 +20,7 @@ class Comment extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {editing: false};
+    this.state = {editing: false, deleting: false};
   }
 
   componentDidUpdate(){
@@ -41,10 +43,19 @@ class Comment extends Component {
     this._stopEditing();
   }
 
+  _handleDialogRequestClose() {
+    this._stopDeleting();
+  }
+
   _handleTouchDelete(){
+    this.setState({deleting: true});
+  }
+
+  _handleDialogSubmit(){
     const { removeComment, comment, idCommented } = this.props;
     const { id } = comment;
     removeComment(id, idCommented);
+    this._stopDeleting();
   }
 
   _handleKeyDown(e){
@@ -69,9 +80,13 @@ class Comment extends Component {
     this.setState({editing: false});
   }
 
+  _stopDeleting() {
+    this.setState({deleting: false});
+  }
 
   render() {
     const { time, text, modified } = this.props.comment;
+
     const userAvatar = (
       <Avatar
         src={this.props.creator.avatarUrl}
@@ -80,6 +95,7 @@ class Comment extends Component {
       />
     );
     const modifiedTime = modified ? <div><small>Edited on {formatDate(modified)}</small></div> : '';
+
     const cardBody = this.state.editing ? (
       <CardText>
         <TextField
@@ -98,6 +114,7 @@ class Comment extends Component {
         {modifiedTime}
       </CardText>
     );
+
     const cardActions = this.state.editing ? (
       <CardActions style={{float: "right"}}>
           <IconButton
@@ -140,6 +157,31 @@ class Comment extends Component {
 
     const userActions = this.props.user.userName === this.props.creator.userName ?
       cardActions : '';
+
+    let dialogActions = [
+      <FlatButton
+      key={0}
+        label="Cancel"
+        secondary
+        onTouchTap={this._handleDialogRequestClose.bind(this)}
+      />,
+      <FlatButton
+        key={1}
+        label="Delete"
+        primary
+        onTouchTap={this._handleDialogSubmit.bind(this)}
+      />
+    ];
+
+    const dialog = (
+      <Dialog
+        actions={dialogActions}
+        actionFocus="submit"
+        open={this.state.deleting}
+        onRequestClose={this._handleDialogRequestClose.bind(this)}>
+        Are you sure you want to remove the comment?
+      </Dialog>);
+
     return (
       <Card style={{margin: "1em 0 0 0", backgroundColor: Colors.grey200}}>
         <CardHeader
@@ -151,6 +193,7 @@ class Comment extends Component {
         />
         {cardBody}
         {userActions}
+        {dialog}
       </Card>
     );
   }
