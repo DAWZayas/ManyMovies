@@ -84,37 +84,11 @@ class Comment extends Component {
     this.setState({deleting: false});
   }
 
-  render() {
-    const { time, text, modified } = this.props.comment;
+  _isCommentedByMe(){
+    return this.props.user.userName === this.props.creator.userName;
+  }
 
-    const userAvatar = (
-      <Avatar
-        src={this.props.creator.avatarUrl}
-        color={Colors.orange100}
-        backgroundColor={Colors.deepOrange900}
-      />
-    );
-    const modifiedTime = modified ? <div><small>Edited on {formatDate(modified)}</small></div> : '';
-
-    const cardBody = this.state.editing ? (
-      <CardText>
-        <TextField
-          onKeyDown={this._handleKeyDown.bind(this)}
-          ref="comment"
-          floatingLabelText="Comment"
-          defaultValue={text}
-          multiLine
-          fullWidth
-          rows={4}
-        />
-      </CardText>
-      ) : (
-      <CardText>
-        {text}
-        {modifiedTime}
-      </CardText>
-    );
-
+  _getCardActions(){
     const cardActions = this.state.editing ? (
       <CardActions style={{float: "right"}}>
           <IconButton
@@ -154,11 +128,11 @@ class Comment extends Component {
           </IconButton>
         </CardActions>
     );
+    return cardActions;
+  }
 
-    const userActions = this.props.user.userName === this.props.creator.userName ?
-      cardActions : '';
-
-    let dialogActions = [
+  _getDeleteDialog(){
+    const dialogActions = [
       <FlatButton
       key={0}
         label="Cancel"
@@ -182,17 +156,58 @@ class Comment extends Component {
         Are you sure you want to remove the comment?
       </Dialog>);
 
+    return dialog;
+  }
+
+  render() {
+    const { time, text, modified } = this.props.comment;
+
+    const userAvatar = (
+      <Avatar
+        src={this.props.creator.avatarUrl}
+        color={Colors.orange100}
+        backgroundColor={Colors.deepOrange900}
+      />
+    );
+    const modifiedTime = modified ? <div><small>Edited on {formatDate(modified)}</small></div> : '';
+
+    const cardBody = this.state.editing ? (
+      <CardText>
+        <TextField
+          onKeyDown={this._handleKeyDown.bind(this)}
+          ref="comment"
+          floatingLabelText="Comment"
+          defaultValue={text}
+          multiLine
+          fullWidth
+          rows={4}
+        />
+      </CardText>
+      ) : (
+      <CardText>
+        {text}
+        {modifiedTime}
+      </CardText>
+    );
+
+    const cardHeader = (
+      <CardHeader
+        style={{backgroundColor: Colors.grey300}}
+        title={<span>Commented by <span style={{color: Colors.deepOrange900, fontWeight: "bolder"}}>{this.props.creator.displayName}</span></span>}
+        subtitle={formatDate(time)}
+        subtitleStyle={{color: Colors.grey700}}
+        avatar={userAvatar}
+      />
+    );
+
+    const cardActions = this._isCommentedByMe.bind(this)() ? this._getCardActions.bind(this)() : '';
+    const dialog = this._isCommentedByMe.bind(this)() ? this._getDeleteDialog.bind(this)() : '';
+
     return (
       <Card style={{margin: "1em 0 0 0", backgroundColor: Colors.grey200}}>
-        <CardHeader
-          style={{backgroundColor: Colors.grey300}}
-          title={<span>Commented by <span style={{color: Colors.deepOrange900, fontWeight: "bolder"}}>{this.props.creator.displayName}</span></span>}
-          subtitle={formatDate(time)}
-          subtitleStyle={{color: Colors.grey700}}
-          avatar={userAvatar}
-        />
+        {cardHeader}
         {cardBody}
-        {userActions}
+        {cardActions}
         {dialog}
       </Card>
     );
