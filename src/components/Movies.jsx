@@ -1,16 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import _ from 'lodash';
-import Color from 'material-ui/lib/styles/colors';
 import Table from 'material-ui/lib/table/table';
 import TableBody from 'material-ui/lib/table/table-body';
-import TableHeader from 'material-ui/lib/table/table-header';
-import TableHeaderColumn from 'material-ui/lib/table/table-header-column';
-import TableRow from 'material-ui/lib/table/table-row';
-import TableRowColumn from 'material-ui/lib/table/table-row-column';
 import Paper from 'material-ui/lib/paper';
 import FontIcon from 'material-ui/lib/font-icon';
 import TextField from 'material-ui/lib/text-field';
-import defaultPosterSrc from '../../images/mm-poster.png';
+import MovieRow from './MovieRow';
+import MoviesListHeader from '/MoviesListHeader';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
@@ -19,13 +15,6 @@ export default class Movies extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fixedHeader: true,
-      fixedFooter: true,
-      stripedRows: false,
-      showRowHover: true,
-      displayRowCheckbox: false,
-      displaySelectAll: false,
-      adjustForCheckbox: false,
       listedMovies: props.movies
     };
   }
@@ -36,11 +25,6 @@ export default class Movies extends Component {
       this.refs.search.blur();
       this._showSearchedMovies();
     }
-  }
-
-  _handleTouchTap(slug){
-    console.log(slug);
-    this.props.navigate('/lists');
   }
 
   _handleSearchFocus(){
@@ -80,32 +64,20 @@ export default class Movies extends Component {
         </Paper>
         <Table
           height={this.state.height}
-          fixedHeader={this.state.fixedHeader}
-          fixedFooter={this.state.fixedFooter}
+          fixedHeader
           selectable={false}
         >
-          <TableHeader
-            displaySelectAll={this.state.displaySelectAll}
-            adjustForCheckbox={this.state.adjustForCheckbox}
-          >
-            <TableRow>
-              <TableHeaderColumn colSpan="2" style={{textAlign: "center", color: Color.deepOrange800, fontSize: "1.3em"}}>
-                Movies
-              </TableHeaderColumn>
-            </TableRow>
-          </TableHeader>
+          { MoviesListHeader }
           <TableBody
-            displayRowCheckbox={this.state.displayRowCheckbox}
-            showRowHover={this.state.showRowHover}
-            stripedRows={this.state.stripedRows}
+            displayRowCheckbox={false}
+            showRowHover
+            stripedRows={false}
           >
             {
               _.values(this.state.listedMovies).map((movie, index) => (
-              <TableRow onTouchTap={this._handleTouchTap.bind(this, movie.ids.slug)} key={index}>
-                <TableRowColumn style={{width: "4em", padding: "0"}}>{<img style={{width: "4em"}} src={defaultPosterSrc} alt="caca"/>}</TableRowColumn>
-                <TableRowColumn style={{paddingLeft:"0.4em"}}>{movie.title}</TableRowColumn>
-              </TableRow>
-              ))
+                  <MovieRow key={index} navigate={this.props.navigate} movie={movie}/>
+                )
+              )
             }
           </TableBody>
         </Table>
