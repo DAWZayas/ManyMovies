@@ -73,8 +73,8 @@ export default class Movies extends Component {
             stripedRows={false}
           >
             {
-              _.values(this.state.listedMovies).map((movie, index) => (
-                  <MovieRow key={index} navigate={this.props.navigate} movie={movie}/>
+              _.values(this.state.listedMovies).map((movie) => (
+                  <MovieRow key={movie.ids.trakt} navigate={this.props.navigate} movie={movie}/>
                 )
               )
             }
