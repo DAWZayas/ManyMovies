@@ -6,7 +6,7 @@ import Paper from 'material-ui/lib/paper';
 import FontIcon from 'material-ui/lib/font-icon';
 import TextField from 'material-ui/lib/text-field';
 import MovieRow from './MovieRow';
-import MoviesListHeader from '/MoviesListHeader';
+import MoviesListHeader from './MoviesListHeader';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
@@ -48,7 +48,6 @@ export default class Movies extends Component {
   }
 
   render() {
-
     return (
       <div>
         <Paper style={{display: "flex", justifyContent: "center"}}>
