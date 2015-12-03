@@ -6,24 +6,39 @@ export default class MovieDetailsHeader extends Component {
   constructor(props) {
     super(props);
     this.state = {
-    maxFanartWidth: 1100,
-    fanartRatio: 1.78
-    };
+    maxFanartWidth: 800,
+    fanartRatio: 1.78,
+    resizeHandler: this._updateDimensions.bind(this) };
+  }
+
+  componentWillMount(){
+    this._updateDimensions();
+  }
+
+  componentDidMount(){
+    window.addEventListener("resize", this.state.resizeHandler);
+  }
+
+  componentWillUnmount(){
+    window.removeEventListener("resize", this.state.resizeHandler);
+  }
+
+  _updateDimensions(){
+    this.setState({ width: document.documentElement.clientWidth });
   }
 
   render() {
-    const backWidth =  document.documentElement.clientWidth > this.state.maxFanartWidth ? this.state.maxFanartWidth : document.documentElement.clientWidth;
+    const backWidth =  this.state.width > this.state.maxFanartWidth ? this.state.maxFanartWidth : this.state.width;
     return (
-        <CardMedia overlay={
+        <CardMedia style={{
+            height: backWidth / this.state.fanartRatio,
+            backgroundImage: 'url(' + this.props.movie.images.fanart + ')',
+            backgroundSize:"cover"}}
+            overlay={
           <CardTitle style={{height: "3em", color: "white", fontSize: "1.5em"}}>
             {this.props.movie.title}
-          </CardTitle> }>
-          <div style={{
-            height: backWidth / this.state.fanartRatio,
-            textAlign:"center",
-            backgroundImage: 'url(' + this.props.movie.images.fanart + ')',
-            backgroundSize:"cover"}}/>
-        </CardMedia>
+          </CardTitle> }
+        />
     );
   }
 }
