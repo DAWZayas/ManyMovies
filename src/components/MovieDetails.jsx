@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import MovieDetailsDescription from './MovieDetailsDescription';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import Color from 'material-ui/lib/styles/colors';
-import Comment from './Comment';
+// import Comment from './Comment';
 import Table from 'material-ui/lib/table/table';
 import TableBody from 'material-ui/lib/table/table-body';
 import TableHeader from 'material-ui/lib/table/table-header';
@@ -121,7 +121,6 @@ export default class MovieDetails extends Component {
                   primaryText="ADD TO LIST"
                   onTouchTap={this._handleAddToList.bind(this)}
         />
-      <Comment />
       {addToList}
       </div>
     );
