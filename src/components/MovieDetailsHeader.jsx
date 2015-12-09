@@ -29,7 +29,7 @@ export default class MovieDetailsHeader extends Component {
 
   render() {
     const backWidth =  this.state.width > this.state.maxFanartWidth ? this.state.maxFanartWidth : this.state.width;
-    const year = this.props.movie.released.split('-')[0];
+    const year = this.state.width > 350 ? this.props.movie.released.split('-')[0] : '';
     return (
         <CardMedia style={{
             height: backWidth / this.state.fanartRatio,

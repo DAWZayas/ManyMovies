@@ -15,6 +15,7 @@ import injectTapEventPlugin from "react-tap-event-plugin";
 injectTapEventPlugin();
 
 export default class MovieDetails extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -31,50 +32,59 @@ export default class MovieDetails extends Component {
     deselectOnClickaway: true,
     };
   }
+
   _handleHistoryTouchTap() {
     this.setState({
       AddHistory: true,
     });
   }
+
   _handleCollectionTouchTap() {
     this.setState({
       AddCollection: true
     });
   }
+
   _handleDisableHistory() {
     this.setState({
     AddHistory: false
     });
   }
+
   _handleDisableCollection() {
    this.setState({
    AddCollection: false
    });
   }
+
   _handleAddToList() {
    this.setState({
     Added: true
    });
   }
+
   _handleSubmitAddToList(){
     this.setState({
       Added: false
     });
   }
+
   _handleLike(){
     this.setState({
       Like: true
     });
   }
+
   render() {
     const tableStyle = {fontWeight: "bold", color: Color.lightBlueA200, textAlign: "center"};
+    const { generalLists } = this.props;
     const submitAdd = [
-    <FlatButton
+      <FlatButton
         key={0}
         label="Ok"
         primary
         onTouchTap={this._handleSubmitAddToList.bind(this)}
-    />
+      />
     ];
     const addToList = (
       <Dialog
@@ -85,7 +95,7 @@ export default class MovieDetails extends Component {
         <Table
           selectable={this.state.selectable}
           multiSelectable={this.state.multiSelectable}>
-          <TableHeader enableSelectAll={this.state.enableSelectAll}>
+          <TableHeader>
             <TableRow>
               <TableHeaderColumn colSpan="1" style={{textAlign: 'center'}}>
                 My lists
@@ -96,16 +106,22 @@ export default class MovieDetails extends Component {
             deselectOnClickaway={this.state.deselectOnClickaway}
             showRowHover={this.state.showRowHover}
             stripedRows={this.state.stripedRows}>
-            <TableRow>
-              <TableRowColumn style={tableStyle}>Harry Potter</TableRowColumn>
-            </TableRow>
+            {
+              generalLists.map(list => (
+                <TableRow>
+                  <TableRowColumn style={tableStyle}>{list.title}</TableRowColumn>
+                </TableRow>
+                )
+              )
+            }
           </TableBody>
         </Table>
       </Dialog>
-              );
+    );
 
-      const historyStyle = (this.state.AddHistory) ? {color: Color.white, backgroundColor: Color.deepPurple500, border: "2px solid #512DA8", margin: "1em" } : {color: Color.deepPurple500, border: "2px solid #512DA8", margin: "1em" };
-      const collectionStyle = (this.state.AddCollection) ? {color: Color.white, backgroundColor: Color.teal500, border: "2px solid #00796B", margin: "1em"} : {color: Color.teal500, border: "2px solid #00796B", margin: "1em"};
+    const historyStyle = (this.state.AddHistory) ? {color: Color.white, backgroundColor: Color.deepPurple500, border: "2px solid #512DA8", margin: "1em" } : {color: Color.deepPurple500, border: "2px solid #512DA8", margin: "1em" };
+    const collectionStyle = (this.state.AddCollection) ? {color: Color.white, backgroundColor: Color.teal500, border: "2px solid #00796B", margin: "1em"} : {color: Color.teal500, border: "2px solid #00796B", margin: "1em"};
+
     return (
       <div>
       <MovieDetailsDescription/>
@@ -130,6 +146,7 @@ export default class MovieDetails extends Component {
 MovieDetails.propTypes = {
   lists: PropTypes.object,
   movie: PropTypes.object,
+  generalLists: PropTypes.array,
   addEntry: PropTypes.func
 };
 
@@ -158,6 +175,7 @@ MovieDetails.defaultProps = {
       "fanart": "https://walter.trakt.us/images/movies/000/000/043/fanarts/thumb/4144a111c1.jpg"
     }
   },
+
   likes: {likes:100, dislikes:20 },
 
   historyList: {
@@ -167,6 +185,7 @@ MovieDetails.defaultProps = {
     desc: 'A list of watched movies',
     custom: false
   },
+
   collectionList: {
     id: '4',
     title: 'Collection',
@@ -174,23 +193,21 @@ MovieDetails.defaultProps = {
     desc: 'A list of collected movies',
     custom: false,
   },
+
   generalLists: [
-    {'2': {
+    {
       id: '2',
       title: 'WatchList',
       slug: 'watchlist',
       desc: 'A list of pending movies',
       custom: false
-      }
     },
-
-    {'1': {
+    {
       id: '1',
       title: 'Harry potter movies',
       slug:'harry-potter-movies',
       desc: 'All the magic in Howarts',
       custom: true,
-      }
     }
   ],
 
