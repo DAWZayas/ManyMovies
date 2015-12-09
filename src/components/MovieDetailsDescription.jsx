@@ -5,7 +5,6 @@ import Color from 'material-ui/lib/styles/colors';
 import Paper from'material-ui/lib/paper';
 import MovieDetailsHeader from './MovieDetailsHeader';
 import ImageWithPlaceholder from './ImageWithPlaceholder';
-import defaultPosterSrc from '../../images/mm-poster.png';
 
 export default class MovieDetailsDescription extends Component{
   constructor(props) {
@@ -20,7 +19,7 @@ export default class MovieDetailsDescription extends Component{
       <Card >
           <MovieDetailsHeader />
           <CardText style={{display: "flex", width: "100%", margin: "0 auto"}}>
-            <Paper> <ImageWithPlaceholder defaultSrc={defaultPosterSrc} src={defaultPosterSrc} style={{height: "21em"}} /> </Paper>
+            <Paper> <ImageWithPlaceholder src={this.props.movie.images.poster} alt={this.props.movie.title} style={{height: "21em"}} /> </Paper>
             <div>
             <CardText> <span style={{color: Color.red500}}>Released: </span> {this.props.movie.released} </CardText>
             <CardText> <span style={{color: Color.red500}}>Runtime: </span> {this.props.movie.runtime} </CardText>
