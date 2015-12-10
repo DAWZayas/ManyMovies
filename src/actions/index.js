@@ -27,6 +27,11 @@ export const UNDISLIKE_COMMENT = 'UNDISLIKE_COMMENT';
 export const EDIT_USER = 'EDIT_USER';
 export const SET_DEFAULT_USERS = 'SET_DEFAULT_USERS';
 
+export const SET_DEFAULT_USER_RATINGS = 'SET_DEFAULT_USER_RATINGS';
+export const SET_DEFAULT_MOVIE_RATINGS = 'SET_DEFAULT_MOVIE_RATINGS';
+export const EDIT_USER_RATING = 'EDIT_USER_RATING';
+export const EDIT_MOVIE_RATING = 'EDIT_MOVIE_RATING';
+
 
 /**
 * List action creators
@@ -196,5 +201,33 @@ export function editUser(user, newStats){
     type: EDIT_USER,
     user,
     newStats
+  };
+}
+
+/**
+* Users rating and movies rating
+*/
+export const setDefaultMovieRatings = idMovie => ({type : SET_DEFAULT_MOVIE_RATINGS , idMovie });
+export const setDefaultUserRatings = user, idMovie => ({type : SET_DEFAULT_USER_RATINGS, user, idMovie});
+
+export function editUserRating (userName, idMovie){
+  return{
+    type: EDIT_USER_RATING,
+    userName,
+    idMovie :
+      {
+        vote : vote
+      }
+  };
+}
+export function editMovieRating (idMovie ){
+  return {
+    type: EDIT_MOVIE_RATING,
+    idMovie :  
+      { 
+        totalVotes : totalVotes,
+        totalNotes : totalNotes
+
+      }
   };
 }
