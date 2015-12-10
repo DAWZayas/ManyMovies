@@ -6,6 +6,7 @@ import init from './utils/init';
 
 require('./style.css');
 require('bootstrap/dist/css/bootstrap.min.css');
+require('font-awesome/css/font-awesome.min.css');
 
 const store = init();
 

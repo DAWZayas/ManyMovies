@@ -5,7 +5,8 @@ import entries from './entries';
 import movies from './movies';
 import comments from './comments';
 import users from './users';
-
+import userLikes from './userLikes';
+import userDislikes from './userDislikes';
 
 export default combineReducers({
   router,
@@ -13,5 +14,7 @@ export default combineReducers({
   entries,
   movies,
   comments,
-  users
+  users,
+  userLikes,
+  userDislikes
 });

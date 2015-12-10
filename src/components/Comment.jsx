@@ -1,9 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { removeComment, editComment } from '../actions';
+import { removeComment, editComment, likeComment, unlikeComment, dislikeComment, undislikeComment, undislikeAndLikeComment, unlikeAndDislikeComment } from '../actions';
 import Card from 'material-ui/lib/card/card';
 import CardText from 'material-ui/lib/card/card-text';
 import CardHeader from 'material-ui/lib/card/card-header';
+import CardTitle from 'material-ui/lib/card/card-title';
 import CardActions from 'material-ui/lib/card/card-actions';
 import TextField from 'material-ui/lib/text-field';
 import Avatar from 'material-ui/lib/avatar';
@@ -67,6 +68,42 @@ class Comment extends Component {
     }else if (e.keyCode === 27){
       this._stopEditing();
     }
+  }
+
+  _handleLike(){
+    const { likeComment, comment, idCommented, user } = this.props;
+    const { id } = comment;
+    likeComment(id, idCommented, user.userName);
+  }
+
+  _handleUnlike(){
+    const { unlikeComment, comment, idCommented, user } = this.props;
+    const { id } = comment;
+    unlikeComment(id, idCommented, user.userName);
+  }
+
+  _handleUndislikeAndLike(){
+    const { undislikeAndLikeComment, comment, idCommented, user } = this.props;
+    const { id } = comment;
+    undislikeAndLikeComment(id, idCommented, user.userName);
+  }
+
+  _handleDislike(){
+    const { dislikeComment, comment, idCommented, user } = this.props;
+    const { id } = comment;
+    dislikeComment(id, idCommented, user.userName);
+  }
+
+  _handleUnDislike(){
+    const { undislikeComment, comment, idCommented, user } = this.props;
+    const { id } = comment;
+    undislikeComment(id, idCommented, user.userName);
+  }
+
+  _handleUnlikeAndDislike(){
+    const { unlikeAndDislikeComment, comment, idCommented, user } = this.props;
+    const { id } = comment;
+    unlikeAndDislikeComment(id, idCommented, user.userName);
   }
 
   _submitChanges(){
@@ -159,8 +196,47 @@ class Comment extends Component {
     return dialog;
   }
 
+  _getLikeIcon(){
+    const { isLiked, isDisliked } = this.props;
+    const buttonAction = isLiked ? this._handleUnlike.bind(this) :
+                         isDisliked ? this._handleUndislikeAndLike.bind(this) :
+                         this._handleLike.bind(this);
+
+    const likeClass = isLiked ? "fa fa-thumbs-up" : "fa fa-thumbs-o-up";
+    const icon = (<IconButton
+            iconClassName={likeClass}
+            iconStyle={{color:Colors.green900}}
+            onTouchTap={buttonAction}/>);
+    return icon;
+  }
+
+  _getDislikeIcon(){
+    const { isLiked, isDisliked } = this.props;
+    const buttonAction = isDisliked ? this._handleUnDislike.bind(this) :
+                         isLiked ? this._handleUnlikeAndDislike.bind(this) :
+                         this._handleDislike.bind(this);
+
+    const likeClass = isDisliked ? "fa fa-thumbs-down" : "fa fa-thumbs-o-down";
+    const icon = (<IconButton
+            iconClassName={likeClass}
+            iconStyle={{color:Colors.red900}}
+            onTouchTap={buttonAction}/>);
+    return icon;
+  }
+
+  _getScoreColor(score){
+    if (score < 0){
+      return { color: Colors.red900 };
+    }
+    if (score > 0){
+      return { color: Colors.green500 };
+    }
+    return {};
+  }
+
   render() {
-    const { time, text, modified } = this.props.comment;
+    const { time, text, modified, likes, dislikes } = this.props.comment;
+    const score = likes - dislikes;
 
     const userAvatar = (
       <Avatar
@@ -200,12 +276,28 @@ class Comment extends Component {
       />
     );
 
+    const scoreColor = this._getScoreColor(score);
+
+    const cardLikes = (
+      <CardTitle
+        subtitle={
+          <span>
+            {this._getLikeIcon()}
+            <span style={Object.assign({}, {display: 'inline-block', width: '3em', textAlign: 'center'}, scoreColor)}>{(score <= 0 ? '' : '+') + score}</span>
+            {this._getDislikeIcon()}
+          </span>
+        }
+        subtitleStyle={{float: 'right'}}
+      />
+    );
+
     const cardActions = this._isCommentedByMe.bind(this)() ? this._getCardActions.bind(this)() : '';
     const dialog = this._isCommentedByMe.bind(this)() ? this._getDeleteDialog.bind(this)() : '';
 
     return (
       <Card style={{margin: "1em 0 0 0", backgroundColor: Colors.grey200}}>
         {cardHeader}
+        {cardLikes}
         {cardBody}
         {cardActions}
         {dialog}
@@ -220,18 +312,36 @@ Comment.propTypes = {
   creator: PropTypes.object,
   editComment: PropTypes.func,
   removeComment: PropTypes.func,
-  idCommented: PropTypes.string
+  likeComment: PropTypes.func,
+  unlikeComment: PropTypes.func,
+  undislikeAndLikeComment: PropTypes.func,
+  dislikeComment: PropTypes.func,
+  undislikeComment: PropTypes.func,
+  unlikeAndDislikeComment: PropTypes.func,
+  idCommented: PropTypes.string,
+  isLiked: PropTypes.bool,
+  isDisliked: PropTypes.bool
 };
 
 function mapStateToProps(state, ownProp) {
   const user = state.users.Gotre;
-  return {creator: state.users[ownProp.comment.userName], user};
+  const userLikes = state.userLikes[user.userName] || [];
+  const userDislikes = state.userDislikes[user.userName] || [];
+  const isLiked = userLikes.indexOf(ownProp.comment.id) !== -1;
+  const isDisliked = userDislikes.indexOf(ownProp.comment.id) !== -1;
+  return { creator: state.users[ownProp.comment.userName], user, isLiked, isDisliked };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     removeComment: (id, idCommented) => dispatch(removeComment(id, idCommented)),
-    editComment: (id, idCommented, text) => dispatch(editComment(id, idCommented, text))
+    editComment: (id, idCommented, text) => dispatch(editComment(id, idCommented, text)),
+    likeComment: (id, idCommented, userId) => dispatch(likeComment(id, idCommented, userId)),
+    unlikeComment: (id, idCommented, userId) => dispatch(unlikeComment(id, idCommented, userId)),
+    dislikeComment: (id, idCommented, userId) => dispatch(dislikeComment(id, idCommented, userId)),
+    undislikeComment: (id, idCommented, userId) => dispatch(undislikeComment(id, idCommented, userId)),
+    unlikeAndDislikeComment: (id, idCommented, userId) => dispatch(unlikeAndDislikeComment(id, idCommented, userId)),
+    undislikeAndLikeComment: (id, idCommented, userId) => dispatch(undislikeAndLikeComment(id, idCommented, userId))
   };
 }
 

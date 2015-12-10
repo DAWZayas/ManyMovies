@@ -14,7 +14,7 @@ const FIRST_COMMENT_ID = getId();
 const SECOND_COMMENT_ID = getId();
 const THIRD_COMMENT_ID = getId();
 const FOURTH_COMMENT_ID = getId();
-const  FIRST_USERNAME = 'Pepe';
+const FIRST_USERNAME = 'Pepe';
 
 export const defaultLists = {
   [HISTORY_ID]: {
@@ -62,18 +62,24 @@ export const defaultComments = {
         text: 'Hiiiiii',
         time: new Date(),
         userName: 'Gotre1',
+        likes: 0,
+        dislikes: 0
       },
       {
         id: SECOND_COMMENT_ID,
         text: 'Byeee',
         time: new Date(),
-        userName: 'Gotre'
+        userName: 'Gotre',
+        likes: 0,
+        dislikes: 0
       },
       {
         id: FOURTH_COMMENT_ID,
         text: 'I\'m shy',
         time: new Date(),
-        userName: 'ShyBoy'
+        userName: 'ShyBoy',
+        likes: 0,
+        dislikes: 0
       }
     ],
   ['7'] : [
@@ -81,7 +87,9 @@ export const defaultComments = {
         id: THIRD_COMMENT_ID,
         text: 'This movie is awesome',
         time: new Date(),
-        userName: 'Gotre'
+        userName: 'Gotre',
+        likes: 0,
+        dislikes: 0
       }
     ]
 };

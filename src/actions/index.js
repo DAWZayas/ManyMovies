@@ -12,8 +12,6 @@ export const EDIT_LIST = 'EDIT_LIST';
 export const SET_DEFAULT_ENTRIES = 'SET_DEFAULT_ENTRIES';
 export const ADD_ENTRY = 'ADD_ENTRY';
 export const REMOVE_ENTRY = 'REMOVE_ENTRY';
-export const ENTRY_LIKE = 'USER_LIKES';
-export const USER_LIKES = 'ENTRY_DISLIKE';
 
 export const SET_DEFAULT_MOVIES = 'SET_DEFAULT_MOVIES';
 
@@ -21,6 +19,10 @@ export const CREATE_COMMENT = 'CREATE_COMMENT';
 export const DELETE_COMMENT = 'DELETE_COMMENT';
 export const EDIT_COMMENT = 'EDIT_COMMENT';
 export const SET_DEFAULT_COMMENT = 'SET_DEFAULT_COMMENT';
+export const LIKE_COMMENT = 'LIKE_COMMENT';
+export const UNLIKE_COMMENT = 'UNLIKE_COMMENT';
+export const DISLIKE_COMMENT = 'DISLIKE_COMMENT';
+export const UNDISLIKE_COMMENT = 'UNDISLIKE_COMMENT';
 
 export const EDIT_USER = 'EDIT_USER';
 export const SET_DEFAULT_USERS = 'SET_DEFAULT_USERS';
@@ -96,10 +98,6 @@ export function removeEntry(idCollection, id) {
   };
 }
 
-export const entryLikes = (id, likesCount) => ({type: ENTRY_LIKE, id, likesCount});
-
-export const userLikes = (id, userLikesCount) => ({type: USER_LIKES, id, userLikesCount});
-
 /**
 * Movies action creators
 */
@@ -136,6 +134,56 @@ export function editComment(id, idCommented, text) {
     idCommented,
     text
   };
+}
+
+export function likeComment(id, idCommented, userId){
+  return{
+    type: LIKE_COMMENT,
+    id,
+    idCommented,
+    userId
+  };
+}
+
+export function unlikeComment(id, idCommented, userId){
+  return{
+    type: UNLIKE_COMMENT,
+    id,
+    idCommented,
+    userId
+  };
+}
+
+export function unlikeAndDislikeComment(id, idCommented, userId) {
+  return dispatch => sequencer([
+      () => dispatch(unlikeComment(id, idCommented, userId)),
+      () => dispatch(dislikeComment(id, idCommented, userId))
+    ]);
+}
+
+export function dislikeComment(id, idCommented, userId){
+  return{
+    type: DISLIKE_COMMENT,
+    id,
+    idCommented,
+    userId
+  };
+}
+
+export function undislikeComment(id, idCommented, userId){
+  return{
+    type: UNDISLIKE_COMMENT,
+    id,
+    idCommented,
+    userId
+  };
+}
+
+export function undislikeAndLikeComment(id, idCommented, userId) {
+  return dispatch => sequencer([
+      () => dispatch(undislikeComment(id, idCommented, userId)),
+      () => dispatch(likeComment(id, idCommented, userId))
+    ]);
 }
 
 /**
