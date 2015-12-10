@@ -2,12 +2,16 @@ import React, { Component, PropTypes } from 'react';
 import Color from 'material-ui/lib/styles/colors';
 import Card from 'material-ui/lib/card/card';
 import CardActions from 'material-ui/lib/card/card-actions';
+import CardText from 'material-ui/lib/card/card-text';
 import CardTitle from 'material-ui/lib/card/card-title';
 import IconButton from 'material-ui/lib/icon-button';
 import Dialog from '../../node_modules/material-ui/lib/dialog';
 import { allTrim, getSlug } from '../utils';
 import TextField from 'material-ui/lib/text-field';
 import FlatButton from 'material-ui/lib/flat-button';
+import facebook from '../../images/facebook.png';
+import google from '../../images/google.png';
+import twitter from '../../images/twitter.png';
 import injectTapEventPlugin from "react-tap-event-plugin";
 injectTapEventPlugin();
 
@@ -62,6 +66,7 @@ export default class ListDetailsHead extends Component {
 
   render() {
     const { list } = this.props;
+    const custom = list.custom;
     const listTitle = list.title;
     const subtitle = list.desc;
 
@@ -127,7 +132,6 @@ export default class ListDetailsHead extends Component {
         </Dialog>
         );
 
-    const custom = (list.custom);
     const cardActions = custom ? (<CardActions
         style={{display: "flex", width: "90%", justifyContent: "space-between", margin: "0 auto"}}
         expandable={custom}>
@@ -148,6 +152,21 @@ export default class ListDetailsHead extends Component {
       </CardActions>
       ) : '';
 
+    const social = (
+        <CardText>
+        Share with:
+        <a href="">
+          <img style={{height: "2em", marginLeft: "1em"}} src={facebook} alt="facebook-logo"/>
+        </a>
+        <a href="">
+          <img style={{height: "2em", marginLeft: "1em"}} src={google} alt="google-logo"/>
+        </a>
+        <a href="">
+          <img style={{height: "2em", marginLeft: "1em"}} src={twitter} alt="twitter-logo"/>
+        </a>
+      </CardText>
+      );
+
     return (
      <Card>
       <CardTitle
@@ -156,6 +175,7 @@ export default class ListDetailsHead extends Component {
         subtitle={subtitle}
         subtitleStyle={{width: "90%", textAlign: "justify"}}
         showExpandableButton={custom}/>
+      {social}
       {cardActions}
       {editDialog}
       {deleteDialog}

@@ -55,7 +55,7 @@ export default class EntriesList extends Component {
         padding={0}
         cols={this.state.width / 160}
         cellHeight={240}
-        style={{ width: this.state.width, overflowY: "auto"}}
+        style={{ width: this.state.width, overflowY: "auto", marginLeft: (this.state.width % 160) / 2}}
       >
         {
           _.values(movies) && _.values(movies).map((movie) => (
