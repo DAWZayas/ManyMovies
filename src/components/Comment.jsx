@@ -8,6 +8,8 @@ import CardActions from 'material-ui/lib/card/card-actions';
 import TextField from 'material-ui/lib/text-field';
 import Avatar from 'material-ui/lib/avatar';
 import IconButton from 'material-ui/lib/icon-button';
+import Dialog from 'material-ui/lib/dialog';
+import FlatButton from 'material-ui/lib/flat-button';
 import Colors from 'material-ui/lib/styles/colors';
 import { formatDate } from '../utils/date';
 import injectTapEventPlugin from "react-tap-event-plugin";
@@ -18,10 +20,14 @@ class Comment extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {editing: false};
+    this.state = {editing: false, deleting: false};
   }
 
-  componentDidMount(){
+  componentDidUpdate(){
+    if (this.refs.comment) {
+      this.refs.comment.focus();
+      this.refs.comment._getInputNode().select();
+    }
   }
 
   _handleTouchEdit() {
@@ -37,10 +43,19 @@ class Comment extends Component {
     this._stopEditing();
   }
 
+  _handleDialogRequestClose() {
+    this._stopDeleting();
+  }
+
   _handleTouchDelete(){
+    this.setState({deleting: true});
+  }
+
+  _handleDialogSubmit(){
     const { removeComment, comment, idCommented } = this.props;
     const { id } = comment;
     removeComment(id, idCommented);
+    this._stopDeleting();
   }
 
   _handleKeyDown(e){
@@ -65,35 +80,15 @@ class Comment extends Component {
     this.setState({editing: false});
   }
 
+  _stopDeleting() {
+    this.setState({deleting: false});
+  }
 
-  render() {
-    const { time, text, modified } = this.props.comment;
-    const userAvatar = (
-      <Avatar
-        src={this.props.creator.avatarUrl}
-        color={Colors.orange100}
-        backgroundColor={Colors.deepOrange900}
-      />
-    );
-    const modifiedTime = modified ? <div><small>Edited on {formatDate(modified)}</small></div> : '';
-    const cardBody = this.state.editing ? (
-      <CardText>
-        <TextField
-          onKeyDown={this._handleKeyDown.bind(this)}
-          ref="comment"
-          floatingLabelText="Comment"
-          defaultValue={text}
-          multiLine
-          fullWidth
-          rows={4}
-        />
-      </CardText>
-      ) : (
-      <CardText>
-        {text}
-        {modifiedTime}
-      </CardText>
-    );
+  _isCommentedByMe(){
+    return this.props.user.userName === this.props.creator.userName;
+  }
+
+  _getCardActions(){
     const cardActions = this.state.editing ? (
       <CardActions style={{float: "right"}}>
           <IconButton
@@ -133,34 +128,104 @@ class Comment extends Component {
           </IconButton>
         </CardActions>
     );
+    return cardActions;
+  }
+
+  _getDeleteDialog(){
+    const dialogActions = [
+      <FlatButton
+      key={0}
+        label="Cancel"
+        secondary
+        onTouchTap={this._handleDialogRequestClose.bind(this)}
+      />,
+      <FlatButton
+        key={1}
+        label="Delete"
+        primary
+        onTouchTap={this._handleDialogSubmit.bind(this)}
+      />
+    ];
+
+    const dialog = (
+      <Dialog
+        actions={dialogActions}
+        actionFocus="submit"
+        open={this.state.deleting}
+        onRequestClose={this._handleDialogRequestClose.bind(this)}>
+        Are you sure you want to remove the comment?
+      </Dialog>);
+
+    return dialog;
+  }
+
+  render() {
+    const { time, text, modified } = this.props.comment;
+
+    const userAvatar = (
+      <Avatar
+        src={this.props.creator.avatarUrl}
+        color={Colors.orange100}
+        backgroundColor={Colors.deepOrange900}
+      />
+    );
+    const modifiedTime = modified ? <div><small>Edited on {formatDate(modified)}</small></div> : '';
+
+    const cardBody = this.state.editing ? (
+      <CardText>
+        <TextField
+          onKeyDown={this._handleKeyDown.bind(this)}
+          ref="comment"
+          floatingLabelText="Comment"
+          defaultValue={text}
+          multiLine
+          fullWidth
+          rows={4}
+        />
+      </CardText>
+      ) : (
+      <CardText>
+        {text}
+        {modifiedTime}
+      </CardText>
+    );
+
+    const cardHeader = (
+      <CardHeader
+        style={{backgroundColor: Colors.grey300}}
+        title={<span>Commented by <span style={{color: Colors.deepOrange900, fontWeight: "bolder"}}>{this.props.creator.displayName}</span></span>}
+        subtitle={formatDate(time)}
+        subtitleStyle={{color: Colors.grey700}}
+        avatar={userAvatar}
+      />
+    );
+
+    const cardActions = this._isCommentedByMe.bind(this)() ? this._getCardActions.bind(this)() : '';
+    const dialog = this._isCommentedByMe.bind(this)() ? this._getDeleteDialog.bind(this)() : '';
 
     return (
       <Card style={{margin: "1em 0 0 0", backgroundColor: Colors.grey200}}>
-        <CardHeader
-          style={{backgroundColor: Colors.grey300}}
-          title={<span>Commented by <span style={{color: Colors.deepOrange900, fontWeight: "bolder"}}>{this.props.creator.displayName}</span></span>}
-          subtitle={formatDate(time)}
-          subtitleStyle={{color: Colors.grey700}}
-          avatar={userAvatar}
-        />
+        {cardHeader}
         {cardBody}
         {cardActions}
+        {dialog}
       </Card>
     );
   }
 }
 
 Comment.propTypes = {
+  user: PropTypes.object,
   comment: PropTypes.object,
   creator: PropTypes.object,
-  user: PropTypes.object,
   editComment: PropTypes.func,
   removeComment: PropTypes.func,
   idCommented: PropTypes.string
 };
 
 function mapStateToProps(state, ownProp) {
-  return {creator: state.users[ownProp.comment.userName]};
+  const user = state.users.Gotre;
+  return {creator: state.users[ownProp.comment.userName], user};
 }
 
 function mapDispatchToProps(dispatch) {

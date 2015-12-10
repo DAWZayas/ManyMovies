@@ -6,11 +6,11 @@ import { defaultComments } from '../utils/examples';
 
 const setDefaultComment = state => Object.assign({}, state, defaultComments);
 
-function createComment(state, idCommented, text) {
+function createComment(state, idCommented, text, userName) {
   const id  = getId();
   let collectionComments = state[idCommented];
   collectionComments = collectionComments ? collectionComments : [];
-  const newComment = { id, idCommented, text, time: new Date() };
+  const newComment = { id, idCommented, text, userName, time: new Date() };
   return Object.assign({}, state, { [idCommented] : [newComment].concat(collectionComments)});
 }
 
@@ -25,7 +25,8 @@ function editComment(state, id, idCommented, text) {
   let collectionComments = state[idCommented];
   let comment = _.find(collectionComments, (comment) => comment.id === id);
   let position = collectionComments.indexOf(comment);
-  let newComment = { id, text, time: comment.time, modified: new Date() };
+  //let newComment = { id, text, time: comment.time, modified: new Date() };
+  let newComment = Object.assign({}, comment, {text, modified: new Date()});
   collectionComments = collectionComments.slice(0);
   collectionComments[position] = newComment;
   return Object.assign({}, state, { [idCommented] : collectionComments });
@@ -42,7 +43,7 @@ export default function (state = {}, action) {
     case SET_DEFAULT_COMMENT:
       return setDefaultComment(state);
     case CREATE_COMMENT:
-      return createComment (state, action.idCommented, action.text);
+      return createComment (state, action.idCommented, action.text, action.userName);
     case DELETE_COMMENT:
       return removeComment(state, action.id, action.idCommented);
     case EDIT_COMMENT:
