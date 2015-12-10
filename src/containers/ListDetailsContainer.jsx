@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { pushState } from 'redux-router';
 import { editListAndNavigate, deleteListAndNavigate, removeEntry, addEntry } from '../actions';
+import { getDocHeight } from '../utils';
+import $ from 'jquery';
 import _ from 'lodash';
 import Colors from 'material-ui/lib/styles/colors';
 import Tabs from 'material-ui/lib/tabs/tabs';
@@ -11,10 +13,30 @@ import EntriesList from '../components/EntriesList';
 import Comment from '../components/Comment';
 import CommentAdder from '../components/CommentAdder';
 
+const PAGE_SIZE = 5;
+
 class ListDetailsContainer extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      maxComments: PAGE_SIZE,
+      loadMoreHandler: this._loadMoreOnBottom.bind(this)
+    };
+  }
+
+  componentDidMount(){
+    window.addEventListener("scroll", this.state.loadMoreHandler);
+  }
+
+  componentWillUnmount(){
+    window.removeEventListener("scroll", this.state.loadMoreHandler);
+  }
+
+  _loadMoreOnBottom() {
+    if ($(window).scrollTop() + $(window).height() > getDocHeight() - 5) {
+      this.setState({maxComments: this.state.maxComments + PAGE_SIZE});
+    }
   }
 
   render() {
@@ -30,6 +52,8 @@ class ListDetailsContainer extends Component {
       addEntry,
       comments
     } = this.props;
+    const { maxComments } = this.state;
+
     return (
       <div>
         <ListDetailsHead
@@ -55,7 +79,7 @@ class ListDetailsContainer extends Component {
           <Tab style={{backgroundColor: Colors.orange600}}
            label="Comments">
             <CommentAdder idCommented={list.id}/>
-            {comments.map((comment, index) => (<Comment key={index} idCommented={list.id} comment={comment}/>))}
+            {comments.slice(0, maxComments).map((comment, index) => (<Comment key={index} idCommented={list.id} comment={comment}/>))}
           </Tab>
         </Tabs>
       </div>

@@ -39,3 +39,12 @@ export function relativeScore(pos, n) {
   const phat = 1 * pos / n;
   return (phat + z * z / (2 * n) - z * Math.sqrt((phat * (1 - phat ) + z * z / (4 * n)) / n)) / (1 + z * z / n);
 }
+
+export function getDocHeight() {
+    const D = document;
+    return Math.max(
+        D.body.scrollHeight, D.documentElement.scrollHeight,
+        D.body.offsetHeight, D.documentElement.offsetHeight,
+        D.body.clientHeight, D.documentElement.clientHeight
+    );
+  }

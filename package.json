@@ -60,6 +60,7 @@
     "babel-runtime": "^5.8.29",
     "bootstrap": "^3.3.5",
     "history": "^1.13.0",
+    "jquery": "^2.1.4",
     "lodash": "^3.10.1",
     "node-uuid": "^1.4.3",
     "react": "^0.14.0",
