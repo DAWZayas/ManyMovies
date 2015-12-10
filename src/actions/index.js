@@ -206,9 +206,9 @@ export function editUser(user, newStats){
 
 /**
 * Users rating and movies rating
-*/
-export const setDefaultMovieRatings = idMovie => ({type : SET_DEFAULT_MOVIE_RATINGS , idMovie });
-export const setDefaultUserRatings = user, idMovie => ({type : SET_DEFAULT_USER_RATINGS, user, idMovie});
+*//*
+export const setDefaultMovieRatings = idMovie => ({type : SET_DEFAULT_MOVIE_RATINGS, idMovie });
+export const setDefaultUserRatings = (user, idMovie) => ({type : SET_DEFAULT_USER_RATINGS, user, idMovie});
 
 export function editUserRating (userName, idMovie){
   return{
@@ -223,11 +223,12 @@ export function editUserRating (userName, idMovie){
 export function editMovieRating (idMovie ){
   return {
     type: EDIT_MOVIE_RATING,
-    idMovie :  
-      { 
+    idMovie :
+      {
         totalVotes : totalVotes,
         totalNotes : totalNotes
 
       }
   };
 }
+*/

@@ -13,6 +13,7 @@ import Dialog from 'material-ui/lib/dialog';
 import FlatButton from 'material-ui/lib/flat-button';
 import Colors from 'material-ui/lib/styles/colors';
 import { formatDate } from '../utils/date';
+import { relativeScore } from '../utils';
 import injectTapEventPlugin from "react-tap-event-plugin";
 injectTapEventPlugin();
 
@@ -21,7 +22,7 @@ class Comment extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {editing: false, deleting: false};
+    this.state = {editing: false, deleting: false, hidingBadComment: true};
   }
 
   componentDidUpdate(){
@@ -104,6 +105,10 @@ class Comment extends Component {
     const { unlikeAndDislikeComment, comment, idCommented, user } = this.props;
     const { id } = comment;
     unlikeAndDislikeComment(id, idCommented, user.userName);
+  }
+
+  _handleShowHidden(){
+    this.setState({ hidingBadComment: false});
   }
 
   _submitChanges(){
@@ -237,6 +242,7 @@ class Comment extends Component {
   render() {
     const { time, text, modified, likes, dislikes } = this.props.comment;
     const score = likes - dislikes;
+    const isBadComment = relativeScore(dislikes, likes + dislikes) > 0.4 ? true : false;
 
     const userAvatar = (
       <Avatar
@@ -266,6 +272,20 @@ class Comment extends Component {
       </CardText>
     );
 
+    const showBadCommentBody = (
+      <CardText  style={{textAlign: 'center'}}>
+        Comment hidden due to bad ratings,
+        <span
+          style={{fontWeight: 'bold', cursor: 'pointer'}}
+          onClick={() => this._handleShowHidden()}
+          > show </span>
+        under your responsibility
+      </CardText>
+    );
+    const filteredBody = (this.state.hidingBadComment && isBadComment) ?
+      <span>{showBadCommentBody}</span> :
+      <span>{cardBody}</span>;
+
     const cardHeader = (
       <CardHeader
         style={{backgroundColor: Colors.grey300}}
@@ -280,6 +300,7 @@ class Comment extends Component {
 
     const cardLikes = (
       <CardTitle
+        style={{paddingBottom: '3em'}}
         subtitle={
           <span>
             {this._getLikeIcon()}
@@ -298,7 +319,7 @@ class Comment extends Component {
       <Card style={{margin: "1em 0 0 0", backgroundColor: Colors.grey200}}>
         {cardHeader}
         {cardLikes}
-        {cardBody}
+        {filteredBody}
         {cardActions}
         {dialog}
       </Card>

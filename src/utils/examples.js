@@ -79,7 +79,7 @@ export const defaultComments = {
         time: new Date(),
         userName: 'ShyBoy',
         likes: 0,
-        dislikes: 0
+        dislikes: 1337
       }
     ],
   ['7'] : [
@@ -117,35 +117,6 @@ export const defaultUsers = {
   }
 };
 
-<<<<<<< HEAD
-export const defaultUserRatings = {
-  'Gotre': {
-    '7': 8,
-    '43' : 4,
-    '70' : 3
-  },
-  'Gotre1' : {
-    '7': 5,
-    '70' : 6
-  }
-};
-
-export const defaultMovieRatings = {
-  '7' : {
-    'totalVotes' : 2,
-    'totalNote' : 650
-  },
-  '43' : {
-    'totalVotes' : 1,
-    'totalNote' : 4
-  },
-  '70' : {
-    'totalVotes' : 2,
-    'totalNote' : 450
-  }
-};
-=======
-
 export const defaultUserRatings = {
   'Gotre': {
     '7': 7,
@@ -176,4 +147,3 @@ export const defaultMovieRatings = {
     totalNote: 10
   }
 };
->>>>>>> 8fac93c74fa06a9498e6b609a2aad68e240be161
