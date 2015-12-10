@@ -34,8 +34,15 @@ class ListDetailsContainer extends Component {
   }
 
   _loadMoreOnBottom() {
-    if ($(window).scrollTop() + $(window).height() > getDocHeight() - 5) {
-      this.setState({maxComments: this.state.maxComments + PAGE_SIZE});
+    if (this.state.maxComments >= this.props.comments.length){
+      return;
+    }
+    if ($(window).scrollTop() + $(window).height() > getDocHeight() - 15) {
+      $('body').css('cursor', 'progress');
+      setTimeout(() => {
+        $('body').css('cursor', 'initial');
+        this.setState({maxComments: this.state.maxComments + PAGE_SIZE});
+      }, 1500);
     }
   }
 
