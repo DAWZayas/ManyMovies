@@ -7,6 +7,8 @@ import init from './utils/init';
 require('./style.css');
 require('bootstrap/dist/css/bootstrap.min.css');
 require('font-awesome/css/font-awesome.min.css');
+import instantclick from 'instantclick';
+instantclick.init();
 
 const store = init();
 

@@ -36,6 +36,7 @@
     "express": "^4.13.3",
     "file-loader": "^0.8.4",
     "font-awesome": "https://github.com/FortAwesome/Font-Awesome/archive/v4.5.0.tar.gz",
+    "instantclick": "^3.1.0",
     "jsdom": "^7.0.2",
     "json-loader": "^0.5.3",
     "material-ui": "^0.13.3",
