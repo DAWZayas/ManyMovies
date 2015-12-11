@@ -13,8 +13,7 @@ export default class MovieRow extends Component {
   }
 
   _handleTouchTap(slug){
-    console.log(slug);
-    this.props.navigate('/lists');
+    this.props.navigate(`/movies/${slug}`);
   }
 
   render() {

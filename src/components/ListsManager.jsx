@@ -57,20 +57,46 @@ export default class ListsManager extends Component {
     );
   }
 
-  render() {
-    const { lists/*, movie, entries */} = this.props;
-    //const idMovie = movie.ids.trakt.toString();
-    const idWactchList = _.findKey(lists, { slug: 'watchlist'});
+  _getGeneralListsItem(){
+    const isInGeneralLists = this._isInGeneralLists();
+    const itemStyle = isInGeneralLists ?
+      {color: Color.white, backgroundColor: Color.teal500, border: "2px solid #00796B", margin: "1em"} :
+      {color: Color.teal500, border: "2px solid #00796B", margin: "1em"};
+    const iconColor = isInGeneralLists ? Color.white : Color.teal500;
+    return (
+      <ListItem
+          leftIcon={<FontIcon color={iconColor} className="material-icons">list</FontIcon>}
+          style={itemStyle}
+          primaryText="ADD TO LIST"
+          onTouchTap={() => {console.log('hola listas');}}
+        />
+    );
+  }
 
+  _isInGeneralLists(){
+    const { lists, movie, entries } = this.props;
+    const idHistory = _.findKey(lists, { slug: 'history' });
+    const idCollection = _.findKey(lists, { slug: 'collection'});
+    const generalLists = Object.assign({}, lists);
+    delete generalLists[idHistory];
+    delete generalLists[idCollection];
+
+    let answer = false;
+    const idMovie = movie.ids.trakt.toString();
+    _.forEach( generalLists, function(n, key) {
+      if (entries[key].indexOf(idMovie) !== -1){
+        answer = true;
+      }
+    });
+    return answer;
+  }
+
+  render() {
     return (
       <List>
         {this._getHistoryItem()}
         {this._getCollectionItem()}
-        <ListItem
-          leftIcon={<FontIcon className="material-icons">list</FontIcon>}
-          primaryText="ADD TO LIST"
-          onTouchTap={() => {console.log(idWactchList);}}
-        />
+        {this._getGeneralListsItem()}
       </List>
     );
   }
