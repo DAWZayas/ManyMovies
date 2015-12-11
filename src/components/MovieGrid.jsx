@@ -32,7 +32,7 @@ export default class MovieGrid extends Component {
       <GridTile
         title={movie.title}
         subtitle={year}
-        onTouchTap={() => navigate('movie-details')}
+        onTouchTap={() => navigate(`/movies/${movie.ids.slug}`)}
         titleBackground="rgba(0, 0, 0, 0.60)"
         actionIcon={
           <IconButton

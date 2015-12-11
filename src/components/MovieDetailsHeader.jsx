@@ -50,12 +50,5 @@ MovieDetailsHeader.propTypes = {
 };
 
 MovieDetailsHeader.defaultProps = {
-  movie: {
-    "released": "1998-10-30",
-    "title": "American History X",
-    "images": {
-      "poster": "https://walter.trakt.us/images/movies/000/000/043/posters/thumb/3943ed4449.jpg",
-      "fanart": "https://walter.trakt.us/images/movies/000/000/043/fanarts/thumb/4144a111c1.jpg"
-    }
-  }
+
 };

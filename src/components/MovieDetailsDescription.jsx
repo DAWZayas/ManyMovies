@@ -15,9 +15,10 @@ export default class MovieDetailsDescription extends Component{
     };
   }
   render(){
+    const { movie } = this.props;
     return(
       <Card >
-          <MovieDetailsHeader />
+          <MovieDetailsHeader movie={movie} />
           <CardText style={{display: "flex", width: "100%", margin: "0 auto"}}>
             <Paper> <ImageWithPlaceholder src={this.props.movie.images.poster} alt={this.props.movie.title} style={{height: "21em"}} /> </Paper>
             <div>
@@ -41,31 +42,5 @@ MovieDetailsDescription.propTypes = {
 };
 
 MovieDetailsDescription.defaultProps = {
-  movie: {
-    "title": "American History X",
-    "released": "1998-10-30",
-    "ids": {
-      "trakt": 43,
-      "slug": "american-history-x-1998",
-      "imdb": "tt0120586",
-      "tmdb": 73
-    },
-    "sinopsis": "Derek Vineyard is paroled after serving 3 years in prison for killing two thugs who tried to break into/steal his truck. Through his brother, Danny Vineyard's narration, we learn that before going to prison, Derek was a skinhead and the leader of a violent white supremacist gang that committed acts of racial crime throughout L.A. and his actions greatly influenced Danny. Reformed and fresh out of prison, Derek severs contact with the gang and becomes determined to keep Danny from going down the same violent path as he did.",
-    "runtime": 119,
-    "votes": 7659,
-    "rating": 8.70296,
-    "genres": [
-      "drama"
-    ],
-    "certification": "R",
-    "tagline": "Some Legacies Must End.",
-    "trailer": "http://youtube.com/watch?v=JsPW6Fj3BUI",
-    "images": {
-      "poster": "https://walter.trakt.us/images/movies/000/000/043/posters/thumb/3943ed4449.jpg",
-      "fanart": "https://walter.trakt.us/images/movies/000/000/043/fanarts/thumb/4144a111c1.jpg"
-    }
-  },
-  likes: {likes:100, dislikes:20 },
-  userLikes: -1,
-  listedIn: ['1', '2', '3']
+
 };
