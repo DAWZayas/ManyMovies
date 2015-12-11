@@ -12,6 +12,8 @@ import IconButton from 'material-ui/lib/icon-button';
 import Dialog from 'material-ui/lib/dialog';
 import FlatButton from 'material-ui/lib/flat-button';
 import Colors from 'material-ui/lib/styles/colors';
+import Rating from 'react-rating';
+import Popover from 'material-ui/lib/popover/popover';
 import { formatDate } from '../utils/date';
 import { relativeScore } from '../utils';
 import injectTapEventPlugin from "react-tap-event-plugin";
@@ -239,6 +241,13 @@ class Comment extends Component {
     return {};
   }
 
+  _show(e) {
+    this.setState({
+      activePopover: true,
+      anchorEl:e.currentTarget,
+    });
+  }
+
   render() {
     const { time, text, modified, likes, dislikes } = this.props.comment;
     const score = likes - dislikes;
@@ -322,6 +331,21 @@ class Comment extends Component {
         {filteredBody}
         {cardActions}
         {dialog}
+        <p onClick={this._show.bind(this)}>Popover</p>
+        <Popover
+          style={{padding: '0 2em'}}
+          anchorEl={this.state.anchorEl}
+          anchorOrigin={{"horizontal":"middle", "vertical":"center"}}
+          targetOrigin={{"horizontal":"middle", "vertical":"center"}}
+          open={this.state.activePopover}
+          canAutoPosition>
+            <Rating
+              iconClassName="ratings"
+              empty="fa fa-heart-o fa-2x heart"
+              full="fa fa-heart fa-2x heart"
+              stop={10}
+              onChange={(rate) => {console.log(rate);}}/>
+        </Popover>
       </Card>
     );
   }

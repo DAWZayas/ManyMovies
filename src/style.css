@@ -50,6 +50,14 @@ li{
   font-size: 1.5em;
 }
 
+.heart{
+  color: #FF1744;
+  padding-top: 1em;
+  padding-right: 0.1em;
+  padding-bottom: 1em;
+}
+
+
 /**
 * MATERIAL ICONS
 */
