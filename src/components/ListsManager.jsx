@@ -65,11 +65,12 @@ export default class ListsManager extends Component {
       {color: Color.white, backgroundColor: Color.red900, border: `2px solid ${Color.red900}`, fontWeight: 'bold', textAlign: 'center'} :
       {color: Color.red900, border: `2px solid ${Color.red900}`, fontWeight: 'bold', textAlign: 'center'};
     const iconColor = isInGeneralLists ? Color.white : Color.red900;
+    const label = isInGeneralLists ? 'IN' : 'ADD TO';
     return (
       <ListItem
           leftIcon={<FontIcon color={iconColor} className="material-icons">list</FontIcon>}
           style={itemStyle}
-          primaryText="ADD TO LIST"
+          primaryText={`${label} LISTS`}
           onTouchTap={this._startAddingToLists.bind(this)}
         />
     );

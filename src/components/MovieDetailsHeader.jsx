@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import CardMedia from 'material-ui/lib/card/card-media';
 import CardTitle from 'material-ui/lib/card/card-title';
+import defaultFanart from '../../images/mm-fanart.png';
 
 export default class MovieDetailsHeader extends Component {
   constructor(props) {
@@ -30,10 +31,11 @@ export default class MovieDetailsHeader extends Component {
   render() {
     const backWidth =  this.state.width > this.state.maxFanartWidth ? this.state.maxFanartWidth : this.state.width;
     const year = this.state.width > 350 ? this.props.movie.released.split('-')[0] : '';
+    const fanart = this.props.movie.images.fanart ? this.props.movie.images.fanart : defaultFanart;
     return (
         <CardMedia style={{
             height: backWidth / this.state.fanartRatio,
-            backgroundImage: 'url(' + this.props.movie.images.fanart + ')',
+            backgroundImage: 'url(' + fanart + ')',
             backgroundSize:"cover"}}
             overlay={
           <CardTitle style={{color: "white", fontSize: "1.5em"}}>

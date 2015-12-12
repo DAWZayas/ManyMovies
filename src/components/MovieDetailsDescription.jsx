@@ -3,13 +3,16 @@ import { connect } from 'react-redux';
 import { rateMovie, changeMovieRating } from '../actions';
 import Card from 'material-ui/lib/card/card';
 import CardText from 'material-ui/lib/card/card-text';
-const Dialog = require('material-ui/lib/dialog');
+import Dialog from 'material-ui/lib/dialog';
 import Popover from 'material-ui/lib/popover/popover';
 import FontIcon from 'material-ui/lib/font-icon';
 import Rating from 'react-rating';
+import _ from 'lodash';
 import Color from 'material-ui/lib/styles/colors';
 import MovieDetailsHeader from './MovieDetailsHeader';
 import ImageWithPlaceholder from './ImageWithPlaceholder';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
 
 export default class MovieDetailsDescription extends Component{
   constructor(props) {
@@ -47,10 +50,9 @@ export default class MovieDetailsDescription extends Component{
     this.setState({watchingTrailer: false});
   }
 
-  _showPopover(e) {
+  _showPopover() {
     this.setState({
-      activePopover: true,
-      anchorEl:e.currentTarget,
+      activePopover: true
     });
   }
 
@@ -68,14 +70,14 @@ export default class MovieDetailsDescription extends Component{
   }
 
   _getPopover(){
-    const { movie, user } = this.props;
+    const { movie, user, userRating } = this.props;
     const id = movie.ids.trakt;
 
     const popover = (
       <Popover
         style={{width: '250px', padding: '0 2em', textAlign: 'center'}}
-        anchorEl={this.state.anchorEl}
-        anchorOrigin={{"horizontal":"middle", "vertical":"center"}}
+        anchorEl={this.refs.anchorEl}
+        anchorOrigin={{"horizontal":"middle", "vertical":"bottom"}}
         targetOrigin={{"horizontal":"middle", "vertical":"center"}}
         open={this.state.activePopover}
         onRequestClose={this._hidePopover.bind(this)}
@@ -84,6 +86,7 @@ export default class MovieDetailsDescription extends Component{
             iconClassName="ratings"
             empty="fa fa-heart-o fa-2x heart"
             full="fa fa-heart fa-2x heart"
+            initialRate={this._convertRateToHearts(userRating)}
             stop={5}
             step={1}
             onChange={rate => { this._ratingHandler(user.userName, id, this._convertRate(rate));}}/>
@@ -94,20 +97,18 @@ export default class MovieDetailsDescription extends Component{
 
   _getRatingText(){
     const { userRating } = this.props;
-    switch (userRating){
-      case 0:
-        return '1 - TERRIBLE';
-      case 2.5:
-        return '2 - BAD';
-      case 5:
-        return '3 - MEH';
-      case 7.5:
-        return '4 - GOOD';
-      case 10:
-        return '5 - AWESOME';
-      default:
-        return 'RATE';
-    }
+    const ratings = {
+      0: '1 - TERRIBLE',
+      2.5: '2 - BAD',
+      5: '3 - MEH',
+      7.5: '4 - GOOD',
+      10: '5 - AWESOME'
+    };
+    return ratings[userRating] || 'RATE';
+  }
+
+  _convertRateToHearts(rating){
+    return rating / 2.5 + 1;
   }
 
   _convertRate(num){
@@ -140,10 +141,61 @@ export default class MovieDetailsDescription extends Component{
           </div>
         </Dialog>
         <div className="ratings-wrapper">
-          <FontIcon color={Color.indigo500} className="material-icons">movie</FontIcon>
-          <span onClick={this._handleShowTrailer.bind(this)} style={{marginLeft: '0.5em', color: Color.indigo500}}>Trailer</span>
+          <FontIcon onClick={this._handleShowTrailer.bind(this)} style={{cursor: 'pointer'}} color={Color.indigo500} className="material-icons">movie</FontIcon>
+          <span onClick={this._handleShowTrailer.bind(this)} style={{marginLeft: '0.5em', color: Color.indigo500, cursor: 'pointer'}}>Trailer</span>
         </div>
       </div>);
+  }
+
+  _getPGRating(){
+    const { movie } = this.props;
+    return movie.certification ? <p><span style={{color: Color.red500}}>Certification: </span><span style={this._getPGStyle(movie.certification)}>{movie.certification}</span></p> : null;
+  }
+
+  _getPGStyle(certification){
+    const pgColors = {
+      'PG': Color.green500,
+      'PG-13': Color.orange500,
+      'R': Color.red500
+    };
+    const pgColor = pgColors[certification] || Color.blue500;
+    return {
+      color: pgColor,
+      fontWeight: 'bold',
+      fontSize: '0.75em',
+      border: `2px solid ${pgColor}`,
+      padding: '0.2em'
+    };
+  }
+
+  _getReleased(){
+    const { movie } = this.props;
+    return <p><span style={{color: Color.red500}}>Released: </span> {movie.released}</p>;
+  }
+
+
+  _getRuntime(){
+    const { movie } = this.props;
+    return movie.runtime ? <p><span style={{color: Color.red500}}>Runtime: </span> {movie.runtime}</p> : null;
+  }
+
+  _getGenres(){
+    const { movie } = this.props;
+    if (movie.genres) {
+      const genres = movie.genres.map(genre => _.capitalize(genre));
+      return (
+        <p>
+          <span style={{color: Color.red500}}>Genres: </span>
+          <span>
+          {
+            genres.join(', ')
+          }
+          </span>
+        </p>
+      );
+    }else {
+      return null;
+    }
   }
 
   render(){
@@ -159,20 +211,23 @@ export default class MovieDetailsDescription extends Component{
                 <FontIcon color={Color.red500} className="material-icons">favorite</FontIcon>
                 <span style={{marginLeft: '0.5em'}}>{percentRating}</span>
               </div>
-              <div className="ratings-wrapper">
-                <FontIcon color={Color.red500} className="material-icons">favorite_border</FontIcon>
-                <span onClick={this._showPopover.bind(this)} style={{marginLeft: '0.5em'}}>{this._getRatingText.bind(this)()}</span>
-              </div>
+              <hr/>
               <p style={{fontStyle: "italic"}}>{movie.tagline}</p>
+              <div className="ratings-wrapper">
+                <FontIcon onClick={this._showPopover.bind(this)} style={{cursor: 'pointer'}} color={Color.red500} className="material-icons">favorite_border</FontIcon>
+                <span  ref="anchorEl" onClick={this._showPopover.bind(this)} style={{marginLeft: '0.5em', cursor: 'pointer'}}>{this._getRatingText.bind(this)()}</span>
+              </div>
               {this._getPopover.bind(this)()}
               {this._getTrailer.bind(this)()}
               <br style={{clear: 'both'}}/>
             </div>
           </CardText>
-          <CardText> <span style={{color: Color.red500}}>Released: </span> {this.props.movie.released} </CardText>
-          <CardText> <span style={{color: Color.red500}}>Runtime: </span> {this.props.movie.runtime} </CardText>
-          <CardText> <span style={{color: Color.red500}}>Genres: </span> {this.props.movie.genres} </CardText>
-          <CardText> <span style={{color: Color.red500}}>Certification: </span> {this.props.movie.certification} </CardText>
+          <CardText>
+            {this._getReleased.bind(this)()}
+            {this._getGenres.bind(this)()}
+            {this._getRuntime.bind(this)()}
+            {this._getPGRating.bind(this)()}
+          </CardText>
           <CardText style={{padding: "1em", fontSize: "1em", clear: "left"}}>
             {this.props.movie.sinopsis}
           </CardText>
