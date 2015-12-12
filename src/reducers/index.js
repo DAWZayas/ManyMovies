@@ -7,6 +7,7 @@ import comments from './comments';
 import users from './users';
 import userLikes from './userLikes';
 import userDislikes from './userDislikes';
+import userRatings from './userRatings';
 
 export default combineReducers({
   router,
@@ -16,5 +17,6 @@ export default combineReducers({
   comments,
   users,
   userLikes,
-  userDislikes
+  userDislikes,
+  userRatings
 });

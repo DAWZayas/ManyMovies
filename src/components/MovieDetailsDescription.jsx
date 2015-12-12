@@ -1,46 +1,151 @@
 import React, { PropTypes, Component } from 'react';
+import { connect } from 'react-redux';
+import { rateMovie, changeMovieRating } from '../actions';
 import Card from 'material-ui/lib/card/card';
 import CardText from 'material-ui/lib/card/card-text';
+import Popover from 'material-ui/lib/popover/popover';
+import FontIcon from 'material-ui/lib/font-icon';
+import Rating from 'react-rating';
 import Color from 'material-ui/lib/styles/colors';
-import Paper from'material-ui/lib/paper';
 import MovieDetailsHeader from './MovieDetailsHeader';
 import ImageWithPlaceholder from './ImageWithPlaceholder';
 
 export default class MovieDetailsDescription extends Component{
   constructor(props) {
     super(props);
-    this.state = {
-    maxFanartWidth: 1100,
-    fanartRatio: 1.78
-    };
+    this.state = {};
   }
+
+  _showPopover(e) {
+    this.setState({
+      activePopover: true,
+      anchorEl:e.currentTarget,
+    });
+  }
+
+  _hidePopover(){
+    this.setState({activePopover: false});
+  }
+
+  _ratingHandler(userName, idMovie, rate){
+    const { userRating, rateMovie, changeMovieRating } = this.props;
+    if (userRating === undefined){
+      rateMovie(userName, idMovie, rate);
+    }else {
+      changeMovieRating(userName, idMovie,  userRating, rate);
+    }
+  }
+
+  _getPopover(){
+    const { movie, user } = this.props;
+    const id = movie.ids.trakt;
+
+    const popover = (
+      <Popover
+        style={{width: '250px', padding: '0 2em', textAlign: 'center'}}
+        anchorEl={this.state.anchorEl}
+        anchorOrigin={{"horizontal":"middle", "vertical":"center"}}
+        targetOrigin={{"horizontal":"middle", "vertical":"center"}}
+        open={this.state.activePopover}
+        onRequestClose={this._hidePopover.bind(this)}
+        >
+          <Rating
+            iconClassName="ratings"
+            empty="fa fa-heart-o fa-2x heart"
+            full="fa fa-heart fa-2x heart"
+            stop={5}
+            step={1}
+            onChange={rate => { this._ratingHandler(user.userName, id, this._convertRate(rate));}}/>
+      </Popover>
+    );
+    return popover;
+  }
+
+  _getRatingText(){
+    const { userRating } = this.props;
+    switch (userRating){
+      case 0:
+        return '1 - TERRIBLE';
+      case 2.5:
+        return '2 - BAD';
+      case 5:
+        return '3 - MEH';
+      case 7.5:
+        return '4 - GOOD';
+      case 10:
+        return '5 - AWESOME';
+      default:
+        return 'RATE';
+    }
+  }
+
+  _convertRate(num){
+    return (num - 1) * 2.5;
+  }
+
   render(){
     const { movie } = this.props;
+    const percentRating = movie.totalRating === 0 ? '0 %' : `${Math.round(movie.totalRating * 10 / movie.votes)} %`;
     return(
-      <Card >
+      <Card>
           <MovieDetailsHeader movie={movie} />
-          <CardText style={{display: "flex", width: "100%", margin: "0 auto"}}>
-            <Paper> <ImageWithPlaceholder src={this.props.movie.images.poster} alt={this.props.movie.title} style={{height: "21em"}} /> </Paper>
-            <div>
-            <CardText> <span style={{color: Color.red500}}>Released: </span> {this.props.movie.released} </CardText>
-            <CardText> <span style={{color: Color.red500}}>Runtime: </span> {this.props.movie.runtime} </CardText>
-            <CardText> <span style={{color: Color.red500}}>Genres: </span> {this.props.movie.genres} </CardText>
-            <CardText> <span style={{color: Color.red500}}>Certification: </span> {this.props.movie.certification} </CardText>
-            <CardText> <a href={this.props.movie.trailer}><i className="material-icons">movie</i>Trailer</a> </CardText>
+          <CardText>
+            <div className="movie-description-header">
+              <ImageWithPlaceholder src={this.props.movie.images.poster} alt={this.props.movie.title} style={{width: '10em', marginRight: '0.5em', float: 'left'}} />
+              <div className="ratings-wrapper">
+                <FontIcon color={Color.red500} className="material-icons">favorite</FontIcon>
+                <span style={{marginLeft: '0.5em'}}>{percentRating}</span>
+              </div>
+              <div className="ratings-wrapper">
+                <FontIcon color={Color.red500} className="material-icons">favorite_border</FontIcon>
+                <span onClick={this._showPopover.bind(this)}  style={{marginLeft: '0.5em'}}>{this._getRatingText.bind(this)()}</span>
+              </div>
+              <p style={{fontStyle: "italic"}}>{movie.tagline}</p>
+              {this._getPopover.bind(this)()}
+              <br style={{clear: 'both'}}/>
             </div>
           </CardText>
+          <CardText> <span style={{color: Color.red500}}>Released: </span> {this.props.movie.released} </CardText>
+          <CardText> <span style={{color: Color.red500}}>Runtime: </span> {this.props.movie.runtime} </CardText>
+          <CardText> <span style={{color: Color.red500}}>Genres: </span> {this.props.movie.genres} </CardText>
+          <CardText> <span style={{color: Color.red500}}>Certification: </span> {this.props.movie.certification} </CardText>
+          <CardText> <a href={this.props.movie.trailer}><i className="material-icons">movie</i>Trailer</a> </CardText>
           <CardText style={{padding: "1em", fontSize: "1em", clear: "left"}}>
             {this.props.movie.sinopsis}
-            </CardText>
+          </CardText>
       </Card>
-);
-}
+    );
+  }
 }
 
 MovieDetailsDescription.propTypes = {
   movie: PropTypes.object,
+  rateMovie: PropTypes.func,
+  user: PropTypes.object,
+  userRating: PropTypes.number,
+  changeMovieRating: PropTypes.func
 };
 
 MovieDetailsDescription.defaultProps = {
 
 };
+
+function mapStateToProps(state, ownProps) {
+  const user = state.users.Gotre;
+  const userRatings = state.userRatings[user.userName] || [];
+  const idMovie = ownProps.movie.ids.trakt;
+  const userRating = userRatings[idMovie];
+  return { userRating, user };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    rateMovie: (userName, idMovie, rating) => dispatch(rateMovie(userName, idMovie, rating)),
+    changeMovieRating: (userName, idMovie, oldVote, newVote) => dispatch(changeMovieRating(userName, idMovie, newVote, oldVote))
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MovieDetailsDescription);

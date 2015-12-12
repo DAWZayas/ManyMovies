@@ -10,8 +10,8 @@ export default {
     },
     "sinopsis": "Princess Leia is captured and held hostage by the evil Imperial forces in their effort to take over the galactic Empire. Venturesome Luke Skywalker and dashing captain Han Solo team together with the loveable robot duo R2-D2 and C-3PO to rescue the beautiful princess and restore peace and justice in the Empire.",
     "runtime": 121,
-    "votes": 11256,
-    "rating": 8.80437,
+    "votes": 10,
+    "totalRating": 87,
     "genres": [
       "action",
       "adventure",
@@ -36,8 +36,8 @@ export default {
     },
     "sinopsis": "Derek Vineyard is paroled after serving 3 years in prison for killing two thugs who tried to break into/steal his truck. Through his brother, Danny Vineyard's narration, we learn that before going to prison, Derek was a skinhead and the leader of a violent white supremacist gang that committed acts of racial crime throughout L.A. and his actions greatly influenced Danny. Reformed and fresh out of prison, Derek severs contact with the gang and becomes determined to keep Danny from going down the same violent path as he did.",
     "runtime": 119,
-    "votes": 7711,
-    "rating": 8.70095,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "drama"
     ],
@@ -60,8 +60,8 @@ export default {
     },
     "sinopsis": "When Dr. Indiana Jones – the tweed-suited professor who just happens to be a celebrated archaeologist – is hired by the government to locate the legendary Ark of the Covenant, he finds himself up against the entire Nazi regime.",
     "runtime": 115,
-    "votes": 7756,
-    "rating": 8.61037,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "adventure"
@@ -85,8 +85,8 @@ export default {
     },
     "sinopsis": "When Dr. Henry Jones Sr. suddenly goes missing while pursuing the Holy Grail, eminent archaeologist Indiana Jones must team up with Marcus Brody, Sallah, and Elsa Schneider to follow in his father's footsteps and stop the Nazis from recovering the power of eternal life.",
     "runtime": 127,
-    "votes": 6938,
-    "rating": 8.55895,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "adventure"
@@ -110,8 +110,8 @@ export default {
     },
     "sinopsis": "Leon, the top hit man in New York, has earned a rep as an effective \"cleaner\". But when his next-door neighbors are wiped out by a loose-cannon DEA agent, he becomes the unwilling custodian of 12-year-old Mathilda. Before long, Mathilda's thoughts turn to revenge, and she considers following in Leon's footsteps.",
     "runtime": 110,
-    "votes": 7682,
-    "rating": 8.7981,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "crime",
       "drama",
@@ -136,8 +136,8 @@ export default {
     },
     "sinopsis": "Eighties teenager Marty McFly is accidentally sent back in time to 1955, inadvertently disrupting his parents' first meeting and attracting his mother's romantic interest. Marty must repair the damage to history by rekindling his parents' romance and - with the help of his eccentric inventor friend Doc Brown - return to 1985.",
     "runtime": 116,
-    "votes": 12066,
-    "rating": 8.76836,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "adventure",
       "comedy",
@@ -163,8 +163,8 @@ export default {
     },
     "sinopsis": "Batman raises the stakes in his war on crime. With the help of Lt. Jim Gordon and District Attorney Harvey Dent, Batman sets out to dismantle the remaining criminal organizations that plague the streets. The partnership proves to be effective, but they soon find themselves prey to a reign of chaos unleashed by a rising criminal mastermind known to the terrified citizens of Gotham as the Joker.",
     "runtime": 152,
-    "votes": 20806,
-    "rating": 9.10449,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "crime",
@@ -190,8 +190,8 @@ export default {
     },
     "sinopsis": "The continuing saga of the Corleone crime family tells the story of a young Vito Corleone growing up in Sicily and in 1910s New York; and follows Michael Corleone in the 1950s as he attempts to expand the family business into Las Vegas, Hollywood and Cuba",
     "runtime": 200,
-    "votes": 4913,
-    "rating": 8.88378,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "crime",
       "drama"
@@ -215,8 +215,8 @@ export default {
     },
     "sinopsis": "Driven by tragedy, billionaire Bruce Wayne dedicates his life to uncovering and defeating the corruption that plagues his home, Gotham City.  Unable to work within the system, he instead creates a new identity, a symbol of fear for the criminal underworld - The Batman.",
     "runtime": 140,
-    "votes": 13998,
-    "rating": 8.44428,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "crime",
@@ -241,8 +241,8 @@ export default {
     },
     "sinopsis": "FBI trainee Clarice Starling ventures into a maximum-security asylum to pick the diseased brain of Hannibal Lecter, a psychiatrist turned homicidal cannibal. Starling needs clues to help her capture a serial killer. Unfortunately, her Faustian relationship with Lecter soon leads to his escape, and now two deranged killers are on the loose.",
     "runtime": 118,
-    "votes": 7949,
-    "rating": 8.65882,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "crime",
       "drama",
@@ -267,8 +267,8 @@ export default {
     },
     "sinopsis": "Framed in the 1940s for the double murder of his wife and her lover, upstanding banker Andy Dufresne begins a new life at the Shawshank prison, where he puts his accounting skills to work for an amoral warden. During his long stretch in prison, Dufresne comes to be admired by the other inmates -- including an older prisoner named Red -- for his integrity and unquenchable sense of hope.",
     "runtime": 142,
-    "votes": 11442,
-    "rating": 9.2982,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "crime",
       "drama"
@@ -292,8 +292,8 @@ export default {
     },
     "sinopsis": "The defense and the prosecution have rested and the jury is filing into the jury room to decide if a young Spanish-American is guilty or innocent of murdering his father. What begins as an open and shut case soon becomes a mini-drama of each of the jurors' prejudices and preconceptions about the trial, the accused, and each other.",
     "runtime": 96,
-    "votes": 2914,
-    "rating": 8.89396,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "drama"
     ],
@@ -316,8 +316,8 @@ export default {
     },
     "sinopsis": "At Princeton University, John Nash struggles to make a worthwhile contribution to serve as his legacy to the world of mathematics. He finally makes a revolutionary breakthrough that will eventually earn him the Nobel Prize. After graduate school he turns to teaching, becoming romantically involved with his student Alicia. Meanwhile the government asks his help with breaking Soviet codes, which soon gets him involved in a terrifying conspiracy plot. Nash grows more and more paranoid until a discovery that turns his entire world upside down. Now it is only with Alicia's help that he will be able to recover his mental strength and regain his status as the great mathematician we know him as today.",
     "runtime": 135,
-    "votes": 7007,
-    "rating": 8.35507,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "drama",
       "romance"
@@ -341,8 +341,8 @@ export default {
     },
     "sinopsis": "Will Hunting, a janitor at MIT, has a gift for mathematics but needs help from a psychologist to find direction in his life.",
     "runtime": 126,
-    "votes": 6288,
-    "rating": 8.50429,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "drama"
     ],
@@ -365,8 +365,8 @@ export default {
     },
     "sinopsis": "A supernatural tale set on death row in a Southern prison, where gentle giant John Coffey possesses the mysterious power to heal people's ailments. When the cellblock's head guard, Paul Edgecomb, recognizes Coffey's miraculous gift, he tries desperately to help stave off the condemned man's execution.",
     "runtime": 189,
-    "votes": 8109,
-    "rating": 8.69269,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "crime",
       "drama",
@@ -391,8 +391,8 @@ export default {
     },
     "sinopsis": "While serving time for insanity at a state mental hospital, implacable rabble-rouser Randle Patrick McMurphy inspires his fellow patients to rebel against the authoritarian rule of head nurse Mildred Ratched.",
     "runtime": 133,
-    "votes": 3620,
-    "rating": 8.5768,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "drama"
     ],
@@ -415,8 +415,8 @@ export default {
     },
     "sinopsis": "A ticking-time-bomb insomniac and a slippery soap salesman channel primal male aggression into a shocking new form of therapy. Their concept catches on, with underground \"fight clubs\" forming in every town, until an eccentric gets in the way and ignites an out-of-control spiral toward oblivion.",
     "runtime": 139,
-    "votes": 16049,
-    "rating": 9.01053,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "drama"
     ],
@@ -439,8 +439,8 @@ export default {
     },
     "sinopsis": "Thomas A. Anderson is a man living two lives. By day he is an average computer programmer and by night a malevolent hacker known as Neo, who finds himself targeted by the police when he is contacted by Morpheus, a legendary computer hacker, who reveals the shocking truth about our reality.",
     "runtime": 136,
-    "votes": 17632,
-    "rating": 8.97856,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "adventure",
@@ -466,8 +466,8 @@ export default {
     },
     "sinopsis": "Following a truck hijack in New York, five conmen are arrested and brought together for questioning. As none of them is guilty, they plan a revenge operation against the police. The operation goes well, but then the influence of a legendary mastermind criminal called Keyser Söze is felt. It becomes clear that each one of them has wronged Söze at some point and must pay back now. The payback job leaves 27 men dead in a boat explosion, but the real question arises now: Who actually is Keyser Söze?",
     "runtime": 106,
-    "votes": 6569,
-    "rating": 8.81291,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "crime",
       "drama",
@@ -492,8 +492,8 @@ export default {
     },
     "sinopsis": "Frank W. Abagnale Jr. is a cunning con man -- posing as a doctor, lawyer and pilot all before turning 21. He's also a deft forger, and his work attracts the attention of FBI agent Carl Hanratty, who makes it his mission to put Frank behind bars. But Frank not only eludes capture, he revels in the pursuit, even taking time to taunt Carl by phone.",
     "runtime": 141,
-    "votes": 7265,
-    "rating": 8.25354,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "crime",
       "drama"
@@ -517,8 +517,8 @@ export default {
     },
     "sinopsis": "Everyone's favorite novice wizard, Harry Potter, continues his high-flying adventures at Hogwarts. This time around, Harry ignores warnings not to return to school - that is, if he values his life - to investigate a mysterious series of attacks with Ron and Hermione.",
     "runtime": 161,
-    "votes": 8598,
-    "rating": 7.87009,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "adventure",
       "fantasy",
@@ -543,8 +543,8 @@ export default {
     },
     "sinopsis": "In a world in which Great Britain has become a fascist state, a masked vigilante known only as \"V\" conducts guerrilla warfare against the oppressive British government. When \"V\" rescues a young woman from the secret police, he finds in her an ally with whom he can continue his fight to free the people of Britain.",
     "runtime": 132,
-    "votes": 10481,
-    "rating": 8.48555,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "fantasy",
@@ -569,8 +569,8 @@ export default {
     },
     "sinopsis": "Henry Hill is a small time gangster, who takes part in a robbery with Jimmy Conway and Tommy De Vito, two other gangsters who have set their sights a bit higher. His two partners kill off everyone else involved in the robbery, and slowly start to climb up through the hierarchy of the Mob. Henry, however, is badly affected by his partners success, but will he stoop low enough to bring about the downfall of Jimmy and Tommy?",
     "runtime": 146,
-    "votes": 5057,
-    "rating": 8.74135,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "crime",
       "drama"
@@ -594,8 +594,8 @@ export default {
     },
     "sinopsis": "Two homicide detectives are on a desperate hunt for a serial killer whose crimes are based on the \"seven deadly sins\" in this dark and haunting film that takes viewers from the tortured remains of one victim to the next. The seasoned Det. Sommerset researches each sin in an effort to get inside the killer's mind, while his novice partner, Mills, scoffs at his efforts to unravel the case.",
     "runtime": 127,
-    "votes": 9917,
-    "rating": 8.72663,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "crime",
       "mystery",
@@ -620,8 +620,8 @@ export default {
     },
     "sinopsis": "A mysterious story of two magicians whose intense rivalry leads them on a life-long battle for supremacy -- full of obsession, deceit and jealousy with dangerous and deadly consequences.",
     "runtime": 130,
-    "votes": 8736,
-    "rating": 8.56811,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "drama",
       "mystery",
@@ -646,8 +646,8 @@ export default {
     },
     "sinopsis": "The epic saga continues as Luke Skywalker, in hopes of defeating the evil Galactic Empire, learns the ways of the Jedi from aging master Yoda. But Darth Vader is more determined than ever to capture Luke. Meanwhile, rebel leader Princess Leia, cocky Han Solo, Chewbacca, and droids C-3PO and R2-D2 are thrown into various stages of capture, betrayal and despair.",
     "runtime": 124,
-    "votes": 10295,
-    "rating": 8.91122,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "adventure",
@@ -655,7 +655,7 @@ export default {
     ],
     "certification": "PG",
     "tagline": "The Adventure Continues...",
-    "trailer": "http://youtube.com/watch?v=FHgSd66yuLc",
+    "trailer": "http://youtube.com/watch?v=KwYa7UpoWtM",
     "images": {
       "poster": "https://walter.trakt.us/images/movies/000/001/266/posters/thumb/33004e8ae5.jpg",
       "fanart": "https://walter.trakt.us/images/movies/000/001/266/fanarts/thumb/d961475d32.jpg"
@@ -672,8 +672,8 @@ export default {
     },
     "sinopsis": "As Rebel leaders map their strategy for an all-out attack on the Emperor's newer, bigger Death Star. Han Solo remains frozen in the cavernous desert fortress of Jabba the Hutt, the most loathsome outlaw in the universe, who is also keeping Princess Leia as a slave girl. Now a master of the Force, Luke Skywalker rescues his friends, but he cannot become a true Jedi Knight until he wages his own crucial battle against Darth Vader, who has sworn to win Luke over to the dark side of the Force.",
     "runtime": 135,
-    "votes": 9963,
-    "rating": 8.76242,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "adventure",
@@ -681,7 +681,7 @@ export default {
     ],
     "certification": "PG",
     "tagline": "The Empire Falls...",
-    "trailer": "http://youtube.com/watch?v=5UfA_aKBGMc",
+    "trailer": "http://youtube.com/watch?v=2mqRbh7FJ0Y",
     "images": {
       "poster": "https://walter.trakt.us/images/movies/000/001/267/posters/thumb/80c956258c.jpg",
       "fanart": "https://walter.trakt.us/images/movies/000/001/267/fanarts/thumb/57469dd637.jpg"
@@ -698,8 +698,8 @@ export default {
     },
     "sinopsis": "Anakin Skywalker, a young slave strong with the Force, is discovered on Tatooine. Meanwhile, the evil Sith have returned, enacting their plot for revenge against the Jedi.",
     "runtime": 136,
-    "votes": 7859,
-    "rating": 7.03932,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "adventure",
@@ -724,8 +724,8 @@ export default {
     },
     "sinopsis": "As the son of a Viking leader on the cusp of manhood, shy Hiccup Horrendous Haddock III faces a rite of passage: he must kill a dragon to prove his warrior mettle. But after downing a feared dragon, he realizes that he no longer wants to destroy it, and instead befriends the beast – which he names Toothless – much to the chagrin of his warrior father",
     "runtime": 98,
-    "votes": 10448,
-    "rating": 8.46334,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "adventure",
       "animation",
@@ -751,8 +751,8 @@ export default {
     },
     "sinopsis": "After 300 years of slumber, three sister witches are accidentally resurrected in Salem on Halloween night, and it us up to three kids and their newfound feline friend to put an end to the witches' reign of terror once and for all.",
     "runtime": 96,
-    "votes": 981,
-    "rating": 7.58818,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "comedy",
       "fantasy",
@@ -777,8 +777,8 @@ export default {
     },
     "sinopsis": "Scott Calvin is an ordinary man, who accidentally causes Santa Claus to fall from his roof on Christmas Eve and is knocked unconscious. When he and his young son finish Santa's trip and deliveries, they go to the North Pole, where Scott learns he must become the new Santa and convince those he loves that he is indeed, Father Christmas.",
     "runtime": 97,
-    "votes": 984,
-    "rating": 7.07622,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "comedy",
       "drama",
@@ -804,8 +804,8 @@ export default {
     },
     "sinopsis": "Five college friends spend the weekend at a remote cabin in the woods, where they get more than they bargained for. Together, they must discover the truth behind the cabin in the woods.",
     "runtime": 95,
-    "votes": 4556,
-    "rating": 7.29017,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "horror",
       "thriller"
@@ -829,8 +829,8 @@ export default {
     },
     "sinopsis": "When Bond's latest assignment goes gravely wrong and agents around the world are exposed, MI6 is attacked forcing M to relocate the agency. These events cause her authority and position to be challenged by Gareth Mallory (Ralph Fiennes), the new Chairman of the Intelligence and Security Committee. With MI6 now compromised from both inside and out, M is left with one ally she can trust: Bond. 007 takes to the shadows - aided only by field agent, Eve (Naomie Harris) - following a trail to the mysterious Silva (Javier Bardem), whose lethal and hidden motives have yet to reveal themselves.",
     "runtime": 143,
-    "votes": 9652,
-    "rating": 7.86573,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "adventure",
@@ -855,8 +855,8 @@ export default {
     },
     "sinopsis": "The plot is unknown at this time.",
     "runtime": 0,
-    "votes": 53,
-    "rating": 7.24528,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "comedy",
@@ -882,8 +882,8 @@ export default {
     },
     "sinopsis": "Bilbo Baggins, a hobbit enjoying his quiet life, is swept into an epic quest by Gandalf the Grey and thirteen dwarves who seek to reclaim their mountain home from Smaug, the dragon.",
     "runtime": 169,
-    "votes": 13913,
-    "rating": 8.08524,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "adventure",
@@ -908,8 +908,8 @@ export default {
     },
     "sinopsis": "With the help of a German bounty hunter, a freed slave sets out to rescue his wife from a brutal Mississippi plantation owner.",
     "runtime": 165,
-    "votes": 13966,
-    "rating": 8.5701,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "drama",
       "western"
@@ -924,7 +924,7 @@ export default {
   },
   "51342": {
     "title": "The Hunger Games",
-    "released": "2012-03-23",
+    "released": "2012-03-12",
     "ids": {
       "trakt": 51342,
       "slug": "the-hunger-games-2012",
@@ -933,8 +933,8 @@ export default {
     },
     "sinopsis": "Every year in the ruins of what was once North America, the nation of Panem forces each of its twelve districts to send a teenage boy and girl to compete in the Hunger Games.  Part twisted entertainment, part government intimidation tactic, the Hunger Games are a nationally televised event in which “Tributes” must fight with one another until one survivor remains.  Pitted against highly-trained Tributes who have prepared for these Games their entire lives, Katniss is forced to rely upon her sharp instincts as well as the mentorship of drunken former victor Haymitch Abernathy.  If she’s ever to return home to District 12, Katniss must make impossible choices in the arena that weigh survival against humanity and life against love. The world will be watching.",
     "runtime": 142,
-    "votes": 14251,
-    "rating": 7.64417,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "adventure",
       "fantasy",
@@ -944,8 +944,8 @@ export default {
     "tagline": "May The Odds Be Ever In Your Favor.",
     "trailer": "http://youtube.com/watch?v=fkxcftwKwfI",
     "images": {
-      "poster": "https://walter.trakt.us/images/movies/000/051/342/posters/thumb/9aee4af5cf.jpg",
-      "fanart": "https://walter.trakt.us/images/movies/000/051/342/fanarts/thumb/5e7323b2b5.jpg"
+      "poster": "https://walter.trakt.us/images/movies/000/051/342/posters/thumb/fdd7c5f3f0.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/051/342/fanarts/thumb/30a7545d15.jpg"
     }
   },
   "56360": {
@@ -959,8 +959,8 @@ export default {
     },
     "sinopsis": "An apocalyptic story set in the furthest reaches of our planet, in a stark desert landscape where humanity is broken, and most everyone is crazed fighting for the necessities of life. Within this world exist two rebels on the run who just might be able to restore order. There's Max, a man of action and a man of few words, who seeks peace of mind following the loss of his wife and child in the aftermath of the chaos. And Furiosa, a woman of action and a woman who believes her path to survival may be achieved if she can make it across the desert back to her childhood homeland.",
     "runtime": 120,
-    "votes": 9133,
-    "rating": 8.01029,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "adventure",
@@ -985,8 +985,8 @@ export default {
     },
     "sinopsis": "Dracula, who operates a high-end resort away from the human world, goes into overprotective mode when a boy discovers the resort and falls for the count's teen-aged daughter.",
     "runtime": 91,
-    "votes": 4084,
-    "rating": 7.5595,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "animation",
       "comedy",
@@ -1012,8 +1012,8 @@ export default {
     },
     "sinopsis": "A sequel to the 2009 blockbuster, the Avatar sequel will take place after the events of the first movie.",
     "runtime": 0,
-    "votes": 11,
-    "rating": 7.18182,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "adventure",
@@ -1038,8 +1038,8 @@ export default {
     },
     "sinopsis": "A true story of two men who should never have met - a quadriplegic aristocrat who was injured in a paragliding accident and a young man from the projects.",
     "runtime": 112,
-    "votes": 7344,
-    "rating": 8.81944,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "comedy",
       "drama"
@@ -1063,8 +1063,8 @@ export default {
     },
     "sinopsis": "",
     "runtime": 0,
-    "votes": 2,
-    "rating": 10,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "adventure",
@@ -1090,8 +1090,8 @@ export default {
     },
     "sinopsis": "The year is 2029. John Connor, leader of the resistance continues the war against the machines. At the Los Angeles offensive, John's fears of the unknown future begin to emerge when TECOM spies reveal a new plot by SkyNet that will attack him from both fronts; past and future, and will ultimately change warfare forever.",
     "runtime": 125,
-    "votes": 5179,
-    "rating": 7.18285,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "adventure",
@@ -1117,8 +1117,8 @@ export default {
     },
     "sinopsis": "When Tony Stark tries to jumpstart a dormant peacekeeping program, things go awry and Earth’s Mightiest Heroes are put to the ultimate test as the fate of the planet hangs in the balance. As the villainous Ultron emerges, it is up to The Avengers to stop him from enacting his terrible plans, and soon uneasy alliances and unexpected action pave the way for an epic and unique global adventure.",
     "runtime": 141,
-    "votes": 8820,
-    "rating": 7.88118,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "science-fiction",
       "action",
@@ -1144,7 +1144,7 @@ export default {
     "sinopsis": "Sequel to Prometheus.",
     "runtime": 0,
     "votes": 0,
-    "rating": 0,
+    "totalRating": 0,
     "genres": [
       "science-fiction",
       "thriller",
@@ -1169,8 +1169,8 @@ export default {
     },
     "sinopsis": "Taking place a year after finding Nemo, Dory goes on a journey to reunite with her family.",
     "runtime": 0,
-    "votes": 12,
-    "rating": 7.16667,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "adventure",
       "animation",
@@ -1195,8 +1195,8 @@ export default {
     },
     "sinopsis": "With the nation of Panem in a full scale war, Katniss confronts President Snow in the final showdown. Teamed with a group of her closest friends – including Gale, Finnick, and Peeta – Katniss goes off on a mission with the unit from District 13 as they risk their lives to stage an assassination attempt on President Snow who has become increasingly obsessed with destroying her. The mortal traps, enemies, and moral choices that await Katniss will challenge her more than any arena she faced in The Hunger Games.",
     "runtime": 136,
-    "votes": 661,
-    "rating": 7.75189,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "adventure",
       "science-fiction",
@@ -1221,8 +1221,8 @@ export default {
     },
     "sinopsis": "Twenty-two years after the events of Jurassic Park, Isla Nublar now features a fully functioning dinosaur theme park, Jurassic World, as originally envisioned by John Hammond.",
     "runtime": 124,
-    "votes": 8810,
-    "rating": 7.33927,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "adventure",
@@ -1248,8 +1248,8 @@ export default {
     },
     "sinopsis": "Major Bill Cage is an officer who has never seen a day of combat when he is unceremoniously demoted and dropped into combat. Cage is killed within minutes, managing to take an alpha alien down with him. He awakens back at the beginning of the same day and is forced to fight and die again... and again - as physical contact with the alien has thrown him into a time loop.",
     "runtime": 113,
-    "votes": 12695,
-    "rating": 8.02828,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "science-fiction"
@@ -1273,8 +1273,8 @@ export default {
     },
     "sinopsis": "For ten years, inventor David Kressen has lived in seclusion with his inventions, including Adam, a robot with incredible lifelike human qualities. When reporter Joy Andrews is given access to their unconventional facility, she is alternately repelled and attracted to the scientist and his creation. But as Adam exhibits emergent behavior of anger and jealousy towards her, she finds herself increasingly entangled in a web of deception where no one’s motives are easily decipherable.",
     "runtime": 91,
-    "votes": 61,
-    "rating": 6.63934,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "drama",
       "science-fiction",
@@ -1299,8 +1299,8 @@ export default {
     },
     "sinopsis": "Continuing his \"legendary adventures of awesomeness\", Po must face two hugely epic, but different threats: one supernatural and the other a little closer to his home.",
     "runtime": 0,
-    "votes": 12,
-    "rating": 7.91667,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "adventure",
@@ -1325,8 +1325,8 @@ export default {
     },
     "sinopsis": "An urban office worker finds that paper airplanes are instrumental in meeting a girl in ways he never expected.",
     "runtime": 7,
-    "votes": 1176,
-    "rating": 8.55187,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "animation",
       "romance",
@@ -1349,10 +1349,10 @@ export default {
       "imdb": "tt2488496",
       "tmdb": 140607
     },
-    "sinopsis": "A continuation of the saga created by George Lucas, set thirty years after Star Wars: Episode VI – Return of the Jedi.",
+    "sinopsis": "A continuation of the saga created by George Lucas and set thirty years after Star Wars: Episode VI - Return of the Jedi (1983).",
     "runtime": 136,
-    "votes": 83,
-    "rating": 8.6506,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "adventure",
@@ -1360,11 +1360,11 @@ export default {
       "science-fiction"
     ],
     "certification": "",
-    "tagline": "",
+    "tagline": "Every generation has a story.",
     "trailer": "http://youtube.com/watch?v=OMOVFvcNfvE",
     "images": {
       "poster": "https://walter.trakt.us/images/movies/000/094/024/posters/thumb/45feef2558.jpg",
-      "fanart": "https://walter.trakt.us/images/movies/000/094/024/fanarts/thumb/707a0ae2ab.jpg"
+      "fanart": "https://walter.trakt.us/images/movies/000/094/024/fanarts/thumb/e792ee32ca.jpg"
     }
   },
   "94232": {
@@ -1378,8 +1378,8 @@ export default {
     },
     "sinopsis": "Superman, Batman, Green Lantern, Wonder Woman, Aquaman, the Flash and other superheroes unite to fight against evil forces.",
     "runtime": 0,
-    "votes": 14,
-    "rating": 7.64286,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "adventure",
@@ -1405,8 +1405,8 @@ export default {
     },
     "sinopsis": "Growing up can be a bumpy road, and it's no exception for Riley, who is uprooted from her Midwest life when her father starts a new job in San Francisco. Like all of us, Riley is guided by her emotions - Joy, Fear, Anger, Disgust and Sadness. The emotions live in Headquarters, the control center inside Riley's mind, where they help advise her through everyday life. As Riley and her emotions struggle to adjust to a new life in San Francisco, turmoil ensues in Headquarters. Although Joy, Riley's main and most important emotion, tries to keep things positive, the emotions conflict on how best to navigate a new city, house and school.",
     "runtime": 94,
-    "votes": 6065,
-    "rating": 8.36026,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "animation",
       "comedy",
@@ -1431,8 +1431,8 @@ export default {
     },
     "sinopsis": "Loosely based on the true-life tale of Ron Woodroof, a drug-taking, women-loving, homophobic man who in 1986 was diagnosed with HIV/AIDS and given thirty days to live.",
     "runtime": 117,
-    "votes": 5824,
-    "rating": 8.18424,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "drama",
       "history"
@@ -1456,8 +1456,8 @@ export default {
     },
     "sinopsis": "Interstellar chronicles the adventures of a group of explorers who make use of a newly discovered wormhole to surpass the limitations on human space travel and conquer the vast distances involved in an interstellar voyage.",
     "runtime": 169,
-    "votes": 14013,
-    "rating": 8.54792,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "science-fiction",
       "drama"
@@ -1481,8 +1481,8 @@ export default {
     },
     "sinopsis": "Bound by a shared destiny, a bright, optimistic teen bursting with scientific curiosity and a former boy-genius inventor jaded by disillusionment embark on a danger-filled mission to unearth the secrets of an enigmatic place somewhere in time and space that exists in their collective memory as \"Tomorrowland.\"",
     "runtime": 130,
-    "votes": 4253,
-    "rating": 7.12791,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "science-fiction",
       "adventure",
@@ -1509,8 +1509,8 @@ export default {
     },
     "sinopsis": "Four young outsiders teleport to a dangerous universe, which alters their physical form in shocking ways. Their lives irrevocably upended, the team must learn to harness their daunting new abilities and work together to save Earth from a former friend turned enemy.",
     "runtime": 100,
-    "votes": 3130,
-    "rating": 5.69744,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "adventure",
@@ -1535,8 +1535,8 @@ export default {
     },
     "sinopsis": "Captain Jack Sparrow is pursued by an old enemy, Captain Salazar, who along with his crew of ghost pirates has escaped from the Bermuda Triangle and is determined to kill every pirate at sea. Jack seeks the mythical Trident of Poseidon, which will bestow upon its possessor total control over the seas, to use against Salazar.",
     "runtime": 0,
-    "votes": 48,
-    "rating": 8.41667,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [],
     "certification": "",
     "tagline": "",
@@ -1557,8 +1557,8 @@ export default {
     },
     "sinopsis": "The special bond that develops between plus-sized inflatable robot Baymax, and prodigy Hiro Hamada, who team up with a group of friends to form a band of high-tech heroes.",
     "runtime": 102,
-    "votes": 9239,
-    "rating": 8.24234,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "animation",
@@ -1585,8 +1585,8 @@ export default {
     },
     "sinopsis": "Ethan and team take on their most impossible mission yet, eradicating the Syndicate - an International rogue organization as highly skilled as they are, committed to destroying the IMF.",
     "runtime": 131,
-    "votes": 4099,
-    "rating": 7.64967,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "adventure",
@@ -1611,8 +1611,8 @@ export default {
     },
     "sinopsis": "Star Wars: Episode VIII",
     "runtime": 0,
-    "votes": 7,
-    "rating": 8.85714,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "adventure",
@@ -1638,8 +1638,8 @@ export default {
     },
     "sinopsis": "",
     "runtime": 0,
-    "votes": 3,
-    "rating": 9.66667,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "adventure",
@@ -1665,8 +1665,8 @@ export default {
     },
     "sinopsis": "",
     "runtime": 0,
-    "votes": 5,
-    "rating": 7.4,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "adventure",
@@ -1691,15 +1691,15 @@ export default {
     },
     "sinopsis": "In their new overseas home, an American family soon finds themselves caught in the middle of a coup, and they frantically look for a safe escape in an environment where foreigners are being immediately executed.",
     "runtime": 103,
-    "votes": 932,
-    "rating": 7.34227,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "thriller",
       "action"
     ],
     "certification": "R",
     "tagline": "No rescue. No refuge.",
-    "trailer": "http://youtube.com/watch?v=DOjj07EuO50",
+    "trailer": "http://youtube.com/watch?v=VFpK71yBv1s",
     "images": {
       "poster": "https://walter.trakt.us/images/movies/000/120/033/posters/thumb/4b71b37729.jpg",
       "fanart": "https://walter.trakt.us/images/movies/000/120/033/fanarts/thumb/eaeb52fa8d.jpg"
@@ -1716,8 +1716,8 @@ export default {
     },
     "sinopsis": "At the height of the Cold War, a mysterious criminal organization plans to use nuclear weapons and technology to upset the fragile balance of power between the United States and Soviet Union. CIA agent Napoleon Solo and KGB agent Illya Kuryakin are forced to put aside their hostilities and work together to stop the evildoers in their tracks. The duo's only lead is the daughter of a missing German scientist, whom they must find soon to prevent a global catastrophe.",
     "runtime": 116,
-    "votes": 2591,
-    "rating": 7.63296,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "adventure",
@@ -1742,8 +1742,8 @@ export default {
     },
     "sinopsis": "Based on the real life story of legendary cryptanalyst Alan Turing, the film portrays the nail-biting race against time by Turing and his brilliant team of code-breakers at Britain's top-secret Government Code and Cypher School at Bletchley Park, during the darkest days of World War II.",
     "runtime": 113,
-    "votes": 8742,
-    "rating": 8.29673,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "drama",
       "history",
@@ -1769,8 +1769,8 @@ export default {
     },
     "sinopsis": "A cryptic message from Bond’s past sends him on a trail to uncover a sinister organization. While M battles political forces to keep the secret service alive, Bond peels back the layers of deceit to reveal the terrible truth behind SPECTRE.",
     "runtime": 148,
-    "votes": 1234,
-    "rating": 7.06726,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "adventure",
@@ -1793,10 +1793,10 @@ export default {
       "imdb": "tt2975590",
       "tmdb": 209112
     },
-    "sinopsis": "The plot has not been disclosed at this time.",
+    "sinopsis": "Fearing the actions of a god-like Super Hero left unchecked, Gotham City’s own formidable, forceful vigilante takes on Metropolis’s most revered, modern-day savior, while the world wrestles with what sort of hero it really needs. And with Batman and Superman at war with one another, a new threat quickly arises, putting mankind in greater danger than it’s ever known before.",
     "runtime": 0,
-    "votes": 37,
-    "rating": 8.94595,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "adventure",
@@ -1805,7 +1805,7 @@ export default {
     ],
     "certification": "",
     "tagline": "",
-    "trailer": "http://youtube.com/watch?v=IwfUnkBfdZ4",
+    "trailer": "http://youtube.com/watch?v=nIGtF3J5kn8",
     "images": {
       "poster": "https://walter.trakt.us/images/movies/000/129/583/posters/thumb/18f901c0fa.jpg",
       "fanart": "https://walter.trakt.us/images/movies/000/129/583/fanarts/thumb/45c5d7b5b1.jpg"
@@ -1822,8 +1822,8 @@ export default {
     },
     "sinopsis": "Minions Stuart, Kevin and Bob are recruited by Scarlet Overkill, a super-villain who, alongside her inventor husband Herb, hatches a plot to take over the world.",
     "runtime": 91,
-    "votes": 4337,
-    "rating": 7.30805,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "adventure",
       "animation",
@@ -1849,8 +1849,8 @@ export default {
     },
     "sinopsis": "When college senior Anastasia Steele steps in for her sick roommate to interview prominent businessman Christian Grey for their campus paper, little does she realize the path her life will take. Christian, as enigmatic as he is rich and powerful, finds himself strangely drawn to Ana, and she to him. Though sexually inexperienced, Ana plunges headlong into an affair -- and learns that Christian's true sexual proclivities push the boundaries of pain and pleasure.",
     "runtime": 125,
-    "votes": 3475,
-    "rating": 4.96921,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "drama",
       "romance"
@@ -1874,8 +1874,8 @@ export default {
     },
     "sinopsis": "When Earth is taken over by the overly-confident Boov, an alien race in search of a new place to call home, all humans are promptly relocated, while all Boov get busy reorganizing the planet. But when one resourceful girl, Tip (Rihanna), manages to avoid capture, she finds herself the accidental accomplice of a banished Boov named Oh (Jim Parsons). The two fugitives realize there’s a lot more at stake than intergalactic relations as they embark on the road trip of a lifetime.",
     "runtime": 94,
-    "votes": 2953,
-    "rating": 7.50119,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "animation",
       "comedy",
@@ -1902,8 +1902,8 @@ export default {
     },
     "sinopsis": "An extremely wealthy elderly man dying from cancer undergoes a radical medical procedure that transfers his consciousness to the body of a healthy young man but everything may not be as good as it seems when he starts to uncover the mystery of the body's origins and the secret organization that will kill to keep its secrets.",
     "runtime": 116,
-    "votes": 1733,
-    "rating": 7.1783,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "science-fiction",
       "thriller",
@@ -1928,8 +1928,8 @@ export default {
     },
     "sinopsis": "A desk-bound CIA analyst volunteers to go undercover to infiltrate the world of a deadly arms dealer, and prevent diabolical global disaster.",
     "runtime": 120,
-    "votes": 4188,
-    "rating": 7.37011,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "comedy",
       "action",
@@ -1954,8 +1954,8 @@ export default {
     },
     "sinopsis": "Under the direction of a ruthless instructor, a talented young drummer begins to pursue perfection at any cost, even his humanity.",
     "runtime": 105,
-    "votes": 5350,
-    "rating": 8.54,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "drama"
     ],
@@ -1978,8 +1978,8 @@ export default {
     },
     "sinopsis": "One of the most powerful super villains, Apocalypse emerges and threatens to destroy the planet and its up to the X-men to stop him, with help from some of their old foes.",
     "runtime": 0,
-    "votes": 19,
-    "rating": 9.21053,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "adventure",
@@ -1990,7 +1990,7 @@ export default {
     "tagline": "",
     "trailer": null,
     "images": {
-      "poster": "https://walter.trakt.us/images/movies/000/149/999/posters/thumb/5c65b20f9e.jpg",
+      "poster": "https://walter.trakt.us/images/movies/000/149/999/posters/thumb/58870ab1e9.jpg",
       "fanart": null
     }
   },
@@ -2005,8 +2005,8 @@ export default {
     },
     "sinopsis": "An assassin teams up with a woman to help her find her father and uncover the mysteries of her ancestry.",
     "runtime": 96,
-    "votes": 1757,
-    "rating": 6.95674,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "crime",
@@ -2031,8 +2031,8 @@ export default {
     },
     "sinopsis": "Inspired by the incredible events surrounding a treacherous attempt to reach the summit of the world's highest mountain, \"Everest\" documents the awe-inspiring journey of two different expeditions challenged beyond their limits by one of the fiercest snowstorms ever encountered by mankind. Their mettle tested by the harshest of elements found on the planet, the climbers will face nearly impossible obstacles as a lifelong obsession becomes a breathtaking struggle for survival.",
     "runtime": 121,
-    "votes": 1017,
-    "rating": 7.34513,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "adventure",
       "drama",
@@ -2057,8 +2057,8 @@ export default {
     },
     "sinopsis": "In the aftermath of a massive earthquake in California, a rescue-chopper pilot makes a dangerous journey across the state in order to rescue his estranged daughter.",
     "runtime": 107,
-    "votes": 4345,
-    "rating": 6.71438,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "drama",
@@ -2083,8 +2083,8 @@ export default {
     },
     "sinopsis": "Video game experts are recruited by the military to fight 1980s-era video game characters who've attacked New York.",
     "runtime": 105,
-    "votes": 3175,
-    "rating": 6.72756,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "comedy",
       "science-fiction",
@@ -2109,8 +2109,8 @@ export default {
     },
     "sinopsis": "When a devoted husband and father is left home alone for the weekend, two stranded young women unexpectedly knock on his door for help. What starts out as a kind gesture results in a dangerous seduction and a deadly game of cat and mouse.",
     "runtime": 99,
-    "votes": 945,
-    "rating": 5.52487,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "horror",
       "thriller"
@@ -2134,8 +2134,8 @@ export default {
     },
     "sinopsis": "Three years after Mike bowed out of the stripper life at the top of his game, he and the remaining Kings of Tampa hit the road to Myrtle Beach to put on one last blow-out performance.",
     "runtime": 115,
-    "votes": 875,
-    "rating": 6.48,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "comedy",
       "drama",
@@ -2160,8 +2160,8 @@ export default {
     },
     "sinopsis": "Following the events of Age of Ultron, the collective governments of the world pass an act designed to regulate all superhuman activity. This polarizes opinion amongst the Avengers, causing two factions to side with Iron Man or Captain America, which causes an epic battle between former allies",
     "runtime": 0,
-    "votes": 13,
-    "rating": 8.53846,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "science-fiction",
@@ -2185,9 +2185,9 @@ export default {
       "tmdb": 273248
     },
     "sinopsis": "Bounty hunters seek shelter from a raging blizzard and get caught up in a plot of betrayal and deception.",
-    "runtime": 0,
-    "votes": 3,
-    "rating": 7.66667,
+    "runtime": 182,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "western"
     ],
@@ -2210,8 +2210,8 @@ export default {
     },
     "sinopsis": "\"Selma,\" as in Alabama, the place where segregation in the South was at its worst, leading to a march that ended in violence, forcing a famous statement by President Lyndon B. Johnson that ultimately led to the signing of the Civil Rights Act.",
     "runtime": 127,
-    "votes": 940,
-    "rating": 7.81277,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "drama",
       "history"
@@ -2235,8 +2235,8 @@ export default {
     },
     "sinopsis": "The last remaining witch hunter battles against an uprising of witches in modern day New York.",
     "runtime": 106,
-    "votes": 379,
-    "rating": 6.84169,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "adventure",
@@ -2261,8 +2261,8 @@ export default {
     },
     "sinopsis": "In 1987, five young men, using brutally honest rhymes and hardcore beats, put their frustration and anger about life in the most dangerous place in America into the most powerful weapon they had: their music. Taking us back to where it all began, Straight Outta Compton tells the true story of how these cultural rebels-armed only with their lyrics, swagger, bravado and raw talent-stood up to the authorities that meant to keep them down and formed the world's most dangerous group, N.W.A. And as they spoke the truth that no one had before and exposed life in the hood, their voice ignited a social revolution that is still reverberating today. Straight Outta Compton stars O’Shea Jackson Jr., Corey Hawkins and Jason Mitchell as Ice Cube, Dr. Dre and Eazy-E, and is directed by F. Gary Gray.",
     "runtime": 147,
-    "votes": 1111,
-    "rating": 8.21872,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "drama",
       "music"
@@ -2286,8 +2286,8 @@ export default {
     },
     "sinopsis": "The story is set in 1947, following a long-retired Holmes living in a Sussex village with his housekeeper and rising detective son. But then he finds himself haunted by an unsolved 50-year old case. Holmes' memory isn't what it used to be, so he only remembers fragments of the case: a confrontation with an angry husband, a secret bond with his beautiful but unstable wife.",
     "runtime": 103,
-    "votes": 793,
-    "rating": 7.26986,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "crime",
       "drama",
@@ -2311,19 +2311,19 @@ export default {
       "tmdb": 281957
     },
     "sinopsis": "In the 1820s, a frontiersman, Hugh Glass, sets out on a path of vengeance against those who left him for dead after a bear mauling.",
-    "runtime": 0,
-    "votes": 3,
-    "rating": 8.66667,
+    "runtime": 156,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "adventure",
       "drama"
     ],
     "certification": "",
-    "tagline": "",
+    "tagline": "(n. One who has returned, as if from the dead.)",
     "trailer": "http://youtube.com/watch?v=QRfj1VCg16Y",
     "images": {
-      "poster": "https://walter.trakt.us/images/movies/000/179/334/posters/thumb/5661189fd6.jpg",
-      "fanart": "https://walter.trakt.us/images/movies/000/179/334/fanarts/thumb/0295bf1f7d.jpg"
+      "poster": "https://walter.trakt.us/images/movies/000/179/334/posters/thumb/e1f48c2858.jpg",
+      "fanart": "https://walter.trakt.us/images/movies/000/179/334/fanarts/thumb/cb6596b6d1.jpg"
     }
   },
   "180775": {
@@ -2337,8 +2337,8 @@ export default {
     },
     "sinopsis": "Beatrice Prior and Tobias Eaton fight to end the Bureau of Genetic Welfare's authoritarian reign over the United States.",
     "runtime": 0,
-    "votes": 3,
-    "rating": 7,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "adventure",
       "science-fiction",
@@ -2363,8 +2363,8 @@ export default {
     },
     "sinopsis": "",
     "runtime": 0,
-    "votes": 12,
-    "rating": 8.16667,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "adventure",
@@ -2389,8 +2389,8 @@ export default {
     },
     "sinopsis": "Thor must confront the gods to the gods when Asgard is threatened with Ragnarok, the Norse apocalypse.",
     "runtime": 0,
-    "votes": 5,
-    "rating": 10,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "science-fiction",
       "action",
@@ -2416,16 +2416,16 @@ export default {
     },
     "sinopsis": "During a manned mission to Mars, Astronaut Mark Watney is presumed dead after a fierce storm and left behind by his crew. But Watney has survived and finds himself stranded and alone on the hostile planet. With only meager supplies, he must draw upon his ingenuity, wit and spirit to subsist and find a way to signal to Earth that he is alive.",
     "runtime": 141,
-    "votes": 2631,
-    "rating": 8.29,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "science-fiction",
       "adventure",
       "drama"
     ],
     "certification": "PG-13",
-    "tagline": "Help is only 140 million miles away.",
-    "trailer": "http://youtube.com/watch?v=2p7bgMxewxA",
+    "tagline": "Bring Him Home",
+    "trailer": "http://youtube.com/watch?v=8E8N8EKbpV4",
     "images": {
       "poster": "https://walter.trakt.us/images/movies/000/183/371/posters/thumb/5cb08eb251.jpg",
       "fanart": "https://walter.trakt.us/images/movies/000/183/371/fanarts/thumb/7865040050.jpg"
@@ -2442,8 +2442,8 @@ export default {
     },
     "sinopsis": "Quentin Jacobsen has spent a lifetime loving the magnificently adventurous Margo Roth Spiegelman from afar. So when she cracks open a window and climbs back into his life-dressed like a ninja and summoning him for an ingenious campaign of revenge-he follows. After their all-nighter ends and a new day breaks, Q arrives at school to discover that Margo, always an enigma, has now become a mystery. But Q soon learns that there are clues-and they're for him. Urged down a disconnected path, the closer he gets, the less Q sees of the girl he thought he knew.",
     "runtime": 109,
-    "votes": 1273,
-    "rating": 6.9458,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "adventure",
       "mystery",
@@ -2468,8 +2468,8 @@ export default {
     },
     "sinopsis": "Based upon Marvel Comics’ most unconventional anti-hero, DEADPOOL tells the origin story of former Special Forces operative turned mercenary Wade Wilson, who after being subjected to a rogue experiment that leaves him with accelerated healing powers, adopts the alter ego Deadpool. Armed with his new abilities and a dark, twisted sense of humor, Deadpool hunts down the man who nearly destroyed his life.",
     "runtime": 0,
-    "votes": 23,
-    "rating": 7.34783,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "science-fiction",
@@ -2494,8 +2494,8 @@ export default {
     },
     "sinopsis": "After 29-year-old Adaline recovers from a nearly lethal accident, she inexplicably stops growing older. As the years stretch on and on, Adaline keeps her secret to herself  until she meets a man who changes her life.",
     "runtime": 112,
-    "votes": 2093,
-    "rating": 7.67654,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "drama",
       "romance"
@@ -2519,8 +2519,8 @@ export default {
     },
     "sinopsis": "Thomas and his fellow Gladers face their greatest challenge yet: searching for clues about the mysterious and powerful organization known as WCKD. Their journey takes them to the Scorch, a desolate landscape filled with unimaginable obstacles. Teaming up with resistance fighters, the Gladers take on WCKD’s vastly superior forces and uncover its shocking plans for them all.",
     "runtime": 132,
-    "votes": 2438,
-    "rating": 7.00492,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "science-fiction",
       "action",
@@ -2545,8 +2545,8 @@ export default {
     },
     "sinopsis": "Overview not yet known.",
     "runtime": 0,
-    "votes": 7,
-    "rating": 9.57143,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "science-fiction",
       "action",
@@ -2571,8 +2571,8 @@ export default {
     },
     "sinopsis": "The continuation of the Infinity War film.",
     "runtime": 0,
-    "votes": 6,
-    "rating": 9.66667,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "adventure",
@@ -2597,8 +2597,8 @@ export default {
     },
     "sinopsis": "An Amazon princess comes to the world of Man to become the greatest of the female superheroes.",
     "runtime": 0,
-    "votes": 2,
-    "rating": 9,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "adventure",
@@ -2623,8 +2623,8 @@ export default {
     },
     "sinopsis": "From DC Comics comes the Suicide Squad, an antihero team of incarcerated supervillains who act as deniable assets for the United States government, undertaking high-risk black ops missions in exchange for commuted prison sentences.",
     "runtime": 0,
-    "votes": 8,
-    "rating": 8.75,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "crime",
@@ -2650,7 +2650,7 @@ export default {
     "sinopsis": "Carol Danvers receives superpowers and becomes Captain Marvel.",
     "runtime": 0,
     "votes": 0,
-    "rating": 0,
+    "totalRating": 0,
     "genres": [
       "science-fiction",
       "action",
@@ -2676,7 +2676,7 @@ export default {
     "sinopsis": "",
     "runtime": 0,
     "votes": 0,
-    "rating": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "adventure",
@@ -2701,8 +2701,8 @@ export default {
     },
     "sinopsis": "",
     "runtime": 0,
-    "votes": 5,
-    "rating": 6,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "adventure",
@@ -2728,8 +2728,8 @@ export default {
     },
     "sinopsis": "Hoping to bring his family closer together and to recreate his childhood vacation for his own kids, a grown up Rusty Griswold takes his wife and their two sons on a cross-country road trip to the coolest theme park in America, Walley World. Needless to say, things don't go quite as planned.",
     "runtime": 99,
-    "votes": 1536,
-    "rating": 6.92448,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "adventure",
       "comedy"
@@ -2753,8 +2753,8 @@ export default {
     },
     "sinopsis": "Billy \"The Great\" Hope, the reigning junior middleweight boxing champion, has an impressive career, a loving wife and daughter, and a lavish lifestyle. However, when tragedy strikes, Billy hits rock bottom, losing his family, his house and his manager. He soon finds an unlikely savior in Tick Willis, a former fighter who trains the city's toughest amateur boxers. With his future on the line, Hope fights to reclaim the trust of those he loves the most.",
     "runtime": 123,
-    "votes": 2317,
-    "rating": 7.9003,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "drama",
@@ -2779,8 +2779,8 @@ export default {
     },
     "sinopsis": "Greg is coasting through senior year of high school as anonymously as possible, avoiding social interactions like the plague while secretly making spirited, bizarre films with Earl, his only friend. But both his anonymity and friendship threaten to unravel when his mother forces him to befriend a classmate with leukemia.",
     "runtime": 104,
-    "votes": 950,
-    "rating": 7.95263,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "drama",
       "comedy"
@@ -2804,8 +2804,8 @@ export default {
     },
     "sinopsis": "A husband and wife try to reinvigorate their relationship but their lives are threatened by a \"friend\" from the husband's past who holds a horrifying secret about him, sending their world into a tailspin.",
     "runtime": 108,
-    "votes": 880,
-    "rating": 7.11136,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "thriller",
       "mystery"
@@ -2829,8 +2829,8 @@ export default {
     },
     "sinopsis": "4 would be astronauts spend 400 days in a land locked space simulator to test the psychological effects of deep space travel but, when something goes terribly wrong and they are forced to leave the simulation, they discover that everything on earth has changed. Is this real or is the simulation on a higher level than they could have ever imagined?",
     "runtime": 90,
-    "votes": 222,
-    "rating": 5.61712,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "science-fiction",
       "thriller",
@@ -2855,8 +2855,8 @@ export default {
     },
     "sinopsis": "Young Cole Carter dreams of hitting the big time as a Hollywood disc jockey, spending his days and nights hanging with buddies and working on the one track that will set the world on fire. Opportunity comes knocking when he meets James Reed, a charismatic DJ who takes the 23-year-old under his wing. Soon, his seemingly clear path to success gets complicated when he starts falling for his mentor's girlfriend, jeopardizing his new friendship and the future he seems destined to fulfill.",
     "runtime": 96,
-    "votes": 171,
-    "rating": 6.87135,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "drama"
     ],
@@ -2879,8 +2879,8 @@ export default {
     },
     "sinopsis": "Young hero, Thomas, embarks on a mission to find a cure to a deadly disease known as the \"Flare\".",
     "runtime": 0,
-    "votes": 6,
-    "rating": 8.5,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "mystery",
@@ -2906,8 +2906,8 @@ export default {
     },
     "sinopsis": "When Alex, an infiltration expert with a secret past, accidentally reveals her identity during what should have been a routine heist, she quickly finds herself mixed up in a government conspiracy and entangled in a deadly game of cat-and-mouse with a master assassin and his team of killers.  Armed with her own set of lethal skills, Alex looks to exact revenge for her murdered friends while uncovering the truth.",
     "runtime": 96,
-    "votes": 358,
-    "rating": 6.91341,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "thriller",
       "action"
@@ -2917,7 +2917,7 @@ export default {
     "trailer": "http://youtube.com/watch?v=bZDHKxXBzCM",
     "images": {
       "poster": "https://walter.trakt.us/images/movies/000/221/985/posters/thumb/c7778c9cfb.jpg",
-      "fanart": "https://walter.trakt.us/images/movies/000/221/985/fanarts/thumb/307ae79517.jpg"
+      "fanart": "https://walter.trakt.us/images/movies/000/221/985/fanarts/thumb/c01980fb02.jpg"
     }
   }
 };

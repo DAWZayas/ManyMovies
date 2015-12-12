@@ -51,12 +51,18 @@ li{
 }
 
 .heart{
-  color: #FF1744;
+  color: #F44336;
   padding-top: 1em;
   padding-right: 0.1em;
   padding-bottom: 1em;
 }
 
+.ratings-wrapper{
+  display: flex;
+  align-items: center;
+  /*background-color: red;*/
+  margin-bottom: 1em;
+}
 
 /**
 * MATERIAL ICONS
