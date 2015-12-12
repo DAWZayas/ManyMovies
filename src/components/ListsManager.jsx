@@ -34,29 +34,36 @@ export default class ListsManager extends Component {
     const idMovie = movie.ids.trakt.toString();
     const isInList = entries[id] && entries[id].indexOf(idMovie) !== -1;
     const itemStyle = isInList ?
-      {color: Color.white, backgroundColor: color, border: `2px solid ${color}`, margin: "1em", fontWeight: 'bold'} :
-      {color: color, border: `2px solid ${color}`, margin: "1em", fontWeight: 'bold'};
+      {color: Color.white, backgroundColor: color, border: `2px solid ${color}`, marginBottom: '1em', fontWeight: 'bold', textAlign: 'center'} :
+      {color: color, border: `2px solid ${color}`, marginBottom: '1em', fontWeight: 'bold', textAlign: 'center'};
     const iconColor = isInList ? Color.white : color;
     const handler = isInList ?
       () => {removeEntry(id, idMovie);} :
       () => {addEntry(id, idMovie);};
-    const label = isInList ? 'REMOVE FROM' : 'ADD TO';
-    return (
+    const label = isInList ? 'IN' : 'ADD TO';
+    return iconName !== 'none' ? (
       <ListItem
-          key={key}
-          leftIcon={<FontIcon color={iconColor} className="material-icons">{iconName}</FontIcon>}
-          style={itemStyle}
-          primaryText={`${label} ${title.toUpperCase()}`}
-          onTouchTap={handler}
-        />
+        key={key}
+        leftIcon={<FontIcon color={iconColor} className="material-icons">{iconName}</FontIcon>}
+        style={itemStyle}
+        primaryText={`${label} ${title.toUpperCase()}`}
+        onTouchTap={handler}
+      />
+    ) : (
+      <ListItem
+        key={key}
+        style={itemStyle}
+        primaryText={`${label} ${title.toUpperCase()}`}
+        onTouchTap={handler}
+      />
     );
   }
 
   _getGeneralListsItem(){
     const isInGeneralLists = this._isInGeneralLists();
     const itemStyle = isInGeneralLists ?
-      {color: Color.white, backgroundColor: Color.red900, border: `2px solid ${Color.red900}`, margin: "1em", fontWeight: 'bold'} :
-      {color: Color.red900, border: `2px solid ${Color.red900}`, margin: "1em", fontWeight: 'bold'};
+      {color: Color.white, backgroundColor: Color.red900, border: `2px solid ${Color.red900}`, fontWeight: 'bold', textAlign: 'center'} :
+      {color: Color.red900, border: `2px solid ${Color.red900}`, fontWeight: 'bold', textAlign: 'center'};
     const iconColor = isInGeneralLists ? Color.white : Color.red900;
     return (
       <ListItem
@@ -123,7 +130,7 @@ export default class ListsManager extends Component {
         >
         <List>
         {
-          _.map( lists, (list, key) => this._getListItem(list.id, listColors[index++ % listColors.length], 'chevron_right', list.title, key))
+          _.map( lists, (list, key) => this._getListItem(list.id, listColors[index++ % listColors.length], 'none', list.title, key))
         }
         </List>
       </Dialog>);

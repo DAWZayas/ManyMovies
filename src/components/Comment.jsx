@@ -344,6 +344,7 @@ class Comment extends Component {
               empty="fa fa-heart-o fa-2x heart"
               full="fa fa-heart fa-2x heart"
               stop={10}
+              step={2}
               onChange={(rate) => {console.log(rate);}}/>
         </Popover>
       </Card>
