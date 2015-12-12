@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { rateMovie, changeMovieRating } from '../actions';
 import Card from 'material-ui/lib/card/card';
 import CardText from 'material-ui/lib/card/card-text';
+const Dialog = require('material-ui/lib/dialog');
 import Popover from 'material-ui/lib/popover/popover';
 import FontIcon from 'material-ui/lib/font-icon';
 import Rating from 'react-rating';
@@ -13,7 +14,37 @@ import ImageWithPlaceholder from './ImageWithPlaceholder';
 export default class MovieDetailsDescription extends Component{
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      watchingTrailer: false,
+      resizeHandler: this._updateDimensions.bind(this)
+    };
+  }
+
+  componentWillMount(){
+    this._updateDimensions();
+  }
+
+  componentDidMount(){
+    window.addEventListener("resize", this.state.resizeHandler);
+  }
+
+  componentWillUnmount(){
+    window.removeEventListener("resize", this.state.resizeHandler);
+  }
+
+  _updateDimensions(){
+    this.setState({
+      width: document.documentElement.clientWidth,
+      height: document.documentElement.clientHeight
+     });
+  }
+
+  _handleShowTrailer(){
+    this.setState({watchingTrailer: true});
+  }
+
+  _handleHideTrailer(){
+    this.setState({watchingTrailer: false});
   }
 
   _showPopover(e) {
@@ -83,6 +114,38 @@ export default class MovieDetailsDescription extends Component{
     return (num - 1) * 2.5;
   }
 
+  _getTrailer(){
+    const { movie } = this.props;
+    if (!movie.trailer){
+      return null;
+    }
+    const trailerId = movie.trailer.split('watch?v=')[1];
+    const dialogWidth = (this.state.height > this.state.width) ? '100%' : '50%';
+    return (
+      <div>
+        <Dialog
+          style={{textAlign: 'center'}}
+          contentStyle={{width: dialogWidth}}
+          open={this.state.watchingTrailer}
+          onRequestClose={this._handleHideTrailer.bind(this)}
+          autoScrollBodyContent
+          >
+          <div className="embed-container">
+            <iframe
+              id="ytplayer"
+              type="text/html"
+              src={`http://www.youtube.com/embed/${trailerId}?autoplay=1`}
+              frameBorder="0"
+            />
+          </div>
+        </Dialog>
+        <div className="ratings-wrapper">
+          <FontIcon color={Color.indigo500} className="material-icons">movie</FontIcon>
+          <span onClick={this._handleShowTrailer.bind(this)} style={{marginLeft: '0.5em', color: Color.indigo500}}>Trailer</span>
+        </div>
+      </div>);
+  }
+
   render(){
     const { movie } = this.props;
     const percentRating = movie.totalRating === 0 ? '0 %' : `${Math.round(movie.totalRating * 10 / movie.votes)} %`;
@@ -98,10 +161,11 @@ export default class MovieDetailsDescription extends Component{
               </div>
               <div className="ratings-wrapper">
                 <FontIcon color={Color.red500} className="material-icons">favorite_border</FontIcon>
-                <span onClick={this._showPopover.bind(this)}  style={{marginLeft: '0.5em'}}>{this._getRatingText.bind(this)()}</span>
+                <span onClick={this._showPopover.bind(this)} style={{marginLeft: '0.5em'}}>{this._getRatingText.bind(this)()}</span>
               </div>
               <p style={{fontStyle: "italic"}}>{movie.tagline}</p>
               {this._getPopover.bind(this)()}
+              {this._getTrailer.bind(this)()}
               <br style={{clear: 'both'}}/>
             </div>
           </CardText>
@@ -109,7 +173,6 @@ export default class MovieDetailsDescription extends Component{
           <CardText> <span style={{color: Color.red500}}>Runtime: </span> {this.props.movie.runtime} </CardText>
           <CardText> <span style={{color: Color.red500}}>Genres: </span> {this.props.movie.genres} </CardText>
           <CardText> <span style={{color: Color.red500}}>Certification: </span> {this.props.movie.certification} </CardText>
-          <CardText> <a href={this.props.movie.trailer}><i className="material-icons">movie</i>Trailer</a> </CardText>
           <CardText style={{padding: "1em", fontSize: "1em", clear: "left"}}>
             {this.props.movie.sinopsis}
           </CardText>
