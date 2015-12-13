@@ -113,7 +113,7 @@ export default class Movies extends Component {
   _getListedMovies(){
     const searchedMovies = _.pick(this.props.movies, this._isSearched, this);
     const listedMovies = _.pick(searchedMovies, this._filterByGenre, this);
-    return listedMovies;
+    return _.sortBy(listedMovies, 'title');
   }
 
   render() {
