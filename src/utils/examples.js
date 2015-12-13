@@ -147,3 +147,23 @@ export const defaultMovieRatings = {
     totalNote: 10
   }
 };
+
+export const genres = [
+  "all",
+  "action",
+  "adventure",
+  "animation",
+  "comedy",
+  "crime",
+  "drama",
+  "family",
+  "fantasy",
+  "horror",
+  "music",
+  "mystery",
+  "romance",
+  "science-fiction",
+  "thriller",
+  "war",
+  "western"
+];
