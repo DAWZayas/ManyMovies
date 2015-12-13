@@ -27,12 +27,12 @@ export default class Movies extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      listedMovies: props.movies,
       maxMovies: PAGE_SIZE,
       loadMoreHandler: this._loadMoreOnBottom.bind(this),
       loading: false,
       choosingGenre: false,
-      genre: 'all'
+      genre: 'all',
+      searchTerm: ''
     };
   }
 
@@ -40,12 +40,16 @@ export default class Movies extends Component {
     window.addEventListener("scroll", this.state.loadMoreHandler);
   }
 
+  componentWillUpdate(){
+  }
+
   componentWillUnmount(){
     window.removeEventListener("scroll", this.state.loadMoreHandler);
   }
 
   _loadMoreOnBottom() {
-    if (this.state.maxMovies >= this.state.listedMovies.length){
+    const listedMovies = this._getListedMovies.bind(this)();
+    if (this.state.maxMovies >= _.keys(listedMovies).length){
       return;
     }
     if ($(window).scrollTop() + $(window).height() > getDocHeight() - 15) {
@@ -65,22 +69,23 @@ export default class Movies extends Component {
     if (e.keyCode === 27){
       this.refs.search.clearValue();
       this.refs.search.blur();
-      this._showSearchedMovies();
+      this.setState({ searchTerm: '' });
     }
   }
 
   _handleSearchFocus(){
     this.refs.search.clearValue();
-    this._showSearchedMovies();
+    this.setState({ searchTerm: '' });
   }
 
   _handleSearchChange(){
-    this._showSearchedMovies();
+    const searchTerm = this.refs.search.getValue().toLowerCase().trim();
+    this.setState({ searchTerm });
   }
 
   _handleChooseGenreTap(){
     setTimeout(() => {
-      this.setState({choosingGenre: true});
+      this.setState({ choosingGenre: true });
     }, 250);
   }
 
@@ -90,26 +95,30 @@ export default class Movies extends Component {
   }
 
   _isSearched(value){
-    const searchTerm = this.refs.search.getValue().toLowerCase().trim();
+    const searchTerm = this.state.searchTerm;
     const title = value.title.toLowerCase();
     return title.indexOf(searchTerm) !== -1;
   }
 
-  _showSearchedMovies(){
-    const listedMovies = _.pick(this.props.movies, this._isSearched, this);
-    this.setState({listedMovies});
-  }
-
   _stopChoosingGenre(){
-    this.setState({choosingGenre: false});
+    this.refs.search.clearValue();
+    this.setState({choosingGenre: false, searchTerm: '' });
   }
 
-  _filterByGenre(movie, genre){
-    return genre !== 'all' && movie.genres.indexOf(genre) !== -1;
+  _filterByGenre(movie){
+    const { genre } = this.state;
+    return ( genre === 'all') ? true : movie.genres.indexOf(genre) !== -1;
+  }
+
+  _getListedMovies(){
+    const searchedMovies = _.pick(this.props.movies, this._isSearched, this);
+    const listedMovies = _.pick(searchedMovies, this._filterByGenre, this);
+    return listedMovies;
   }
 
   render() {
-    const { maxMovies, listedMovies, genre } = this.state;
+    const { maxMovies, genre } = this.state;
+    const listedMovies = this._getListedMovies.bind(this)();
     const progress = this.state.loading ?
       <div style={{display: 'flex', justifyContent: 'center'}}>
         <CircularProgress
@@ -121,7 +130,8 @@ export default class Movies extends Component {
       null;
     const genreDialog = (
       <Dialog
-        style={{textAlign: 'center'}}
+        style={{ textAlign: 'center' }}
+        titleStyle={{ color: Colors.deepOrange500 }}
         title="Choose a genre"
         open={this.state.choosingGenre}
         onRequestClose={() => { this._stopChoosingGenre();}}
@@ -143,7 +153,7 @@ export default class Movies extends Component {
     );
     return (
       <div>
-        <Paper>
+        <Paper style={{padding: '1em 1em 2em 1em'}}>
           <div style={{display: "flex", justifyContent: "center"}}>
             <FontIcon style={{lineHeight: "2em"}} className="material-icons">search</FontIcon>
             <TextField
@@ -156,7 +166,7 @@ export default class Movies extends Component {
             />
           </div>
           <TextField
-            onTouchEnd={this._handleChooseGenreTap.bind(this)}
+            onTouchTap={this._handleChooseGenreTap.bind(this)}
             style={{padding: "0 0.3em"}}
             floatingLabelText=" Choose a genre"
             disabled
