@@ -7,16 +7,13 @@ function mapStateToProps(state) {
   const { movies } = state;
   const id = _.findKey(movies, movie => movie.ids.slug === slug);
   const movie = movies[id];
+  const comments = state.comments[id] || [];
   return {
-    movie
+    movie,
+    idCommented: id,
+    comments
   };
 }
-/*
-function mapDispatchToProps(dispatch) {
-  return {
-  };
-}
-*/
 
 export default connect(
   mapStateToProps

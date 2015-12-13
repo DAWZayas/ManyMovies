@@ -2,48 +2,18 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { pushState } from 'redux-router';
 import { editListAndNavigate, deleteListAndNavigate, removeEntry, addEntry } from '../actions';
-import { getDocHeight } from '../utils';
-import $ from 'jquery';
 import _ from 'lodash';
 import Colors from 'material-ui/lib/styles/colors';
 import Tabs from 'material-ui/lib/tabs/tabs';
 import Tab from 'material-ui/lib/tabs/tab';
 import ListDetailsHead from '../components/ListDetailsHead';
 import EntriesList from '../components/EntriesList';
-import Comment from '../components/Comment';
-import CommentAdder from '../components/CommentAdder';
-
-const PAGE_SIZE = 5;
+import CommentsManager from '../components/CommentsManager';
 
 class ListDetailsContainer extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      maxComments: PAGE_SIZE,
-      loadMoreHandler: this._loadMoreOnBottom.bind(this)
-    };
-  }
-
-  componentDidMount(){
-    window.addEventListener("scroll", this.state.loadMoreHandler);
-  }
-
-  componentWillUnmount(){
-    window.removeEventListener("scroll", this.state.loadMoreHandler);
-  }
-
-  _loadMoreOnBottom() {
-    if (this.state.maxComments >= this.props.comments.length){
-      return;
-    }
-    if ($(window).scrollTop() + $(window).height() > getDocHeight() - 15) {
-      $('body').css('cursor', 'progress');
-      setTimeout(() => {
-        $('body').css('cursor', 'initial');
-        this.setState({maxComments: this.state.maxComments + PAGE_SIZE});
-      }, 1500);
-    }
   }
 
   render() {
@@ -59,7 +29,6 @@ class ListDetailsContainer extends Component {
       addEntry,
       comments
     } = this.props;
-    const { maxComments } = this.state;
 
     return (
       <div>
@@ -84,9 +53,8 @@ class ListDetailsContainer extends Component {
             />
           </Tab>
           <Tab style={{backgroundColor: Colors.orange600}}
-           label="Comments">
-            <CommentAdder idCommented={list.id}/>
-            {comments.slice(0, maxComments).map((comment, index) => (<Comment key={index} idCommented={list.id} comment={comment}/>))}
+            label="Comments">
+            <CommentsManager idCommented={list.id} comments={comments} />
           </Tab>
         </Tabs>
       </div>

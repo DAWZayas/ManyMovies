@@ -11,7 +11,9 @@ import _ from 'lodash';
 import Color from 'material-ui/lib/styles/colors';
 import MovieDetailsHeader from './MovieDetailsHeader';
 import ImageWithPlaceholder from './ImageWithPlaceholder';
+import FlipClock from './FlipClock';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import defaultPoster from '../../images/mm-poster.png';
 injectTapEventPlugin();
 
 export default class MovieDetailsDescription extends Component{
@@ -170,7 +172,18 @@ export default class MovieDetailsDescription extends Component{
 
   _getReleased(){
     const { movie } = this.props;
-    return <p><span style={{color: Color.red500}}>Released: </span> {movie.released}</p>;
+    const releaseDate = new Date(Date.parse(movie.released));
+    const formatedReleased = releaseDate.toLocaleDateString('en-GB').replace(/\//g, '-');
+    if (Date.parse(movie.released) <= Date.now()){
+      return <p><span style={{color: Color.red500}}>Released: </span> {formatedReleased}</p>;
+    }else {
+      return (
+      <div>
+        <h3 style={{textAlign: 'center', color: Color.red500}}>Movie release: <span style={{ color: Color.grey500 }}>{formatedReleased}</span></h3>
+        <FlipClock date={movie.released}/>
+      </div>
+      );
+    }
   }
 
 
@@ -206,7 +219,12 @@ export default class MovieDetailsDescription extends Component{
           <MovieDetailsHeader movie={movie} />
           <CardText>
             <div className="movie-description-header">
-              <ImageWithPlaceholder src={this.props.movie.images.poster} alt={this.props.movie.title} style={{width: '10em', marginRight: '0.5em', float: 'left'}} />
+              <ImageWithPlaceholder
+                placeholderSrc={defaultPoster}
+                src={this.props.movie.images.poster}
+                alt={this.props.movie.title}
+                style={{width: '10em', marginRight: '0.5em', float: 'left'}}
+              />
               <div className="ratings-wrapper">
                 <FontIcon color={Color.red500} className="material-icons">favorite</FontIcon>
                 <span style={{marginLeft: '0.5em'}}>{percentRating}</span>

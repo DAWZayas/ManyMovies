@@ -1,3 +1,10 @@
+.progress-wrapper{
+  display: flex;
+  justify-content: center;
+  background-color: #595959;
+  border-radius: 15px;
+}
+
 .film-cover, .card-text{
   width: 60%;
   margin-left: 5%;
@@ -77,6 +84,51 @@ li{
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+/* Countdown-clock */
+@font-face {
+  font-family: 'Rationale';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Rationale'), local('Rationale-Regular'), url(https://fonts.gstatic.com/s/rationale/v7/ib3SKjmqWGRJiAg_LgKWiVtXRa8TVwTICgirnJhmVJw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+.countdown-clock {
+  font-family: 'Rationale', serif;
+  font-size: 2em;
+  color: #76ff03;
+  font-weight: bold;
+  text-align: center;
+  padding: 0;
+  margin: 0 0 1em 0;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.countdown-clock > div{
+  padding: 10px;
+  margin: 0 3px;
+  border-radius: 3px;
+  background: #33691e;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.countdown-clock div > span{
+  padding: 15px;
+  border-radius: 3px;
+  background: black;
+  min-width: 2.5em;
+  display: inline-block;
+}
+
+.smalltext{
+  padding-top: 5px;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 /**
