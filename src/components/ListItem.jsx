@@ -10,7 +10,9 @@ export default class ListItem extends Component {
     const { handler } = this.props;
     const slug = list.slug;
     return function(){
-      return handler('/lists/' + slug);
+      return setTimeout(() => {
+        handler('/lists/' + slug);
+      }, 10);
     };
   }
 

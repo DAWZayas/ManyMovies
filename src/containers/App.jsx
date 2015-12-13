@@ -6,6 +6,7 @@ import IconButton from 'material-ui/lib/icon-button';
 import Color from 'material-ui/lib/styles/colors';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import IconMenu from 'material-ui/lib/menus/icon-menu';
+
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
@@ -13,6 +14,26 @@ class App extends Component {
 
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount(){
+    const { navigate } = this.props;
+    if (annyang) {
+      const commands = {
+        'show movies': function() { navigate('/movies');},
+        'show collection': function() { navigate('/lists/collection');},
+        'show history': function() { navigate('/lists/history');},
+        'show pending': function() { navigate('/lists/watchlist');},
+        'show profile': function() { navigate('/profile');},
+        'show listing': function() { navigate('/lists');}
+      };
+      annyang.addCommands(commands);
+      annyang.start();
+    }
+  }
+
+  componentWillUnmount(){
+    annyang = null;
   }
 
   _handleTouchTap(e){
@@ -31,7 +52,6 @@ class App extends Component {
       backgroundColor: Color.orange600
     };
 
-    //const { navigate } = this.props;
     return (
       <div>
         <AppBar

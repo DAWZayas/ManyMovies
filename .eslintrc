@@ -11,7 +11,8 @@
         "arrowFunctions": true
     },
     "globals": {
-        "React": true
+        "React": true,
+        "annyang": true
     },
     "plugins": [
         "react"

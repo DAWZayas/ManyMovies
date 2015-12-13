@@ -9,8 +9,6 @@ import Dialog from '../../node_modules/material-ui/lib/dialog';
 import { allTrim, getSlug } from '../utils';
 import TextField from 'material-ui/lib/text-field';
 import FlatButton from 'material-ui/lib/flat-button';
-import facebook from '../../images/facebook.png';
-import google from '../../images/google.png';
 import twitter from '../../images/twitter.png';
 import injectTapEventPlugin from "react-tap-event-plugin";
 injectTapEventPlugin();
@@ -62,6 +60,13 @@ export default class ListDetailsHead extends Component {
     const { id } = this.props.list;
     this.props.deleteListAndNavigate(id);
     this.setState({editing: false});
+  }
+
+  _getDayHastag() {
+    const weekHastags = ['SinDay', 'MeowMonday', 'TuesdayTreat', 'WoofWednesday', 'ThursdayFunDay', 'FridayFunday', 'Caturday'];
+    const date = new Date();
+    const day = date.getDay();
+    return weekHastags[day];
   }
 
   render() {
@@ -153,17 +158,16 @@ export default class ListDetailsHead extends Component {
       ) : '';
 
     const social = (
-        <CardText>
-        Share with:
-        <a href="">
-          <img style={{height: "2em", marginLeft: "1em"}} src={facebook} alt="facebook-logo"/>
-        </a>
-        <a href="">
-          <img style={{height: "2em", marginLeft: "1em"}} src={google} alt="google-logo"/>
-        </a>
-        <a href="">
-          <img style={{height: "2em", marginLeft: "1em"}} src={twitter} alt="twitter-logo"/>
-        </a>
+      <CardText>
+        <div style={{color: Color.white, backgroundColor: '#53d0e8', lineHeight: "2em", display: 'inline-block', padding: '0 0.5em 0 0' }}>
+          <a
+            style={{color: Color.white, textDecoration: 'none'}}
+            target="_blank"
+            href={`https://twitter.com/intent/tweet?text=Check this list&hashtags=${this._getDayHastag()},ManyMovies&url=${window.location.href}`}>
+            <img style={{height: "2em"}} src={twitter} alt="twitter-logo"/>
+            Share
+          </a>
+        </div>
       </CardText>
       );
 

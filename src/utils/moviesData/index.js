@@ -10,8 +10,8 @@ export default {
     },
     "sinopsis": "Princess Leia is captured and held hostage by the evil Imperial forces in their effort to take over the galactic Empire. Venturesome Luke Skywalker and dashing captain Han Solo team together with the loveable robot duo R2-D2 and C-3PO to rescue the beautiful princess and restore peace and justice in the Empire.",
     "runtime": 121,
-    "votes": 10,
-    "totalRating": 87,
+    "votes": 0,
+    "totalRating": 0,
     "genres": [
       "action",
       "adventure",
@@ -555,7 +555,7 @@ export default {
     "trailer": "http://youtube.com/watch?v=ZR5xUl2Suew",
     "images": {
       "poster": "https://walter.trakt.us/images/movies/000/000/595/posters/thumb/b9dbae9136.jpg",
-      "fanart": "https://walter.trakt.us/images/movies/000/000/595/fanarts/thumb/e4d72ffc1e.jpg"
+      "fanart": "https://walter.trakt.us/images/movies/000/000/595/fanarts/thumb/e8e843ebe4.jpg"
     }
   },
   "612": {
@@ -1976,7 +1976,7 @@ export default {
       "imdb": "tt3385516",
       "tmdb": 246655
     },
-    "sinopsis": "One of the most powerful super villains, Apocalypse emerges and threatens to destroy the planet and its up to the X-men to stop him, with help from some of their old foes.",
+    "sinopsis": "Since the dawn of civilization, he was worshipped as a god. Apocalypse, the first and most powerful mutant from Marvel’s X-Men universe, amassed the powers of many other mutants, becoming immortal and invincible. Upon awakening after thousands of years, he is disillusioned with the world as he finds it and recruits a team of powerful mutants, including a disheartened Magneto, to cleanse mankind and create a new world order, over which he will reign. As the fate of the Earth hangs in the balance, Raven with the help of Professor X must lead a team of young X-Men to stop their greatest nemesis and save mankind from complete destruction.",
     "runtime": 0,
     "votes": 0,
     "totalRating": 0,
@@ -1987,10 +1987,10 @@ export default {
       "science-fiction"
     ],
     "certification": "",
-    "tagline": "",
-    "trailer": null,
+    "tagline": "Only the strong will survive",
+    "trailer": "http://youtube.com/watch?v=Pg9JJjIHGbY",
     "images": {
-      "poster": "https://walter.trakt.us/images/movies/000/149/999/posters/thumb/58870ab1e9.jpg",
+      "poster": "https://walter.trakt.us/images/movies/000/149/999/posters/thumb/802aeb46c3.jpg",
       "fanart": null
     }
   },
