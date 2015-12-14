@@ -22,6 +22,11 @@ export default class NewsDetails extends Component {
     };
   }
 
+  componentDidMount(){
+    $(function() {
+      $('body').scrollTop(0);
+    });
+  }
   componentWillUpdate(){
     $(function() {
       $('body').scrollTop(0);
@@ -82,14 +87,23 @@ export default class NewsDetails extends Component {
         transitionEnterTimeout={800}
         transitionLeaveTimeout={300}>
         <Card key={post.slug} style={{ maxWidth:'900px', margin: '1em auto' }}>
-          <CardMedia overlay={<CardTitle title={post.title} />}>
-            <img src={post.image}/>
+          <CardMedia overlay={
+            <CardTitle titleStyle={{
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis'
+              }}
+              title={post.title} />}>
+              <img src={post.image}/>
           </CardMedia>
-          <CardText>
+          <CardText style={{fontWeight: 'bold', textAlign: 'center', fontSize: '1.5em'}}>
+            {post.title}
+          </CardText>
+          <CardText style={{fontStyle: 'italic', textAlign: 'center'}}>
             {post.summary}
           </CardText>
           {
-            post.entries.map((entry, index) => <CardText key={index}>{entry}</CardText>)
+            post.entries.map((entry, index) => <CardText style={{textAlign: 'justify'}} key={index}>{entry}</CardText>)
           }
           {social}
           <CardText style={{ display: 'flex', justifyContent: 'center'}}>

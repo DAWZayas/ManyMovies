@@ -131,16 +131,38 @@ li{
   font-weight: bold;
   text-align: center;
   padding: 0;
-  margin: 0 0 1em 0;
+  box-sizing: border-box;
+  margin: 0 auto 1em auto;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
+}
+
+
+
+@media all and (max-width: 470px) and (min-width: 365px){
+  .countdown-clock {
+    width: 70%;
+  }
+}
+
+@media all and (max-width: 365px){
+  .countdown-clock {
+    width: 80%;
+  }
+}
+
+@media all and (max-width: 315px){
+  .countdown-clock {
+    width: 100%;
+  }
 }
 
 .countdown-clock > div{
   padding: 10px;
   margin: 0 3px;
   border-radius: 3px;
+  box-sizing: border-box;
   background: #33691e;
   display: inline-block;
   margin-top: 10px;
@@ -150,7 +172,8 @@ li{
   padding: 15px;
   border-radius: 3px;
   background: black;
-  min-width: 2.5em;
+  box-sizing: border-box;
+  width: 80px;
   display: inline-block;
 }
 

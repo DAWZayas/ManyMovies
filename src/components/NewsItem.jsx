@@ -29,6 +29,7 @@ export default class NewsItem extends Component {
         <CardTitle
           title={newItem.title}
           titleColor={Colors.deepOrange900}
+          titleStyle={{textAlign: 'center', fontSize: '1.5em'}}
           />
         <CardText>
         <img style={{width: '10em', float: 'left', margin: '0 1em 1em 0'}} src={newItem.image} alt={newItem.title}/>
