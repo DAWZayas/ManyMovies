@@ -69,6 +69,7 @@ export default class MovieDetailsDescription extends Component{
     }else {
       changeMovieRating(userName, idMovie,  userRating, rate);
     }
+    this._hidePopover.bind(this)();
   }
 
   _getPopover(){

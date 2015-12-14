@@ -30,6 +30,7 @@ export const SET_DEFAULT_USERS = 'SET_DEFAULT_USERS';
 export const RATE_MOVIE = 'RATE_MOVIE';
 export const CHANGE_MOVIE_RATING = 'CHANGE_MOVIE_RATING';
 
+export const SET_DEFAULT_POSTS = 'SET_DEFAULT_POSTS';
 
 /**
 * List action creators
@@ -227,3 +228,5 @@ export function changeMovieRating(userName, idMovie, rating, oldVote){
     rating
   };
 }
+
+export const setDefaultPosts = posts => ({type: SET_DEFAULT_POSTS, posts});

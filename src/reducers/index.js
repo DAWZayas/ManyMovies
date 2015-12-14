@@ -8,9 +8,9 @@ import users from './users';
 import userLikes from './userLikes';
 import userDislikes from './userDislikes';
 import userRatings from './userRatings';
+import posts from './posts';
 
 export default combineReducers({
-  router,
   lists,
   entries,
   movies,
@@ -18,5 +18,7 @@ export default combineReducers({
   users,
   userLikes,
   userDislikes,
-  userRatings
+  userRatings,
+  posts,
+  router
 });

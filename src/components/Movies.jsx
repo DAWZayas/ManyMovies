@@ -4,8 +4,7 @@ import Table from 'material-ui/lib/table/table';
 import TableBody from 'material-ui/lib/table/table-body';
 import Paper from 'material-ui/lib/paper';
 import FontIcon from 'material-ui/lib/font-icon';
-import FloatingActionButton from 'material-ui/lib/floating-action-button';
-import ScrollToTop from 'react-scroll-up';
+import ScrollTop from './ScrollTop';
 import CircularProgress from 'material-ui/lib/circular-progress';
 import Colors from 'material-ui/lib/styles/colors';
 import TextField from 'material-ui/lib/text-field';
@@ -38,9 +37,6 @@ export default class Movies extends Component {
 
   componentDidMount(){
     window.addEventListener("scroll", this.state.loadMoreHandler);
-  }
-
-  componentWillUpdate(){
   }
 
   componentWillUnmount(){
@@ -197,11 +193,7 @@ export default class Movies extends Component {
           </TableBody>
         </Table>
         {progress}
-        <ScrollToTop showUnder={300}>
-          <FloatingActionButton backgroundColor={Colors.orange600}>
-            <FontIcon className="material-icons">arrow_upward</FontIcon>
-          </FloatingActionButton>
-        </ScrollToTop>
+        <ScrollTop />
       </div>
     );
   }

@@ -20,12 +20,13 @@ class App extends Component {
     const { navigate } = this.props;
     if (annyang) {
       const commands = {
-        'show movies': function() { navigate('/movies');},
-        'show collection': function() { navigate('/lists/collection');},
-        'show history': function() { navigate('/lists/history');},
-        'show pending': function() { navigate('/lists/watchlist');},
-        'show profile': function() { navigate('/profile');},
-        'show listing': function() { navigate('/lists');}
+        'movies': function() { navigate('/movies');},
+        'collection': function() { navigate('/lists/collection');},
+        'history': function() { navigate('/lists/history');},
+        'pending': function() { navigate('/lists/watchlist');},
+        'profile': function() { navigate('/profile');},
+        'listing': function() { navigate('/lists');},
+        'soon': function() { navigate('/premieres');},
       };
       annyang.addCommands(commands);
       annyang.start();
@@ -60,9 +61,11 @@ class App extends Component {
                   iconClassName="glyphicon glyphicon-align-justify"/>
               }
             >
+              <MenuItem style={{padding: '0 1.5em'}} primaryText="News" onTouchTap={this._handleTouchTap.bind(this)} />
               <MenuItem style={{padding: '0 1.5em'}} primaryText="Profile" onTouchTap={this._handleTouchTap.bind(this)} />
               <MenuItem style={{padding: '0 1.5em'}} primaryText="Lists" onTouchTap={this._handleTouchTap.bind(this)} />
               <MenuItem style={{padding: '0 1.5em'}} primaryText="Movies" onTouchTap={this._handleTouchTap.bind(this)} />
+              <MenuItem style={{padding: '0 1.5em'}} primaryText="Premieres" onTouchTap={this._handleTouchTap.bind(this)} />
             </IconMenu>
             }
         />

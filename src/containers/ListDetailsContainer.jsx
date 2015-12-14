@@ -4,6 +4,7 @@ import { pushState } from 'redux-router';
 import { editListAndNavigate, deleteListAndNavigate, removeEntry, addEntry } from '../actions';
 import _ from 'lodash';
 import Colors from 'material-ui/lib/styles/colors';
+import ScrollTop from '../components/ScrollTop';
 import Tabs from 'material-ui/lib/tabs/tabs';
 import Tab from 'material-ui/lib/tabs/tab';
 import ListDetailsHead from '../components/ListDetailsHead';
@@ -57,6 +58,7 @@ class ListDetailsContainer extends Component {
             <CommentsManager idCommented={list.id} comments={comments} />
           </Tab>
         </Tabs>
+        <ScrollTop />
       </div>
     );
   }

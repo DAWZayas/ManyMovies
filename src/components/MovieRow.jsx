@@ -13,7 +13,9 @@ export default class MovieRow extends Component {
   }
 
   _handleTouchTap(slug){
-    this.props.navigate(`/movies/${slug}`);
+    setTimeout(() => {
+      this.props.navigate(`/movies/${slug}`);
+    }, 200);
   }
 
   render() {
