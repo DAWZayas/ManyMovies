@@ -6,7 +6,7 @@ import CardText from 'material-ui/lib/card/card-text';
 import CardTitle from 'material-ui/lib/card/card-title';
 import IconButton from 'material-ui/lib/icon-button';
 import Dialog from '../../node_modules/material-ui/lib/dialog';
-import { allTrim, getSlug } from '../utils';
+import { allTrim, getSlug, getDayHashtag } from '../utils';
 import TextField from 'material-ui/lib/text-field';
 import FlatButton from 'material-ui/lib/flat-button';
 import twitter from '../../images/twitter.png';
@@ -60,13 +60,6 @@ export default class ListDetailsHead extends Component {
     const { id } = this.props.list;
     this.props.deleteListAndNavigate(id);
     this.setState({editing: false});
-  }
-
-  _getDayHastag() {
-    const weekHastags = ['SinDay', 'MeowMonday', 'TuesdayTreat', 'WoofWednesday', 'ThursdayFunDay', 'FridayFunday', 'Caturday'];
-    const date = new Date();
-    const day = date.getDay();
-    return weekHastags[day];
   }
 
   render() {
@@ -163,7 +156,7 @@ export default class ListDetailsHead extends Component {
           <a
             style={{color: Color.white, textDecoration: 'none'}}
             target="_blank"
-            href={`https://twitter.com/intent/tweet?text=Check this list&hashtags=${this._getDayHastag()},ManyMovies&url=${window.location.href}`}>
+            href={`https://twitter.com/intent/tweet?text=Check this list&hashtags=${getDayHashtag()},ManyMovies&url=${window.location.href}`}>
             <img style={{height: "2em"}} src={twitter} alt="twitter-logo"/>
             Share
           </a>

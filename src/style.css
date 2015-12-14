@@ -86,6 +86,35 @@ li{
   height: 100%;
 }
 
+
+/* React Transition */
+.news-enter {
+  opacity: 0.01;
+}
+
+.news-enter.news-enter-active {
+  opacity: 1;
+  transition: opacity 800ms ease-in;
+}
+
+.news-leave {
+  opacity: 1;
+}
+
+.news-leave.news-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+
+.news-appear {
+  opacity: 0.01;
+}
+
+.news-appear.news-appear-active {
+  opacity: 1;
+  transition: opacity 800ms ease-in;
+}
+
 /* Countdown-clock */
 @font-face {
   font-family: 'Rationale';

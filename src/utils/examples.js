@@ -185,7 +185,7 @@ export const defaultPosts = [
       'And Cameron doesn’t want to rest on his laurels when it comes to the ever-expanding Avatar universe. “No, you have to challenge yourself. Obviously, expectations are going to be very high on these films, especially on Avatar 2, to make sure it wasn’t just some big fluke the first time. So we’ve got to deliver. I’ve created a nice rod for my own back, so they say.”',
       'The three new Avatar movies are gearing up to shoot concurrently and will (hopefully) start to arrive in cinemas from 2017.'
     ],
-    summary: 'Fresh news from our beloved blue aliens',
+    summary: 'Fresh news from our beloved blue aliens.',
     image: avatarPost,
   },
   {
@@ -238,7 +238,7 @@ export const defaultPosts = [
     'I hope that there will always be a place for practical effects. Guillermo del Toro likes to use them, and blends them very well with CGI. The new Star Wars sequels promise to feature them also. As our world becomes more and more automated and digitized, it becomes important to hold on to the tactile, the organic, the humanistic. After all, have we learned nothing from “Terminator”?',
     'I know I’ve left a lot of great examples off my list. What are some of your favorites and why?'
     ],
-    summary: 'Making the impossible posible',
+    summary: 'Making the impossible posible.',
     image: specialPost
   },
   {
@@ -255,7 +255,7 @@ export const defaultPosts = [
       'If you want to dive a little more in depth about Han Solo shooting Greedo with all the laws and legal mumbo jumbo that explain this with specifics, you can check out the full post right here. But otherwise, you can rest easy that Han Solo isn’t just a senseless killer and George Lucas never should have changed that scene to begin with.',
       'However, am I the only one concerned with the fact that a lawyer took the time to examine this and write this post instead of doing some real legal work? I guess we all need hobbies, and this lawyer’s hobby is defending fictional court cases.'
     ],
-    summary: 'You are our favourite smuggler of all the time Solo',
+    summary: 'You are our favourite smuggler of all the time Solo.',
     image: hansoloPost
   }
 ];

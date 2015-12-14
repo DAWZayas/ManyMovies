@@ -48,3 +48,9 @@ export function getDocHeight() {
         D.body.clientHeight, D.documentElement.clientHeight
     );
   }
+export function getDayHashtag() {
+  const weekHastags = ['SinDay', 'MeowMonday', 'TuesdayTreat', 'WoofWednesday', 'ThursdayFunDay', 'FridayFunday', 'Caturday'];
+  const date = new Date();
+  const day = date.getDay();
+  return weekHastags[day];
+}

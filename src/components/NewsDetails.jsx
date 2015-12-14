@@ -8,6 +8,9 @@ import Colors from 'material-ui/lib/styles/colors';
 import FontIcon from 'material-ui/lib/font-icon';
 import $ from 'jquery';
 import ScrollTop from './ScrollTop';
+import twitter from '../../images/twitter.png';
+import { getDayHashtag } from '../utils';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
@@ -17,12 +20,6 @@ export default class NewsDetails extends Component {
     super(props);
     this.state = {
     };
-  }
-
-  componentDidMount(){
-    $(function() {
-      $('body').scrollTop(0);
-    });
   }
 
   componentWillUpdate(){
@@ -64,27 +61,48 @@ export default class NewsDetails extends Component {
 
   render() {
     const { post } = this.props;
+    const social = (
+      <div style={{textAlign: 'center'}}>
+        <div style={{color: Colors.white, backgroundColor: '#53d0e8', lineHeight: "2em", display: 'inline-block', padding: '0 0.5em 0 0' }}>
+          <a
+            style={{color: Colors.white, textDecoration: 'none'}}
+            target="_blank"
+            href={`https://twitter.com/intent/tweet?text=Check this post&hashtags=${getDayHashtag()},ManyMovies&url=${window.location.href}`}>
+            <img style={{height: "2em"}} src={twitter} alt="twitter-logo"/>
+            Share
+          </a>
+        </div>
+      </div>
+      );
     return (
-      <Card style={{ maxWidth:'900px', margin: '1em auto' }}>
-        <CardMedia overlay={<CardTitle title={post.title} />}>
-          <img src={post.image}/>
-        </CardMedia>
-        <CardText>
-          {post.summary}
-        </CardText>
-        {
-          post.entries.map((entry, index) => <CardText key={index}>{entry}</CardText>)
-        }
-        <CardText style={{ display: 'flex', justifyContent: 'center'}}>
+      <ReactCSSTransitionGroup
+        transitionAppear
+        transitionName="news"
+        transitionAppearTimeout={800}
+        transitionEnterTimeout={800}
+        transitionLeaveTimeout={300}>
+        <Card key={post.slug} style={{ maxWidth:'900px', margin: '1em auto' }}>
+          <CardMedia overlay={<CardTitle title={post.title} />}>
+            <img src={post.image}/>
+          </CardMedia>
+          <CardText>
+            {post.summary}
+          </CardText>
           {
-            this._getPrevButton.bind(this)()
+            post.entries.map((entry, index) => <CardText key={index}>{entry}</CardText>)
           }
-          {
-            this._getNextButton.bind(this)()
-          }
-        </CardText>
-        <ScrollTop/>
-      </Card>
+          {social}
+          <CardText style={{ display: 'flex', justifyContent: 'center'}}>
+            {
+              this._getPrevButton.bind(this)()
+            }
+            {
+              this._getNextButton.bind(this)()
+            }
+          </CardText>
+          <ScrollTop/>
+        </Card>
+      </ReactCSSTransitionGroup>
     );
   }
 }
