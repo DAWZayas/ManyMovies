@@ -25,5 +25,27 @@ This application will have this features being able to be changed in a future.
 7. Share lists with other users
 8. See other users public lists
 
-Here slides about the functions of the application:
-http://my.visme.co/projects/manymovies-207ebe
+##Demo:
+
+[Go to demo](http://mobiletest.me/htc_one_emulator/?u=http://dawzayas.github.io/ManyMovies/)
+
+# To install
+```bash
+	npm install
+```
+
+# To dev start
+```bash
+	npm start
+```
+
+And goto [http://localhost:3000](http://localhost:3000)
+
+# To dist
+```bash
+	npm run dist
+```
+
+# Presentation
+Here are the slides about the functions of the application:
+[Presentation](http://my.visme.co/projects/manymovies-207ebe)
