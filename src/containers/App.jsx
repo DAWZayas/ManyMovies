@@ -38,12 +38,6 @@ class App extends Component {
 
   _handleTouchTap(e){
     let path = e.target.innerHTML.toLowerCase();
-    switch (path){
-      case 'collection':
-      case 'history':
-      case 'watchlist':
-        path = `lists/${path}`;
-    }
     this.props.navigate(`/${path}`);
   }
 
@@ -66,12 +60,9 @@ class App extends Component {
                   iconClassName="glyphicon glyphicon-align-justify"/>
               }
             >
-              <MenuItem primaryText="Profile" onTouchTap={this._handleTouchTap.bind(this)} />
-              <MenuItem primaryText="Lists" onTouchTap={this._handleTouchTap.bind(this)} />
-              <MenuItem primaryText="History" onTouchTap={this._handleTouchTap.bind(this)} />
-              <MenuItem primaryText="Collection" onTouchTap={this._handleTouchTap.bind(this)} />
-              <MenuItem primaryText="WatchList" onTouchTap={this._handleTouchTap.bind(this)} />
-              <MenuItem primaryText="Movies" onTouchTap={this._handleTouchTap.bind(this)} />
+              <MenuItem style={{padding: '0 1.5em'}} primaryText="Profile" onTouchTap={this._handleTouchTap.bind(this)} />
+              <MenuItem style={{padding: '0 1.5em'}} primaryText="Lists" onTouchTap={this._handleTouchTap.bind(this)} />
+              <MenuItem style={{padding: '0 1.5em'}} primaryText="Movies" onTouchTap={this._handleTouchTap.bind(this)} />
             </IconMenu>
             }
         />

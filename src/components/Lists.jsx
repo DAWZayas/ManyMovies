@@ -44,7 +44,7 @@ export default class Lists extends Component {
   }
 
   render() {
-    const { lists, handler } = this.props;
+    const { lists, handler, defaultLists } = this.props;
 
     const dialogActions = [
         <FlatButton
@@ -95,6 +95,15 @@ export default class Lists extends Component {
 
     return (
       <div>
+        <List>
+          {
+           defaultLists.map((list, index) =>  (<ListItem
+             key={index}
+             list={list}
+             handler={handler}/>)
+             )
+          }
+        </List>
         <div className="center-wrapper">{button}</div>
         {dialog}
         <List>
@@ -113,6 +122,7 @@ export default class Lists extends Component {
 
 Lists.propTypes = {
   lists: PropTypes.array,
+  defaultLists: PropTypes.array,
   handler: PropTypes.func,
   createList: PropTypes.func
 };

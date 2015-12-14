@@ -5,9 +5,12 @@ import Lists from '../components/Lists';
 import _ from 'lodash';
 
 function mapStateToProps(state) {
+  const defaultSlugs = ['history', 'collection', 'watchlist'];
   const lists = _.values(state.lists);
-  const customLists = lists.filter(list => list.custom);
+  const customLists = _.sortBy(lists.filter(list => list.custom), 'title');
+  const defaultLists = _.sortBy(lists.filter(list => defaultSlugs.indexOf(list.slug) !== -1), 'title');
   return {
+    defaultLists,
     lists: customLists
   };
 }
