@@ -95,6 +95,7 @@ export default class Lists extends Component {
 
     return (
       <div>
+      <h3 className="center-wrapper" style={{color: Colors.deepOrange600}}> General lists </h3>
         <List>
           {
            defaultLists.map((list, index) =>  (<ListItem
@@ -104,8 +105,7 @@ export default class Lists extends Component {
              )
           }
         </List>
-        <div className="center-wrapper">{button}</div>
-        {dialog}
+      <h3 className="center-wrapper" style={{color: Colors.deepOrange600}}> Custom lists </h3>
         <List>
           {
            lists.map((list, index) =>  (<ListItem
@@ -115,6 +115,8 @@ export default class Lists extends Component {
              )
           }
         </List>
+        <div className="center-wrapper">{button}</div>
+        {dialog}
       </div>
     );
   }
