@@ -26,7 +26,8 @@ class App extends Component {
         'pending': function() { navigate('/lists/watchlist');},
         'profile': function() { navigate('/profile');},
         'listing': function() { navigate('/lists');},
-        'soon': function() { navigate('/premieres');},
+        'coming': function() { navigate('/premieres');},
+        'news': function() { navigate('/news');}
       };
       annyang.addCommands(commands);
       annyang.start();
