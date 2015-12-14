@@ -29,7 +29,7 @@ export default class NewsDetails extends Component {
     });
   }
   componentWillUpdate(nextProps){
-    if (this.props.comments.length !== nextProps.comments.length){
+    if (this.props.post.id === nextProps.post.id){
       return;
     }
     $(function() {
