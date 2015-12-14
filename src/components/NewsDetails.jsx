@@ -8,6 +8,7 @@ import Colors from 'material-ui/lib/styles/colors';
 import FontIcon from 'material-ui/lib/font-icon';
 import $ from 'jquery';
 import ScrollTop from './ScrollTop';
+import CommentsManager from './CommentsManager';
 import twitter from '../../images/twitter.png';
 import { getDayHashtag } from '../utils';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
@@ -27,7 +28,10 @@ export default class NewsDetails extends Component {
       $('body').scrollTop(0);
     });
   }
-  componentWillUpdate(){
+  componentWillUpdate(nextProps){
+    if (this.props.comments.length !== nextProps.comments.length){
+      return;
+    }
     $(function() {
       $('body').scrollTop(0);
     });
@@ -65,7 +69,7 @@ export default class NewsDetails extends Component {
   }
 
   render() {
-    const { post } = this.props;
+    const { post, idCommented, comments } = this.props;
     const social = (
       <div style={{textAlign: 'center'}}>
         <div style={{color: Colors.white, backgroundColor: '#53d0e8', lineHeight: "2em", display: 'inline-block', padding: '0 0.5em 0 0' }}>
@@ -116,6 +120,7 @@ export default class NewsDetails extends Component {
           </CardText>
           <ScrollTop/>
         </Card>
+        <CommentsManager idCommented={idCommented} comments={comments} />
       </ReactCSSTransitionGroup>
     );
   }
@@ -124,6 +129,8 @@ export default class NewsDetails extends Component {
 NewsDetails.propTypes = {
   post: PropTypes.object,
   navigate: PropTypes.func,
+  idCommented: PropTypes.string,
+  comments: PropTypes.array
 };
 
 NewsDetails.defaultProps = {
