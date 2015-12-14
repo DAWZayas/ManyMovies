@@ -63,7 +63,7 @@ export default class CommentsManager extends Component {
     : null;
 
     return (
-      <div>
+      <div style={{margin: '0 0 10em'}}>
         <CommentAdder idCommented={idCommented}/>
         {comments.slice(0, maxComments).map((comment, index) => (<Comment key={index} idCommented={idCommented} comment={comment}/>))}
         {progress}
