@@ -118,9 +118,9 @@ export default class NewsDetails extends Component {
               this._getNextButton.bind(this)()
             }
           </CardText>
-          <ScrollTop/>
         </Card>
         <CommentsManager idCommented={idCommented} comments={comments} />
+        <ScrollTop/>
       </ReactCSSTransitionGroup>
     );
   }

@@ -15,10 +15,10 @@ export default class ScrollTop extends Component {
   render() {
     return (
       <ScrollToTop showUnder={300}>
-          <FloatingActionButton backgroundColor={Colors.orange600}>
-            <FontIcon className="material-icons">arrow_upward</FontIcon>
-          </FloatingActionButton>
-        </ScrollToTop>
+        <FloatingActionButton backgroundColor={Colors.orange600}>
+          <FontIcon className="material-icons">arrow_upward</FontIcon>
+        </FloatingActionButton>
+      </ScrollToTop>
     );
   }
 }
