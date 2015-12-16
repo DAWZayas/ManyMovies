@@ -1,5 +1,6 @@
 import { createStore, compose, applyMiddleware } from 'redux';
 import { reduxReactRouter } from 'redux-router';
+import useScroll from 'scroll-behavior/lib/useScrollToTop';
 import createHistory from 'history/lib/createBrowserHistory';
 import reducer from '../reducers';
 import routes from '../routes';
@@ -10,7 +11,10 @@ import createLogger from 'redux-logger';
 
 const createStoreWithMiddleware = compose(
   applyMiddleware(thunk),
-  reduxReactRouter({ routes, createHistory }),
+  reduxReactRouter({
+    routes,
+    createHistory: useScroll(createHistory)
+  }),
   applyMiddleware(createLogger({
     predicate: (getState, action) => action === action
   })),

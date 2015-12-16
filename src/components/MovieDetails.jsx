@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import MovieDetailsDescription from './MovieDetailsDescription';
 import ListsManager from './ListsManager';
 import ScrollTop from './ScrollTop';
-import $ from 'jquery';
 import CommentsManager from './CommentsManager';
 import injectTapEventPlugin from "react-tap-event-plugin";
 injectTapEventPlugin();
@@ -11,12 +10,6 @@ export default class MovieDetails extends Component {
 
   constructor(props) {
     super(props);
-  }
-
-  componentDidMount(){
-    $(function() {
-      $('body').scrollTop(0);
-    });
   }
 
   render() {

@@ -60,7 +60,7 @@
   "dependencies": {
     "babel-runtime": "^5.8.29",
     "bootstrap": "^3.3.5",
-    "history": "1.13.x",
+    "history": "^1.13.1",
     "jquery": "^2.1.4",
     "lodash": "^3.10.1",
     "node-uuid": "^1.4.3",
@@ -78,6 +78,7 @@
     "redux-devtools-dock-monitor": "^1.0.0-beta-3",
     "redux-devtools-log-monitor": "^1.0.0-beta-3",
     "redux-router": "^1.0.0-beta3",
-    "redux-thunk": "^1.0.0"
+    "redux-thunk": "^1.0.0",
+    "scroll-behavior": "^0.3.0"
   }
 }

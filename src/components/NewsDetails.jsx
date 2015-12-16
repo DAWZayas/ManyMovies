@@ -6,7 +6,6 @@ import CardMedia from 'material-ui/lib/card/card-media';
 import RaisedButton from 'material-ui/lib/raised-button';
 import Colors from 'material-ui/lib/styles/colors';
 import FontIcon from 'material-ui/lib/font-icon';
-import $ from 'jquery';
 import ScrollTop from './ScrollTop';
 import CommentsManager from './CommentsManager';
 import twitter from '../../images/twitter.png';
@@ -21,20 +20,6 @@ export default class NewsDetails extends Component {
     super(props);
     this.state = {
     };
-  }
-
-  componentDidMount(){
-    $(function() {
-      $('body').scrollTop(0);
-    });
-  }
-  componentWillUpdate(nextProps){
-    if (this.props.post.id === nextProps.post.id){
-      return;
-    }
-    $(function() {
-      $('body').scrollTop(0);
-    });
   }
 
   _handleTouchTap(slug){
