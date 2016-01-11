@@ -26,8 +26,7 @@ This application will have this features being able to be changed in a future.
 8. See other users public lists
 
 ##Demo:
-
-[Go to demo](http://mobiletest.me/htc_one_emulator/?u=http://dawzayas.github.io/ManyMovies/)
+[Go to demo](http://mobiletest.me/htc_one_emulator/?u=https://manymovies.firebaseapp.com/)
 And deny access to mic, github pages can't work well with it, it works without problem in a web server. 
 
 # To install
