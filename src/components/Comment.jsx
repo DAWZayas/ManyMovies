@@ -241,6 +241,7 @@ class Comment extends Component {
 
   render() {
     const { time, text, modified, likes, dislikes } = this.props.comment;
+    const formatedText = text.split(/\r?\n/);
     const score = likes - dislikes;
     const isBadComment = relativeScore(dislikes, likes + dislikes) > 0.4 ? true : false;
 
@@ -267,7 +268,11 @@ class Comment extends Component {
       </CardText>
       ) : (
       <CardText>
-        {text}
+        <div>
+        {
+          formatedText.map( (text, index ) => <p key={index}>{text}</p> )
+        }
+        </div>
         {modifiedTime}
       </CardText>
     );
