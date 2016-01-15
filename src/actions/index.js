@@ -30,7 +30,11 @@ export const SET_DEFAULT_USERS = 'SET_DEFAULT_USERS';
 export const RATE_MOVIE = 'RATE_MOVIE';
 export const CHANGE_MOVIE_RATING = 'CHANGE_MOVIE_RATING';
 
-export const SET_DEFAULT_POSTS = 'SET_DEFAULT_POSTS';
+export const SET_POSTS = 'SET_POSTS';
+export const SET_POST_IMG = 'SET_POST_IMG';
+export const SET_WATCHED_POST = 'SET_WATCHED_POST';
+export const SET_WATCHED_POST_IMG = 'SET_WATCHED_POST_IMG';
+export const CLEAR_WATCHED_POST = 'CLEAR_WATCHED_POST';
 
 /**
 * List action creators
@@ -229,4 +233,12 @@ export function changeMovieRating(userName, idMovie, rating, oldVote){
   };
 }
 
-export const setDefaultPosts = posts => ({type: SET_DEFAULT_POSTS, posts});
+export const setPosts = posts => ({type: SET_POSTS, posts});
+
+export const setPostImg = (id, image) => ({type: SET_POST_IMG, id, image});
+
+export const setWatchedPost = post => ({type: SET_WATCHED_POST, post});
+
+export const setWatchedPostImg = img => ({type: SET_WATCHED_POST_IMG, img});
+
+export const clearWatchedPost = () => ({type: CLEAR_WATCHED_POST});

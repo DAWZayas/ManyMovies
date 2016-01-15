@@ -11,6 +11,14 @@ export default class News extends Component {
     };
   }
 
+  componentWillMount() {
+    this.props.registerListeners();
+  }
+
+  componentWillUnmount() {
+    this.props.unregisterListeners();
+  }
+
   render() {
     const { posts, navigate } = this.props;
 
@@ -26,7 +34,9 @@ export default class News extends Component {
 
 News.propTypes = {
   posts: PropTypes.array,
-  navigate: PropTypes.func
+  navigate: PropTypes.func,
+  registerListeners: PropTypes.func.isRequired,
+  unregisterListeners: PropTypes.func.isRequired
 };
 
 News.defaultProps = {

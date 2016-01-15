@@ -10,7 +10,9 @@ import ScrollTop from './ScrollTop';
 import CommentsManager from './CommentsManager';
 import twitter from '../../images/twitter.png';
 import { getDayHashtag } from '../utils';
+import placeholder from '../../images/mm-fanart.png';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import _ from 'lodash';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
@@ -19,7 +21,29 @@ export default class NewsDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      image: undefined
     };
+  }
+
+  componentWillMount() {
+    this.props.registerListeners(this.props.params);
+  }
+
+   componentWillReceiveProps(nextProps){
+    this.setState({
+      image: nextProps.post.image
+    });
+  }
+
+  componentDidUpdate(prevProps){
+    if (prevProps.params.newsSlug !== this.props.params.newsSlug) {
+      this.props.unregisterListeners(prevProps.params, prevProps.post.id);
+      this.props.registerListeners(this.props.params);
+    }
+  }
+
+  componentWillUnmount() {
+    this.props.unregisterListeners(this.props.params, this.props.post.id);
   }
 
   _handleTouchTap(slug){
@@ -54,7 +78,9 @@ export default class NewsDetails extends Component {
   }
 
   render() {
-    const { post, idCommented, comments } = this.props;
+    const { post, comments } = this.props;
+    const image  = this.state.image ? this.state.image : placeholder;
+    const idCommented = post.id;
     const social = (
       <div style={{textAlign: 'center'}}>
         <div style={{color: Colors.white, backgroundColor: '#53d0e8', lineHeight: "2em", display: 'inline-block', padding: '0 0.5em 0 0' }}>
@@ -68,7 +94,7 @@ export default class NewsDetails extends Component {
         </div>
       </div>
       );
-    return (
+    return !(_.isEmpty(post)) ? (
       <ReactCSSTransitionGroup
         transitionAppear
         transitionName="news"
@@ -83,7 +109,7 @@ export default class NewsDetails extends Component {
               textOverflow: 'ellipsis'
               }}
               title={post.title} />}>
-              <img src={post.image}/>
+              <img src={image}/>
           </CardMedia>
           <CardText style={{fontWeight: 'bold', textAlign: 'center', fontSize: '1.5em'}}>
             {post.title}
@@ -107,6 +133,10 @@ export default class NewsDetails extends Component {
         <CommentsManager idCommented={idCommented} comments={comments} />
         <ScrollTop/>
       </ReactCSSTransitionGroup>
+    ) : (
+      <Card>
+        <CardText>Mis cojones 33</CardText>
+      </Card>
     );
   }
 }
@@ -115,7 +145,10 @@ NewsDetails.propTypes = {
   post: PropTypes.object,
   navigate: PropTypes.func,
   idCommented: PropTypes.string,
-  comments: PropTypes.array
+  comments: PropTypes.array,
+  params: PropTypes.object,
+  registerListeners: PropTypes.func,
+  unregisterListeners: PropTypes.func
 };
 
 NewsDetails.defaultProps = {
