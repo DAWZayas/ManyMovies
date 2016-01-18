@@ -9,8 +9,10 @@ import userLikes from './userLikes';
 import userDislikes from './userDislikes';
 import userRatings from './userRatings';
 import posts from './posts';
+import firebase from './firebase';
 
 export default combineReducers({
+  firebase,
   lists,
   entries,
   movies,

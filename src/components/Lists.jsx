@@ -20,6 +20,14 @@ export default class Lists extends Component {
     };
   }
 
+  componentWillMount() {
+    this.props.registerListeners();
+  }
+
+  componentWillUnmount() {
+    this.props.unregisterListeners();
+  }
+
   _handleButtonTouchTap() {
     this.setState({editing: !this.state.editing});
   }
@@ -126,7 +134,9 @@ Lists.propTypes = {
   lists: PropTypes.array,
   defaultLists: PropTypes.array,
   handler: PropTypes.func,
-  createList: PropTypes.func
+  createList: PropTypes.func,
+  registerListeners: PropTypes.func,
+  unregisterListeners: PropTypes.func
 };
 
 Lists.defaultProps = {

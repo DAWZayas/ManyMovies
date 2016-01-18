@@ -1,8 +1,7 @@
-import { SET_DEFAULT_LISTS, CREATE_LIST, DELETE_LIST, EDIT_LIST } from '../actions';
+import { SET_LISTS, CREATE_LIST, DELETE_LIST, EDIT_LIST } from '../actions';
 import { getId, getSlug} from '../utils';
-import { defaultLists } from '../utils/examples';
 
-const setDefaultLists = state => Object.assign({}, state, defaultLists);
+const setLists = (state, lists) => Object.assign({}, state, lists);
 
 function createList(state, title, desc) {
   let id = getId();
@@ -25,8 +24,8 @@ function editList(state, id, title, desc) {
 
 export default function (state = {}, action) {
   switch (action.type) {
-    case SET_DEFAULT_LISTS:
-      return setDefaultLists(state);
+    case SET_LISTS:
+      return setLists(state, action.lists);
     case CREATE_LIST:
       return createList(state, action.title, action.desc);
     case DELETE_LIST:
