@@ -1,10 +1,27 @@
 import { connect } from 'react-redux';
 import { pushState } from 'redux-router';
-import { createList } from '../actions';
 import Lists from '../components/Lists';
 import _ from 'lodash';
+import { getSlug } from '../utils';
 import { setLists } from '../actions';
 import firebase from '../utils/firebase';
+
+function createList(title, desc) {
+  const listsRef = firebase.child('lists/Gotre');
+  const idList = listsRef.push().key();
+  listsRef.once('value', (snapshot) => {
+    const slug = getSlug(snapshot.val(), title, idList);
+    listsRef.child(idList).set({
+        custom: true,
+        id: idList,
+        title,
+        desc,
+        slug
+      },
+      error => console.log(error)
+    );
+  });
+}
 
 function mapStateToProps(state) {
   const defaultSlugs = ['history', 'collection', 'watchlist'];
@@ -20,20 +37,21 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     handler: path => dispatch(pushState(null, path)),
-    createList: (title, desc) => dispatch(createList(title, desc)),
+    createList: (title, desc) => createList(title, desc),
     registerListeners: () => registerListeners(dispatch),
     unregisterListeners: () => unregisterListeners(dispatch)
   };
 }
 function registerListeners(dispatch){
-  const ref = firebase.child('lists');
+  const ref = firebase.child('lists/Gotre');
   ref.on('value', snapshot => dispatch(setLists(snapshot.val())));
 }
 
 function unregisterListeners(dispatch){
-  const ref = firebase.child('lists');
+  const ref = firebase.child('lists/Gotre');
   ref.off();
-  dispatch(setLists([]));
+  dispatch(setLists({}));
+  debugger;
 }
 
 export default connect(

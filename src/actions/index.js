@@ -1,12 +1,9 @@
 import { pushState } from 'redux-router';
 import sequencer from './sequencer';
-import Firebase from 'firebase';
 /*
 * Action types
 */
 export const SET_LISTS = 'SET_LISTS';
-export const CREATE_LIST = 'CREATE_LIST';
-export const DELETE_LIST = 'DELETE_LIST';
 export const EDIT_LIST = 'EDIT_LIST';
 
 export const SET_DEFAULT_ENTRIES = 'SET_DEFAULT_ENTRIES';
@@ -37,46 +34,6 @@ export const SET_DEFAULT_POSTS = 'SET_DEFAULT_POSTS';
 */
 
 export const setLists = lists => ({type: SET_LISTS, lists});
-
-export function createList(title, desc) {
-  return (dispatch, getState) => {
-    const { firebase } = getState();
-    const newListRef = firebase.child('lists')
-    .push({title, desc}, error => {
-      if (error) {
-        console.error('ERROR @ createList :', error);
-        dispatch({
-          type: CREATE_LIST,
-          payload: error
-        });
-      } else {
-        const idList = newListRef.key();
-        firebase.child(`lists/${idList}`).set({ createdAt: Firebase.ServerValue.TIMESTAMP });
-      }
-    });
-  };
-}
-/*export function createList(title, desc) {
-  return {
-    type: CREATE_LIST,
-    title,
-    desc
-  };
-}
-*/
-export function deleteList(id){
-  return {
-    type: DELETE_LIST,
-    id
-  };
-}
-
-export function deleteListAndNavigate(id){
-  return dispatch => sequencer([
-      () => dispatch(deleteList(id)),
-      () => dispatch(pushState(null, '/lists'))
-    ]);
-}
 
 export function editList(id, title, desc){
   return{

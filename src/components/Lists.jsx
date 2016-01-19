@@ -26,6 +26,7 @@ export default class Lists extends Component {
 
   componentWillUnmount() {
     this.props.unregisterListeners();
+    console.log('unmount');
   }
 
   _handleButtonTouchTap() {
@@ -135,8 +136,8 @@ Lists.propTypes = {
   defaultLists: PropTypes.array,
   handler: PropTypes.func,
   createList: PropTypes.func,
-  registerListeners: PropTypes.func,
-  unregisterListeners: PropTypes.func
+  registerListeners: PropTypes.func.isRequired,
+  unregisterListeners: PropTypes.func.isRequired
 };
 
 Lists.defaultProps = {

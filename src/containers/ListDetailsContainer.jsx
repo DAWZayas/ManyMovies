@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { pushState } from 'redux-router';
-import { editListAndNavigate, deleteListAndNavigate, removeEntry, addEntry } from '../actions';
+import { editListAndNavigate, removeEntry, addEntry } from '../actions';
 import _ from 'lodash';
 import Colors from 'material-ui/lib/styles/colors';
 import ScrollTop from '../components/ScrollTop';
@@ -10,6 +10,7 @@ import Tab from 'material-ui/lib/tabs/tab';
 import ListDetailsHead from '../components/ListDetailsHead';
 import EntriesList from '../components/EntriesList';
 import CommentsManager from '../components/CommentsManager';
+import firebase from '../utils/firebase';
 
 class ListDetailsContainer extends Component {
 
@@ -99,6 +100,16 @@ function _getCommentsInList(state, id){
   return state.comments[id];
 }
 
+function deleteListAndNavigate(id, user, dispatch){
+  firebase.child(`lists/${user}/${id}`).remove(function (error){
+    if (error) {
+      console.log(error);
+    }else {
+      dispatch(pushState(null, '/lists'));
+    }
+  });
+}
+
 function mapStateToProps(state) {
   const slug = state.router.params.listsSlug;
   const { lists } = state;
@@ -113,7 +124,7 @@ function mapDispatchToProps(dispatch) {
   return {
     navigate: path => dispatch(pushState(null, path)),
     editListAndNavigate: (id, title, desc, slug) => dispatch(editListAndNavigate(id, title, desc, slug)),
-    deleteListAndNavigate: (id) => dispatch(deleteListAndNavigate(id)),
+    deleteListAndNavigate: (id, user = 'Gotre') => deleteListAndNavigate(id, user, dispatch),
     removeEntry: (idCollection, id) => dispatch(removeEntry(idCollection, id)),
     addEntry: (idCollection, id) => dispatch(addEntry(idCollection, id))
   };
