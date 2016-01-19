@@ -7,7 +7,7 @@ import firebase from '../utils/firebase';
 function mapStateToProps(state) {
   const { watchedPost } = state;
   return {
-    post: watchedPost, comments: []
+    post: watchedPost
   };
 }
 

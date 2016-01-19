@@ -1,6 +1,6 @@
-import { setDefaultLists, setDefaultEntries, setDefaultMovies, setDefaultComments, setDefaultUsers }  from '../actions';
+import { setDefaultLists, setDefaultEntries, setDefaultMovies, setDefaultUsers }  from '../actions';
 import configureStore from '../store';
-import { defaultLists, defaultEntries, defaultMovies, defaultComments, defaultUsers } from './examples';
+import { defaultLists, defaultEntries, defaultMovies, defaultUsers } from './examples';
 
 
 export default function init() {
@@ -8,7 +8,6 @@ export default function init() {
   store.dispatch(setDefaultEntries(defaultEntries));
   store.dispatch(setDefaultLists(defaultLists));
   store.dispatch(setDefaultMovies(defaultMovies));
-  store.dispatch(setDefaultComments(defaultComments));
   store.dispatch(setDefaultUsers(defaultUsers));
   return store;
 }

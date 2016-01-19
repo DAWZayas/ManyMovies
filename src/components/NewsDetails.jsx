@@ -7,7 +7,8 @@ import RaisedButton from 'material-ui/lib/raised-button';
 import Colors from 'material-ui/lib/styles/colors';
 import FontIcon from 'material-ui/lib/font-icon';
 import ScrollTop from './ScrollTop';
-import CommentsManager from './CommentsManager';
+import CommentsManager from '../Comments';
+import CircularProgress from 'material-ui/lib/circular-progress';
 import twitter from '../../images/twitter.png';
 import { getDayHashtag } from '../utils';
 import placeholder from '../../images/mm-fanart.png';
@@ -78,7 +79,7 @@ export default class NewsDetails extends Component {
   }
 
   render() {
-    const { post, comments } = this.props;
+    const { post } = this.props;
     const image  = this.state.image ? this.state.image : placeholder;
     const idCommented = post.id;
     const social = (
@@ -130,12 +131,14 @@ export default class NewsDetails extends Component {
             }
           </CardText>
         </Card>
-        <CommentsManager idCommented={idCommented} comments={comments} />
+        <CommentsManager idCommented={idCommented}/>
         <ScrollTop/>
       </ReactCSSTransitionGroup>
     ) : (
-      <Card>
-        <CardText>Mis cojones 33</CardText>
+      <Card style={{margin: '1em 0 0 0'}}>
+        <CardText style={{textAlign: 'center', margin: '1em 0 0 0'}}>
+          <CircularProgress color={Colors.deepOrangeA200} mode="indeterminate" size={2}/>
+        </CardText>
       </Card>
     );
   }
@@ -145,7 +148,6 @@ NewsDetails.propTypes = {
   post: PropTypes.object,
   navigate: PropTypes.func,
   idCommented: PropTypes.string,
-  comments: PropTypes.array,
   params: PropTypes.object,
   registerListeners: PropTypes.func,
   unregisterListeners: PropTypes.func

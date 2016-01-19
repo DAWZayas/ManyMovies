@@ -1,4 +1,5 @@
 export function formatDate(date) {
+  date = new Date(date);
   return `${monthToString(date.getMonth())} ${date.getDate()}, ${date.getFullYear()} ${getFormatedHour(date)}`;
 }
 

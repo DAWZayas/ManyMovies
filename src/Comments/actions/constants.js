@@ -1,0 +1,3 @@
+export const SET_COMMENTS = 'SET_COMMENTS';
+export const SET_USER_LIKES = 'SET_USER_LIKES';
+export const SET_USER_DISLIKES = 'SET_USER_DISLIKES';

@@ -1,24 +1,11 @@
-import { DISLIKE_COMMENT, UNDISLIKE_COMMENT } from '../actions';
-import _ from 'lodash';
+import { SET_USER_DISLIKES } from '../Comments/actions/constants';
 
-function dislikeComment(state, userId, commentId) {
-  const dislikes = state[userId] || [];
-  const dislikesWithComment = dislikes.concat([commentId]);
-  return Object.assign({}, state, { [userId] : dislikesWithComment });
-}
-
-function undislikeComment(state, userId, commentId){
-  const dislikes = state[userId] || [];
-  const dislikesWithoutComment = _.without(dislikes, commentId);
-  return Object.assign({}, state, {[userId] : dislikesWithoutComment});
-}
+const setUserDislikes = dislikes => Object.assign({}, dislikes);
 
 export default function (state = {}, action) {
   switch (action.type) {
-    case DISLIKE_COMMENT:
-      return dislikeComment(state, action.userId, action.id);
-    case UNDISLIKE_COMMENT:
-      return undislikeComment(state, action.userId, action.id);
+    case SET_USER_DISLIKES:
+      return setUserDislikes(action.dislikes);
     default:
       return state;
   }
