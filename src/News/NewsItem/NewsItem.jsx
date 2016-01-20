@@ -1,12 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { setPostImg } from '../actions';
-import firebase from '../utils/firebase';
 import Card from 'material-ui/lib/card/card';
 import CardText from 'material-ui/lib/card/card-text';
 import CardTitle from 'material-ui/lib/card/card-title';
 import Colors from 'material-ui/lib/styles/colors';
-import placeholder from '../../images/mm-fanart.png';
+import placeholder from '../../../images/mm-fanart.png';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
@@ -76,29 +73,3 @@ NewsItem.propTypes = {
 NewsItem.defaultProps = {
 
 };
-
-function mapStateToProps() {
-  return {};
-}
-
-function registerListeners(dispatch, id) {
-  const ref = firebase.child(`images/${id}`);
-  ref.on('value', snapshot => dispatch(setPostImg(id, snapshot.val())));
-}
-
-function unregisterListeners(id) {
-  const ref = firebase.child(`images/${id}`);
-  ref.off();
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    registerListeners: id => registerListeners(dispatch, id),
-    unregisterListeners: id => unregisterListeners(id)
-  };
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(NewsItem);

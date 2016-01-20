@@ -1,4 +1,4 @@
-import { SET_WATCHED_POST, SET_WATCHED_POST_IMG, CLEAR_WATCHED_POST } from '../actions';
+import { SET_WATCHED_POST, SET_WATCHED_POST_IMG, CLEAR_WATCHED_POST } from '../News/actions/constants';
 
 const setWatchedPost = (state, post) => Object.assign({}, state, post);
 

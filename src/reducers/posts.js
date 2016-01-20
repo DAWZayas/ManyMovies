@@ -1,4 +1,4 @@
-import { SET_POSTS, SET_POST_IMG } from '../actions';
+import { SET_POSTS, SET_POST_IMG } from '../News/actions/constants';
 
 const setPosts = (posts) => [].concat(posts);
 

@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import NewsItem from './NewsItem';
+import NewsItem from '../NewsItem';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 

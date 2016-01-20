@@ -7,8 +7,8 @@ import ProfileContainer from './containers/ProfileContainer';
 import App from './containers/App';
 import MovieDetailsContainer from './containers/MovieDetailsContainer';
 import PremieresContainer from './containers/PremieresContainer';
-import NewsContainer from './containers/NewsContainer';
-import NewsDetailsContainer from './containers/NewsDetailsContainer';
+import NewsContainer from './News';
+import NewsDetailsContainer from './News/NewsDetails';
 
 export default (
   <Route path="/" component={App}>
