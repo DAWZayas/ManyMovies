@@ -1,10 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import TableRow from 'material-ui/lib/table/table-row';
 import TableRowColumn from 'material-ui/lib/table/table-row-column';
-import ImageWithPlaceholder from './ImageWithPlaceholder';
-import defaultPosterSrc from '../../images/mm-poster.png';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
+import ImageWithPlaceholder from '../../components/ImageWithPlaceholder';
+import defaultPosterSrc from '../../../images/mm-poster.png';
 
 export default class MovieRow extends Component {
 

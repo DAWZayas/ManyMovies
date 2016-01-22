@@ -13,9 +13,6 @@ import Colors from 'material-ui/lib/styles/colors';
 import { throttle } from 'lodash';
 import { formatDate } from '../../utils/date';
 import { relativeScore } from '../../utils';
-import injectTapEventPlugin from "react-tap-event-plugin";
-injectTapEventPlugin();
-
 
 export default class Comment extends Component {
 
@@ -342,7 +339,10 @@ Comment.propTypes = {
   dislikeComment: PropTypes.func,
   undislikeComment: PropTypes.func,
   unlikeAndDislikeComment: PropTypes.func,
-  idCommented: PropTypes.string,
+  idCommented: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
   isLiked: PropTypes.bool,
   isDisliked: PropTypes.bool
 };

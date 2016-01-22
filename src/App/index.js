@@ -1,21 +1,18 @@
 import { connect } from 'react-redux';
 import { pushState } from 'redux-router';
-import Movies from '../components/Movies';
+import App from './App';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
 
-function mapStateToProps(state) {
-  const { movies } = state;
-  return {
-    movies
-  };
-}
+const mapStateToProps = () => ({});
 
 function mapDispatchToProps(dispatch) {
   return {
-    navigate: path => dispatch(pushState(null, path)),
+    navigate: path => dispatch(pushState(null, path))
   };
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Movies);
+)(App);

@@ -4,8 +4,6 @@ import CardText from 'material-ui/lib/card/card-text';
 import CardTitle from 'material-ui/lib/card/card-title';
 import Colors from 'material-ui/lib/styles/colors';
 import placeholder from '../../../images/mm-fanart.png';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
 
 export default class NewsItem extends Component {
 

@@ -1,6 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { addEntry, removeEntry } from '../actions';
 import List from 'material-ui/lib/lists/list';
 import FlatButton from 'material-ui/lib/flat-button';
 import Dialog from 'material-ui/lib/dialog';
@@ -165,20 +163,3 @@ ListsManager.propTypes = {
 ListsManager.defaultProps = {
 
 };
-
-function mapStateToProps(state, ownProps) {
-  const { lists, entries } = state;
-  return { state, ownProps, lists, entries };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    addEntry: (idCollection, id) => dispatch(addEntry(idCollection, id)),
-    removeEntry: (idCollection, id) => dispatch(removeEntry(idCollection, id))
-  };
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ListsManager);

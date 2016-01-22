@@ -13,12 +13,6 @@ export const SET_DEFAULT_ENTRIES = 'SET_DEFAULT_ENTRIES';
 export const ADD_ENTRY = 'ADD_ENTRY';
 export const REMOVE_ENTRY = 'REMOVE_ENTRY';
 
-export const SET_DEFAULT_MOVIES = 'SET_DEFAULT_MOVIES';
-/*
-export const SET_COMMENTS = 'SET_COMMENTS';
-export const SET_USER_LIKES = 'SET_USER_LIKES';
-export const SET_USER_DISLIKES = 'SET_USER_DISLIKES';
-*/
 export const EDIT_USER = 'EDIT_USER';
 export const SET_DEFAULT_USERS = 'SET_DEFAULT_USERS';
 
@@ -101,13 +95,6 @@ export function removeEntry(idCollection, id) {
     id
   };
 }
-
-/**
-* Movies action creators
-*/
-
-export const setDefaultMovies = movies => ({type: SET_DEFAULT_MOVIES, movies});
-
 
 /**
 *Comment action creators

@@ -80,7 +80,10 @@ export default class CommentsManager extends Component {
 }
 
 CommentsManager.propTypes = {
-  idCommented: PropTypes.string,
+  idCommented: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
   user: PropTypes.object,
   registerListeners: PropTypes.func,
   unregisterListeners: PropTypes.func,

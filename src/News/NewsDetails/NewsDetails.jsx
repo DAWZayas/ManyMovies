@@ -8,21 +8,20 @@ import Colors from 'material-ui/lib/styles/colors';
 import FontIcon from 'material-ui/lib/font-icon';
 import ScrollTop from '../../components/ScrollTop';
 import CommentsManager from '../../Comments';
-import CircularProgress from 'material-ui/lib/circular-progress';
 import twitter from '../../../images/twitter.png';
 import { getDayHashtag } from '../../utils';
+import { isEmpty } from 'lodash';
 import placeholder from '../../../images/mm-fanart.png';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import _ from 'lodash';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
+import Spinner from '../../Widgets/Spinner';
 
 export default class NewsDetails extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      image: undefined
+      image: undefined,
+      loading: true
     };
   }
 
@@ -30,9 +29,10 @@ export default class NewsDetails extends Component {
     this.props.registerListeners(this.props.params);
   }
 
-   componentWillReceiveProps(nextProps){
+  componentWillReceiveProps(nextProps){
     this.setState({
-      image: nextProps.post.image
+      image: nextProps.post.image,
+      loading: false
     });
   }
 
@@ -80,6 +80,7 @@ export default class NewsDetails extends Component {
 
   render() {
     const { post } = this.props;
+    const { loading } = this.state;
     const image  = this.state.image ? this.state.image : placeholder;
     const idCommented = post.id;
     const social = (
@@ -95,7 +96,7 @@ export default class NewsDetails extends Component {
         </div>
       </div>
       );
-    return !(_.isEmpty(post)) ? (
+    return !loading && !isEmpty(post) ? (
       <ReactCSSTransitionGroup
         transitionAppear
         transitionName="news"
@@ -135,11 +136,7 @@ export default class NewsDetails extends Component {
         <ScrollTop/>
       </ReactCSSTransitionGroup>
     ) : (
-      <Card style={{margin: '1em 0 0 0'}}>
-        <CardText style={{textAlign: 'center', margin: '1em 0 0 0'}}>
-          <CircularProgress color={Colors.deepOrangeA200} mode="indeterminate" size={2}/>
-        </CardText>
-      </Card>
+      <Spinner/>
     );
   }
 }

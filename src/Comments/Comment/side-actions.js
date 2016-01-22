@@ -8,10 +8,10 @@ export function likeComment(id, idCommented, userId) {
     if (snap.val() === null){
       userlikesRef.update({
         timestamp: Firebase.ServerValue.TIMESTAMP
-      }, error =>{
+      }, error => {
         if (error){
           console.log(error);
-        }else {
+        } else {
           commentsRef.transaction((val) => val + 1);
         }
       });
@@ -22,10 +22,10 @@ export function likeComment(id, idCommented, userId) {
 export function unlikeComment(id, idCommented, userId) {
   const userlikesRef = firebase.child(`userLikes/${userId}/${idCommented}/${id}/`);
   const commentsRef = firebase.child(`comments/${idCommented}/${id}/likes`);
-  userlikesRef.remove(error =>{
+  userlikesRef.remove(error => {
     if (error){
       console.log(error);
-    }else {
+    } else {
       commentsRef.transaction((val) => val - 1);
     }
   });
@@ -43,10 +43,10 @@ export function dislikeComment(id, idCommented, userId) {
     if (snap.val() === null){
       userdislikesRef.update({
         timestamp: Firebase.ServerValue.TIMESTAMP
-      }, error =>{
+      }, error => {
         if (error){
           console.log(error);
-        }else {
+        } else {
           commentsRef.transaction((val) => val + 1);
         }
       });

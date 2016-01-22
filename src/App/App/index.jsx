@@ -1,7 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import AppBar from 'material-ui/lib/app-bar';
-import { connect } from 'react-redux';
-import { pushState } from 'redux-router';
 import IconButton from 'material-ui/lib/icon-button';
 import Color from 'material-ui/lib/styles/colors';
 import MenuItem from 'material-ui/lib/menus/menu-item';
@@ -10,7 +8,7 @@ import IconMenu from 'material-ui/lib/menus/icon-menu';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
-class App extends Component {
+export default class App extends Component {
 
   constructor(props) {
     super(props);
@@ -81,16 +79,3 @@ App.propTypes = {
   children: PropTypes.node,
   navigate: PropTypes.func
 };
-
-const mapStateToProps = () => ({});
-
-function mapDispatchToProps(dispatch) {
-  return {
-    navigate: path => dispatch(pushState(null, path))
-  };
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);

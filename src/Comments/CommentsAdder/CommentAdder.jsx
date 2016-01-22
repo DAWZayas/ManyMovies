@@ -8,8 +8,6 @@ import Avatar from 'material-ui/lib/avatar';
 import IconButton from 'material-ui/lib/icon-button';
 import Colors from 'material-ui/lib/styles/colors';
 import { allTrim } from '../../utils';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
 
 export default class CommentAdder extends Component {
 
@@ -126,7 +124,10 @@ export default class CommentAdder extends Component {
 
 CommentAdder.propTypes = {
   createComment: PropTypes.func,
-  idCommented: PropTypes.string,
+  idCommented: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
   user: PropTypes.object
 };
 

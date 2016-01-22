@@ -1,23 +1,22 @@
 import React, { Component, PropTypes } from 'react';
-import _ from 'lodash';
+import { keys, pick, sortBy, capitalize, values } from 'lodash';
 import Table from 'material-ui/lib/table/table';
 import TableBody from 'material-ui/lib/table/table-body';
 import Paper from 'material-ui/lib/paper';
 import FontIcon from 'material-ui/lib/font-icon';
-import ScrollTop from './ScrollTop';
+import ScrollTop from '../../components/ScrollTop';
 import CircularProgress from 'material-ui/lib/circular-progress';
 import Colors from 'material-ui/lib/styles/colors';
 import TextField from 'material-ui/lib/text-field';
-import Dialog from '../../node_modules/material-ui/lib/dialog';
+//import Dialog from '../../node_modules/material-ui/lib/dialog';
+import Dialog from 'material-ui/lib/dialog';
 import List from 'material-ui/lib/lists/list';
 import ListItem from 'material-ui/lib/lists/list-item';
 import MovieRow from './MovieRow';
-import { getDocHeight } from '../utils';
-import { genres } from '../utils/examples';
+import { getDocHeight } from '../../utils';
+import { genres } from '../../utils/examples';
 import $ from 'jquery';
 import MoviesListHeader from './MoviesListHeader';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
 
 const PAGE_SIZE = 10;
 
@@ -35,17 +34,22 @@ export default class Movies extends Component {
     };
   }
 
+  componentWillMount(){
+    this.props.registerListeners();
+  }
+
   componentDidMount(){
     window.addEventListener("scroll", this.state.loadMoreHandler);
   }
 
   componentWillUnmount(){
     window.removeEventListener("scroll", this.state.loadMoreHandler);
+    this.props.unregisterListeners();
   }
 
   _loadMoreOnBottom() {
     const listedMovies = this._getListedMovies.bind(this)();
-    if (this.state.maxMovies >= _.keys(listedMovies).length){
+    if (this.state.maxMovies >= keys(listedMovies).length){
       return;
     }
     if ($(window).scrollTop() + $(window).height() > getDocHeight() - 15) {
@@ -107,9 +111,9 @@ export default class Movies extends Component {
   }
 
   _getListedMovies(){
-    const searchedMovies = _.pick(this.props.movies, this._isSearched, this);
-    const listedMovies = _.pick(searchedMovies, this._filterByGenre, this);
-    return _.sortBy(listedMovies, 'title');
+    const searchedMovies = pick(this.props.movies, this._isSearched, this);
+    const listedMovies = pick(searchedMovies, this._filterByGenre, this);
+    return sortBy(listedMovies, 'title');
   }
 
   render() {
@@ -138,7 +142,7 @@ export default class Movies extends Component {
           genres.map((genre, index) => (
             <ListItem
               key={index}
-              primaryText={_.capitalize(genre)}
+              primaryText={capitalize(genre)}
               onClick={this._handleGenreClick.bind(this, genre)}
               />
             )
@@ -166,7 +170,7 @@ export default class Movies extends Component {
             style={{padding: "0 0.3em"}}
             floatingLabelText=" Choose a genre"
             disabled
-            value={` ${_.capitalize(genre)}`}
+            value={` ${capitalize(genre)}`}
             fullWidth
             underlineDisabledStyle={{border: `1px solid ${Colors.grey200}`}}
           />
@@ -185,7 +189,7 @@ export default class Movies extends Component {
           >
           t
             {
-              _.values(listedMovies).slice(0, maxMovies ).map((movie) => (
+              values(listedMovies).slice(0, maxMovies ).map((movie) => (
                   <MovieRow key={movie.ids.trakt} navigate={this.props.navigate} movie={movie}/>
                 )
               )
@@ -201,7 +205,9 @@ export default class Movies extends Component {
 
 Movies.propTypes = {
   movies: PropTypes.object,
-  navigate: PropTypes.func
+  navigate: PropTypes.func,
+  registerListeners: PropTypes.func,
+  unregisterListeners: PropTypes.func
 };
 
 Movies.defaultProps = {

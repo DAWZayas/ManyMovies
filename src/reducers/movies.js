@@ -1,7 +1,7 @@
-import { SET_DEFAULT_MOVIES, RATE_MOVIE, CHANGE_MOVIE_RATING } from '../actions';
-import { defaultMovies } from '../utils/examples';
+import { SET_MOVIES } from '../Movies/actions/constants';
+import { RATE_MOVIE, CHANGE_MOVIE_RATING } from '../actions';
 
-const setDefaultMovies = state => Object.assign({}, state, defaultMovies);
+const setMovies = movies => Object.assign({}, movies);
 
 const rateMovie = ( state, idMovie, rating) => {
   const movie = state[idMovie];
@@ -18,8 +18,8 @@ const changeMovieRating = ( state, idMovie, oldVote, newVote) => {
 
 export default function (state = {}, action) {
   switch (action.type) {
-    case SET_DEFAULT_MOVIES:
-      return setDefaultMovies(state);
+    case SET_MOVIES:
+      return setMovies(action.movies);
     case RATE_MOVIE:
       return rateMovie(state, action.idMovie, action.rating);
     case CHANGE_MOVIE_RATING:

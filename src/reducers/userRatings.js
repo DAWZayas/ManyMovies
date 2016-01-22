@@ -1,17 +1,13 @@
-import { RATE_MOVIE, CHANGE_MOVIE_RATING } from '../actions';
+import { SET_WATCHED_MOVIE_RATINGS } from '../Movies/actions/constants';
 
-function rateMovie(state, userName, idMovie, rating) {
-  const userRatings = state[userName] || {};
-  const newUserRatings = Object.assign({}, userRatings, {[idMovie] : rating});
-  return Object.assign({}, state, {[userName]: newUserRatings});
-}
+const setWatchedMovieRatings = rating => rating;
 
-export default function (state = {}, action) {
+export default function (state = null, action) {
   switch (action.type) {
-    case RATE_MOVIE:
-    case CHANGE_MOVIE_RATING:
-      return rateMovie(state, action.userName, action.idMovie, action.rating);
+    case SET_WATCHED_MOVIE_RATINGS:
+      return setWatchedMovieRatings(action.rating);
     default:
       return state;
   }
 }
+

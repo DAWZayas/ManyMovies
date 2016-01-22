@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import CardMedia from 'material-ui/lib/card/card-media';
 import CardTitle from 'material-ui/lib/card/card-title';
-import defaultFanart from '../../images/mm-fanart.png';
+import defaultFanart from '../../../../images/mm-fanart.png';
 
 export default class MovieDetailsHeader extends Component {
   constructor(props) {

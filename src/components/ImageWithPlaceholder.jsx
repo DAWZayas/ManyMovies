@@ -26,7 +26,10 @@ export default class ImageWithPlaceholder extends Component {
 
 ImageWithPlaceholder.propTypes = {
   placeholderSrc: PropTypes.string,
-  src: PropTypes.string,
+  src: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.bool
+  ]),
   alt: PropTypes.string,
   style: PropTypes.object
 };

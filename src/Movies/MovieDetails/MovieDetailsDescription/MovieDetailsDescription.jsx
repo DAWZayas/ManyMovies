@@ -1,20 +1,17 @@
 import React, { PropTypes, Component } from 'react';
-import { connect } from 'react-redux';
-import { rateMovie, changeMovieRating } from '../actions';
 import Card from 'material-ui/lib/card/card';
 import CardText from 'material-ui/lib/card/card-text';
 import Dialog from 'material-ui/lib/dialog';
 import Popover from 'material-ui/lib/popover/popover';
 import FontIcon from 'material-ui/lib/font-icon';
 import Rating from 'react-rating';
-import _ from 'lodash';
+import { isEmpty, capitalize } from 'lodash';
 import Color from 'material-ui/lib/styles/colors';
-import MovieDetailsHeader from './MovieDetailsHeader';
-import ImageWithPlaceholder from './ImageWithPlaceholder';
-import FlipClock from './FlipClock';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-import defaultPoster from '../../images/mm-poster.png';
-injectTapEventPlugin();
+import MovieDetailsHeader from '../MovieDetailsHeader';
+import ImageWithPlaceholder from '../../../components/ImageWithPlaceholder';
+import FlipClock from '../../../components/FlipClock';
+import defaultPoster from '../../../../images/mm-poster.png';
+
 
 export default class MovieDetailsDescription extends Component{
   constructor(props) {
@@ -26,6 +23,9 @@ export default class MovieDetailsDescription extends Component{
   }
 
   componentWillMount(){
+    if (!isEmpty(this.props.user)){
+      this.props.registerListeners(this.props.idMovie, this.props.user.userName);
+    }
     this._updateDimensions();
   }
 
@@ -35,6 +35,9 @@ export default class MovieDetailsDescription extends Component{
 
   componentWillUnmount(){
     window.removeEventListener("resize", this.state.resizeHandler);
+    if (!isEmpty(this.props.user)){
+      this.props.unregisterListeners(this.props.idMovie, this.props.user.userName);
+    }
   }
 
   _updateDimensions(){
@@ -64,7 +67,7 @@ export default class MovieDetailsDescription extends Component{
 
   _ratingHandler(userName, idMovie, rate){
     const { userRating, rateMovie, changeMovieRating } = this.props;
-    if (userRating === undefined){
+    if (userRating === null){
       rateMovie(userName, idMovie, rate);
     }else {
       changeMovieRating(userName, idMovie,  userRating, rate);
@@ -196,7 +199,7 @@ export default class MovieDetailsDescription extends Component{
   _getGenres(){
     const { movie } = this.props;
     if (movie.genres) {
-      const genres = movie.genres.map(genre => _.capitalize(genre));
+      const genres = movie.genres.map(genre => capitalize(genre));
       return (
         <p>
           <span style={{color: Color.red500}}>Genres: </span>
@@ -214,7 +217,8 @@ export default class MovieDetailsDescription extends Component{
 
   render(){
     const { movie } = this.props;
-    const percentRating = movie.totalRating === 0 ? '0 %' : `${Math.round(movie.totalRating * 10 / movie.votes)} %`;
+    const voteCount = movie.votes === 0 ? '' : movie.votes === 1 ? ' 1 vote' : movie.votes + ' votes';
+    const percentRating = movie.votes === 0 ? 'No votes' : `${Math.round(movie.totalRating * 10 / movie.votes)} %`;
     return(
       <Card>
           <MovieDetailsHeader movie={movie} />
@@ -228,7 +232,7 @@ export default class MovieDetailsDescription extends Component{
               />
               <div className="ratings-wrapper">
                 <FontIcon color={Color.red500} className="material-icons">favorite</FontIcon>
-                <span style={{marginLeft: '0.5em'}}>{percentRating}</span>
+                <span style={{marginLeft: '0.5em'}}>{percentRating} <small style={{marginLeft: '2em'}}>{voteCount}</small></span>
               </div>
               <hr/>
               <p style={{fontStyle: "italic"}}>{movie.tagline}</p>
@@ -260,29 +264,15 @@ MovieDetailsDescription.propTypes = {
   rateMovie: PropTypes.func,
   user: PropTypes.object,
   userRating: PropTypes.number,
-  changeMovieRating: PropTypes.func
+  changeMovieRating: PropTypes.func,
+  registerListeners: PropTypes.func,
+  unregisterListeners: PropTypes.func,
+  idMovie: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ])
 };
 
 MovieDetailsDescription.defaultProps = {
 
 };
-
-function mapStateToProps(state, ownProps) {
-  const user = state.users.Gotre;
-  const userRatings = state.userRatings[user.userName] || [];
-  const idMovie = ownProps.movie.ids.trakt;
-  const userRating = userRatings[idMovie];
-  return { userRating, user };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    rateMovie: (userName, idMovie, rating) => dispatch(rateMovie(userName, idMovie, rating)),
-    changeMovieRating: (userName, idMovie, oldVote, newVote) => dispatch(changeMovieRating(userName, idMovie, newVote, oldVote))
-  };
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(MovieDetailsDescription);
