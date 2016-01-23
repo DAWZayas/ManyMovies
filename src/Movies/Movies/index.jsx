@@ -3,7 +3,7 @@ import { isEqual, values } from 'lodash';
 import Table from 'material-ui/lib/table/table';
 import TableBody from 'material-ui/lib/table/table-body';
 import Paper from 'material-ui/lib/paper';
-import ScrollTop from '../../components/ScrollTop';
+import ScrollTop from '../../Widgets/ScrollTop';
 import FontIcon from 'material-ui/lib/font-icon';
 import TextField from 'material-ui/lib/text-field';
 import Spinner from '../../Widgets/Spinner';

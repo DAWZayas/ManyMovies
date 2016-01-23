@@ -5,14 +5,27 @@ import Dialog from 'material-ui/lib/dialog';
 import ListItem from 'material-ui/lib/lists/list-item';
 import FontIcon from 'material-ui/lib/font-icon';
 import Color from 'material-ui/lib/styles/colors';
-import _ from 'lodash';
+import { findKey, isEmpty, map, forEach } from 'lodash';
 
 export default class ListsManager extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      addingToLists: false
+      addingToLists: false,
+      loading: true
     };
+  }
+
+  componentWillMount() {
+    this.props.registerListeners(this.props.user.userName);
+  }
+
+  componentWillReceiveProps() {
+    this.setState({ loading: false });
+  }
+
+  componentWillUnmount() {
+    this.props.unregisterListeners(this.props.user.userName);
   }
 
   _handleDialogRequestClose() {
@@ -28,16 +41,16 @@ export default class ListsManager extends Component {
   }
 
   _getListItem(id, color, iconName, title, key){
-    const { movie, entries, addEntry, removeEntry } = this.props;
+    const { movie, entries, addEntry, removeEntry, user } = this.props;
     const idMovie = movie.ids.trakt.toString();
-    const isInList = entries[id] && entries[id].indexOf(idMovie) !== -1;
+    const isInList = entries[id] && entries[id][idMovie];
     const itemStyle = isInList ?
       {color: Color.white, backgroundColor: color, border: `2px solid ${color}`, marginBottom: '1em', fontWeight: 'bold', textAlign: 'center'} :
       {color: color, border: `2px solid ${color}`, marginBottom: '1em', fontWeight: 'bold', textAlign: 'center'};
     const iconColor = isInList ? Color.white : color;
     const handler = isInList ?
-      () => {removeEntry(id, idMovie);} :
-      () => {addEntry(id, idMovie);};
+      () => {removeEntry(id, idMovie, user.userName);} :
+      () => {addEntry(id, idMovie, user.userName);};
     const label = isInList ? 'IN' : 'ADD TO';
     return iconName !== 'none' ? (
       <ListItem
@@ -79,7 +92,7 @@ export default class ListsManager extends Component {
     const generalLists = this._getGeneralLists();
     let answer = false;
     const idMovie = movie.ids.trakt.toString();
-    _.forEach( generalLists, function(n, key) {
+    forEach( generalLists, function(n, key) {
       if (entries[key] && entries[key].indexOf(idMovie) !== -1){
         answer = true;
       }
@@ -89,8 +102,8 @@ export default class ListsManager extends Component {
 
   _getGeneralLists(){
     const { lists } = this.props;
-    const idHistory = _.findKey(lists, { slug: 'history' });
-    const idCollection = _.findKey(lists, { slug: 'collection'});
+    const idHistory = findKey(lists, { slug: 'history' });
+    const idCollection = findKey(lists, { slug: 'collection'});
     const generalLists = Object.assign({}, lists);
     delete generalLists[idHistory];
     delete generalLists[idCollection];
@@ -129,7 +142,7 @@ export default class ListsManager extends Component {
         >
         <List>
         {
-          _.map( lists, (list, key) => this._getListItem(list.id, listColors[index++ % listColors.length], 'none', list.title, key))
+          map( lists, (list, key) => this._getListItem(list.id, listColors[index++ % listColors.length], 'none', list.title, key))
         }
         </List>
       </Dialog>);
@@ -139,13 +152,15 @@ export default class ListsManager extends Component {
 
   render() {
     const { lists } = this.props;
-    const idHistory = _.findKey(lists, { slug: 'history' });
-    const idCollection = _.findKey(lists, { slug: 'collection'});
-    return (
+    const idHistory = findKey(lists, { slug: 'history' });
+    const idCollection = findKey(lists, { slug: 'collection'});
+    return isEmpty(lists) ? (
+      <div></div>
+    ) : (
       <List>
         {this._getAddToListsDialog()}
-        {this._getListItem(idHistory, Color.deepPurple500, 'history', 'history', 0)}
-        {this._getListItem(idCollection, Color.teal500, 'content_copy', 'collection', 1)}
+        {this._getListItem(lists[idHistory].id, Color.deepPurple500, 'history', 'history', 0)}
+        {this._getListItem(lists[idCollection].id, Color.teal500, 'content_copy', 'collection', 1)}
         {this._getGeneralListsItem()}
       </List>
     );
@@ -154,10 +169,13 @@ export default class ListsManager extends Component {
 
 ListsManager.propTypes = {
   movie: PropTypes.object,
-  lists: PropTypes.object,
+  lists: PropTypes.array,
   entries: PropTypes.object,
   addEntry: PropTypes.func,
-  removeEntry: PropTypes.func
+  removeEntry: PropTypes.func,
+  user: PropTypes.object,
+  registerListeners: PropTypes.func,
+  unregisterListeners: PropTypes.func
 };
 
 ListsManager.defaultProps = {

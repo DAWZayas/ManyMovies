@@ -13,12 +13,26 @@ import Colors from 'material-ui/lib/styles/colors';
 import { throttle } from 'lodash';
 import { formatDate } from '../../utils/date';
 import { relativeScore } from '../../utils';
+import defaultAvatar from '../../../images/avatar.png';
 
 export default class Comment extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {editing: false, deleting: false, hidingBadComment: true};
+    this.state = {
+      editing: false,
+      deleting: false,
+      hidingBadComment: true,
+      creator: {
+        displayName: "Unknown",
+        userName: props.comment.userName,
+        avatarUrl: defaultAvatar
+      }
+    };
+  }
+
+  componentWillMount(){
+    this.props.registerListeners(this.props.comment.userName, this);
   }
 
   componentDidUpdate(){
@@ -26,6 +40,10 @@ export default class Comment extends Component {
       this.refs.comment.focus();
       this.refs.comment._getInputNode().select();
     }
+  }
+
+  componentWillUnmount(){
+    this.props.unregisterListeners(this.props.comment.userName);
   }
 
   _handleTouchEdit() {
@@ -123,7 +141,7 @@ export default class Comment extends Component {
   }
 
   _isCommentedByMe(){
-    return this.props.user.userName === this.props.creator.userName;
+    return this.props.user.userName === this.state.creator.userName;
   }
 
   _getCardActions(){
@@ -242,7 +260,7 @@ export default class Comment extends Component {
     const isBadComment = relativeScore(dislikes, likes + dislikes) > 0.4 ? true : false;
     const userAvatar = (
       <Avatar
-        src={this.props.creator.avatarUrl}
+        src={this.state.creator.avatarUrl}
         color={Colors.orange100}
         backgroundColor={Colors.deepOrange900}
       />
@@ -289,7 +307,7 @@ export default class Comment extends Component {
     const cardHeader = (
       <CardHeader
         style={{backgroundColor: Colors.grey300}}
-        title={<span>Commented by <span style={{color: Colors.deepOrange900, fontWeight: "bolder"}}>{this.props.creator.displayName}</span></span>}
+        title={<span>Commented by <span style={{color: Colors.deepOrange900, fontWeight: "bolder"}}>{this.state.creator.displayName}</span></span>}
         subtitle={formatDate(time)}
         subtitleStyle={{color: Colors.grey700}}
         avatar={userAvatar}
@@ -328,9 +346,10 @@ export default class Comment extends Component {
 }
 
 Comment.propTypes = {
+  registerListeners: PropTypes.func,
+  unregisterListeners: PropTypes.func,
   user: PropTypes.object,
   comment: PropTypes.object,
-  creator: PropTypes.object,
   editComment: PropTypes.func,
   removeComment: PropTypes.func,
   likeComment: PropTypes.func,

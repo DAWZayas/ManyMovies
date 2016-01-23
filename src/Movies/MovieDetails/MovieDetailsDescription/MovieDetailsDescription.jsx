@@ -5,11 +5,11 @@ import Dialog from 'material-ui/lib/dialog';
 import Popover from 'material-ui/lib/popover/popover';
 import FontIcon from 'material-ui/lib/font-icon';
 import Rating from 'react-rating';
-import { isEmpty, capitalize } from 'lodash';
+import { isEmpty, capitalize, throttle } from 'lodash';
 import Color from 'material-ui/lib/styles/colors';
 import MovieDetailsHeader from '../MovieDetailsHeader';
-import ImageWithPlaceholder from '../../../components/ImageWithPlaceholder';
-import FlipClock from '../../../components/FlipClock';
+import ImageWithPlaceholder from '../../../Widgets/ImageWithPlaceholder';
+import FlipClock from '../../../Widgets/FlipClock';
 import defaultPoster from '../../../../images/mm-poster.png';
 
 
@@ -95,7 +95,7 @@ export default class MovieDetailsDescription extends Component{
             initialRate={this._convertRateToHearts(userRating)}
             stop={5}
             step={1}
-            onChange={rate => { this._ratingHandler(user.userName, id, this._convertRate(rate));}}/>
+            onChange={throttle(rate => { this._ratingHandler(user.userName, id, this._convertRate(rate));}, 3000)}/>
       </Popover>
     );
     return popover;
@@ -217,8 +217,8 @@ export default class MovieDetailsDescription extends Component{
 
   render(){
     const { movie } = this.props;
-    const voteCount = movie.votes === 0 ? '' : movie.votes === 1 ? ' 1 vote' : movie.votes + ' votes';
-    const percentRating = movie.votes === 0 ? 'No votes' : `${Math.round(movie.totalRating * 10 / movie.votes)} %`;
+    const voteCount = movie.votes === 0 ? 'No votes' : movie.votes === 1 ? ' 1 vote' : movie.votes + ' votes';
+    const percentRating = movie.votes === 0 ? '' : `${Math.round(movie.totalRating * 10 / movie.votes)} %`;
     return(
       <Card>
           <MovieDetailsHeader movie={movie} />

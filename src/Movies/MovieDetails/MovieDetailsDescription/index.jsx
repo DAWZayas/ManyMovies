@@ -13,8 +13,8 @@ function mapDispatchToProps(dispatch) {
   return {
     registerListeners: ( idMovie, userId ) => registerListeners(dispatch, idMovie, userId),
     unregisterListeners: ( idMovie, userId ) => unregisterListeners(dispatch, idMovie, userId),
-    rateMovie: ( userName, idMovie, rating) => rateMovie(userName, idMovie, rating),
-    changeMovieRating: (userName, idMovie, oldRating, newRating) => changeMovieRating(userName, idMovie, oldRating, newRating)
+    changeMovieRating: (...args) => changeMovieRating(...args),
+    rateMovie: (...args) => rateMovie(...args)
   };
 }
 

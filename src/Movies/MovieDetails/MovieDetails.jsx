@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import MovieDetailsDescription from './MovieDetailsDescription';
 import ListsManager from './ListsManager';
-import ScrollTop from '../../components/ScrollTop';
+import ScrollTop from '../../Widgets/ScrollTop';
 import Spinner from '../../Widgets/Spinner';
 import CommentsManager from '../../Comments';
 

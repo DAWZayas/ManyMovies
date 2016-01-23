@@ -6,7 +6,7 @@ import CardMedia from 'material-ui/lib/card/card-media';
 import RaisedButton from 'material-ui/lib/raised-button';
 import Colors from 'material-ui/lib/styles/colors';
 import FontIcon from 'material-ui/lib/font-icon';
-import ScrollTop from '../../components/ScrollTop';
+import ScrollTop from '../../Widgets/ScrollTop';
 import CommentsManager from '../../Comments';
 import twitter from '../../../images/twitter.png';
 import { getDayHashtag } from '../../utils';

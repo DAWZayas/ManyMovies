@@ -1,3 +1,5 @@
 export const SET_MOVIES = 'SET_MOVIES';
 export const SET_WATCHED_MOVIE = 'SET_WATCHED_MOVIE';
 export const SET_WATCHED_MOVIE_RATINGS = 'SET_WATCHED_MOVIE_RATINGS';
+export const SET_LISTS = 'SET_LISTS';
+export const SET_ENTRIES = 'SET_ENTRIES';

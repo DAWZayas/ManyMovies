@@ -41,13 +41,6 @@ export const defaultLists = {
 
 };
 
-export const defaultEntries = {
-  [HISTORY_ID] : ['7', '70', '43'],
-  [WATCHLIST_ID] : ['234', '432'],
-  [COLLECTION_ID] : ['481', '505'],
-  [HARRY_POTTER_LIST_ID] : ['546', '234', '62544', '234', '432', '481', '505', '7', '70', '43', '198', '228', '230', '309', '358']
-};
-
 export const defaultUsers = {
   [FIRST_USERNAME] : {
     userName: FIRST_USERNAME,

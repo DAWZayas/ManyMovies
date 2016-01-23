@@ -1,16 +1,23 @@
 import { connect } from 'react-redux';
-import { addEntry, removeEntry } from '../../../actions';
+import { addEntry, removeEntry } from './side-actions.js';
+import { registerListeners, unregisterListeners } from './listeners';
 import ListsManager from './ListsManager';
 
-function mapStateToProps(state, ownProps) {
-  const { lists, entries } = state;
-  return { state, ownProps, lists, entries };
+function mapStateToProps(state) {
+  const { lists, entries, users } = state;
+  return {
+    lists,
+    entries,
+    user: users.Gotre
+  };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    addEntry: (idCollection, id) => dispatch(addEntry(idCollection, id)),
-    removeEntry: (idCollection, id) => dispatch(removeEntry(idCollection, id))
+    addEntry: (idCollection, id, userId) => addEntry(idCollection, id, userId),
+    removeEntry: (idCollection, id, userId) => removeEntry(idCollection, id, userId),
+    registerListeners: userId => registerListeners(dispatch, userId),
+    unregisterListeners: userId => unregisterListeners(dispatch, userId)
   };
 }
 

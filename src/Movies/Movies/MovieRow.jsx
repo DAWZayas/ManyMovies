@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import TableRow from 'material-ui/lib/table/table-row';
 import TableRowColumn from 'material-ui/lib/table/table-row-column';
-import ImageWithPlaceholder from '../../components/ImageWithPlaceholder';
+import ImageWithPlaceholder from '../../Widgets/ImageWithPlaceholder';
 import defaultPosterSrc from '../../../images/mm-poster.png';
 
 export default class MovieRow extends Component {
