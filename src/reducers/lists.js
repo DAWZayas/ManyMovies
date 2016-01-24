@@ -1,4 +1,4 @@
-import { SET_LISTS } from '../Movies/actions/constants';
+import { SET_LISTS } from '../Lists/actions/constants';
 
 const setLists = lists => [].concat(lists);
 

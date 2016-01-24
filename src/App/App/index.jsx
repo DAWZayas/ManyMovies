@@ -19,9 +19,6 @@ export default class App extends Component {
     if (annyang) {
       const commands = {
         'movies': function() { navigate('/movies');},
-        'collection': function() { navigate('/lists/collection');},
-        'history': function() { navigate('/lists/history');},
-        'pending': function() { navigate('/lists/watchlist');},
         'profile': function() { navigate('/profile');},
         'listing': function() { navigate('/lists');},
         'coming': function() { navigate('/premieres');},
@@ -60,6 +57,7 @@ export default class App extends Component {
                   iconClassName="glyphicon glyphicon-align-justify"/>
               }
             >
+              <MenuItem style={{padding: '0 1.5em'}} primaryText="SignIn" onTouchTap={this._handleTouchTap.bind(this)} />
               <MenuItem style={{padding: '0 1.5em'}} primaryText="News" onTouchTap={this._handleTouchTap.bind(this)} />
               <MenuItem style={{padding: '0 1.5em'}} primaryText="Profile" onTouchTap={this._handleTouchTap.bind(this)} />
               <MenuItem style={{padding: '0 1.5em'}} primaryText="Lists" onTouchTap={this._handleTouchTap.bind(this)} />

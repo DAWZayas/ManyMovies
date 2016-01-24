@@ -11,6 +11,8 @@ import userRatings from './userRatings';
 import posts from './posts';
 import watchedPost from './watchedPost';
 import watchedMovie from './watchedMovie';
+import watchedList from './watchedList';
+import watchedEntries from './watchedEntries';
 
 export default combineReducers({
   lists,
@@ -24,5 +26,7 @@ export default combineReducers({
   posts,
   router,
   watchedPost,
-  watchedMovie
+  watchedMovie,
+  watchedList,
+  watchedEntries
 });

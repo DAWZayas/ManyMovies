@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { addEntry, removeEntry } from './side-actions.js';
+import { addEntry, removeEntry } from '../../../Lists/side-actions.js';
 import { registerListeners, unregisterListeners } from './listeners';
 import ListsManager from './ListsManager';
 

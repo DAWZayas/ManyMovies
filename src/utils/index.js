@@ -1,7 +1,3 @@
-import uuid from 'node-uuid';
-
-export const getId = () => uuid.v1();
-
 export const slugText = string => string.toLowerCase()
                                         .replace(/[·\/_,:;. ]/gi, '-')
                                         .replace(/[àáäâ]/gi, 'a')
