@@ -1,4 +1,4 @@
-import { setLists, setEntries } from '../../actions/creators';
+import { setLists, setEntries } from '../../../Lists/actions/creators';
 import firebase from '../../../utils/firebase';
 import { values } from 'lodash';
 
@@ -21,4 +21,5 @@ export function unregisterListeners(dispatch, userId) {
   const listsRef = firebase.child(`lists/${userId}`);
   listsRef.off();
   dispatch(setLists([]));
+  dispatch(setEntries({}));
 }
