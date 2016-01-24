@@ -1,9 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import injectTapEventPlugin from "react-tap-event-plugin";
 import GridTile from 'material-ui/lib/grid-list/grid-tile';
 import IconButton from 'material-ui/lib/icon-button';
 import defaultPosterSrc from '../../images/mm-poster.png';
-injectTapEventPlugin();
 
 export default class MovieGrid extends Component {
   constructor(props) {

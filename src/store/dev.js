@@ -1,7 +1,7 @@
 import { createStore, compose, applyMiddleware } from 'redux';
 import { reduxReactRouter } from 'redux-router';
 import useScroll from 'scroll-behavior/lib/useScrollToTop';
-import createHistory from 'history/lib/createBrowserHistory';
+import createHistory from 'history/lib/createHashHistory';
 import reducer from '../reducers';
 import routes from '../routes';
 import thunk from 'redux-thunk';

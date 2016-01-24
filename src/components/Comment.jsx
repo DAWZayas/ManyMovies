@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { removeComment, editComment, likeComment, unlikeComment, dislikeComment, undislikeComment, undislikeAndLikeComment, unlikeAndDislikeComment } from '../actions';
 import Card from 'material-ui/lib/card/card';
 import CardText from 'material-ui/lib/card/card-text';
 import CardHeader from 'material-ui/lib/card/card-header';
@@ -12,6 +11,9 @@ import IconButton from 'material-ui/lib/icon-button';
 import Dialog from 'material-ui/lib/dialog';
 import FlatButton from 'material-ui/lib/flat-button';
 import Colors from 'material-ui/lib/styles/colors';
+import Firebase from 'firebase';
+import firebase from '../utils/firebase';
+import { throttle } from 'lodash';
 import { formatDate } from '../utils/date';
 import { relativeScore } from '../utils';
 import injectTapEventPlugin from "react-tap-event-plugin";
@@ -211,7 +213,7 @@ class Comment extends Component {
     const icon = (<IconButton
             iconClassName={likeClass}
             iconStyle={{color:Colors.green900}}
-            onTouchTap={buttonAction}/>);
+            onTouchTap={throttle(buttonAction, 10000)}/>);
     return icon;
   }
 
@@ -225,7 +227,7 @@ class Comment extends Component {
     const icon = (<IconButton
             iconClassName={likeClass}
             iconStyle={{color:Colors.red900}}
-            onTouchTap={buttonAction}/>);
+            onTouchTap={throttle(buttonAction, 10000)}/>);
     return icon;
   }
 
@@ -244,7 +246,6 @@ class Comment extends Component {
     const formatedText = text.split(/\r?\n/);
     const score = likes - dislikes;
     const isBadComment = relativeScore(dislikes, likes + dislikes) > 0.4 ? true : false;
-
     const userAvatar = (
       <Avatar
         src={this.props.creator.avatarUrl}
@@ -351,24 +352,108 @@ Comment.propTypes = {
 
 function mapStateToProps(state, ownProp) {
   const user = state.users.Gotre;
-  const userLikes = state.userLikes[user.userName] || [];
-  const userDislikes = state.userDislikes[user.userName] || [];
-  const isLiked = userLikes.indexOf(ownProp.comment.id) !== -1;
-  const isDisliked = userDislikes.indexOf(ownProp.comment.id) !== -1;
+  const isLiked = Object.keys(state.userLikes).indexOf(ownProp.comment.id) !== -1;
+  const isDisliked = Object.keys(state.userDislikes).indexOf(ownProp.comment.id) !== -1;
   return { creator: state.users[ownProp.comment.userName], user, isLiked, isDisliked };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps() {
   return {
-    removeComment: (id, idCommented) => dispatch(removeComment(id, idCommented)),
-    editComment: (id, idCommented, text) => dispatch(editComment(id, idCommented, text)),
-    likeComment: (id, idCommented, userId) => dispatch(likeComment(id, idCommented, userId)),
-    unlikeComment: (id, idCommented, userId) => dispatch(unlikeComment(id, idCommented, userId)),
-    dislikeComment: (id, idCommented, userId) => dispatch(dislikeComment(id, idCommented, userId)),
-    undislikeComment: (id, idCommented, userId) => dispatch(undislikeComment(id, idCommented, userId)),
-    unlikeAndDislikeComment: (id, idCommented, userId) => dispatch(unlikeAndDislikeComment(id, idCommented, userId)),
-    undislikeAndLikeComment: (id, idCommented, userId) => dispatch(undislikeAndLikeComment(id, idCommented, userId))
+    removeComment: (id, idCommented) => removeComment(id, idCommented),
+    editComment: (id, idCommented, text) => editComment(id, idCommented, text),
+    likeComment: (id, idCommented, userId) => likeComment(id, idCommented, userId),
+    unlikeComment: (id, idCommented, userId) => unlikeComment(id, idCommented, userId),
+    dislikeComment: (id, idCommented, userId) => dislikeComment(id, idCommented, userId),
+    undislikeComment: (id, idCommented, userId) => undislikeComment(id, idCommented, userId),
+    unlikeAndDislikeComment: (id, idCommented, userId) => unlikeAndDislikeComment(id, idCommented, userId),
+    undislikeAndLikeComment: (id, idCommented, userId) => undislikeAndLikeComment(id, idCommented, userId)
   };
+}
+
+function likeComment(id, idCommented, userId) {
+  const userlikesRef = firebase.child(`userLikes/${userId}/${idCommented}/${id}/`);
+  const commentsRef = firebase.child(`comments/${idCommented}/${id}/likes`);
+  userlikesRef.once('value', snap => {
+    if (snap.val() === null){
+      userlikesRef.update({
+        timestamp: Firebase.ServerValue.TIMESTAMP
+      }, error =>{
+        if (error){
+          console.log(error);
+        }else {
+          commentsRef.transaction((val) => val + 1);
+        }
+      });
+    }
+  });
+}
+
+function unlikeComment(id, idCommented, userId) {
+  const userlikesRef = firebase.child(`userLikes/${userId}/${idCommented}/${id}/`);
+  const commentsRef = firebase.child(`comments/${idCommented}/${id}/likes`);
+  userlikesRef.remove(error =>{
+    if (error){
+      console.log(error);
+    }else {
+      commentsRef.transaction((val) => val - 1);
+    }
+  });
+}
+
+function unlikeAndDislikeComment(id, idCommented, userId) {
+  unlikeComment(id, idCommented, userId);
+  dislikeComment(id, idCommented, userId);
+}
+
+function dislikeComment(id, idCommented, userId) {
+  const userdislikesRef = firebase.child(`userDislikes/${userId}/${idCommented}/${id}/`);
+  const commentsRef = firebase.child(`comments/${idCommented}/${id}/dislikes`);
+  userdislikesRef.once('value', snap => {
+    if (snap.val() === null){
+      userdislikesRef.update({
+        timestamp: Firebase.ServerValue.TIMESTAMP
+      }, error =>{
+        if (error){
+          console.log(error);
+        }else {
+          commentsRef.transaction((val) => val + 1);
+        }
+      });
+    }
+  });
+}
+
+function undislikeComment(id, idCommented, userId) {
+  const userdislikesRef = firebase.child(`userDislikes/${userId}/${idCommented}/${id}/`);
+  const commentsRef = firebase.child(`comments/${idCommented}/${id}/dislikes`);
+  userdislikesRef.remove(error =>{
+    if (error){
+      console.log(error);
+    }else {
+      commentsRef.transaction((val) => val - 1);
+    }
+  });
+}
+
+function undislikeAndLikeComment(id, idCommented, userId) {
+  undislikeComment(id, idCommented, userId);
+  likeComment(id, idCommented, userId);
+}
+
+
+function editComment(id, idCommented, text){
+  const commentsRef = firebase.child('comments');
+  commentsRef.child(idCommented).child(id).update({
+      text,
+      modified: Firebase.ServerValue.TIMESTAMP,
+    },
+      error => {console.log(error);}
+  );
+}
+
+function removeComment(id, idCommented) {
+  const commentsRef = firebase.child('comments');
+  commentsRef.child(idCommented).child(id).remove(error => console.log(error));
 }
 
 export default connect(

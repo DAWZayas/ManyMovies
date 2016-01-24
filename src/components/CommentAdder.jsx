@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { createComment } from '../actions';
+import { connect } from 'react-redux';/*
+import { createComment } from '../actions';*/
 import Card from 'material-ui/lib/card/card';
 import CardText from 'material-ui/lib/card/card-text';
 import CardHeader from 'material-ui/lib/card/card-header';
@@ -9,6 +9,8 @@ import TextField from 'material-ui/lib/text-field';
 import Avatar from 'material-ui/lib/avatar';
 import IconButton from 'material-ui/lib/icon-button';
 import Colors from 'material-ui/lib/styles/colors';
+import Firebase from 'firebase';
+import firebase from '../utils/firebase';
 import { allTrim } from '../utils';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
@@ -142,10 +144,25 @@ function mapStateToProps(state) {
   return { user };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps() {
   return {
-    createComment: (idCommented, text, userName) => dispatch(createComment(idCommented, text, userName))
+    createComment: (idCommented, text, userName) => createComment(idCommented, text, userName)
   };
+}
+
+function createComment(idCommented, text, userName) {
+  const commentsRef = firebase.child('comments');
+  const idComment = commentsRef.push().key();
+  commentsRef.child(idCommented).child(idComment).set({
+      dislikes: 0,
+      likes: 0,
+      id: idComment,
+      text,
+      time: Firebase.ServerValue.TIMESTAMP,
+      userName
+    },
+      error => {console.log(error);}
+  );
 }
 
 export default connect(

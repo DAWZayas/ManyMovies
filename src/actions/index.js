@@ -13,24 +13,8 @@ export const SET_DEFAULT_ENTRIES = 'SET_DEFAULT_ENTRIES';
 export const ADD_ENTRY = 'ADD_ENTRY';
 export const REMOVE_ENTRY = 'REMOVE_ENTRY';
 
-export const SET_DEFAULT_MOVIES = 'SET_DEFAULT_MOVIES';
-
-export const CREATE_COMMENT = 'CREATE_COMMENT';
-export const DELETE_COMMENT = 'DELETE_COMMENT';
-export const EDIT_COMMENT = 'EDIT_COMMENT';
-export const SET_DEFAULT_COMMENT = 'SET_DEFAULT_COMMENT';
-export const LIKE_COMMENT = 'LIKE_COMMENT';
-export const UNLIKE_COMMENT = 'UNLIKE_COMMENT';
-export const DISLIKE_COMMENT = 'DISLIKE_COMMENT';
-export const UNDISLIKE_COMMENT = 'UNDISLIKE_COMMENT';
-
 export const EDIT_USER = 'EDIT_USER';
 export const SET_DEFAULT_USERS = 'SET_DEFAULT_USERS';
-
-export const RATE_MOVIE = 'RATE_MOVIE';
-export const CHANGE_MOVIE_RATING = 'CHANGE_MOVIE_RATING';
-
-export const SET_DEFAULT_POSTS = 'SET_DEFAULT_POSTS';
 
 /**
 * List action creators
@@ -104,93 +88,13 @@ export function removeEntry(idCollection, id) {
 }
 
 /**
-* Movies action creators
-*/
-
-export const setDefaultMovies = movies => ({type: SET_DEFAULT_MOVIES, movies});
-
-
-/**
 *Comment action creators
 */
-
-export const setDefaultComments = comments => ({type: SET_DEFAULT_COMMENT, comments});
-
-export function createComment(idCommented, text, userName) {
-  return {
-    type: CREATE_COMMENT,
-    idCommented,
-    text,
-    userName
-  };
-}
-
-export function removeComment(id, idCommented){
-  return {
-    type: DELETE_COMMENT,
-    id,
-    idCommented
-  };
-}
-
-export function editComment(id, idCommented, text) {
-  return{
-    type: EDIT_COMMENT,
-    id,
-    idCommented,
-    text
-  };
-}
-
-export function likeComment(id, idCommented, userId){
-  return{
-    type: LIKE_COMMENT,
-    id,
-    idCommented,
-    userId
-  };
-}
-
-export function unlikeComment(id, idCommented, userId){
-  return{
-    type: UNLIKE_COMMENT,
-    id,
-    idCommented,
-    userId
-  };
-}
-
-export function unlikeAndDislikeComment(id, idCommented, userId) {
-  return dispatch => sequencer([
-      () => dispatch(unlikeComment(id, idCommented, userId)),
-      () => dispatch(dislikeComment(id, idCommented, userId))
-    ]);
-}
-
-export function dislikeComment(id, idCommented, userId){
-  return{
-    type: DISLIKE_COMMENT,
-    id,
-    idCommented,
-    userId
-  };
-}
-
-export function undislikeComment(id, idCommented, userId){
-  return{
-    type: UNDISLIKE_COMMENT,
-    id,
-    idCommented,
-    userId
-  };
-}
-
-export function undislikeAndLikeComment(id, idCommented, userId) {
-  return dispatch => sequencer([
-      () => dispatch(undislikeComment(id, idCommented, userId)),
-      () => dispatch(likeComment(id, idCommented, userId))
-    ]);
-}
+/*
+export const setComments = comments => ({type: SET_COMMENTS, comments});
+export const setUserLikes = likes => ({type: SET_USER_LIKES, likes});
+export const setUserDislikes = dislikes => ({type: SET_USER_DISLIKES, dislikes});
+*/
 
 /**
 *Users action creators
@@ -205,28 +109,3 @@ export function editUser(user, newStats){
     newStats
   };
 }
-
-/**
-* Movie rating action creators
-*/
-
-export function rateMovie(userName, idMovie, rating){
-  return{
-    type: RATE_MOVIE,
-    userName,
-    idMovie,
-    rating
-  };
-}
-
-export function changeMovieRating(userName, idMovie, rating, oldVote){
-  return {
-    type: CHANGE_MOVIE_RATING,
-    idMovie,
-    userName,
-    oldVote,
-    rating
-  };
-}
-
-export const setDefaultPosts = posts => ({type: SET_DEFAULT_POSTS, posts});

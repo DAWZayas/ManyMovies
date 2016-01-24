@@ -2,13 +2,13 @@ import React from 'react';
 import { Route, Redirect, IndexRoute } from 'react-router';
 import ListsContainer from './containers/ListsContainer';
 import ListDetailsContainer from './containers/ListDetailsContainer';
-import MoviesContainer from './containers/MoviesContainer';
+import MoviesContainer from './Movies';
 import ProfileContainer from './containers/ProfileContainer';
-import App from './containers/App';
-import MovieDetailsContainer from './containers/MovieDetailsContainer';
+import App from './App';
+import MovieDetailsContainer from './Movies/MovieDetails';
 import PremieresContainer from './containers/PremieresContainer';
-import NewsContainer from './containers/NewsContainer';
-import NewsDetailsContainer from './containers/NewsDetailsContainer';
+import NewsContainer from './News';
+import NewsDetailsContainer from './News/NewsDetails';
 
 export default (
   <Route path="/" component={App}>
