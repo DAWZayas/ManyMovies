@@ -5,7 +5,7 @@ import Dialog from 'material-ui/lib/dialog';
 import Popover from 'material-ui/lib/popover/popover';
 import FontIcon from 'material-ui/lib/font-icon';
 import Rating from 'react-rating';
-import { isEmpty, capitalize, throttle } from 'lodash';
+import { isEmpty, capitalize } from 'lodash';
 import Color from 'material-ui/lib/styles/colors';
 import MovieDetailsHeader from '../MovieDetailsHeader';
 import ImageWithPlaceholder from '../../../Widgets/ImageWithPlaceholder';
@@ -70,7 +70,7 @@ export default class MovieDetailsDescription extends Component{
     if (userRating === null){
       rateMovie(userName, idMovie, rate);
     }else {
-      changeMovieRating(userName, idMovie,  userRating, rate);
+      changeMovieRating(userName, idMovie, rate);
     }
     this._hidePopover.bind(this)();
   }
@@ -95,7 +95,7 @@ export default class MovieDetailsDescription extends Component{
             initialRate={this._convertRateToHearts(userRating)}
             stop={5}
             step={1}
-            onChange={throttle(rate => { this._ratingHandler(user.userName, id, this._convertRate(rate));}, 3000)}/>
+            onChange={rate => { this._ratingHandler(user.userName, id, this._convertRate(rate));}}/>
       </Popover>
     );
     return popover;

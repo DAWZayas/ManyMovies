@@ -9,7 +9,11 @@ export function registerListeners(dispatch, userId) {
     dispatch(setLists(values(snap.val())));
   });
   entriesRef.on('value', function(snap) {
-    dispatch(setEntries(snap.val()));
+    if (snap.exists()){
+      dispatch(setEntries(snap.val()));
+    } else {
+      dispatch(setEntries([]));
+    }
   });
 }
 

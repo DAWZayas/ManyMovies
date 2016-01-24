@@ -5,7 +5,7 @@ export function likeComment(id, idCommented, userId) {
   const userlikesRef = firebase.child(`userLikes/${userId}/${idCommented}/${id}/`);
   const commentsRef = firebase.child(`comments/${idCommented}/${id}/likes`);
   userlikesRef.once('value', snap => {
-    if (snap.val() === null){
+    if (!snap.exists()){
       userlikesRef.update({
         timestamp: Firebase.ServerValue.TIMESTAMP
       }, error => {
@@ -40,7 +40,7 @@ export function dislikeComment(id, idCommented, userId) {
   const userdislikesRef = firebase.child(`userDislikes/${userId}/${idCommented}/${id}/`);
   const commentsRef = firebase.child(`comments/${idCommented}/${id}/dislikes`);
   userdislikesRef.once('value', snap => {
-    if (snap.val() === null){
+    if (!snap.exists()){
       userdislikesRef.update({
         timestamp: Firebase.ServerValue.TIMESTAMP
       }, error => {
