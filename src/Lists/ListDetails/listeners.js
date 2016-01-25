@@ -24,6 +24,6 @@ export function unregisterListeners (dispatch, params, listId){
   const entriesRef = firebase.child(`entries/${params.user}/${listId}`);
   entriesRef.off();
   listRef.off();
-  dispatch(setWatchedEntries({}));
+  dispatch(setWatchedEntries([]));
   dispatch(setWatchedList({}));
 }

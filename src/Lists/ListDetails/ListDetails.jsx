@@ -90,7 +90,7 @@ export default class ListDetails extends Component {
 
   render() {
     const { loading } = this.state;
-    const { list, addEntry, removeEntry, movies, navigate, user } = this.props;
+    const { list, addEntry, removeEntry, navigate, movies, user } = this.props;
 
     if (loading || isEmpty(list)){
       return <Spinner/>;
