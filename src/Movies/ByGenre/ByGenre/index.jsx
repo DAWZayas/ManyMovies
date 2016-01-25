@@ -24,7 +24,7 @@ export default class Movies extends Component {
     super(props);
     this.state = {
       page: 0,
-      genre: '',
+      genre: 'all',
       loading: true,
       loadMoreHandler: this._loadMoreOnBottom.bind(this),
       choosingGenre: false
@@ -32,7 +32,8 @@ export default class Movies extends Component {
   }
 
   componentWillMount(){
-    this.props.registerListeners(this.state.genre, this.state.page);
+    const searchedGenre = this.state.genre === 'all' ? '' : this.state.genre;
+    this.props.registerListeners(searchedGenre, this.state.page);
   }
 
   componentDidMount(){
@@ -45,7 +46,8 @@ export default class Movies extends Component {
 
   componentWillUpdate(nextProps, nextState){
     if (!isEqual(this.state, nextState) && !this.state.loading) {
-      this.props.registerListeners(nextState.genre, nextState.page);
+      const searchedGenre = nextState.genre === 'all' ? '' : nextState.genre;
+      this.props.registerListeners(searchedGenre, nextState.page);
     }
   }
 
@@ -61,8 +63,7 @@ export default class Movies extends Component {
   }
 
   _handleGenreClick(genre){
-    const searchedGenre = genre === 'all' ? '' : genre;
-    this.setState({ genre: searchedGenre, choosingGenre: false });
+    this.setState({ genre, choosingGenre: false });
   }
 
   _handleTitleSearcher(){
@@ -116,6 +117,7 @@ export default class Movies extends Component {
               onTouchTap={this._handleChooseGenreTap.bind(this)}
               style={{padding: "0 0.3em"}}
               floatingLabelText=" Choose a genre"
+              defaultValue="All"
               disabled
               value={` ${capitalize(genre)}`}
               fullWidth
