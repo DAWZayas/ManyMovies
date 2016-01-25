@@ -3,11 +3,10 @@ import { pushState } from 'redux-router';
 import { getSlug } from '../../utils';
 
 export function deleteListAndNavigate(user, id, dispatch){
+  dispatch(pushState(null, '/lists'));
   firebase.child(`lists/${user}/${id}`).remove(function (error){
     if (error) {
       console.log(error);
-    }else {
-      dispatch(pushState(null, '/lists'));
     }
   });
 }

@@ -16,26 +16,7 @@ import MoviesListHeader from '../../Movies/MoviesListHeader';
 import $ from 'jquery';
 import { getDocHeight } from '../../../utils';
 import { capitalize } from 'lodash';
-
-const genres = [
-  "all",
-  "action",
-  "adventure",
-  "animation",
-  "comedy",
-  "crime",
-  "drama",
-  "family",
-  "fantasy",
-  "horror",
-  "music",
-  "mystery",
-  "romance",
-  "science-fiction",
-  "thriller",
-  "war",
-  "western"
-];
+import { genres } from '../../../utils/examples';
 
 export default class Movies extends Component {
 

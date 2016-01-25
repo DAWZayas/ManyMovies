@@ -35,7 +35,7 @@ export default class Movies extends Component {
   }
 
   componentWillReceiveProps() {
-    this.setState({ loading: false });
+    this.setState({ loading: false, loadingMore: false });
   }
 
   componentWillUpdate(nextProps, nextState){
@@ -76,9 +76,12 @@ export default class Movies extends Component {
   _loadMoreOnBottom() {
     if ($(window).scrollTop() + $(window).height() > getDocHeight() - 15) {
       setTimeout(() => {
-         this.setState({page: this.state.page + 1});
+         this.setState({page: this.state.page + 1, loadingMore: true});
         }
         , 0);
+      setTimeout(() => {
+        this.setState({loadingMore: false});
+      }, 50000);
     }
   }
 
