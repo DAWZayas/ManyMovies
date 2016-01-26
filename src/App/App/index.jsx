@@ -81,6 +81,4 @@ App.propTypes = {
   navigate: PropTypes.func,
   logOut: PropTypes.func,
   auth: PropTypes.object
-
-  //registerListener: PropTypes.func,
 };
