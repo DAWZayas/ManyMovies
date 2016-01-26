@@ -1,18 +1,15 @@
 import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
 import Color from 'material-ui/lib/styles/colors';
 import UiListItem from 'material-ui/lib/lists/list-item';
 import Avatar from 'material-ui/lib/avatar';
-import injectTapEventPlugin from "react-tap-event-plugin";
-injectTapEventPlugin();
 
 export default class ListItem extends Component {
   handleTouchTap(list) {
-    const { handler } = this.props;
+    const { navigate, user } = this.props;
     const slug = list.slug;
     return function(){
       return setTimeout(() => {
-        handler('/lists/Gotre/' + slug);
+        navigate(`/lists/${user.userName}/${slug}`);
       }, 10);
     };
   }
@@ -35,19 +32,10 @@ export default class ListItem extends Component {
 
 ListItem.propTypes = {
   list: PropTypes.object,
-  handler : PropTypes.func,
+  navigate : PropTypes.func,
   user: PropTypes.object
 };
 
 ListItem.defaultProps = {
   list: {}
 };
-
-function mapStateToProps(state) {
-  const user = state.users.Gotre;
-  return { user };
-}
-
-export default connect(
-  mapStateToProps,
-)(ListItem);

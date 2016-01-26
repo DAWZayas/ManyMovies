@@ -1,2 +1,4 @@
 export const SET_LISTS = 'SET_LISTS';
 export const SET_WATCHED_LIST = 'SET_WATCHED_LIST';
+export const SET_ENTRIES = 'SET_ENTRIES';
+export const SET_WATCHED_ENTRIES = 'SET_WATCHED_ENTRIES';

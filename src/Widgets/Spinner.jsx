@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component /*, PropTypes */} from 'react';
 import Colors from 'material-ui/lib/styles/colors';
 import Card from 'material-ui/lib/card/card';
 import CardText from 'material-ui/lib/card/card-text';

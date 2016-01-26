@@ -2,24 +2,26 @@ import { connect } from 'react-redux';
 import ListsDetails from './ListDetails';
 import { registerListeners, unregisterListeners } from './listeners';
 import { editListAndNavigate, deleteListAndNavigate } from './side-actions';
-import _ from 'lodash';
+import { addEntry, removeEntry } from '../side-actions';
 import { pushState } from 'redux-router';
 
 function mapStateToProps(state) {
-  const slug = state.router.params.listsSlug;
-  const { lists } = state;
-  const id = _.findKey(lists, { slug });
-  const list = lists[id];
-  return { lists, list };
+  return {
+    list: state.watchedList,
+    user: state.users.Gotre,
+    movies: state.watchedEntries
+  };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     navigate: path => dispatch(pushState(null, path)),
-    editListAndNavigate: (user = 'Gotre1', id, title, desc, slug) => dispatch(editListAndNavigate(user, id, title, desc, slug)),
-    deleteListAndNavigate: (user = 'Gotre1', id) => deleteListAndNavigate(user, id, dispatch),
+    addEntry: (idCollection, idEntry, idUser) => addEntry(idCollection, idEntry, idUser),
+    removeEntry : (idCollection, idEntry, idUser) => removeEntry(idCollection, idEntry, idUser),
+    editListAndNavigate: (user, id, title, desc) => editListAndNavigate(user, id, title, desc, dispatch),
+    deleteListAndNavigate: (user, id) => deleteListAndNavigate(user, id, dispatch),
     registerListeners: params => registerListeners(dispatch, params),
-    unregisterListeners: params => unregisterListeners(params)
+    unregisterListeners: (params, listId) => unregisterListeners(dispatch, params, listId)
   };
 }
 

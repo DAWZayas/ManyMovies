@@ -11,23 +11,15 @@ export default class SignIn extends Component {
     super(props);
   }
 
-  componentWillMount() {
-    this.props.registerListeners();
-  }
-
-  componentWillUnmount() {
-    this.props.unregisterListeners();
-  }
-
-  handlesignInWithTwitterClick() {
+  handleSignInWithTwitterClick() {
     this.props.signInWith("twitter");
   }
 
-  handlesignInWithFacebookClick() {
+  handleSignInWithFacebookClick() {
     this.props.signInWith("facebook");
   }
 
-  handlesignInWithGoogleClick() {
+  handleSignInWithGoogleClick() {
     this.props.signInWith("google");
   }
 
@@ -51,7 +43,7 @@ export default class SignIn extends Component {
               label="Sign in with Twitter"
               labelPosition="after"
               secondary
-              onTouchTap={ () => this.handlesignInWithTwitterClick()}>
+              onTouchTap={ () => this.handleSignInWithTwitterClick()}>
               <i style={{color: Color.lightBlue500}} className="fa fa-twitter"/>
               </FlatButton>
           </div>
@@ -65,7 +57,7 @@ export default class SignIn extends Component {
               labelStyle={{color: Color.indigo900}}
               labelPosition="after"
               secondary
-              onTouchTap={ () => this.handlesignInWithFacebookClick()}>
+              onTouchTap={ () => this.handleSignInWithFacebookClick()}>
               <i style={{color: Color.indigo900}} className="fa fa-facebook"/>
               </FlatButton>
           </div>
@@ -78,7 +70,7 @@ export default class SignIn extends Component {
               labelStyle={{color: Color.red500}}
               labelPosition="after"
               secondary
-              onTouchTap={ () => this.handlesignInWithGoogleClick()}>
+              onTouchTap={ () => this.handleSignInWithGoogleClick()}>
               <i style={{color: Color.red500}} className="fa fa-google"/>
             </FlatButton>
           </div>
@@ -90,7 +82,5 @@ export default class SignIn extends Component {
 }
 
 SignIn.propTypes = {
-  signInWith: PropTypes.func,
-  registerListeners: PropTypes.func.isRequired,
-  unregisterListeners: PropTypes.func.isRequired
+  signInWith: PropTypes.func
 };

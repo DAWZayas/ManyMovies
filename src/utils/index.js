@@ -1,7 +1,3 @@
-import uuid from 'node-uuid';
-
-export const getId = () => uuid.v1();
-
 export const slugText = string => string.toLowerCase()
                                         .replace(/[·\/_,:;. ]/gi, '-')
                                         .replace(/[àáäâ]/gi, 'a')
@@ -15,6 +11,7 @@ export const slugText = string => string.toLowerCase()
                                         .replace(/(-)+/g, '-')
                                         .replace(/^-/, '')
                                         .replace(/-$/, '');
+export const userUid = string => string.toLowerCase().replace(/[·\/\-,:;. ]/gi, '_');
 
 export const allTrim = string => string.trim().replace(/\s+/g, ' ');
 

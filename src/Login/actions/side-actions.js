@@ -1,27 +1,8 @@
 import firebase from '../../utils/firebase';
+import { signInSuccess, logOutSuccess } from './creators';
+import { userUid } from '../../utils';
 
-export function authDataCallback() {
-	const authData = firebase.getAuth();
-	if (authData) {
-		console.log("User " + authData.uid + " is logged in with " + authData.provider);
-	} else {
-		console.log("User is logged out");
-	}
-}
-
-export function registerUser() {
-	const isNewUser = true;
-	firebase.onAuth(function(authData) {
-		if (authData && isNewUser) {
-			firebase.child("users").child(authData.uid).set({
-			provider: authData.provider,
-			name: getName(authData)
-			});
-		}
-	});
-}
-
-function getName(authData) {
+export function getName(authData) {
   switch (authData.provider) {
      case 'twitter':
        return authData.twitter.displayName;
@@ -32,13 +13,30 @@ function getName(authData) {
   }
 }
 
-export function signInWith(provider){
+export function signInWith(provider, dispatch){
 	firebase.authWithOAuthPopup(provider, function(error, authData = firebase.getAuth()) {
   if (error) {
     console.log("Login Failed!", error);
   } else {
-    console.log("Authenticated successfully with payload:", authData);
+    signIn(authData, dispatch);
   }
 });
 }
 
+export function signIn(authData, dispatch) {
+  const userId = userUid(authData.uid);
+  if (authData) {
+      firebase.child("users").child(userId).set({
+        avatarUrl: authData.twitter.profileImageURL,
+        displayName: getName(authData),
+        userName: authData.twitter.username
+      });
+      dispatch(signInSuccess(authData));
+    } else {
+      console.log("Client unauthenticated.");
+    }
+}
+
+export function logOut(dispatch){
+  dispatch(logOutSuccess());
+}

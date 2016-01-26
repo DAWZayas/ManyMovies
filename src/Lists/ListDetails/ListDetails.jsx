@@ -1,20 +1,22 @@
 import React, { Component, PropTypes } from 'react';
 import Spinner from '../../Widgets/Spinner';
+import CommentsManager from '../../Comments';
+import EntriesList from './EntriesList';
 import Color from 'material-ui/lib/styles/colors';
 import Card from 'material-ui/lib/card/card';
 import CardActions from 'material-ui/lib/card/card-actions';
 import CardText from 'material-ui/lib/card/card-text';
 import CardTitle from 'material-ui/lib/card/card-title';
 import IconButton from 'material-ui/lib/icon-button';
-import Dialog from '../../../node_modules/material-ui/lib/dialog';
+import Dialog from 'material-ui/lib/dialog';
 import { allTrim, getDayHashtag } from '../../utils';
 import TextField from 'material-ui/lib/text-field';
 import FlatButton from 'material-ui/lib/flat-button';
 import twitter from '../../../images/twitter.png';
-/*import Colors from 'material-ui/lib/styles/colors';
+import Colors from 'material-ui/lib/styles/colors';
 import ScrollTop from '../../components/ScrollTop';
 import Tabs from 'material-ui/lib/tabs/tabs';
-import Tab from 'material-ui/lib/tabs/tab';*/
+import Tab from 'material-ui/lib/tabs/tab';
 import { isEmpty } from 'lodash';
 
 
@@ -38,7 +40,6 @@ export default class ListDetails extends Component {
 
   componentDidUpdate(prevProps){
     if (prevProps.params.listsSlug !== this.props.params.listsSlug) {
-      this.props.unregisterListeners(prevProps.params, prevProps.list.id);
       this.props.registerListeners(this.props.params);
     }
   }
@@ -74,22 +75,22 @@ export default class ListDetails extends Component {
       titleNode.setValue('');
       titleNode.focus();
     }else {
-      const user = 'Gotre1';
-      this.props.editListAndNavigate(user, id, title, desc);
+      const { userName } = this.props.user;
+      this.props.editListAndNavigate(userName, id, title, desc);
       this.setState({editing: false});
     }
   }
 
   _handleRequestSubmitDelete() {
     const { id } = this.props.list;
-    const user = 'Gotre1';
+    const { userName } = this.props.user;
     this.setState({editing: false});
-    this.props.deleteListAndNavigate(user, id);
+    this.props.deleteListAndNavigate(userName, id);
   }
 
   render() {
     const { loading } = this.state;
-    const { list } = this.props;
+    const { list, addEntry, removeEntry, movies, navigate, user } = this.props;
 
     if (loading || isEmpty(list)){
       return <Spinner/>;
@@ -195,26 +196,52 @@ export default class ListDetails extends Component {
       );
 
     return (
-      <Card>
-        <CardTitle
-          title={listTitle}
-          titleColor={Color.deepOrange500}
-          subtitle={subtitle}
-          subtitleStyle={{width: "90%", textAlign: "justify"}}
-          showExpandableButton={custom}/>
-        {social}
-        {cardActions}
-        {editDialog}
-        {deleteDialog}
-      </Card>
+      <div>
+        <Card>
+          <CardTitle
+            title={listTitle}
+            titleColor={Color.deepOrange500}
+            subtitle={subtitle}
+            subtitleStyle={{width: "90%", textAlign: "justify"}}
+            showExpandableButton={custom}/>
+          {social}
+          {cardActions}
+          {editDialog}
+          {deleteDialog}
+        </Card>
+        <Tabs
+            inkBarStyle={{backgroundColor: Colors.deepOrange800, height:"0.3em", marginTop: "-0.3em"}}
+          >
+            <Tab style={{backgroundColor: Colors.orange600}}
+             label="Movies">
+              <EntriesList
+                navigate={navigate}
+                removeEntry={removeEntry}
+                addEntry={addEntry}
+                list={list}
+                movies={movies}
+                user={user}
+              />
+            </Tab>
+            <Tab style={{backgroundColor: Colors.orange600}}
+              label="Comments">
+              <CommentsManager idCommented={list.id}/>
+            </Tab>
+          </Tabs>
+          <ScrollTop />
+      </div>
     );
   }
 }
 
 ListDetails.propTypes = {
+  movies: PropTypes.array,
+  navigate: PropTypes.func,
+  addEntry: PropTypes.func,
+  removeEntry: PropTypes.func,
   list: PropTypes.object,
-  lists: PropTypes.object,
   params: PropTypes.object,
+  user: PropTypes.object,
   registerListeners: PropTypes.func,
   unregisterListeners: PropTypes.func,
   editListAndNavigate: PropTypes.func,
