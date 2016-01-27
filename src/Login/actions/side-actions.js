@@ -2,16 +2,9 @@ import firebase from '../../utils/firebase';
 import { signInSuccess, logOutSuccess } from './creators';
 import { userUid } from '../../utils';
 
-export function getName(authData) {
-  switch (authData.provider) {
-     case 'twitter':
-       return authData.twitter.displayName;
-     case 'facebook':
-       return authData.facebook.displayName;
-     case 'google':
-       return authData.google.displayName;
-  }
-}
+export const getName = authData => authData[authData.provider].displayName;
+
+export const getAvatar = authData => authData[authData.provider].profileImageURL;
 
 export function signInWith(provider, dispatch){
 	firebase.authWithOAuthPopup(provider, function(error, authData = firebase.getAuth()) {
@@ -25,16 +18,17 @@ export function signInWith(provider, dispatch){
 
 export function signIn(authData, dispatch) {
   const userId = userUid(authData.uid);
-  if (authData) {
-      firebase.child("users").child(userId).set({
-        avatarUrl: authData.twitter.profileImageURL,
-        displayName: getName(authData),
-        userName: authData.twitter.username
-      });
-      dispatch(signInSuccess(authData));
-    } else {
-      console.log("Client unauthenticated.");
-    }
+  const ref = firebase.child("users").child(userId);
+    ref.once('value', function(snap) {
+      if (!snap.exists()){
+        ref.set({
+          avatarUrl: getAvatar(authData),
+          displayName: getName(authData),
+          userName: userId
+        });
+      }
+    });
+    dispatch(signInSuccess(authData));
 }
 
 export function logOut(dispatch){

@@ -11,7 +11,7 @@ export const slugText = string => string.toLowerCase()
                                         .replace(/(-)+/g, '-')
                                         .replace(/^-/, '')
                                         .replace(/-$/, '');
-export const userUid = string => string.toLowerCase().replace(/[·\/\-,:;. ]/gi, '_');
+export const userUid = string => string.toLowerCase().replace(/[·\/\-,:;. ]/gi, '');
 
 export const allTrim = string => string.trim().replace(/\s+/g, ' ');
 

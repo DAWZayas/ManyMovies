@@ -3,15 +3,14 @@ import { editUser } from '../actions';
 import Profile from './Profile';
 
 function mapStateToProps(state) {
-  const user = state.users.Gotre;
   return {
-    user
+    auth: state.user
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    editUser: (user, newStats) => dispatch(editUser(user, newStats))
+    editUser: (user, newStats) => dispatch(editUser(user, newStats)),
   };
 }
 

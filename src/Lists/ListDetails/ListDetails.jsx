@@ -84,13 +84,15 @@ export default class ListDetails extends Component {
   _handleRequestSubmitDelete() {
     const { id } = this.props.list;
     const { userName } = this.props.user;
-    this.setState({editing: false});
-    this.props.deleteListAndNavigate(userName, id);
+    setTimeout(() =>{
+      this.setState({editing: false});
+      this.props.deleteListAndNavigate(userName, id);
+    }, 0);
   }
 
   render() {
     const { loading } = this.state;
-    const { list, addEntry, removeEntry, movies, navigate, user } = this.props;
+    const { list, addEntry, removeEntry, navigate, movies, user } = this.props;
 
     if (loading || isEmpty(list)){
       return <Spinner/>;

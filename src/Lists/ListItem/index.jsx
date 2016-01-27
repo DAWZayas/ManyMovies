@@ -33,7 +33,7 @@ export default class ListItem extends Component {
 ListItem.propTypes = {
   list: PropTypes.object,
   navigate : PropTypes.func,
-  user: PropTypes.object
+  user: PropTypes.string
 };
 
 ListItem.defaultProps = {

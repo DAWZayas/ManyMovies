@@ -61,10 +61,14 @@ export default class App extends Component {
                   iconClassName="glyphicon glyphicon-align-justify"/>
               }
             >
-               {(!isEmpty(auth)) ? <MenuItem style={{padding: '0 1.5em'}} primaryText="Log out" onTouchTap={this._handleLogOutClick.bind(this)} /> : <MenuItem style={{padding: '0 1.5em'}} primaryText="Sign in" onTouchTap={this._handleTouchTap.bind(this)} /> }
+               {(!isEmpty(auth)) ?
+                <div>
+                <MenuItem style={{padding: '0 1.5em'}} primaryText="Log out" onTouchTap={this._handleLogOutClick.bind(this)} />
+                <MenuItem style={{padding: '0 1.5em'}} primaryText="Profile" onTouchTap={this._handleTouchTap.bind(this)} />
+                <MenuItem style={{padding: '0 1.5em'}} primaryText="Lists" onTouchTap={this._handleTouchTap.bind(this)} />
+                </div>
+                : <MenuItem style={{padding: '0 1.5em'}} primaryText="Sign in" onTouchTap={this._handleTouchTap.bind(this)} /> }
               <MenuItem style={{padding: '0 1.5em'}} primaryText="News" onTouchTap={this._handleTouchTap.bind(this)} />
-              <MenuItem style={{padding: '0 1.5em'}} primaryText="Profile" onTouchTap={this._handleTouchTap.bind(this)} />
-              <MenuItem style={{padding: '0 1.5em'}} primaryText="Lists" onTouchTap={this._handleTouchTap.bind(this)} />
               <MenuItem style={{padding: '0 1.5em'}} primaryText="Movies" onTouchTap={this._handleTouchTap.bind(this)} />
               <MenuItem style={{padding: '0 1.5em'}} primaryText="Premieres" onTouchTap={this._handleTouchTap.bind(this)} />
             </IconMenu>
