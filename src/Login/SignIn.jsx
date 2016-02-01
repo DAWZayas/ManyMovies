@@ -2,8 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import FlatButton from 'material-ui/lib/flat-button';
 import Card from 'material-ui/lib/card/card';
 import CardTitle from 'material-ui/lib/card/card-title';
+import CardText from 'material-ui/lib/card/card-text';
 import Color from 'material-ui/lib/styles/colors';
-import poster from '../../images/poster-login.png';
+import poster from '../../images/mm-fanart-login.png';
 
 export default class SignIn extends Component {
 
@@ -26,15 +27,14 @@ export default class SignIn extends Component {
   render() {
 
     return (
-        <div style={{textAlign: 'center', margin:'2em auto 2em', display: 'flex', justifyContent: 'center'}}>
-        <Card>
+        <Card style={{textAlign: 'center', margin:'2em auto 2em', display: 'flex', justifyContent: 'center'}}>
           <CardTitle
             title="Welcome to Many Movies"
             titleColor={Color.deepOrange500}
           />
-
-          <img src={poster} style={{margin:'2em'}} alt="manymovies-logo"/>
-
+          <CardText>
+          <img src={poster} style={{margin:'2em', height: '13em'}} alt="manymovies-logo"/>
+          </CardText>
             <FlatButton
               key={1}
               style={{border: '0.2em solid', borderColor: Color.grey400, width: '90%', marginBottom: '0.2em'}}
@@ -71,7 +71,6 @@ export default class SignIn extends Component {
               <i style={{color: Color.red500}} className="fa fa-google"/>
             </FlatButton>
         </Card>
-      </div>
     );
   }
 

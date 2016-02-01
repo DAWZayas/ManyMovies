@@ -1,24 +1,28 @@
 import React, { Component, PropTypes } from 'react';
-import TextField from 'material-ui/lib/text-field';
-//import IconButton from 'material-ui/lib/icon-button';
-import Avatar from 'material-ui/lib/avatar';
-import { allTrim } from '../utils';
-import Badge from 'material-ui/lib/badge';
 import Color from 'material-ui/lib/styles/colors';
-import NotificationsIcon from 'material-ui/lib/svg-icons/social/notifications';
-//import GridList from 'material-ui/lib/grid-list/grid-list';
-//import GridTile from 'material-ui/lib/grid-list/grid-tile';
+import TextField from 'material-ui/lib/text-field';
+import IconButton from 'material-ui/lib/icon-button';
+import Avatar from 'material-ui/lib/avatar';
+import RaisedButton from 'material-ui/lib/raised-button';
+import Snackbar from 'material-ui/lib/snackbar';
+import { allTrim } from '../utils';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
 
 export default class Profile extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      name: this.props.auth[this.props.auth.provider].displayName,
-      avatar: this.props.auth[this.props.auth.provider].profileImageURL
+      this.state = {
+        name: this.props.auth[this.props.auth.provider].displayName,
+        avatar: this.props.auth[this.props.auth.provider].profileImageURL
       };
   }
 
-    _handleRequestSaveSettings(){
+  _handleTouchTap(){
+    this.refs.avatar.click();
+  }
+
+  _handleRequestSaveSettings(){
     const displayNameNode = this.refs.displayName;
     const displayName = allTrim(displayNameNode.getValue());
     if (!displayName){
@@ -26,15 +30,12 @@ export default class Profile extends Component {
       displayNameNode.focus();
       displayNameNode.clearValue();
     }else {
-      this.props.editUser(this.props.auth, {displayName, avatar: this.state.avatar});
       displayNameNode.setValue(displayName);
       this.refs.snack.show();
+      this.props.editProfile(this.props.auth.provider, displayName);
     }
   }
 
-    _handleTouchTap(){
-    this.refs.avatar.click();
-  }
   _handleFileChange(){
     const fileName = this.refs.avatar.value.split(/(\\|\/)/g).pop();
     this.refs.fileName.setValue(fileName);
@@ -42,7 +43,7 @@ export default class Profile extends Component {
     const file = this.refs.avatar.files[0];
     reader.onload = (e) => {
       this.setState({
-        avatarUri: e.target.result
+        avatar: e.target.result
       });
     };
 
@@ -50,17 +51,54 @@ export default class Profile extends Component {
   }
 
   render() {
-    return(
+    const snack = (<Snackbar
+      action="X"
+      onActionTouchTap={() => {this.refs.snack.dismiss();}}
+      ref="snack"
+      message="Settings were saved correctly"
+      autoHideDuration={2000}
+    />);
+    return (
       <div style={{textAlign: "center", padding:"1em 0 0 0"}}>
-
-        <Avatar size={200} src={this.state.avatar}/>
-        <TextField underlineStyle={{borderColor: Color.orange600, fontSize: "40px"}} disabled />
-        <h2> {this.state.name} </h2>
-        <Badge badgeContent={10}
-               secondary
-               badgeStyle={{left: 27, backgroundColor: Color.orange600}}>
-          <NotificationsIcon/>
-        </Badge>
+        {snack}
+        <Avatar
+          size={200}
+          src={this.state.avatar}
+        />
+        <TextField
+          ref="displayName"
+          hintText="Display name"
+          defaultValue={this.state.name}
+          floatingLabelText="Display name"
+          fullWidth
+        />
+        <div style={{display: "flex"}}>
+          <TextField
+            ref="fileName"
+            style={{flexGrow: 100}}
+            hintText="Choose an avatar"
+            underlineDisabledStyle={{borderStyle: "solid", borderWidth: "1px", borderColor: Color.grey300}}
+            disabled
+            />
+          <input
+            style={{display: "none"}}
+            onChange={this._handleFileChange.bind(this)}
+            ref="avatar"
+            type="file"
+            accept=".png"/>
+          <IconButton
+            style={{flexGrow: 1}}
+            iconClassName="material-icons"
+            onTouchTap={this._handleTouchTap.bind(this)}
+            >
+              attach_file
+          </IconButton>
+        </div>
+        <RaisedButton
+          backgroundColor={Color.green500}
+          onTouchTap={this._handleRequestSaveSettings.bind(this)}
+          primary
+          label="Save settings"/>
       </div>
     );
   }
@@ -69,48 +107,5 @@ export default class Profile extends Component {
 Profile.propTypes = {
   auth: PropTypes.object,
   users: PropTypes.object,
-  editUser: PropTypes.func
+  editProfile: PropTypes.func
 };
-
-/*
-    const tilesData = [
-      {
-        img: this.state.avatar,
-        title: 'Koalita'
-      },
-      {
-        img: this.state.avatar,
-        title: 'Tasty burger'
-      },
-      {
-        img: this.state.avatar,
-        title: 'Camera'
-      }
-    ];
-
-
-        <div style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          justifyContent: 'space-around',
-        }}>
-          <GridList
-            cellHeight={200}
-            style={{
-          width: 500,
-          height: 400,
-          overflowY: 'auto',
-          marginBottom: 21,
-        }}
-          >
-          {tilesData.map(tile => (
-            <GridTile
-              key={tile.img}
-              title={tile.title}
-            >
-              <img src={tile.img} />
-            </GridTile>
-          ))}
-          </GridList>
-        </div>
-        */

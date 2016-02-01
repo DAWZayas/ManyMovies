@@ -1,5 +1,5 @@
 import firebase from '../../utils/firebase';
-import { signInSuccess, logOutSuccess } from './creators';
+import { signInSuccess, logOutSuccess, editUser } from './creators';
 import { userUid } from '../../utils';
 
 export const getName = authData => authData[authData.provider].displayName;
@@ -33,4 +33,14 @@ export function signIn(authData, dispatch) {
 
 export function logOut(dispatch){
   dispatch(logOutSuccess());
+}
+
+export function editProfile(authData = firebase.getAuth(), displayName, dispatch) {
+  debugger;
+  const userId = userUid(authData.uid);
+  const ref = firebase.child("users").child(userId);
+  ref.set({
+    displayName: displayName
+  });
+  dispatch(editUser(displayName));
 }

@@ -1,4 +1,5 @@
-import { INIT_USER, SIGN_IN_SUCCESS, LOG_OUT_SUCCESS } from '../Login/actions/constants';
+import { INIT_USER, SIGN_IN_SUCCESS, LOG_OUT_SUCCESS} from '../Login/actions/constants';
+//import firebase from '../../utils/firebase';
 
 function initUser(authData) {
 	if (authData !== null){

@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
-import { editUser } from '../actions';
+import { pushState } from 'redux-router';
+import { editProfile } from '../Login/actions/side-actions';
 import Profile from './Profile';
 
 function mapStateToProps(state) {
@@ -10,7 +11,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    editUser: (user, newStats) => dispatch(editUser(user, newStats)),
+		navigate: path => dispatch(pushState(null, path)),
+    editProfile: (authData, displayName) => editProfile(authData, displayName, dispatch)
   };
 }
 
