@@ -6,6 +6,7 @@ import MoviesContainer from './Movies';
 import GenresContainer from './Movies/ByGenre';
 import ProfileContainer from './containers/ProfileContainer';
 import App from './App';
+import Admin from './Admin';
 import MovieDetailsContainer from './Movies/MovieDetails';
 import PremieresContainer from './containers/PremieresContainer';
 import NewsContainer from './News';
@@ -22,6 +23,7 @@ export default (
     <Route path="premieres" component={PremieresContainer} />
     <Route path="news" component={NewsContainer} />
     <Route path="news/:newsSlug" component={NewsDetailsContainer} />
+    <Route path="admin" component={Admin} />
     <IndexRoute component={NewsContainer} />
     <Redirect path="*" to="/" />
   </Route>

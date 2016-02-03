@@ -79,9 +79,6 @@ export default class Movies extends Component {
          this.setState({page: this.state.page + 1, loadingMore: true});
         }
         , 0);
-      setTimeout(() => {
-        this.setState({loadingMore: false});
-      }, 50000);
     }
   }
 

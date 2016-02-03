@@ -59,6 +59,7 @@
     "webpack-hot-middleware": "^2.4.1"
   },
   "dependencies": {
+    "async-foreach": "^0.1.3",
     "babel-runtime": "^5.8.29",
     "bootstrap": "^3.3.5",
     "firebase": "^2.3.2",

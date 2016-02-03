@@ -1,0 +1,3 @@
+export const UPDATE_MOVIE = 'UPDATE_MOVIE';
+export const CLEAR_UPDATE_QUEUE = 'CLEAR_UPDATE_QUEUE';
+export const ADD_MOVIE = ' ADD_MOVIE';

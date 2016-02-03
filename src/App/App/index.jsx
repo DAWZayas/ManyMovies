@@ -63,6 +63,7 @@ export default class App extends Component {
               <MenuItem style={{padding: '0 1.5em'}} primaryText="Lists" onTouchTap={this._handleTouchTap.bind(this)} />
               <MenuItem style={{padding: '0 1.5em'}} primaryText="Movies" onTouchTap={this._handleTouchTap.bind(this)} />
               <MenuItem style={{padding: '0 1.5em'}} primaryText="Premieres" onTouchTap={this._handleTouchTap.bind(this)} />
+              <MenuItem style={{padding: '0 1.5em'}} primaryText="Admin" onTouchTap={this._handleTouchTap.bind(this)} />
             </IconMenu>
             }
         />

@@ -3,7 +3,6 @@ import PremiereItem from './PremiereItem';
 import _ from 'lodash';
 import $ from 'jquery';
 import { getDocHeight } from '../utils';
-import ScrollTop from './ScrollTop';
 import Toggle from 'material-ui/lib/toggle';
 import Colors from 'material-ui/lib/styles/colors';
 import CircularProgress from 'material-ui/lib/circular-progress';
@@ -88,7 +87,6 @@ export default class Premieres extends Component {
           listedPremieres.slice(0, maxMovies).map(premiere => <PremiereItem navigate={navigate} key={premiere.ids.trakt} premiere={premiere}/>)
         }
         {progress}
-        <ScrollTop />
       </div>
     );
   }

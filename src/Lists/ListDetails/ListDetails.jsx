@@ -14,7 +14,7 @@ import TextField from 'material-ui/lib/text-field';
 import FlatButton from 'material-ui/lib/flat-button';
 import twitter from '../../../images/twitter.png';
 import Colors from 'material-ui/lib/styles/colors';
-import ScrollTop from '../../components/ScrollTop';
+import ScrollTop from '../../Widgets/ScrollTop';
 import Tabs from 'material-ui/lib/tabs/tabs';
 import Tab from 'material-ui/lib/tabs/tab';
 import { isEmpty } from 'lodash';
