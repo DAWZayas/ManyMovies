@@ -8,6 +8,7 @@ import LinearProgress from 'material-ui/lib/linear-progress';
 import CardText from 'material-ui/lib/card/card-text';
 import Card from 'material-ui/lib/card/card';
 import MovieSearcher from './MovieSearcher/MovieSearcher';
+import ScrollTop from '../../Widgets/ScrollTop';
 import { once } from 'lodash';
 
 const iconStyles = {margin: '-1em 0 1em 0'};
@@ -98,6 +99,7 @@ export default class Admin extends Component {
           </CardText>
         </Card>
         <MovieSearcher movies={movies} addMovie={addMovie}/>
+        <ScrollTop/>
       </span>
     );
   }

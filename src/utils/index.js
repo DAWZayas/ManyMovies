@@ -1,5 +1,5 @@
 export const slugText = string => string.toLowerCase()
-                                        .replace(/[·\/_,:;. ]/gi, '-')
+                                        .replace(/[·\/_,:;.+ ]/gi, '-')
                                         .replace(/[àáäâ]/gi, 'a')
                                         .replace(/[èéëê]/gi, 'e')
                                         .replace(/[ìíïî]/gi, 'i')
@@ -13,6 +13,8 @@ export const slugText = string => string.toLowerCase()
                                         .replace(/-$/, '');
 
 export const allTrim = string => string.trim().replace(/\s+/g, ' ');
+
+export const formatQuery = text => slugText(text).replace(/-/g, '+');
 
 export function getSlug (collection, title, id){
   let slug = slugText(title);
