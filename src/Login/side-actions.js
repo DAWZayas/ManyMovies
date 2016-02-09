@@ -1,10 +1,13 @@
-import firebase from '../../utils/firebase';
-import { signInSuccess, logOutSuccess, editUser } from './creators';
-import { userUid } from '../../utils';
+import firebase from '../utils/firebase';
+import { pushState } from 'redux-router';
+import { signInSuccess, logOutSuccess } from './actions/creators';
+import { userUid } from '../utils';
+//import { setLists } from '../Lists/actions/creators';
+//import { values } from 'lodash';
 
-export const getName = authData => authData[authData.provider].displayName;
+const getName = authData => authData[authData.provider].displayName;
 
-export const getAvatar = authData => authData[authData.provider].profileImageURL;
+const getAvatar = authData => authData[authData.provider].profileImageURL;
 
 export function signInWith(provider, dispatch){
 	firebase.authWithOAuthPopup(provider, function(error, authData = firebase.getAuth()) {
@@ -26,21 +29,16 @@ export function signIn(authData, dispatch) {
           displayName: getName(authData),
           userName: userId
         });
+        // Todo create default lists
+        //const defaultListsRef = firebase.child(`lists/${userId}`);
+        //defaultListsRef.on('value', snapshot => dispatch(setLists(values(snapshot.val()))));
       }
     });
     dispatch(signInSuccess(authData));
+    dispatch(pushState(null, '/news'));
 }
 
 export function logOut(dispatch){
   dispatch(logOutSuccess());
-}
-
-export function editProfile(authData = firebase.getAuth(), displayName, dispatch) {
-  debugger;
-  const userId = userUid(authData.uid);
-  const ref = firebase.child("users").child(userId);
-  ref.set({
-    displayName: displayName
-  });
-  dispatch(editUser(displayName));
+  dispatch(pushState(null, '/news'));
 }

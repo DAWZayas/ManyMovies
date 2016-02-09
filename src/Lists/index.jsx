@@ -6,6 +6,7 @@ import Lists from './Lists';
 import { createList } from './side-actions';
 
 function mapStateToProps(state) {
+  debugger;
   const defaultSlugs = ['history', 'collection', 'watchlist'];
   const { lists } = state;
   const customLists = sortBy(lists.filter(list => list.custom), 'title');
@@ -13,7 +14,7 @@ function mapStateToProps(state) {
   return {
     defaultLists,
     lists: customLists,
-    user: state.users.Gotre
+    user: state.user
   };
 }
 

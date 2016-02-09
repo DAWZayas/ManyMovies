@@ -1,4 +1,4 @@
-import { INIT_USER, SIGN_IN_SUCCESS, LOG_OUT_SUCCESS, EDIT_USER } from './constants';
+import { INIT_USER, SIGN_IN_SUCCESS, LOG_OUT_SUCCESS } from './constants';
 import firebase from '../../utils/firebase';
 
 export const initUser = () => ({
@@ -18,8 +18,3 @@ export const signInSuccess = authData => ({
 });
 
 export const logOutSuccess = () => ({type: LOG_OUT_SUCCESS});
-
-export const editUser = (displayName) => ({
-	type: EDIT_USER,
-	displayName
-});

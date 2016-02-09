@@ -143,7 +143,7 @@ Lists.propTypes = {
   defaultLists: PropTypes.array,
   navigate: PropTypes.func,
   createList: PropTypes.func,
-  user: PropTypes.string,
+  user: PropTypes.object,
   registerListeners: PropTypes.func.isRequired,
   unregisterListeners: PropTypes.func.isRequired
 };

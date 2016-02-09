@@ -1,14 +1,14 @@
 import { connect } from 'react-redux';
 import { pushState } from 'redux-router';
 import App from './App';
-import { logOut } from '../Login/actions/side-actions';
+import { logOut } from '../Login/side-actions';
 
-const mapStateToProps = (state) => (state.user);
+const mapStateToProps = (state) => (state.auth);
 
 function mapDispatchToProps(dispatch) {
   return {
     navigate: path => dispatch(pushState(null, path)),
-    logOut: () => logOut(dispatch),
+    logOut: () => logOut(dispatch)
   };
 }
 

@@ -1,18 +1,22 @@
 import { connect } from 'react-redux';
 import { pushState } from 'redux-router';
-import { editProfile } from '../Login/actions/side-actions';
+import { editProfile } from './side-actions';
+import { registerListeners, unregisterListeners } from './listeners';
 import Profile from './Profile';
 
 function mapStateToProps(state) {
+	const { user } = state;
   return {
-    auth: state.user
+		user
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
 		navigate: path => dispatch(pushState(null, path)),
-    editProfile: (authData, displayName) => editProfile(authData, displayName, dispatch)
+    editProfile: (displayName, avatar) => editProfile(displayName, avatar),
+    registerListeners: () => registerListeners(dispatch),
+    unregisterListeners: () => unregisterListeners(dispatch)
   };
 }
 

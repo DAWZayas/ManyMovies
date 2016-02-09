@@ -4,8 +4,8 @@ import lists from './lists';
 import entries from './entries';
 import movies from './movies';
 import comments from './comments';
+import auth from './auth';
 import user from './user';
-import users from './users';
 import userLikes from './userLikes';
 import userDislikes from './userDislikes';
 import userRatings from './userRatings';
@@ -21,7 +21,7 @@ export default combineReducers({
   movies,
   comments,
   user,
-  users,
+  auth,
   userLikes,
   userDislikes,
   userRatings,

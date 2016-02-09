@@ -37,38 +37,38 @@ export default class SignIn extends Component {
           </CardText>
             <FlatButton
               key={1}
-              style={{border: '0.2em solid', borderColor: Color.grey400, width: '90%', marginBottom: '0.2em'}}
+              style={{textAlign: 'left', border: '0.2em solid', borderColor: Color.grey400, width: '90%', marginBottom: '0.2em'}}
               labelStyle={{color: Color.lightBlue500}}
               hoverColor={Color.cyan200}
               label="Sign in with Twitter"
               labelPosition="after"
               secondary
               onTouchTap={ () => this.handleSignInWithTwitterClick()}>
-              <i style={{color: Color.lightBlue500}} className="fa fa-twitter"/>
+              <i style={{marginLeft: '3em', color: Color.lightBlue500}} className="fa fa-twitter"/>
               </FlatButton>
 
             <FlatButton
               key={2}
-              style={{border: '0.2em solid', borderColor: Color.grey400, width: '90%', marginBottom: '0.2em'}}
+              style={{textAlign: 'left', border: '0.2em solid', borderColor: Color.grey400, width: '90%', marginBottom: '0.2em'}}
               hoverColor={Color.blue300}
               label="Sign in with Facebook"
               labelStyle={{color: Color.indigo900}}
               labelPosition="after"
               secondary
               onTouchTap={ () => this.handleSignInWithFacebookClick()}>
-              <i style={{color: Color.indigo900}} className="fa fa-facebook"/>
+              <i style={{marginLeft: '3em', color: Color.indigo900}} className="fa fa-facebook"/>
               </FlatButton>
 
             <FlatButton
               key={3}
-              style={{border: '0.2em solid', borderColor: Color.grey400, width: '90%', marginBottom: '0.2em'}}
+              style={{textAlign: 'left', border: '0.2em solid', borderColor: Color.grey400, width: '90%', marginBottom: '0.2em'}}
               hoverColor={Color.red100}
               label="Sign in with Google"
               labelStyle={{color: Color.red500}}
               labelPosition="after"
               secondary
               onTouchTap={ () => this.handleSignInWithGoogleClick()}>
-              <i style={{color: Color.red500}} className="fa fa-google"/>
+              <i style={{marginLeft: '3em', color: Color.red500}} className="fa fa-google"/>
             </FlatButton>
         </Card>
     );
