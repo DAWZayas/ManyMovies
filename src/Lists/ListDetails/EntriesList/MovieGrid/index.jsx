@@ -24,7 +24,7 @@ export default class MovieGrid extends Component {
   }
 
   render() {
-    const { movie, navigate } = this.props;
+    const { movie, navigate, owner } = this.props;
     const year = movie.released.split('-')[0];
     return (
       <GridTile
@@ -32,7 +32,7 @@ export default class MovieGrid extends Component {
         subtitle={year}
         onTouchTap={() => navigate(`/movies/${movie.ids.slug}`)}
         titleBackground="rgba(0, 0, 0, 0.60)"
-        actionIcon={
+        actionIcon={owner ?
           <IconButton
             iconStyle={{color: "white"}}
             iconClassName="material-icons"
@@ -40,7 +40,8 @@ export default class MovieGrid extends Component {
             tooltip="Remove from list"
             onTouchTap={this._handleRemoveTouchTap.bind(this)}
           >highlight_off
-          </IconButton>
+          </IconButton> :
+          null
         }
       >
         <img src={this.state.src} alt={movie.title}/>
@@ -55,7 +56,8 @@ MovieGrid.propTypes = {
   user: PropTypes.object,
   removeEntry: PropTypes.func,
   handleSnackBarRequest: PropTypes.func,
-  navigate: PropTypes.func
+  navigate: PropTypes.func,
+  owner: PropTypes.bool
 };
 
 MovieGrid.defaultProps = {

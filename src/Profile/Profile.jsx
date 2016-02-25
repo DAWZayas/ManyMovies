@@ -1,21 +1,41 @@
 import React, { Component, PropTypes } from 'react';
-import Color from 'material-ui/lib/styles/colors';
-import TextField from 'material-ui/lib/text-field';
-import IconButton from 'material-ui/lib/icon-button';
 import Avatar from 'material-ui/lib/avatar';
 import RaisedButton from 'material-ui/lib/raised-button';
+import Color from 'material-ui/lib/styles/colors';
+import { isEqual, isEmpty } from 'lodash';
+import Friends from '../Friends/Friends';
+import TextField from 'material-ui/lib/text-field';
+import IconButton from 'material-ui/lib/icon-button';
 import Snackbar from 'material-ui/lib/snackbar';
+import Spinner from '../Widgets/Spinner';
 import { allTrim } from '../utils';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
 
 export default class Profile extends Component {
   constructor(props) {
     super(props);
-    this.state = {avatarUri: props.user.avatarUrl, displayName: props.user.displayName};
+      this.state = {
+        editing: false,
+        name: props.user.displayName,
+        avatar: props.user.avatarUrl
+      };
   }
 
-  _handleTouchTap(){
+  componentWillReceiveProps(newProps) {
+    this.setState({
+      loading: false,
+      name: newProps.user.displayName,
+      avatar: newProps.user.avatarUrl
+    });
+    if (!isEqual(this.props.user, newProps.user) && this.refs.snack){
+      this.refs.snack.show();
+    }
+  }
+
+  _handleEditButtonTouchTap(){
+    this.setState({editing: true});
+  }
+
+  _handleFileButtonTouchTap(){
     this.refs.avatar.click();
   }
 
@@ -27,9 +47,8 @@ export default class Profile extends Component {
       displayNameNode.focus();
       displayNameNode.clearValue();
     }else {
-      this.props.editUser(this.props.user, {displayName, avatarUrl: this.state.avatarUri});
       displayNameNode.setValue(displayName);
-      this.refs.snack.show();
+      this.props.editProfile(displayName, this.state.avatar, this.stopEditing());
     }
   }
 
@@ -40,14 +59,20 @@ export default class Profile extends Component {
     const file = this.refs.avatar.files[0];
     reader.onload = (e) => {
       this.setState({
-        avatarUri: e.target.result
+        avatar: e.target.result
       });
     };
 
     reader.readAsDataURL(file);
   }
 
+  stopEditing(){
+    this.setState({editing: false});
+  }
+
   render() {
+    const { editing } = this.state;
+    const { user } = this.props;
     const snack = (<Snackbar
       action="X"
       onActionTouchTap={() => {this.refs.snack.dismiss();}}
@@ -55,17 +80,16 @@ export default class Profile extends Component {
       message="Settings were saved correctly"
       autoHideDuration={2000}
     />);
-    return (
-      <div style={{textAlign: "center", padding:"1em 0 0 0"}}>
-        {snack}
-        <Avatar
-          size={200}
-          src={this.state.avatarUri}
-        />
+    const content = !editing ?
+          <div>
+            <h2>{this.state.name}</h2>
+            <RaisedButton label="Edit" onTouchTap={this._handleEditButtonTouchTap.bind(this)}/>
+          </div>
+        : <div style={{textAlign: "center", padding:"1em 0 0 0"}}>
         <TextField
           ref="displayName"
           hintText="Display name"
-          defaultValue={this.props.user.displayName}
+          defaultValue={this.state.name}
           floatingLabelText="Display name"
           fullWidth
         />
@@ -86,16 +110,28 @@ export default class Profile extends Component {
           <IconButton
             style={{flexGrow: 1}}
             iconClassName="material-icons"
-            onTouchTap={this._handleTouchTap.bind(this)}
+            onTouchTap={this._handleFileButtonTouchTap.bind(this)}
             >
               attach_file
           </IconButton>
         </div>
         <RaisedButton
-          backgroundColor={Color.green500}
+          backgroundColor={Color.orange600}
           onTouchTap={this._handleRequestSaveSettings.bind(this)}
           primary
           label="Save settings"/>
+      </div>;
+    return isEmpty(user) ?
+    <Spinner /> :
+    (
+      <div style={{textAlign: "center", padding:"1em 0 0 0"}}>
+        <Avatar
+          size={200}
+          src={this.state.avatar}
+        />
+        { content }
+        { snack }
+        <Friends user={user}/>
       </div>
     );
   }
@@ -103,5 +139,5 @@ export default class Profile extends Component {
 
 Profile.propTypes = {
   user: PropTypes.object,
-  editUser: PropTypes.func
+  editProfile: PropTypes.func
 };

@@ -3,6 +3,7 @@ import MovieDetailsDescription from './MovieDetailsDescription';
 import ListsManager from './ListsManager';
 import ScrollTop from '../../Widgets/ScrollTop';
 import Spinner from '../../Widgets/Spinner';
+import { isEmpty } from 'lodash';
 import CommentsManager from '../../Comments';
 
 export default class MovieDetails extends Component {
@@ -25,13 +26,18 @@ export default class MovieDetails extends Component {
   }
 
   render() {
-    const { movie } = this.props;
+    const { movie, user } = this.props;
     const { loading } = this.state;
     const idCommented = !loading ? movie.ids.trakt : null;
+    const listManager = isEmpty(user) ?
+      null
+      :
+      <ListsManager movie={movie} idMovie={idCommented}/>;
+
     return !loading ? (
       <div>
         <MovieDetailsDescription movie={movie} idMovie={idCommented}/>
-        <ListsManager movie={movie} idMovie={idCommented}/>
+        { listManager }
         <CommentsManager idCommented={idCommented}/>
         <ScrollTop />
       </div>
@@ -43,6 +49,7 @@ export default class MovieDetails extends Component {
 
 MovieDetails.propTypes = {
   movie: PropTypes.object,
+  user: PropTypes.object,
   idCommented: PropTypes.string,
   registerListeners: PropTypes.func,
   unregisterListeners: PropTypes.func,

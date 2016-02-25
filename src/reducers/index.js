@@ -4,8 +4,8 @@ import lists from './lists';
 import entries from './entries';
 import movies from './movies';
 import comments from './comments';
-import users from './users';
 import userLikes from './userLikes';
+import auth from './auth';
 import userDislikes from './userDislikes';
 import userRatings from './userRatings';
 import posts from './posts';
@@ -14,13 +14,14 @@ import watchedMovie from './watchedMovie';
 import watchedList from './watchedList';
 import watchedEntries from './watchedEntries';
 import updatedMovies from './updatedMovies';
+import user from './user';
 
 export default combineReducers({
   lists,
   entries,
   movies,
   comments,
-  users,
+  auth,
   userLikes,
   userDislikes,
   userRatings,
@@ -30,5 +31,6 @@ export default combineReducers({
   watchedMovie,
   watchedList,
   watchedEntries,
-  updatedMovies
+  updatedMovies,
+  user
 });

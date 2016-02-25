@@ -38,7 +38,7 @@ export default class EntriesList extends Component {
   }
 
   render() {
-    const { movies, removeEntry, list, navigate, user } = this.props;
+    const { movies, removeEntry, list, navigate, user, owner } = this.props;
     const snackBar = (
         <Snackbar
         ref="snack"
@@ -64,6 +64,7 @@ export default class EntriesList extends Component {
               handleSnackBarRequest={this._handleSnackBarRequest.bind(this)}
               idList={list.id}
               user={user}
+              owner={owner}
             />)
         )}
       {snackBar}
@@ -78,7 +79,8 @@ EntriesList.propTypes = {
   movies: PropTypes.array,
   addEntry: PropTypes.func,
   removeEntry: PropTypes.func,
-  navigate: PropTypes.func
+  navigate: PropTypes.func,
+  owner: PropTypes.bool
 };
 
 EntriesList.defaultProps = {

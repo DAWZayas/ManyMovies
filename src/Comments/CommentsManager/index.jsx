@@ -4,10 +4,10 @@ import CommentsManager from './CommentsManager';
 
 
 function mapStateToProps(state) {
-  const { comments, users } = state;
+  const { comments, user } = state;
   return {
     comments,
-    user: users.Gotre
+    user
   };
 }
 

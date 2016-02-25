@@ -92,13 +92,14 @@ export default class ListDetails extends Component {
 
   render() {
     const { loading } = this.state;
-    const { list, addEntry, removeEntry, navigate, movies, user } = this.props;
+    const { list, addEntry, removeEntry, navigate, movies, user, params } = this.props;
 
     if (loading || isEmpty(list)){
       return <Spinner/>;
     }
 
     const custom = list.custom;
+    const owner = params.user === user.userName;
     const listTitle = list.title;
     const subtitle = list.desc;
     const editDialogActions = [
@@ -163,9 +164,9 @@ export default class ListDetails extends Component {
         </Dialog>
         );
 
-    const cardActions = custom ? (<CardActions
+    const cardActions = (custom && owner) ? (<CardActions
         style={{display: "flex", width: "90%", justifyContent: "space-between", margin: "0 auto"}}
-        expandable={custom}>
+        expandable={custom && owner}>
         <IconButton
           iconClassName="material-icons"
           iconStyle={{color:Color.grey400}}
@@ -205,7 +206,7 @@ export default class ListDetails extends Component {
             titleColor={Color.deepOrange500}
             subtitle={subtitle}
             subtitleStyle={{width: "90%", textAlign: "justify"}}
-            showExpandableButton={custom}/>
+            showExpandableButton={custom && owner}/>
           {social}
           {cardActions}
           {editDialog}
@@ -223,6 +224,7 @@ export default class ListDetails extends Component {
                 list={list}
                 movies={movies}
                 user={user}
+                owner={owner}
               />
             </Tab>
             <Tab style={{backgroundColor: Colors.orange600}}

@@ -216,9 +216,17 @@ export default class MovieDetailsDescription extends Component{
   }
 
   render(){
-    const { movie } = this.props;
+    const { movie, user } = this.props;
     const voteCount = movie.votes === 0 ? 'No votes' : movie.votes === 1 ? ' 1 vote' : movie.votes + ' votes';
     const percentRating = movie.votes === 0 ? '' : `${Math.round(movie.totalRating * 10 / movie.votes)} %`;
+    const ratingWrap = isEmpty(user) ?
+      null
+      :
+      (<div className="ratings-wrapper">
+        <FontIcon onClick={this._showPopover.bind(this)} style={{cursor: 'pointer'}} color={Color.red500} className="material-icons">favorite_border</FontIcon>
+        <span  ref="anchorEl" onClick={this._showPopover.bind(this)} style={{marginLeft: '0.5em', cursor: 'pointer'}}>{this._getRatingText.bind(this)()}</span>
+      </div>);
+
     return(
       <Card>
           <MovieDetailsHeader movie={movie} />
@@ -236,10 +244,7 @@ export default class MovieDetailsDescription extends Component{
               </div>
               <hr/>
               <p style={{fontStyle: "italic"}}>{movie.tagline}</p>
-              <div className="ratings-wrapper">
-                <FontIcon onClick={this._showPopover.bind(this)} style={{cursor: 'pointer'}} color={Color.red500} className="material-icons">favorite_border</FontIcon>
-                <span  ref="anchorEl" onClick={this._showPopover.bind(this)} style={{marginLeft: '0.5em', cursor: 'pointer'}}>{this._getRatingText.bind(this)()}</span>
-              </div>
+              { ratingWrap }
               {this._getPopover.bind(this)()}
               {this._getTrailer.bind(this)()}
               <br style={{clear: 'both'}}/>

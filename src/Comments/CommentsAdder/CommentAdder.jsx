@@ -8,6 +8,7 @@ import Avatar from 'material-ui/lib/avatar';
 import IconButton from 'material-ui/lib/icon-button';
 import Colors from 'material-ui/lib/styles/colors';
 import { allTrim } from '../../utils';
+import { isEmpty } from 'lodash';
 
 export default class CommentAdder extends Component {
 
@@ -68,9 +69,10 @@ export default class CommentAdder extends Component {
   }
 
   render() {
+    const { user } = this.props;
     const userAvatar = (
       <Avatar
-        src={this.props.user.avatarUrl}
+        src={user.avatarUrl}
       />
     );
     const cardBody = (
@@ -107,12 +109,15 @@ export default class CommentAdder extends Component {
         </CardActions>
       ) : '';
 
-    return (
+    return isEmpty(user) ?
+      null
+     :
+     (
       <Card style={{margin: "0 0 1em 0", backgroundColor: Colors.grey200}}>
         <CardText style={{fontSize: "1.5em", backgroundColor: Colors.white }}><b>Post</b> a new comment</CardText>
         <CardHeader
           style={{backgroundColor: Colors.grey300}}
-          title={<span>Commenting as <span style={{color: Colors.deepOrange900, fontWeight: "bold"}}>{this.props.user.displayName}</span></span>}
+          title={<span>Commenting as <span style={{color: Colors.deepOrange900, fontWeight: "bold"}}>{user.displayName}</span></span>}
           avatar={userAvatar}
         />
         {cardBody}

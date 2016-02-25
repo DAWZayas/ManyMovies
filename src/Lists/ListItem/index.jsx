@@ -15,14 +15,14 @@ export default class ListItem extends Component {
   }
 
   render() {
-    const { list, user } = this.props;
+    const { list } = this.props;
     const title = list.title;
     const firstLetter = title[0];
     return (
         <UiListItem
           primaryText={title}
           leftAvatar={<Avatar>{firstLetter}</Avatar>}
-          secondaryText={`By: ${user.displayName}`}
+          secondaryText={`${list.desc}`}
           style={{color: Color.deepOrange500}}
           onTouchTap={this.handleTouchTap(list)}
           />

@@ -4,7 +4,8 @@ import IconButton from 'material-ui/lib/icon-button';
 import Color from 'material-ui/lib/styles/colors';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import IconMenu from 'material-ui/lib/menus/icon-menu';
-
+import { isEmpty } from 'lodash';
+import { userUid } from '../../utils';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
@@ -12,6 +13,11 @@ export default class App extends Component {
 
   constructor(props) {
     super(props);
+  }
+
+  componentWillMount(){
+    const { registerListeners, auth } = this.props;
+    auth.uid && registerListeners(userUid(auth.uid));
   }
 
   componentDidMount(){
@@ -29,16 +35,31 @@ export default class App extends Component {
     }
   }
 
+  componentWillReceiveProps(nextProps){
+    const { registerListeners, unregisterListeners, auth } = this.props;
+    if (nextProps.auth.uid !== auth.uid){
+      auth.uid && unregisterListeners(userUid(auth.uid));
+      nextProps.auth.uid && registerListeners(userUid(nextProps.auth.uid));
+    }
+  }
+
   componentWillUnmount(){
     annyang = null;
+    const { unregisterListeners, auth } = this.props;
+    auth.uid && unregisterListeners(userUid(auth.uid));
   }
 
   _handleTouchTap(e){
-    let path = e.target.innerHTML.toLowerCase();
+    const path = e.target.innerHTML.toLowerCase().replace(' ', '');
     this.props.navigate(`/${path}`);
   }
 
+  _handleLogOutClick(){
+    this.props.logOut();
+  }
+
   render() {
+    const { auth, user } = this.props;
     const style = {
       backgroundColor: Color.orange600
     };
@@ -57,13 +78,22 @@ export default class App extends Component {
                   iconClassName="glyphicon glyphicon-align-justify"/>
               }
             >
-              <MenuItem style={{padding: '0 1.5em'}} primaryText="SignIn" onTouchTap={this._handleTouchTap.bind(this)} />
-              <MenuItem style={{padding: '0 1.5em'}} primaryText="News" onTouchTap={this._handleTouchTap.bind(this)} />
-              <MenuItem style={{padding: '0 1.5em'}} primaryText="Profile" onTouchTap={this._handleTouchTap.bind(this)} />
-              <MenuItem style={{padding: '0 1.5em'}} primaryText="Lists" onTouchTap={this._handleTouchTap.bind(this)} />
-              <MenuItem style={{padding: '0 1.5em'}} primaryText="Movies" onTouchTap={this._handleTouchTap.bind(this)} />
-              <MenuItem style={{padding: '0 1.5em'}} primaryText="Premieres" onTouchTap={this._handleTouchTap.bind(this)} />
-              <MenuItem style={{padding: '0 1.5em'}} primaryText="Admin" onTouchTap={this._handleTouchTap.bind(this)} />
+              { !isEmpty(auth) ?
+                <div>
+                  <MenuItem style={{padding: '0 1.5em'}} primaryText="Log out" onTouchTap={this._handleLogOutClick.bind(this)} />
+                  <MenuItem style={{padding: '0 1.5em'}} primaryText="Profile" onTouchTap={this._handleTouchTap.bind(this)} />
+                  <MenuItem style={{padding: '0 1.5em'}} primaryText="Lists" onTouchTap={this._handleTouchTap.bind(this)} />
+                </div>
+                :
+                <MenuItem style={{padding: '0 1.5em'}} primaryText="Sign in" onTouchTap={this._handleTouchTap.bind(this)} />
+              }
+              { user.admin ?
+                <MenuItem style={{padding: '0 1.5em'}} primaryText="Admin" onTouchTap={this._handleTouchTap.bind(this)} /> :
+                <div></div>
+              }
+                <MenuItem style={{padding: '0 1.5em'}} primaryText="News" onTouchTap={this._handleTouchTap.bind(this)} />
+                <MenuItem style={{padding: '0 1.5em'}} primaryText="Movies" onTouchTap={this._handleTouchTap.bind(this)} />
+                <MenuItem style={{padding: '0 1.5em'}} primaryText="Premieres" onTouchTap={this._handleTouchTap.bind(this)} />
             </IconMenu>
             }
         />
@@ -75,6 +105,15 @@ export default class App extends Component {
 
 App.propTypes = {
   // Injected by React Router
+  logOut: PropTypes.func,
+  auth: PropTypes.object,
+  user: PropTypes.object,
   children: PropTypes.node,
-  navigate: PropTypes.func
+  navigate: PropTypes.func,
+  registerListeners: PropTypes.func,
+  unregisterListeners: PropTypes.func
+};
+
+App.defaultProps = {
+  user: {}
 };

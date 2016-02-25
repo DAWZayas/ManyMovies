@@ -2,11 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import Card from 'material-ui/lib/card/card';
 import CardText from 'material-ui/lib/card/card-text';
 import CardTitle from 'material-ui/lib/card/card-title';
-import ImageWithPlaceholder from './ImageWithPlaceholder';
+import ImageWithPlaceholder from '../Widgets/ImageWithPlaceholder';
 import Colors from 'material-ui/lib/styles/colors';
 import defaultPosterSrc from '../../images/mm-poster.png';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
 
 export default class Premieres extends Component {
 

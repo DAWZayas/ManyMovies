@@ -3,9 +3,10 @@ import MovieDetails from './MovieDetails';
 import { registerListeners, unregisterListeners } from './listeners';
 
 function mapStateToProps(state) {
-  const { watchedMovie } = state;
+  const { watchedMovie, user } = state;
   return {
     movie: watchedMovie,
+    user
   };
 }
 

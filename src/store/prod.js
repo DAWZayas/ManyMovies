@@ -4,6 +4,7 @@ import createHistory from 'history/lib/createHashHistory';
 import reducer from '../reducers';
 import routes from '../routes';
 import thunk from 'redux-thunk';
+import { initUser } from '../Login/actions/creators';
 
 const createStoreWithMiddleware = compose(
   applyMiddleware(thunk),
@@ -11,5 +12,7 @@ const createStoreWithMiddleware = compose(
 )(createStore);
 
 export default function configureStore(initialState = {}) {
-  return createStoreWithMiddleware(reducer, initialState);
+  const store = createStoreWithMiddleware(reducer, initialState);
+  store.dispatch(initUser());
+  return store;
 }

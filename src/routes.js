@@ -4,13 +4,14 @@ import ListsContainer from './Lists';
 import ListDetailsContainer from './Lists/ListDetails';
 import MoviesContainer from './Movies';
 import GenresContainer from './Movies/ByGenre';
-import ProfileContainer from './containers/ProfileContainer';
+import ProfileContainer from './Profile';
 import App from './App';
 import Admin from './Admin';
 import MovieDetailsContainer from './Movies/MovieDetails';
-import PremieresContainer from './containers/PremieresContainer';
+import PremieresContainer from './Premieres';
 import NewsContainer from './News';
 import NewsDetailsContainer from './News/NewsDetails';
+import SignInContainer from './Login';
 
 export default (
   <Route path="/" component={App}>
@@ -23,6 +24,7 @@ export default (
     <Route path="premieres" component={PremieresContainer} />
     <Route path="news" component={NewsContainer} />
     <Route path="news/:newsSlug" component={NewsDetailsContainer} />
+    <Route path="signin" component={SignInContainer} />
     <Route path="admin" component={Admin} />
     <IndexRoute component={NewsContainer} />
     <Redirect path="*" to="/" />

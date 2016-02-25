@@ -6,9 +6,6 @@ import { getDocHeight } from '../utils';
 import Toggle from 'material-ui/lib/toggle';
 import Colors from 'material-ui/lib/styles/colors';
 import CircularProgress from 'material-ui/lib/circular-progress';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
-
 const PAGE_SIZE = 10;
 
 export default class Premieres extends Component {
@@ -99,5 +96,6 @@ Premieres.propTypes = {
 };
 
 Premieres.defaultProps = {
-  premieres: []
+  premieres: [],
+  watchlistEntries: []
 };

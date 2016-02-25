@@ -5,9 +5,9 @@ import { updateAllMovies, addMovie } from './side-actions';
 import Admin from './Admin/';
 
 const mapStateToProps = state => {
-  const { movies, updatedMovies } = state;
+  const { movies, updatedMovies, user } = state;
   return {
-    user: state.users.Gotre,
+    user,
     movies,
     updatedMovies
   };

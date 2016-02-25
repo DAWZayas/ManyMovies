@@ -5,6 +5,7 @@ import createHistory from 'history/lib/createHashHistory';
 import reducer from '../reducers';
 import routes from '../routes';
 import thunk from 'redux-thunk';
+import { initUser } from '../Login/actions/creators';
 import DevTools from '../containers/DevTools';
 import createLogger from 'redux-logger';
 
@@ -32,6 +33,8 @@ export default function configureStore(initialState = {}) {
       store.replaceReducer(nextRootReducer);
     });
   }
+
+  store.dispatch(initUser());
 
   return store;
 }

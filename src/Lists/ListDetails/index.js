@@ -6,10 +6,11 @@ import { addEntry, removeEntry } from '../side-actions';
 import { pushState } from 'redux-router';
 
 function mapStateToProps(state) {
+  const { watchedList, user, watchedEntries } = state;
   return {
-    list: state.watchedList,
-    user: state.users.Gotre,
-    movies: state.watchedEntries
+    list: watchedList,
+    user,
+    movies: watchedEntries
   };
 }
 

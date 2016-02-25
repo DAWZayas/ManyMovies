@@ -3,7 +3,7 @@ import { createComment } from './side-actions.js';
 import CommentAdder from './CommentAdder';
 
 function mapStateToProps(state) {
-  const user = state.users.Gotre;
+  const  { user } = state;
   return { user };
 }
 

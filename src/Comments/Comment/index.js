@@ -4,7 +4,7 @@ import { registerListeners, unregisterListeners } from './listeners';
 import { removeComment, editComment, likeComment, unlikeComment, dislikeComment, undislikeComment, unlikeAndDislikeComment, undislikeAndLikeComment } from './side-actions.js';
 
 function mapStateToProps(state, ownProp) {
-  const user = state.users.Gotre;
+  const { user } = state;
   const isLiked = Object.keys(state.userLikes).indexOf(ownProp.comment.id) !== -1;
   const isDisliked = Object.keys(state.userDislikes).indexOf(ownProp.comment.id) !== -1;
   return { user, isLiked, isDisliked };

@@ -10,7 +10,7 @@ import IconButton from 'material-ui/lib/icon-button';
 import Dialog from 'material-ui/lib/dialog';
 import FlatButton from 'material-ui/lib/flat-button';
 import Colors from 'material-ui/lib/styles/colors';
-import { throttle } from 'lodash';
+import { throttle, isEmpty } from 'lodash';
 import { formatDate } from '../../utils/date';
 import { relativeScore } from '../../utils';
 import defaultAvatar from '../../../images/avatar.png';
@@ -216,7 +216,10 @@ export default class Comment extends Component {
   }
 
   _getLikeIcon(){
-    const { isLiked, isDisliked } = this.props;
+    const { isLiked, isDisliked, user } = this.props;
+    if (isEmpty(user)){
+      return null;
+    }
     const buttonAction = isLiked ? this._handleUnlike.bind(this) :
                          isDisliked ? this._handleUndislikeAndLike.bind(this) :
                          this._handleLike.bind(this);
@@ -230,7 +233,10 @@ export default class Comment extends Component {
   }
 
   _getDislikeIcon(){
-    const { isLiked, isDisliked } = this.props;
+    const { isLiked, isDisliked, user } = this.props;
+    if (isEmpty(user)){
+      return null;
+    }
     const buttonAction = isDisliked ? this._handleUnDislike.bind(this) :
                          isLiked ? this._handleUnlikeAndDislike.bind(this) :
                          this._handleDislike.bind(this);

@@ -5,8 +5,7 @@ import { rateMovie, changeMovieRating } from './side-actions.js';
 import { throttle } from 'lodash';
 
 function mapStateToProps(state) {
-  const user = state.users.Gotre;
-  const { userRatings } = state;
+  const { userRatings, user } = state;
   return { user, userRating: userRatings };
 }
 

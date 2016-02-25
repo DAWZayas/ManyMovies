@@ -4,9 +4,9 @@ import { registerListeners, unregisterListeners } from './listeners';
 import Movies from './Movies';
 
 function mapStateToProps(state) {
-  const { movies } = state;
+  const { movies, user } = state;
   return {
-    movies
+    movies, user
   };
 }
 

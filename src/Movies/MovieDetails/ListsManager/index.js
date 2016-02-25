@@ -4,11 +4,11 @@ import { registerListeners, unregisterListeners } from './listeners';
 import ListsManager from './ListsManager';
 
 function mapStateToProps(state) {
-  const { lists, entries, users } = state;
+  const { lists, entries, user } = state;
   return {
     lists,
     entries,
-    user: users.Gotre
+    user
   };
 }
 
