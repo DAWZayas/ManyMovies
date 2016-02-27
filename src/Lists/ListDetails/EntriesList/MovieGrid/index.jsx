@@ -41,7 +41,7 @@ export default class MovieGrid extends Component {
             onTouchTap={this._handleRemoveTouchTap.bind(this)}
           >highlight_off
           </IconButton> :
-          null
+          <span/>
         }
       >
         <img src={this.state.src} alt={movie.title}/>

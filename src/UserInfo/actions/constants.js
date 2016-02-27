@@ -1,0 +1,1 @@
+export const SET_WATCHED_USER = 'SET_WATCHED_USER';

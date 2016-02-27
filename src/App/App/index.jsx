@@ -78,6 +78,7 @@ export default class App extends Component {
                   iconClassName="glyphicon glyphicon-align-justify"/>
               }
             >
+            <MenuItem style={{padding: '0 1.5em'}} primaryText="userinfo" onTouchTap={() => this.props.navigate('/userinfo/twitter612057739')} />
               { !isEmpty(auth) ?
                 <div>
                   <MenuItem style={{padding: '0 1.5em'}} primaryText="Log out" onTouchTap={this._handleLogOutClick.bind(this)} />

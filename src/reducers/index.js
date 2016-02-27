@@ -15,6 +15,7 @@ import watchedList from './watchedList';
 import watchedEntries from './watchedEntries';
 import updatedMovies from './updatedMovies';
 import user from './user';
+import watchedUser from './watchedUser';
 
 export default combineReducers({
   lists,
@@ -32,5 +33,6 @@ export default combineReducers({
   watchedList,
   watchedEntries,
   updatedMovies,
-  user
+  user,
+  watchedUser
 });
