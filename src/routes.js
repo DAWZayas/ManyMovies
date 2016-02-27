@@ -13,6 +13,8 @@ import NewsContainer from './News';
 import NewsDetailsContainer from './News/NewsDetails';
 import SignInContainer from './Login';
 
+import UserInfoContainer from './UserInfo';
+
 export default (
   <Route path="/" component={App}>
     <Route path="profile" component={ProfileContainer} />
@@ -26,6 +28,8 @@ export default (
     <Route path="news/:newsSlug" component={NewsDetailsContainer} />
     <Route path="signin" component={SignInContainer} />
     <Route path="admin" component={Admin} />
+    <Route path="userinfo/:idUser" component={UserInfoContainer} />
+
     <IndexRoute component={NewsContainer} />
     <Redirect path="*" to="/" />
   </Route>
