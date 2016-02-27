@@ -8,7 +8,7 @@ import FontIcon from 'material-ui/lib/font-icon';
 import Dialog from '../../../node_modules/material-ui/lib/dialog';
 import TextField from 'material-ui/lib/text-field';
 import FlatButton from 'material-ui/lib/flat-button';
-import { allTrim } from '../../utils';
+import { allTrim, userUid } from '../../utils';
 
 export default class Lists extends Component {
 
@@ -21,7 +21,8 @@ export default class Lists extends Component {
   }
 
   componentWillMount() {
-    this.props.registerListeners(this.props.user.userName);
+    const { auth } = this.props;
+    this.props.registerListeners(userUid(auth.uid));
   }
 
   componentWillReceiveProps() {
@@ -29,7 +30,8 @@ export default class Lists extends Component {
   }
 
   componentWillUnmount() {
-    this.props.unregisterListeners(this.props.user.userName);
+    const { auth } = this.props;
+    this.props.unregisterListeners(userUid(auth.uid));
   }
 
   _handleButtonTouchTap() {
@@ -144,6 +146,7 @@ Lists.propTypes = {
   navigate: PropTypes.func,
   createList: PropTypes.func,
   user: PropTypes.object,
+  auth: PropTypes.object,
   registerListeners: PropTypes.func.isRequired,
   unregisterListeners: PropTypes.func.isRequired
 };

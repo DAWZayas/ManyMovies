@@ -15,7 +15,6 @@ function mapDispatchToProps(dispatch) {
     navigate: path => dispatch(pushState(null, path)),
     registerListeners: (title, page) => registerListeners(dispatch, title, page),
     unregisterListeners: () => unregisterListeners(dispatch)
-
   };
 }
 

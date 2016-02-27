@@ -3,8 +3,7 @@ import PremiereItem from './PremiereItem';
 import { isEqual, values } from 'lodash';
 import $ from 'jquery';
 import { getDocHeight } from '../../utils';
-import Colors from 'material-ui/lib/styles/colors';
-import CircularProgress from 'material-ui/lib/circular-progress';
+import Spinner from '../../Widgets/Spinner';
 
 export default class Premieres extends Component {
 
@@ -52,12 +51,7 @@ export default class Premieres extends Component {
   render() {
     const { navigate, premieres } = this.props;
     const progress = this.state.loading ?
-      <div style={{display: 'flex', justifyContent: 'center'}}>
-        <CircularProgress
-          mode="indeterminate"
-          color={Colors.deepOrange900}
-        />
-      </div>
+      <Spinner/>
       :
       null;
     return (

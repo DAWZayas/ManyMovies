@@ -3,7 +3,7 @@ import Avatar from 'material-ui/lib/avatar';
 import RaisedButton from 'material-ui/lib/raised-button';
 import Color from 'material-ui/lib/styles/colors';
 import { isEqual, isEmpty } from 'lodash';
-import Friends from '../Friends/Friends';
+import Friends from '../Friends';
 import TextField from 'material-ui/lib/text-field';
 import IconButton from 'material-ui/lib/icon-button';
 import Snackbar from 'material-ui/lib/snackbar';
@@ -48,8 +48,13 @@ export default class Profile extends Component {
       displayNameNode.clearValue();
     }else {
       displayNameNode.setValue(displayName);
-      this.props.editProfile(displayName, this.state.avatar, this.stopEditing());
+      this.props.editProfile(displayName, this.state.avatar);
+      this.stopEditing();
     }
+  }
+
+  _handleRequestCancelSettings(){
+    this.stopEditing();
   }
 
   _handleFileChange(){
@@ -85,7 +90,7 @@ export default class Profile extends Component {
             <h2>{this.state.name}</h2>
             <RaisedButton label="Edit" onTouchTap={this._handleEditButtonTouchTap.bind(this)}/>
           </div>
-        : <div style={{textAlign: "center", padding:"1em 0 0 0"}}>
+        : <div style={{textAlign: "center", padding:"1em"}}>
         <TextField
           ref="displayName"
           hintText="Display name"
@@ -116,10 +121,16 @@ export default class Profile extends Component {
           </IconButton>
         </div>
         <RaisedButton
-          backgroundColor={Color.orange600}
+          backgroundColor={Color.green600}
           onTouchTap={this._handleRequestSaveSettings.bind(this)}
+          style={{marginRight: '1em'}}
           primary
-          label="Save settings"/>
+          label="Save"/>
+        <RaisedButton
+          backgroundColor={Color.red600}
+          onTouchTap={this._handleRequestCancelSettings.bind(this)}
+          primary
+          label="Cancel"/>
       </div>;
     return isEmpty(user) ?
     <Spinner /> :
@@ -131,7 +142,7 @@ export default class Profile extends Component {
         />
         { content }
         { snack }
-        <Friends user={user}/>
+        <Friends />
       </div>
     );
   }

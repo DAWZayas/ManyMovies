@@ -4,14 +4,10 @@ import UiListItem from 'material-ui/lib/lists/list-item';
 import Avatar from 'material-ui/lib/avatar';
 
 export default class ListItem extends Component {
-  handleTouchTap(list) {
-    const { navigate, user } = this.props;
+  handleTouchTap() {
+    const { navigate, user, list } = this.props;
     const slug = list.slug;
-    return function(){
-      return setTimeout(() => {
-        navigate(`/lists/${user.userName}/${slug}`);
-      }, 10);
-    };
+    navigate(`/lists/${user.userName}/${slug}`);
   }
 
   render() {
@@ -24,7 +20,7 @@ export default class ListItem extends Component {
           leftAvatar={<Avatar>{firstLetter}</Avatar>}
           secondaryText={`${list.desc}`}
           style={{color: Color.deepOrange500}}
-          onTouchTap={this.handleTouchTap(list)}
+          onTouchTap={this.handleTouchTap.bind(this)}
           />
     );
   }

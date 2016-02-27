@@ -8,21 +8,30 @@ export default class FollowList extends Component {
   constructor(props) {
     super(props);
   }
+
+  _handleTouchTap(userName) {
+    const { navigate } = this.props;
+    navigate(`/userinfo/${userName}`);
+  }
+
   render () {
-    const { rightIcon, user } = this.props;
+    const { users } = this.props;
     return (
         <List>
-          <ListItem
-            primaryText={user.displayName}
-            leftAvatar={<Avatar src={user.avatarUrl} />}
-            rightIcon={rightIcon}
-          />
+          {
+            users.map(user => <ListItem
+              key={user.userName}
+              primaryText={user.displayName}
+              leftAvatar={<Avatar src={user.avatarUrl} />}
+              onTouchTap={this._handleTouchTap.bind(this, user.userName)}
+            /> )
+          }
         </List>
     );
   }
 }
 
 FollowList.propTypes = {
-  rightIcon: PropTypes.object,
-  user: PropTypes.object
+  users: PropTypes.array,
+  navigate: PropTypes.func
 };

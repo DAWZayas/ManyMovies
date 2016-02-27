@@ -7,13 +7,14 @@ import { createList } from './side-actions';
 
 function mapStateToProps(state) {
   const defaultSlugs = ['history', 'collection', 'watchlist'];
-  const { lists, user } = state;
+  const { lists, user, auth } = state;
   const customLists = sortBy(lists.filter(list => list.custom), 'title');
   const defaultLists = sortBy(lists.filter(list => defaultSlugs.indexOf(list.slug) !== -1), 'title');
   return {
     defaultLists,
     lists: customLists,
-    user
+    user,
+    auth
   };
 }
 
