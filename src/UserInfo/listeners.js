@@ -1,4 +1,4 @@
-import { setWatchedUser, setWatchedUserFollowers, setWatchedUserFollowing } from './actions/creators';
+import { setWatchedUser, setWatchedUserFollowers, setWatchedUserFollowing, clearWatchedUser, clearWatchedUserFollowers, clearWatchedUserFollowing } from './actions/creators';
 import { setFollowingUsers } from '../Friends/actions/creators';
 import { setLists } from '../Lists/actions/creators';
 import firebase from '../utils/firebase';
@@ -41,10 +41,18 @@ export function registerListeners(dispatch, params, auth) {
   });
 }
 
-export function unregisterListeners(dispatch, params) {
+export function unregisterListeners(dispatch, params, auth) {
+  dispatch(clearWatchedUser());
+  dispatch(clearWatchedUserFollowers());
+  dispatch(clearWatchedUserFollowing());
   const ref = firebase.child(`users/${params.idUser}`);
   const refList = firebase.child(`lists/${params.idUser}`);
+  if (!isEmpty(auth)){
+    const id = userUid(auth.uid);
+
+    const followingRef = firebase.child(`following/${id}/`);
+    followingRef.off();
+  }
   ref.off();
   refList.off();
-  dispatch(setWatchedUser({}));
 }

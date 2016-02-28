@@ -26,6 +26,14 @@ export default class UserInfo extends Component {
     registerListeners(params, auth);
   }
 
+  componentDidUpdate(prevProps){
+    const { registerListeners, unregisterListeners, params } = this.props;
+    if (prevProps.params.idUser !== params.idUser) {
+      unregisterListeners(prevProps.params);
+      registerListeners(params);
+    }
+  }
+
   componentWillUnmount() {
     const { unregisterListeners, params, auth } = this.props;
     unregisterListeners(params, auth);
