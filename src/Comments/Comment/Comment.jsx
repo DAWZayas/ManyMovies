@@ -125,6 +125,11 @@ export default class Comment extends Component {
     this.setState({ hidingBadComment: false});
   }
 
+  _handleCreatorTouchTap(user){
+    const { navigate } = this.props;
+    navigate(`/userinfo/${user}`);
+  }
+
   _submitChanges(){
     const { editComment, comment, idCommented } = this.props;
     const { id } = comment;
@@ -313,7 +318,7 @@ export default class Comment extends Component {
     const cardHeader = (
       <CardHeader
         style={{backgroundColor: Colors.grey300}}
-        title={<span>Commented by <span style={{color: Colors.deepOrange900, fontWeight: "bolder"}}>{this.state.creator.displayName}</span></span>}
+        title={<span>Commented by <span onTouchTap={this._handleCreatorTouchTap.bind(this, this.state.creator.userName)} style={{cursor: 'pointer', color: Colors.deepOrange900, fontWeight: "bolder"}}>{this.state.creator.displayName}</span></span>}
         subtitle={formatDate(time)}
         subtitleStyle={{color: Colors.grey700}}
         avatar={userAvatar}
@@ -353,6 +358,7 @@ export default class Comment extends Component {
 
 Comment.propTypes = {
   registerListeners: PropTypes.func,
+  navigate: PropTypes.func,
   unregisterListeners: PropTypes.func,
   user: PropTypes.object,
   comment: PropTypes.object,

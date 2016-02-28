@@ -63,7 +63,9 @@ export function signIn(authData, dispatch) {
 }
 
 export function logOut(dispatch){
-  firebase.unauth();
-  dispatch(logOutSuccess());
   dispatch(pushState(null, '/news'));
+  setTimeout(function() {
+    firebase.unauth();
+    dispatch(logOutSuccess());
+  }, 100);
 }

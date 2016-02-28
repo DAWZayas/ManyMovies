@@ -1,20 +1,23 @@
 import { connect } from 'react-redux';
 import { pushState } from 'redux-router';
 import { registerListeners, unregisterListeners } from './listeners';
+import { addEntry, removeEntry } from '../Lists/side-actions';
 import Premieres from './Premieres';
 
 function mapStateToProps(state) {
-  const { movies, user } = state;
+  const { movies, auth, wishedMovies } = state;
   return {
-    premieres: movies, user
+    premieres: movies, auth, wishedMovies
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     navigate: path => dispatch(pushState(null, path)),
-    registerListeners: page => registerListeners(dispatch, page),
-    unregisterListeners: () => unregisterListeners(dispatch)
+    registerListeners: (page, auth) => registerListeners(dispatch, page, auth),
+    unregisterListeners: auth => unregisterListeners(dispatch, auth),
+    addEntry: (idCollection, idEntry, idUser) => addEntry(idCollection, idEntry, idUser),
+    removeEntry: (idCollection, idEntry, idUser) => removeEntry(idCollection, idEntry, idUser)
 
   };
 }

@@ -17,7 +17,8 @@ export default class Premieres extends Component {
   }
 
   componentWillMount(){
-    this.props.registerListeners(this.state.page);
+    const { registerListeners, auth } = this.props;
+    registerListeners(this.state.page, auth);
   }
 
   componentDidMount(){
@@ -29,13 +30,15 @@ export default class Premieres extends Component {
   }
 
   componentWillUpdate(nextProps, nextState){
+    const { registerListeners } = this.props;
     if (!isEqual(this.state, nextState) && !this.state.loading) {
-      this.props.registerListeners(nextState.page);
+      registerListeners(nextState.page);
     }
   }
 
   componentWillUnmount(){
-    this.props.unregisterListeners();
+    const { unregisterListeners, auth } = this.props;
+    unregisterListeners(auth);
     window.removeEventListener("scroll", this.state.loadMoreHandler);
   }
 
@@ -49,7 +52,7 @@ export default class Premieres extends Component {
   }
 
   render() {
-    const { navigate, premieres } = this.props;
+    const { navigate, premieres, wishedMovies, addEntry, removeEntry, auth } = this.props;
     const progress = this.state.loading ?
       <Spinner/>
       :
@@ -57,7 +60,7 @@ export default class Premieres extends Component {
     return (
       <div>
         {
-          values(premieres).map(premiere => <PremiereItem navigate={navigate} key={premiere.ids.trakt} premiere={premiere}/>)
+          values(premieres).map(premiere => <PremiereItem auth={auth} addEntry={addEntry} removeEntry={removeEntry} wishedMovies={wishedMovies} navigate={navigate} key={premiere.ids.trakt} premiere={premiere}/>)
         }
         {progress}
       </div>
@@ -68,8 +71,12 @@ export default class Premieres extends Component {
 Premieres.propTypes = {
   premieres: PropTypes.object,
   navigate: PropTypes.func,
+  wishedMovies: PropTypes.object,
   registerListeners: PropTypes.func,
-  unregisterListeners: PropTypes.func
+  unregisterListeners: PropTypes.func,
+  addEntry: PropTypes.func,
+  removeEntry: PropTypes.func,
+  auth: PropTypes.object
 };
 
 Premieres.defaultProps = {

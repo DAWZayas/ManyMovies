@@ -1,9 +1,14 @@
 import firebase from '../utils/firebase';
 
-export function sendMessage(userName, message, userId, callback){
-	firebase.child(`messages/${userId}`).push({userName, message})
-		.then(
-			callback,
-			error => console.error(error)
-			);
+export function followUser(ownId, userId) {
+  const followingRef = firebase.child(`following/${ownId}/${userId}`);
+  const followersRef = firebase.child(`followers/${userId}/${ownId}`);
+  followingRef.set(userId).then(() => followersRef.set(ownId));
 }
+
+export function unfollowUser(ownId, userId) {
+  const followingRef = firebase.child(`following/${ownId}/${userId}`);
+  const followersRef = firebase.child(`followers/${userId}/${ownId}`);
+  followingRef.remove().then(() => followersRef.remove());
+}
+

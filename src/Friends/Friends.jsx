@@ -35,7 +35,7 @@ export default class Friends extends Component {
     const styles = {
       label: { display: 'flex', justifyContent: 'center', alignItems: 'center' },
       icon: { color: 'white', marginRight: '0.5em' },
-      miniSpinner: { textAlign: 'center' },
+      miniSpinner: { textAlign: 'center', marginBottom: '1em' },
       inkBar: { backgroundColor: Color.deepOrange800, height:"0.3em", marginTop: "-0.3em" },
       tabs: { marginTop: '2em' },
       tab: { backgroundColor: Color.orange600 }

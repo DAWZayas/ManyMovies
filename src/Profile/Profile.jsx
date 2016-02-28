@@ -4,6 +4,8 @@ import RaisedButton from 'material-ui/lib/raised-button';
 import Color from 'material-ui/lib/styles/colors';
 import { isEqual, isEmpty } from 'lodash';
 import Friends from '../Friends';
+import CardTitle from 'material-ui/lib/card/card-title';
+import Card from 'material-ui/lib/card/card';
 import TextField from 'material-ui/lib/text-field';
 import IconButton from 'material-ui/lib/icon-button';
 import Snackbar from 'material-ui/lib/snackbar';
@@ -87,7 +89,7 @@ export default class Profile extends Component {
     />);
     const content = !editing ?
           <div>
-            <h2>{this.state.name}</h2>
+            <CardTitle title={this.state.name}/>
             <RaisedButton label="Edit" onTouchTap={this._handleEditButtonTouchTap.bind(this)}/>
           </div>
         : <div style={{textAlign: "center", padding:"1em"}}>
@@ -135,14 +137,16 @@ export default class Profile extends Component {
     return isEmpty(user) ?
     <Spinner /> :
     (
-      <div style={{textAlign: "center", padding:"1em 0 0 0"}}>
+      <div>
+      <Card style={{textAlign: "center", padding:"1em", margin: "1em"}}>
         <Avatar
           size={200}
           src={this.state.avatar}
         />
         { content }
         { snack }
-        <Friends />
+      </Card>
+      <Friends />
       </div>
     );
   }

@@ -78,23 +78,36 @@ export default class App extends Component {
                   iconClassName="glyphicon glyphicon-align-justify"/>
               }
             >
-            <MenuItem style={{padding: '0 1.5em'}} primaryText="userinfo" onTouchTap={() => this.props.navigate('/userinfo/twitter612057739')} />
+              <MenuItem style={{padding: '0 1.5em'}} primaryText="News" onTouchTap={this._handleTouchTap.bind(this)} />
+              <MenuItem style={{padding: '0 1.5em'}} primaryText="Movies" onTouchTap={this._handleTouchTap.bind(this)} />
+              <MenuItem style={{padding: '0 1.5em'}} primaryText="Premieres" onTouchTap={this._handleTouchTap.bind(this)} />
               { !isEmpty(auth) ?
-                <div>
-                  <MenuItem style={{padding: '0 1.5em'}} primaryText="Log out" onTouchTap={this._handleLogOutClick.bind(this)} />
-                  <MenuItem style={{padding: '0 1.5em'}} primaryText="Profile" onTouchTap={this._handleTouchTap.bind(this)} />
-                  <MenuItem style={{padding: '0 1.5em'}} primaryText="Lists" onTouchTap={this._handleTouchTap.bind(this)} />
-                </div>
-                :
+              <div>
+                <MenuItem style={{padding: '0 1.5em'}} primaryText="Lists" onTouchTap={this._handleTouchTap.bind(this)} />
+                <hr style={{
+                  margin: '-1 0 0 0',
+                  height: 1,
+                  border: 'none',
+                  backgroundColor: Color.grey300
+                }}/>
+                <MenuItem style={{padding: '0 1.5em'}} primaryText="Log out" onTouchTap={this._handleLogOutClick.bind(this)} />
+                <MenuItem style={{padding: '0 1.5em'}} primaryText="Profile" onTouchTap={this._handleTouchTap.bind(this)} />
+              </div>
+              :
+              <div>
+                <hr style={{
+                    margin: '-1 0 0 0',
+                    height: 1,
+                    border: 'none',
+                    backgroundColor: Color.grey300
+                  }}/>
                 <MenuItem style={{padding: '0 1.5em'}} primaryText="Sign in" onTouchTap={this._handleTouchTap.bind(this)} />
+              </div>
               }
               { user.admin ?
                 <MenuItem style={{padding: '0 1.5em'}} primaryText="Admin" onTouchTap={this._handleTouchTap.bind(this)} /> :
                 <div></div>
               }
-                <MenuItem style={{padding: '0 1.5em'}} primaryText="News" onTouchTap={this._handleTouchTap.bind(this)} />
-                <MenuItem style={{padding: '0 1.5em'}} primaryText="Movies" onTouchTap={this._handleTouchTap.bind(this)} />
-                <MenuItem style={{padding: '0 1.5em'}} primaryText="Premieres" onTouchTap={this._handleTouchTap.bind(this)} />
             </IconMenu>
             }
         />

@@ -57,7 +57,7 @@ export default class NewsDetails extends Component {
   _getPrevButton(){
     const { prevSlug } = this.props.post;
     if (!prevSlug){
-      return null;
+      return <span/>;
     }
     return (
       <RaisedButton backgroundColor={Colors.deepOrangeA200} style={{margin: '1em'}} onClick={this._handleTouchTap.bind(this, prevSlug)}>
@@ -69,7 +69,7 @@ export default class NewsDetails extends Component {
   _getNextButton(){
     const { nextSlug } = this.props.post;
     if (!nextSlug){
-      return null;
+      return <span/>;
     }
     return (
       <RaisedButton backgroundColor={Colors.deepOrangeA200} style={{margin: '1em'}} onClick={this._handleTouchTap.bind(this, nextSlug)}>

@@ -21,8 +21,9 @@ export default class Lists extends Component {
   }
 
   componentWillMount() {
-    const { auth } = this.props;
-    this.props.registerListeners(userUid(auth.uid));
+    const { history, auth } = this.props;
+    auth.uid || history.replaceState(null, '/');
+    auth.uid && this.props.registerListeners(userUid(auth.uid));
   }
 
   componentWillReceiveProps() {
@@ -31,7 +32,7 @@ export default class Lists extends Component {
 
   componentWillUnmount() {
     const { auth } = this.props;
-    this.props.unregisterListeners(userUid(auth.uid));
+    auth.uid && this.props.unregisterListeners(userUid(auth.uid));
   }
 
   _handleButtonTouchTap() {
@@ -146,6 +147,7 @@ Lists.propTypes = {
   navigate: PropTypes.func,
   createList: PropTypes.func,
   user: PropTypes.object,
+  history: PropTypes.object,
   auth: PropTypes.object,
   registerListeners: PropTypes.func.isRequired,
   unregisterListeners: PropTypes.func.isRequired

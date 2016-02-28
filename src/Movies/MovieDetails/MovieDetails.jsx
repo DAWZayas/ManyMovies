@@ -10,15 +10,10 @@ export default class MovieDetails extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { loading: true };
   }
 
   componentWillMount() {
     this.props.registerListeners(this.props.params);
-  }
-
-  componentWillReceiveProps() {
-    this.setState({ loading: false });
   }
 
   componentWillUnmount() {
@@ -27,14 +22,13 @@ export default class MovieDetails extends Component {
 
   render() {
     const { movie, user } = this.props;
-    const { loading } = this.state;
-    const idCommented = !loading ? movie.ids.trakt : null;
+    const idCommented = !isEmpty(movie) ? movie.ids.trakt : null;
     const listManager = isEmpty(user) ?
       null
       :
       <ListsManager movie={movie} idMovie={idCommented}/>;
 
-    return !loading ? (
+    return !isEmpty(movie) ? (
       <div>
         <MovieDetailsDescription movie={movie} idMovie={idCommented}/>
         { listManager }

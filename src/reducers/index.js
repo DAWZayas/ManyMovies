@@ -19,6 +19,9 @@ import followers from './followers';
 import following from './following';
 import user from './user';
 import watchedUser from './watchedUser';
+import watchedUserFollowing from './watchedUserFollowing';
+import watchedUserFollowers from './watchedUserFollowers';
+import wishedMovies from './wishedMovies';
 
 export default combineReducers({
   lists,
@@ -40,5 +43,8 @@ export default combineReducers({
   watchedEntries,
   updatedMovies,
   user,
-  watchedUser
+  watchedUser,
+  watchedUserFollowers,
+  watchedUserFollowing,
+  wishedMovies
 });

@@ -9,23 +9,31 @@ import CardText from 'material-ui/lib/card/card-text';
 import Card from 'material-ui/lib/card/card';
 import MovieSearcher from './MovieSearcher/MovieSearcher';
 import ScrollTop from '../../Widgets/ScrollTop';
-import { once } from 'lodash';
+import { once, isEmpty } from 'lodash';
 
-const iconStyles = {margin: '-1em 0 1em 0'};
+const iconStyles = { margin: '-1em 0 1em 0' };
 
 export default class Admin extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { loading: true };
   }
 
   componentWillMount(){
+    const { history, user } = this.props;
+    if (!isEmpty(user) && !user.admin) {
+      history.replaceState(null, '/');
+    }
     this.props.registerListeners();
   }
 
-  componentWillReceiveProps() {
-    this.setState({ loading: false });
+
+  componentWillReceiveProps(nextProps) {
+    const { history } = this.props;
+
+    if (!isEmpty(nextProps.user) && !nextProps.user.admin) {
+      history.replaceState(null, '/');
+    }
   }
 
   componentWillUnmount(){
@@ -36,8 +44,8 @@ export default class Admin extends Component {
     this.props.updateAllMovies(this.props.movies);
   }
 
-  _getLoaderButton(loading, updatedMovies){
-    if (!loading && updatedMovies === 0){
+  _getLoaderButton(loading, updatedMovies, movies){
+    if (!isEmpty(movies) && updatedMovies === 0){
       return (
         <FloatingActionButton
           style={iconStyles}
@@ -51,8 +59,8 @@ export default class Admin extends Component {
     return null;
   }
 
-  _getRefreshingButton(loading, updatedMovies, max){
-    if (!loading && (updatedMovies !== max) && (updatedMovies !== 0)) {
+  _getRefreshingButton(updatedMovies, max, movies){
+    if (!isEmpty(movies) && (updatedMovies !== max) && (updatedMovies !== 0)) {
       return (
         <FloatingActionButton disabled disabledColor={Colors.grey300} style={iconStyles}>
           <RefreshingIcon />
@@ -62,8 +70,8 @@ export default class Admin extends Component {
     return null;
   }
 
-  _getDoneButton(loading, updatedMovies, max){
-    if (!loading && updatedMovies === max) {
+  _getDoneButton(updatedMovies, max, movies){
+    if (!isEmpty(movies) && updatedMovies === max) {
       return (
         <FloatingActionButton disabled style={iconStyles} disabledColor={Colors.green600}>
           <DoneIcon />
@@ -75,7 +83,6 @@ export default class Admin extends Component {
 
   render() {
     const { updatedMovies, movies, addMovie } = this.props;
-    const { loading } = this.state;
     const max = Object.keys(movies).length;
     const refreshing = max !== 0;
     const progressNumbers = refreshing ? <p>{updatedMovies} / {max}</p> : null;
@@ -88,14 +95,14 @@ export default class Admin extends Component {
             <hr/>
             <LinearProgress
               color={Colors.deepOrange800}
-              mode={ loading ? "indeterminate" : "determinate" }
+              mode={ isEmpty(movies) ? "indeterminate" : "determinate" }
               value={updatedMovies}
               max={max}
               />
             <hr/>
-            {this._getLoaderButton.bind(this)(loading, updatedMovies)}
-            {this._getRefreshingButton(loading, updatedMovies, max)}
-            {this._getDoneButton(loading, updatedMovies, max)}
+            {this._getLoaderButton.bind(this)(updatedMovies, movies)}
+            {this._getRefreshingButton(updatedMovies, max, movies)}
+            {this._getDoneButton(updatedMovies, max, movies)}
           </CardText>
         </Card>
         <MovieSearcher movies={movies} addMovie={addMovie}/>
@@ -107,9 +114,11 @@ export default class Admin extends Component {
 
 Admin.propTypes = {
   movies: PropTypes.object,
+  user: PropTypes.object,
   updateAllMovies: PropTypes.func,
   updatedMovies: PropTypes.number,
   registerListeners: PropTypes.func,
   unregisterListeners: PropTypes.func,
-  addMovie: PropTypes.func
+  addMovie: PropTypes.func,
+  history: PropTypes.object
 };

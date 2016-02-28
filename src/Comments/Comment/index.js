@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { pushState } from 'redux-router';
 import Comment from './Comment';
 import { registerListeners, unregisterListeners } from './listeners';
 import { removeComment, editComment, likeComment, unlikeComment, dislikeComment, undislikeComment, unlikeAndDislikeComment, undislikeAndLikeComment } from './side-actions.js';
@@ -10,8 +11,9 @@ function mapStateToProps(state, ownProp) {
   return { user, isLiked, isDisliked };
 }
 
-function mapDispatchToProps() {
+function mapDispatchToProps(dispatch) {
   return {
+    navigate: path => dispatch(pushState(null, path)),
     removeComment: (id, idCommented) => removeComment(id, idCommented),
     editComment: (id, idCommented, text) => editComment(id, idCommented, text),
     likeComment: (id, idCommented, userId) => likeComment(id, idCommented, userId),

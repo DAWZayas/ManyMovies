@@ -81,7 +81,7 @@ export default class MovieDetailsDescription extends Component{
 
     const popover = (
       <Popover
-        style={{width: '250px', padding: '0 2em', textAlign: 'center'}}
+        style={{width: '250px', padding: '0 2em', textAlign: 'center', height: '250px'}}
         anchorEl={this.refs.anchorEl}
         anchorOrigin={{"horizontal":"middle", "vertical":"bottom"}}
         targetOrigin={{"horizontal":"middle", "vertical":"center"}}
@@ -89,6 +89,7 @@ export default class MovieDetailsDescription extends Component{
         onRequestClose={this._hidePopover.bind(this)}
         >
           <Rating
+            style={{backgroundColor: 'red'}}
             iconClassName="ratings"
             empty="fa fa-heart-o fa-2x heart"
             full="fa fa-heart fa-2x heart"
