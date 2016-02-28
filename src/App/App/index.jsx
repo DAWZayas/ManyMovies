@@ -35,11 +35,15 @@ export default class App extends Component {
 
   _handleTouchTap(e){
     const path = e.target.innerHTML.toLowerCase().replace(' ', '');
-    this.props.navigate(`/${path}`);
+    if (path === 'logout'){
+      this.props.logOut();
+    } else {
+      this.props.navigate(`/${path}`);
+    }
   }
 
-  _handleLogOutClick(){
-    this.props.logOut();
+  _getMenuItem(text){
+    return <MenuItem key={text} style={{padding: '0 1.5em'}} primaryText={text} onTouchTap={this._handleTouchTap.bind(this)} />;
   }
 
   render() {
@@ -47,6 +51,8 @@ export default class App extends Component {
     const style = {
       backgroundColor: Color.orange600
     };
+    const topMenuElements = ['News', 'Movies', 'Premieres'];
+    const loggedElements = ['Log Out', 'Profile'];
 
     return (
       <div>
@@ -62,20 +68,21 @@ export default class App extends Component {
                   iconClassName="glyphicon glyphicon-align-justify"/>
               }
             >
-              <MenuItem style={{padding: '0 1.5em'}} primaryText="News" onTouchTap={this._handleTouchTap.bind(this)} />
-              <MenuItem style={{padding: '0 1.5em'}} primaryText="Movies" onTouchTap={this._handleTouchTap.bind(this)} />
-              <MenuItem style={{padding: '0 1.5em'}} primaryText="Premieres" onTouchTap={this._handleTouchTap.bind(this)} />
+              {
+                topMenuElements.map(element => this._getMenuItem(element))
+              }
               { !isEmpty(auth) ?
               <div>
-                <MenuItem style={{padding: '0 1.5em'}} primaryText="Lists" onTouchTap={this._handleTouchTap.bind(this)} />
+                { this._getMenuItem('Lists') }
                 <hr style={{
                   margin: '-1 0 0 0',
                   height: 1,
                   border: 'none',
                   backgroundColor: Color.grey300
                 }}/>
-                <MenuItem style={{padding: '0 1.5em'}} primaryText="Log out" onTouchTap={this._handleLogOutClick.bind(this)} />
-                <MenuItem style={{padding: '0 1.5em'}} primaryText="Profile" onTouchTap={this._handleTouchTap.bind(this)} />
+                {
+                  loggedElements.map(element => this._getMenuItem(element))
+                }
               </div>
               :
               <div>
@@ -85,11 +92,11 @@ export default class App extends Component {
                     border: 'none',
                     backgroundColor: Color.grey300
                   }}/>
-                <MenuItem style={{padding: '0 1.5em'}} primaryText="Sign in" onTouchTap={this._handleTouchTap.bind(this)} />
+                { this._getMenuItem('Sign In') }
               </div>
               }
               { user.admin ?
-                <MenuItem style={{padding: '0 1.5em'}} primaryText="Admin" onTouchTap={this._handleTouchTap.bind(this)} /> :
+                this._getMenuItem('Admin') :
                 <div></div>
               }
             </IconMenu>

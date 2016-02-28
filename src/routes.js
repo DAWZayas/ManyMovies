@@ -12,7 +12,6 @@ import PremieresContainer from './Premieres';
 import NewsContainer from './News';
 import NewsDetailsContainer from './News/NewsDetails';
 import SignInContainer from './Login';
-
 import UserInfoContainer from './UserInfo';
 
 export default (

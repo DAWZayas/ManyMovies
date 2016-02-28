@@ -1,62 +1,11 @@
-.progress-wrapper{
-  display: flex;
-  justify-content: center;
-  background-color: #595959;
-  border-radius: 15px;
-}
-
-.film-cover, .card-text{
-  width: 60%;
-  margin-left: 5%;
-}
-
-li{
-  list-style: none;
-}
-
-.movie-title{
-  text-align: left;
-  color: white;
-  font-size: 20px;
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-left: 10%;
-  margin-right: 10%;
-  vertical-align: top;
-  font-family: 'Roboto Slab', serif;
-}
-
-.post-icon{
-  margin-top: 2px;
-  text-align: left;
-  margin-right: 10px;
-  color: white;
-}
-
-.post-icon button{
-  border: none;
-}
-
-.card-text{
-  font-size: 14px;
-  font-family: 'Roboto Slab', serif;
-}
-
+/* Lists */
 .center-wrapper{
   margin-top: 1em;
   margin-bottom: 1em;
   text-align: center;
 }
 
-.close-modal{
-  margin-left: 60%;
-}
-
-.lists-details-title{
-  line-height: 2em;
-  font-size: 1.5em;
-}
-
+/* Rating */
 .heart{
   color: #F44336;
   padding-top: 1em;
@@ -70,6 +19,7 @@ li{
   margin-bottom: 1em;
 }
 
+/* Trailer */
 .embed-container {
   position: relative;
   padding-bottom: 56.25%; /* 16/9 ratio */

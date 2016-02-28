@@ -37,14 +37,16 @@ export default class NewsDetails extends Component {
   }
 
   componentDidUpdate(prevProps){
-    if (prevProps.params.newsSlug !== this.props.params.newsSlug) {
-      this.props.unregisterListeners(prevProps.params, prevProps.post.id);
-      this.props.registerListeners(this.props.params);
+    const { params, registerListeners, unregisterListeners } = this.props;
+    if (prevProps.params.newsSlug !== params.newsSlug) {
+      unregisterListeners(prevProps.params, prevProps.post.id);
+      registerListeners(params);
     }
   }
 
   componentWillUnmount() {
-    this.props.unregisterListeners(this.props.params, this.props.post.id);
+    const { params, post, unregisterListeners } = this.props;
+    unregisterListeners(params, post.id);
   }
 
   _handleTouchTap(slug){
@@ -54,26 +56,13 @@ export default class NewsDetails extends Component {
     }, 200);
   }
 
-  _getPrevButton(){
-    const { prevSlug } = this.props.post;
-    if (!prevSlug){
-      return <span/>;
+  _getNavigteButton(slug, icon){
+    if (!slug){
+      return <span key={0}/>;
     }
     return (
-      <RaisedButton backgroundColor={Colors.deepOrangeA200} style={{margin: '1em'}} onClick={this._handleTouchTap.bind(this, prevSlug)}>
-        <FontIcon color={Colors.white} className="material-icons">navigate_before</FontIcon>
-      </RaisedButton>
-    );
-  }
-
-  _getNextButton(){
-    const { nextSlug } = this.props.post;
-    if (!nextSlug){
-      return <span/>;
-    }
-    return (
-      <RaisedButton backgroundColor={Colors.deepOrangeA200} style={{margin: '1em'}} onClick={this._handleTouchTap.bind(this, nextSlug)}>
-        <FontIcon color={Colors.white} className="material-icons">navigate_next</FontIcon>
+      <RaisedButton key={slug} backgroundColor={Colors.deepOrangeA200} style={{margin: '1em'}} onClick={this._handleTouchTap.bind(this, slug)}>
+        <FontIcon color={Colors.white} className="material-icons">{icon}</FontIcon>
       </RaisedButton>
     );
   }
@@ -96,6 +85,10 @@ export default class NewsDetails extends Component {
         </div>
       </div>
       );
+    const buttons = [
+      {slug: post.prevSlug, icon: 'navigate_before'},
+      {slug: post.nextSlug, icon: 'navigate_next'}
+      ];
     return !loading && !isEmpty(post) ? (
       <ReactCSSTransitionGroup
         transitionAppear
@@ -124,12 +117,9 @@ export default class NewsDetails extends Component {
           }
           {social}
           <CardText style={{ display: 'flex', justifyContent: 'center'}}>
-            {
-              this._getPrevButton.bind(this)()
-            }
-            {
-              this._getNextButton.bind(this)()
-            }
+          {
+            buttons.map(button => this._getNavigteButton(button.slug, button.icon))
+          }
           </CardText>
         </Card>
         <CommentsManager idCommented={idCommented}/>

@@ -53,7 +53,7 @@ export default class Lists extends Component {
       titleNode.setErrorText('You must choose a title');
       titleNode.setValue('');
       titleNode.focus();
-    }else {
+    } else {
       this.props.createList(title, desc, userId);
       this.setState({editing: false});
     }

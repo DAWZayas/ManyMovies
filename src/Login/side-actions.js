@@ -17,7 +17,25 @@ export function signInWith(provider, dispatch){
 });
 }
 
+function setDefaultList(userId, desc, title){
+  const defaultListsRef = firebase.child(`lists/${userId}`);
+  const id = defaultListsRef.push().key();
+  defaultListsRef.child(id).set({
+    custom: false,
+    id,
+    title,
+    desc,
+    slug: title.toLowerCase()
+  });
+}
+
 export function signIn(authData, dispatch) {
+  const defaultLists = [
+    { title: 'History', desc: 'A list of watched movies' },
+    { title: 'Collection', desc: 'A list of collected movies' },
+    { title: 'WatchList', desc: 'A list of pending movies' }
+  ];
+
   const userId = userUid(authData.uid);
   const ref = firebase.child("users").child(userId);
     ref.once('value', function(snap) {
@@ -30,31 +48,7 @@ export function signIn(authData, dispatch) {
           if (error){
             console.error(error);
           }
-          const defaultListsRef = firebase.child(`lists/${userId}`);
-          const historyIdList = defaultListsRef.push().key();
-          defaultListsRef.child(historyIdList).set({
-            custom: false,
-            id: historyIdList,
-            title: 'History',
-            desc: 'A list of watched movies',
-            slug: 'history'
-          });
-          const watchListIdList = defaultListsRef.push().key();
-          defaultListsRef.child(watchListIdList).set({
-            custom: false,
-            id: watchListIdList,
-            title: 'WatchList',
-            desc: 'A list of pending movies',
-            slug: 'watchlist'
-          });
-          const collectionIdList = defaultListsRef.push().key();
-          defaultListsRef.child(collectionIdList).set({
-            custom: false,
-            id: collectionIdList,
-            title: 'Collection',
-            desc: 'A list of collected movies',
-            slug: 'collection'
-          });
+          defaultLists.forEach(list => setDefaultList(userId, list.desc, list.title));
         });
       }
     });

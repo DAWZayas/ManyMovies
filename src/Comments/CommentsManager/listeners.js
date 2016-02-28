@@ -24,4 +24,5 @@ export function unregisterListeners(dispatch, userId, idCommented) {
   commentsRef.off();
   dispatch(setUserLikes([]));
   dispatch(setUserDislikes([]));
+  dispatch(setComments([]));
 }
