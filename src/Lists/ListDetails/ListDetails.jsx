@@ -190,7 +190,7 @@ export default class ListDetails extends Component {
           <a
             style={{color: Color.white, textDecoration: 'none'}}
             target="_blank"
-            href={`https://twitter.com/intent/tweet?text=Check this list&hashtags=${getDayHashtag()},ManyMovies&url=${window.location.href}`}>
+            href={`https://twitter.com/intent/tweet?text=Check this list&hashtags=${getDayHashtag()},ManyMovies&url=${encodeURIComponent(window.location.href)}`}>
             <img style={{height: "2em"}} src={twitter} alt="twitter-logo"/>
             Share
           </a>

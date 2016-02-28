@@ -89,7 +89,7 @@ export default class NewsDetails extends Component {
           <a
             style={{color: Colors.white, textDecoration: 'none'}}
             target="_blank"
-            href={`https://twitter.com/intent/tweet?text=Check this post&hashtags=${getDayHashtag()},ManyMovies&url=${window.location.href}`}>
+            href={`https://twitter.com/intent/tweet?text=Check this post&hashtags=${getDayHashtag()},ManyMovies&url=${encodeURIComponent(window.location.href)}`}>
             <img style={{height: "2em"}} src={twitter} alt="twitter-logo"/>
             Share
           </a>
