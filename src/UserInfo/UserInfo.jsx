@@ -54,6 +54,7 @@ export default class UserInfo extends Component {
     const styles = {
      label: { display: 'flex', justifyContent: 'center', alignItems: 'center' },
      icon: { color: 'white', marginRight: '0.5em' },
+     number: { marginLeft: '0.5em' },
      inkBar: { backgroundColor: Color.deepOrange800, height:"0.3em", marginTop: "-0.3em" },
      tabs: { marginTop: '2em' },
      tab: { backgroundColor: Color.orange600},
@@ -98,8 +99,8 @@ export default class UserInfo extends Component {
              label={
               <div style={styles.label}>
                 <FontIcon className="material-icons" style={styles.icon}>playlist_play</FontIcon>
-                <span style={styles.icon}> Lists </span>
-                <span> {lists.length} </span>
+                <span> Lists </span>
+                <span style={styles.number}>{lists.length}</span>
               </div>
               }
             >
@@ -119,7 +120,12 @@ export default class UserInfo extends Component {
              label={
               <div style={styles.label}>
                 <FontIcon className="material-icons" style={styles.icon}>people</FontIcon>
-                <span> Following </span> <br/>
+                <span> Following </span>
+                {
+                  watchedUserFollowing.loading ?
+                  <span/> :
+                  <span style={styles.number}>{watchedUserFollowing.users.length}</span>
+                }
               </div>
               }
             >
@@ -135,6 +141,11 @@ export default class UserInfo extends Component {
               <div style={styles.label}>
                 <FontIcon className="material-icons" style={styles.icon}>people_outline</FontIcon>
                 <span> Followers </span>
+                {
+                  watchedUserFollowers.loading ?
+                  <span/> :
+                  <span style={styles.number}>{watchedUserFollowers.users.length}</span>
+                }
               </div>
               }
             >
