@@ -41,12 +41,13 @@ export default class EntriesList extends Component {
     const { movies, removeEntry, list, navigate, user, owner } = this.props;
     const snackBar = (
         <Snackbar
-        ref="snack"
-        message="Movie removed from list"
-        action="undo"
-        onActionTouchTap={this._handleSnackBarUndo.bind(this)}
-        />
+          ref="snack"
+          message="Movie removed from list"
+          action="undo"
+          onActionTouchTap={this._handleSnackBarUndo.bind(this)}
+          />
       );
+
     return (
       <GridList
         padding={0}

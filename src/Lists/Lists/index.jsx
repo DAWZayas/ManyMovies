@@ -10,6 +10,10 @@ import TextField from 'material-ui/lib/text-field';
 import FlatButton from 'material-ui/lib/flat-button';
 import { allTrim, userUid } from '../../utils';
 
+const styles = {
+  label: { color: Colors.deepOrange600 }
+};
+
 export default class Lists extends Component {
 
   constructor(props) {
@@ -59,8 +63,27 @@ export default class Lists extends Component {
     }
   }
 
+  _getLists(label, lists) {
+    const { navigate, user } = this.props;
+    return (
+      <div>
+        <h3 className="center-wrapper" style={styles.label}> { label } </h3>
+          <List>
+            {
+             lists.map((list, index) =>  (<ListItem
+               key={index}
+               list={list}
+               navigate={navigate}
+               user={user}/>)
+               )
+            }
+          </List>
+      </div>
+    );
+  }
+
   render() {
-    const { lists, navigate, defaultLists, user } = this.props;
+    const { lists, defaultLists } = this.props;
     const { loading } = this.state;
     const dialogActions = [
         <FlatButton
@@ -108,32 +131,13 @@ export default class Lists extends Component {
             rows={5}
           />
         </Dialog>);
+
     return !loading ? (
       <div>
-      <h3 className="center-wrapper" style={{color: Colors.deepOrange600}}> General lists </h3>
-        <List>
-          {
-           defaultLists.map((list, index) =>  (<ListItem
-             key={index}
-             list={list}
-             navigate={navigate}
-             user={user}/>)
-             )
-          }
-        </List>
-      <h3 className="center-wrapper" style={{color: Colors.deepOrange600}}> Custom lists </h3>
-        <List>
-          {
-           lists.map((list, index) =>  (<ListItem
-             key={index}
-             list={list}
-             navigate={navigate}
-             user={user}/>)
-             )
-          }
-        </List>
+        { this._getLists.bind(this)('General lists', defaultLists)}
+        { this._getLists.bind(this)('Custom lists', lists)}
         <div className="center-wrapper">{button}</div>
-        {dialog}
+        { dialog }
       </div>
     ) : (
       <Spinner />

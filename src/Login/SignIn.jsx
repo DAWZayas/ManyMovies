@@ -7,27 +7,34 @@ import Color from 'material-ui/lib/styles/colors';
 import { capitalize } from 'lodash';
 import poster from '../../images/mm-fanart-login.png';
 
+const styles = {
+  button: { textAlign: 'left', border: '0.2em solid', borderColor: Color.grey400, width: '90%', marginBottom: '0.2em' },
+  card: { textAlign: 'center', margin:'2em auto 2em', display: 'flex', justifyContent: 'center', padding: '0 0 4em 0' },
+  logo: { margin:'2em', height: '13em' }
+};
+
 export default class SignIn extends Component {
 
   constructor(props) {
     super(props);
   }
 
-  handleSignInWith(provider) {
+  _handleSignInWith(provider) {
     this.props.signInWith(provider);
   }
 
   _getProviderButton(provider, color, hoverColor){
-    return (<FlatButton
-          key={provider}
-          style={{textAlign: 'left', border: '0.2em solid', borderColor: Color.grey400, width: '90%', marginBottom: '0.2em'}}
-          labelStyle={{color: color}}
-          hoverColor={hoverColor}
-          label={`Sign in with ${capitalize(provider)}`}
-          labelPosition="after"
-          onTouchTap={ () => this.handleSignInWith(provider)}>
-          <i style={{marginLeft: '3em', color: color}} className={`fa fa-${provider}`}/>
-        </FlatButton>);
+    return (
+      <FlatButton
+        key={provider}
+        style={styles.button}
+        labelStyle={{color}}
+        hoverColor={hoverColor}
+        label={`Sign in with ${capitalize(provider)}`}
+        labelPosition="after"
+        onTouchTap={this._handleSignInWith.bind(this, provider)}>
+        <i style={{marginLeft: '3em', color}} className={`fa fa-${provider}`}/>
+      </FlatButton>);
   }
 
   render() {
@@ -38,13 +45,13 @@ export default class SignIn extends Component {
     ];
 
     return (
-      <Card style={{textAlign: 'center', margin:'2em auto 2em', display: 'flex', justifyContent: 'center', padding: '0 0 4em 0'}}>
+      <Card style={styles.card}>
         <CardTitle
           title="Welcome to Many Movies"
           titleColor={Color.deepOrange500}
         />
         <CardText>
-          <img src={poster} style={{margin:'2em', height: '13em'}} alt="manymovies-logo"/>
+          <img src={poster} style={styles.logo} alt="manymovies-logo"/>
         </CardText>
         {
           providers.map(provider => this._getProviderButton(provider.provider, provider.color, provider.hoverColor))

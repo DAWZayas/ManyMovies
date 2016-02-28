@@ -56,7 +56,7 @@ export default class Premieres extends Component {
     const progress = this.state.loading ?
       <Spinner/>
       :
-      null;
+      <span/>;
     return (
       <div>
         {

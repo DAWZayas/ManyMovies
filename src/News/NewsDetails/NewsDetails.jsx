@@ -8,12 +8,20 @@ import Colors from 'material-ui/lib/styles/colors';
 import FontIcon from 'material-ui/lib/font-icon';
 import ScrollTop from '../../Widgets/ScrollTop';
 import CommentsManager from '../../Comments';
-import twitter from '../../../images/twitter.png';
-import { getDayHashtag } from '../../utils';
 import { isEmpty } from 'lodash';
 import placeholder from '../../../images/mm-fanart.png';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import Spinner from '../../Widgets/Spinner';
+import ShareIcon from '../../Widgets/ShareIcon';
+
+const styles = {
+  twitterContainer: { textAlign: 'center' },
+  button: { margin: '1em' },
+  card: { maxWidth:'900px', margin: '1em auto' },
+  title: { fontWeight: 'bold', textAlign: 'center', fontSize: '1.5em' },
+  summary: { fontStyle: 'italic', textAlign: 'center' },
+  buttonsContainer: { display: 'flex', justifyContent: 'center'}
+};
 
 export default class NewsDetails extends Component {
 
@@ -61,7 +69,7 @@ export default class NewsDetails extends Component {
       return <span key={0}/>;
     }
     return (
-      <RaisedButton key={slug} backgroundColor={Colors.deepOrangeA200} style={{margin: '1em'}} onClick={this._handleTouchTap.bind(this, slug)}>
+      <RaisedButton key={slug} backgroundColor={Colors.deepOrangeA200} style={styles.button} onClick={this._handleTouchTap.bind(this, slug)}>
         <FontIcon color={Colors.white} className="material-icons">{icon}</FontIcon>
       </RaisedButton>
     );
@@ -72,23 +80,11 @@ export default class NewsDetails extends Component {
     const { loading } = this.state;
     const image  = this.state.image ? this.state.image : placeholder;
     const idCommented = post.id;
-    const social = (
-      <div style={{textAlign: 'center'}}>
-        <div style={{color: Colors.white, backgroundColor: '#53d0e8', lineHeight: "2em", display: 'inline-block', padding: '0 0.5em 0 0' }}>
-          <a
-            style={{color: Colors.white, textDecoration: 'none'}}
-            target="_blank"
-            href={`https://twitter.com/intent/tweet?text=Check this post&hashtags=${getDayHashtag()},ManyMovies&url=${encodeURIComponent(window.location.href)}`}>
-            <img style={{height: "2em"}} src={twitter} alt="twitter-logo"/>
-            Share
-          </a>
-        </div>
-      </div>
-      );
     const buttons = [
       {slug: post.prevSlug, icon: 'navigate_before'},
       {slug: post.nextSlug, icon: 'navigate_next'}
-      ];
+    ];
+
     return !loading && !isEmpty(post) ? (
       <ReactCSSTransitionGroup
         transitionAppear
@@ -96,7 +92,7 @@ export default class NewsDetails extends Component {
         transitionAppearTimeout={800}
         transitionEnterTimeout={800}
         transitionLeaveTimeout={300}>
-        <Card key={post.slug} style={{ maxWidth:'900px', margin: '1em auto' }}>
+        <Card key={post.slug} style={styles.card}>
           <CardMedia overlay={
             <CardTitle titleStyle={{
               whiteSpace: 'nowrap',
@@ -106,17 +102,19 @@ export default class NewsDetails extends Component {
               title={post.title} />}>
               <img src={image}/>
           </CardMedia>
-          <CardText style={{fontWeight: 'bold', textAlign: 'center', fontSize: '1.5em'}}>
+          <CardText style={styles.title}>
             {post.title}
           </CardText>
-          <CardText style={{fontStyle: 'italic', textAlign: 'center'}}>
+          <CardText style={styles.summary}>
             {post.summary}
           </CardText>
           {
             post.entries.map((entry, index) => <CardText style={{textAlign: 'justify'}} key={index}>{entry}</CardText>)
           }
-          {social}
-          <CardText style={{ display: 'flex', justifyContent: 'center'}}>
+          <div style={styles.twitterContainer}>
+            <ShareIcon text="Check this post" />
+          </div>
+          <CardText style={styles.buttonsContainer}>
           {
             buttons.map(button => this._getNavigteButton(button.slug, button.icon))
           }

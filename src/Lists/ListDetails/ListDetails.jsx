@@ -9,16 +9,26 @@ import CardText from 'material-ui/lib/card/card-text';
 import CardTitle from 'material-ui/lib/card/card-title';
 import IconButton from 'material-ui/lib/icon-button';
 import Dialog from 'material-ui/lib/dialog';
-import { allTrim, getDayHashtag } from '../../utils';
+import { allTrim } from '../../utils';
+import ShareIcon from '../../Widgets/ShareIcon';
 import TextField from 'material-ui/lib/text-field';
 import FlatButton from 'material-ui/lib/flat-button';
-import twitter from '../../../images/twitter.png';
 import Colors from 'material-ui/lib/styles/colors';
 import ScrollTop from '../../Widgets/ScrollTop';
 import Tabs from 'material-ui/lib/tabs/tabs';
 import Tab from 'material-ui/lib/tabs/tab';
 import { isEmpty } from 'lodash';
 
+const styles = {
+  dialog: { textAlign: 'justify' },
+  cardActions: { display: 'flex', width: '90%', justifyContent: 'space-between', margin: '0 auto' },
+  editIcon: { color: Color.grey400 },
+  deleteIcon: { color:Color.red900 },
+  subtitle: { width: '90%', textAlign: 'justify' },
+  inkBar: { backgroundColor: Colors.deepOrange800, height:'0.3em', marginTop: '-0.3em' },
+  tab: {backgroundColor: Colors.orange600}
+
+};
 
 export default class ListDetails extends Component {
   constructor(props) {
@@ -158,25 +168,25 @@ export default class ListDetails extends Component {
           actions={deleteDialogActions}
           open={this.state.deleting}
           onRequestClose={this._handleRequestCloseDelete.bind(this)}
-          style={{textAlign: "justify"}}
+          style={styles.dialog}
           >
           Are you sure you want to remove the "{listTitle}" list?
         </Dialog>
         );
 
     const cardActions = (custom && owner) ? (<CardActions
-        style={{display: "flex", width: "90%", justifyContent: "space-between", margin: "0 auto"}}
+        style={styles.cardActions}
         expandable={custom && owner}>
         <IconButton
           iconClassName="material-icons"
-          iconStyle={{color:Color.grey400}}
+          iconStyle={styles.editIcon}
           onTouchTap={this._handleEditButtonTouchTap.bind(this)}
           tooltip="Edit list"
           tooltipPosition="top-center"
         >edit</IconButton>
         <IconButton
           iconClassName="material-icons"
-          iconStyle={{color:Color.red900}}
+          iconStyle={styles.deleteIcon}
           onTouchTap={this._handleDeleteButtonTouchTap.bind(this)}
           tooltip="Delete list"
           tooltipPosition="top-center"
@@ -186,15 +196,7 @@ export default class ListDetails extends Component {
 
     const social = (
       <CardText>
-        <div style={{color: Color.white, backgroundColor: '#53d0e8', lineHeight: "2em", display: 'inline-block', padding: '0 0.5em 0 0' }}>
-          <a
-            style={{color: Color.white, textDecoration: 'none'}}
-            target="_blank"
-            href={`https://twitter.com/intent/tweet?text=Check this list&hashtags=${getDayHashtag()},ManyMovies&url=${encodeURIComponent(window.location.href)}`}>
-            <img style={{height: "2em"}} src={twitter} alt="twitter-logo"/>
-            Share
-          </a>
-        </div>
+        <ShareIcon text="Check this list"/>
       </CardText>
       );
 
@@ -205,7 +207,7 @@ export default class ListDetails extends Component {
             title={listTitle}
             titleColor={Color.deepOrange500}
             subtitle={subtitle}
-            subtitleStyle={{width: "90%", textAlign: "justify"}}
+            subtitleStyle={styles.subtitle}
             showExpandableButton={custom && owner}/>
           {social}
           {cardActions}
@@ -213,9 +215,9 @@ export default class ListDetails extends Component {
           {deleteDialog}
         </Card>
         <Tabs
-            inkBarStyle={{backgroundColor: Colors.deepOrange800, height:"0.3em", marginTop: "-0.3em"}}
+            inkBarStyle={styles.inkBar}
           >
-            <Tab style={{backgroundColor: Colors.orange600}}
+            <Tab style={styles.tab}
              label="Movies">
               <EntriesList
                 navigate={navigate}
@@ -227,7 +229,7 @@ export default class ListDetails extends Component {
                 owner={owner}
               />
             </Tab>
-            <Tab style={{backgroundColor: Colors.orange600}}
+            <Tab style={styles.tab}
               label="Comments">
               <CommentsManager idCommented={list.id}/>
             </Tab>

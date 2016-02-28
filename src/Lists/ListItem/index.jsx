@@ -21,7 +21,7 @@ export default class ListItem extends Component {
           secondaryText={`${list.desc}`}
           style={{color: Color.deepOrange500}}
           onTouchTap={this.handleTouchTap.bind(this)}
-          />
+        />
     );
   }
 }

@@ -10,6 +10,13 @@ import CommentAdder from '../CommentsAdder';
 
 const PAGE_SIZE = 5;
 
+const styles = {
+  card: { margin: '1em 0 0 0', backgroundColor: Colors.grey200 },
+  cardText: { textAlign: 'center' },
+  container: { margin: '0 0 10em' }
+
+};
+
 export default class CommentsManager extends Component {
 
   constructor(props) {
@@ -59,8 +66,8 @@ export default class CommentsManager extends Component {
     } = this.props;
     const { maxComments } = this.state;
     const progress = this.state.loading ?
-    <Card style={{margin: "1em 0 0 0", backgroundColor: Colors.grey200}}>
-      <CardText style={{textAlign: 'center'}}>
+    <Card style={styles.card}>
+      <CardText style={styles.cardText}>
         <CircularProgress
           mode="indeterminate"
           color={Colors.deepOrange900}
@@ -70,7 +77,7 @@ export default class CommentsManager extends Component {
     : <span/>;
 
     return (
-      <div style={{margin: '0 0 10em'}}>
+      <div style={styles.container}>
         <CommentAdder idCommented={idCommented}/>
         {comments.slice(0, maxComments).map(comment => (<Comment key={comment.id} idCommented={idCommented} comment={comment}/>))}
         {progress}

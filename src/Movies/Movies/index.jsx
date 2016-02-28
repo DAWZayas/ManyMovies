@@ -1,18 +1,22 @@
 import React, { Component, PropTypes } from 'react';
-import { isEqual, values } from 'lodash';
-import Table from 'material-ui/lib/table/table';
-import TableBody from 'material-ui/lib/table/table-body';
+import { isEqual } from 'lodash';
 import RaisedButton from 'material-ui/lib/raised-button';
 import Paper from 'material-ui/lib/paper';
 import ScrollTop from '../../Widgets/ScrollTop';
 import FontIcon from 'material-ui/lib/font-icon';
 import TextField from 'material-ui/lib/text-field';
 import Spinner from '../../Widgets/Spinner';
-import MovieRow from './MovieRow';
-import MoviesListHeader from './MoviesListHeader';
+import MoviesTable from './MoviesTable';
 import $ from 'jquery';
 import { getDocHeight } from '../../utils';
 import { debounce } from 'lodash';
+
+const styles = {
+  paper: { padding: '1em 1em 2em 1em' },
+  container: { display: 'flex', justifyContent: 'center' },
+  fontIcon: { lineHeight: '2em' },
+  textInput: { flexGrow: '20' }
+};
 
 export default class Movies extends Component {
 
@@ -22,7 +26,7 @@ export default class Movies extends Component {
       page: 0,
       searchTerm: '',
       loading: true,
-      loadMoreHandler: this._loadMoreOnBottom.bind(this)
+      loadMoreHandler: this._loadMoreOnBottom.bind(this),
     };
   }
 
@@ -83,48 +87,30 @@ export default class Movies extends Component {
   }
 
   render() {
-    const { movies } = this.props;
     const contents = this.state.loading ?
       <Spinner/>
       :
       (<div>
-        <Paper style={{padding: '1em 1em 2em 1em'}}>
-          <div style={{display: "flex", justifyContent: "center"}}>
-            <FontIcon style={{lineHeight: "2em"}} className="material-icons">search</FontIcon>
+        <Paper style={styles.paper}>
+          <div style={styles.container}>
+            <FontIcon style={styles.fontIcon} className="material-icons">search</FontIcon>
             <TextField
               ref="search"
-              style={{flexGrow: "20"}}
+              style={styles.textInput}
               hintText="Search a movie"
               onChange={debounce(this._handleSearchChange.bind(this), 300)}
               onFocus={this._handleSearchFocus.bind(this)}
               onKeyDown={this._handleKeyDown.bind(this)}
             />
           </div>
-          <div style={{display: "flex", justifyContent: "center"}}>
+          <div style={styles.container}>
             <RaisedButton
               label="Search by genre"
               onTouchTap={this._handleGenreSearcher.bind(this)}
             />
           </div>
         </Paper>
-        <Table
-          fixedHeader
-          selectable={false}
-        >
-          { MoviesListHeader }
-          <TableBody
-            displayRowCheckbox={false}
-            showRowHover
-            stripedRows={false}
-          >
-            {
-              values(movies).map((movie) => (
-                  <MovieRow key={movie.ids.trakt} navigate={this.props.navigate} movie={movie}/>
-                )
-              )
-            }
-          </TableBody>
-        </Table>
+        <MoviesTable {...this.props}/>
       </div>
       );
 
@@ -138,12 +124,7 @@ export default class Movies extends Component {
 }
 
 Movies.propTypes = {
-  movies: PropTypes.object,
   navigate: PropTypes.func,
   registerListeners: PropTypes.func,
   unregisterListeners: PropTypes.func
-};
-
-Movies.defaultProps = {
-  movies: {}
 };

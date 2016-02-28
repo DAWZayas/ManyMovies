@@ -4,6 +4,12 @@ import TableRowColumn from 'material-ui/lib/table/table-row-column';
 import ImageWithPlaceholder from '../../Widgets/ImageWithPlaceholder';
 import defaultPosterSrc from '../../../images/mm-poster.png';
 
+const styles = {
+  column: { width: '4em', padding: '0' },
+  img: { width: '4em' },
+  title: { paddingLeft:'0.4em' }
+};
+
 export default class MovieRow extends Component {
 
   constructor(props) {
@@ -20,17 +26,17 @@ export default class MovieRow extends Component {
     const { movie } = this.props;
     return (
       <TableRow onTouchTap={this._handleTouchTap.bind(this, movie.ids.slug)}>
-        <TableRowColumn style={{width: "4em", padding: "0"}}>
+        <TableRowColumn style={styles.column}>
         {
           <ImageWithPlaceholder
             placeholderSrc={defaultPosterSrc}
             src={movie.images.poster}
             alt={movie.title}
-            style={{width: "4em"}}
+            style={styles.img}
           />
         }
         </TableRowColumn>
-        <TableRowColumn style={{paddingLeft:"0.4em"}}>{movie.title}</TableRowColumn>
+        <TableRowColumn style={styles.title}>{movie.title}</TableRowColumn>
       </TableRow>
     );
   }
@@ -39,8 +45,4 @@ export default class MovieRow extends Component {
 MovieRow.propTypes = {
   movie: PropTypes.object,
   navigate: PropTypes.func
-};
-
-MovieRow.defaultProps = {
-  movie: {}
 };

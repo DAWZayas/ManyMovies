@@ -11,8 +11,8 @@ import { makeTrendingRequest, makeMovieRequest, makePopularRequest, makeQueryReq
 import { formatQuery } from '../../../utils/';
 import { values, keys } from 'lodash';
 
-const buttonStyle = {
-  margin: '1em',
+const styles = {
+  button: { margin: '1em'}
 };
 
 export default class MovieSearcher extends Component {
@@ -22,22 +22,14 @@ export default class MovieSearcher extends Component {
     this.state = { searchedMovies: [] };
   }
 
-  _getTrendingMovies() {
+  _handleSearchButton(requestCreator){
     this.setState({ searchedMovies: [], searchingMovies: true });
-    const request = makeTrendingRequest();
+    const request = requestCreator();
     request.then(this._setSearchedMovies.bind(this));
   }
 
-  _getPopularMovies() {
-    this.setState({ searchedMovies: [], searchingMovies: true });
-    const request = makePopularRequest();
-    request.then(this._setSearchedMovies.bind(this));
-  }
-
-  _getBoxOfficeMovies() {
-    this.setState({ searchedMovies: [], searchingMovies: true });
-    const request = makeBoxOfficeRequest();
-    request.then(this._setSearchedMovies.bind(this));
+  _getSearchingButtons(label, request) {
+    return <RaisedButton key={label} label={label} onTouchTap={this._handleSearchButton.bind(this, request)} style={styles.button} />;
   }
 
   _getSearchedMovies() {
@@ -63,15 +55,20 @@ export default class MovieSearcher extends Component {
   render() {
     const { searchedMovies, searchingMovies } = this.state;
     const { movies, addMovie } = this.props;
-    const spinner = searchingMovies ? <Spinner style={{margin: '1em'}}/> : null;
+    const spinner = searchingMovies ? <Spinner style={{margin: '1em'}}/> : <span/>;
+    const searchingButtons = [
+      { label: 'Trending', request: makeTrendingRequest },
+      { label: 'Popular', request: makePopularRequest },
+      { label: 'Box Office', request: makeBoxOfficeRequest }
+    ];
     return (
       <span>
         <Card style={{margin: '1em', padding: '1em', textAlign: 'center'}}>
           <CardText>Search for new movies in Trakt to add to Firebase</CardText>
           <CardText>
-            <RaisedButton label="Trending" onTouchTap={this._getTrendingMovies.bind(this)} style={buttonStyle} />
-            <RaisedButton label="Popular" onTouchTap={this._getPopularMovies.bind(this)} style={buttonStyle} />
-            <RaisedButton label="Box Office" onTouchTap={this._getBoxOfficeMovies.bind(this)} style={buttonStyle} />
+            {
+              searchingButtons.map(button => this._getSearchingButtons(button.label, button.request))
+            }
           </CardText>
           <TextField
             ref="movieSearched"

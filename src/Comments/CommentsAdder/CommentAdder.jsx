@@ -5,10 +5,21 @@ import CardHeader from 'material-ui/lib/card/card-header';
 import CardActions from 'material-ui/lib/card/card-actions';
 import TextField from 'material-ui/lib/text-field';
 import Avatar from 'material-ui/lib/avatar';
-import IconButton from 'material-ui/lib/icon-button';
 import Colors from 'material-ui/lib/styles/colors';
 import { allTrim } from '../../utils';
+import { createIconButton } from '../../utils/constructors';
 import { isEmpty } from 'lodash';
+
+const styles = {
+  body: { backgroundColor: Colors.grey200 },
+  actions: { float: 'right' },
+  greenColor: { color:Colors.green500 },
+  redColor: { color:Colors.red900 },
+  card: { margin: '0 0 1em 0', backgroundColor: Colors.grey200 },
+  cardText: { fontSize: '1.5em', backgroundColor: Colors.white },
+  cardHeader: { backgroundColor: Colors.grey300 },
+  author: {color: Colors.deepOrange900, fontWeight: 'bold'}
+};
 
 export default class CommentAdder extends Component {
 
@@ -76,7 +87,7 @@ export default class CommentAdder extends Component {
       />
     );
     const cardBody = (
-      <CardText style={{backgroundColor: Colors.grey200}}>
+      <CardText style={styles.body}>
         <TextField
           onKeyDown={this._handleKeyDown.bind(this)}
           ref="comment"
@@ -89,23 +100,9 @@ export default class CommentAdder extends Component {
       </CardText>
     );
     const cardActions = this.state.commenting ? (
-        <CardActions style={{float: "right"}}>
-          <IconButton
-            iconClassName="material-icons"
-            iconStyle={{color:Colors.green500}}
-            tooltipPosition="top-left"
-            tooltip="Comment"
-            onTouchTap={this._handleCommentTap.bind(this)}>
-            done
-          </IconButton>
-          <IconButton
-            iconClassName="material-icons"
-            iconStyle={{color:Colors.red900}}
-            tooltipPosition="top-left"
-            tooltip="Cancel"
-            onTouchTap={this._handleCancelTap.bind(this)}>
-            clear
-          </IconButton>
+        <CardActions style={styles.actions}>
+          { createIconButton(styles.greenColor, this._handleCommentTap.bind(this), 'Comment', 'done')}
+          { createIconButton(styles.redColor, this._handleCancelTap.bind(this), 'Cancel', 'clear')}
         </CardActions>
       ) : '';
 
@@ -113,11 +110,11 @@ export default class CommentAdder extends Component {
       <span/>
      :
      (
-      <Card style={{margin: "0 0 1em 0", backgroundColor: Colors.grey200}}>
-        <CardText style={{fontSize: "1.5em", backgroundColor: Colors.white }}><b>Post</b> a new comment</CardText>
+      <Card style={styles.card}>
+        <CardText style={styles.cardText}><b>Post</b> a new comment</CardText>
         <CardHeader
-          style={{backgroundColor: Colors.grey300}}
-          title={<span>Commenting as <span style={{color: Colors.deepOrange900, fontWeight: "bold"}}>{user.displayName}</span></span>}
+          style={styles.cardHeader}
+          title={<span>Commenting as <span style={styles.author}>{user.displayName}</span></span>}
           avatar={userAvatar}
         />
         {cardBody}

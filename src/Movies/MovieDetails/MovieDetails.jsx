@@ -24,7 +24,7 @@ export default class MovieDetails extends Component {
     const { movie, user } = this.props;
     const idCommented = !isEmpty(movie) ? movie.ids.trakt : null;
     const listManager = isEmpty(user) ?
-      null
+      <span/>
       :
       <ListsManager movie={movie} idMovie={idCommented}/>;
 

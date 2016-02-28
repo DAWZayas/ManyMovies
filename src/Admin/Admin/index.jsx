@@ -11,7 +11,11 @@ import MovieSearcher from './MovieSearcher/MovieSearcher';
 import ScrollTop from '../../Widgets/ScrollTop';
 import { once, isEmpty } from 'lodash';
 
-const iconStyles = { margin: '-1em 0 1em 0' };
+const styles = {
+  icon: { margin: '-1em 0 1em 0' },
+  cardText: { textAlign: 'center' },
+  card: { margin: '1em' }
+};
 
 export default class Admin extends Component {
 
@@ -44,11 +48,11 @@ export default class Admin extends Component {
     this.props.updateAllMovies(this.props.movies);
   }
 
-  _getLoaderButton(loading, updatedMovies, movies){
+  _getLoaderButton(updatedMovies, movies){
     if (!isEmpty(movies) && updatedMovies === 0){
       return (
         <FloatingActionButton
-          style={iconStyles}
+          style={styles.icon}
           backgroundColor={ Colors.deepOrange900 }
           onTouchTap={once(this._handleTouchTap.bind(this))}
           >
@@ -56,29 +60,29 @@ export default class Admin extends Component {
         </FloatingActionButton>
       );
     }
-    return null;
+    return <span/>;
   }
 
   _getRefreshingButton(updatedMovies, max, movies){
     if (!isEmpty(movies) && (updatedMovies !== max) && (updatedMovies !== 0)) {
       return (
-        <FloatingActionButton disabled disabledColor={Colors.grey300} style={iconStyles}>
+        <FloatingActionButton disabled disabledColor={Colors.grey300} style={styles.icon}>
           <RefreshingIcon />
         </FloatingActionButton>
       );
     }
-    return null;
+    return <span/>;
   }
 
   _getDoneButton(updatedMovies, max, movies){
     if (!isEmpty(movies) && updatedMovies === max) {
       return (
-        <FloatingActionButton disabled style={iconStyles} disabledColor={Colors.green600}>
+        <FloatingActionButton disabled style={styles.icon} disabledColor={Colors.green600}>
           <DoneIcon />
         </FloatingActionButton>
       );
     }
-    return null;
+    return <span/>;
   }
 
   render() {
@@ -88,8 +92,8 @@ export default class Admin extends Component {
     const progressNumbers = refreshing ? <p>{updatedMovies} / {max}</p> : null;
     return (
       <span>
-        <Card style={{margin: '1em'}}>
-          <CardText style={{textAlign: 'center'}}>
+        <Card style={styles.card}>
+          <CardText style={styles.cardText}>
             <p>Refresh the data of the movies in Firebase.</p>
             {progressNumbers}
             <hr/>

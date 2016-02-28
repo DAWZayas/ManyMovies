@@ -12,6 +12,22 @@ import ImageWithPlaceholder from '../../../Widgets/ImageWithPlaceholder';
 import FlipClock from '../../../Widgets/FlipClock';
 import defaultPoster from '../../../../images/mm-poster.png';
 
+const styles = {
+  popover: { width: '250px', padding: '0 2em', textAlign: 'center' },
+  dialog: { textAlign: 'center' },
+  fontIcon: { cursor: 'pointer' },
+  trailer: { marginLeft: '0.5em', color: Color.indigo500, cursor: 'pointer' },
+  redText: { color: Color.red500 },
+  release: { textAlign: 'center', color: Color.red500 },
+  date: { color: Color.grey500 },
+  ratings: { marginLeft: '0.5em', cursor: 'pointer' },
+  img: { width: '10em', marginRight: '0.5em', float: 'left' },
+  tagline: { fontStyle: 'italic' },
+  br: { clear: 'both' },
+  percentRating: { marginLeft: '0.5em' },
+  voteCount: { marginLeft: '2em' },
+  sinopsis: { padding: '1em', fontSize: '1em', clear: 'left' }
+};
 
 export default class MovieDetailsDescription extends Component{
   constructor(props) {
@@ -44,7 +60,7 @@ export default class MovieDetailsDescription extends Component{
     this.setState({
       width: document.documentElement.clientWidth,
       height: document.documentElement.clientHeight
-     });
+    });
   }
 
   _handleShowTrailer(){
@@ -69,7 +85,7 @@ export default class MovieDetailsDescription extends Component{
     const { userRating, rateMovie, changeMovieRating } = this.props;
     if (userRating === null){
       rateMovie(userName, idMovie, rate);
-    }else {
+    } else {
       changeMovieRating(userName, idMovie, rate);
     }
     this._hidePopover.bind(this)();
@@ -81,7 +97,7 @@ export default class MovieDetailsDescription extends Component{
 
     const popover = (
       <Popover
-        style={{width: '250px', padding: '0 2em', textAlign: 'center', height: '250px'}}
+        style={styles.popover}
         anchorEl={this.refs.anchorEl}
         anchorOrigin={{"horizontal":"middle", "vertical":"bottom"}}
         targetOrigin={{"horizontal":"middle", "vertical":"center"}}
@@ -89,7 +105,6 @@ export default class MovieDetailsDescription extends Component{
         onRequestClose={this._hidePopover.bind(this)}
         >
           <Rating
-            style={{backgroundColor: 'red'}}
             iconClassName="ratings"
             empty="fa fa-heart-o fa-2x heart"
             full="fa fa-heart fa-2x heart"
@@ -125,14 +140,14 @@ export default class MovieDetailsDescription extends Component{
   _getTrailer(){
     const { movie } = this.props;
     if (!movie.trailer){
-      return null;
+      return <span/>;
     }
     const trailerId = movie.trailer.split('watch?v=')[1];
     const dialogWidth = (this.state.height > this.state.width) ? '100%' : '50%';
     return (
       <div>
         <Dialog
-          style={{textAlign: 'center'}}
+          style={styles.dialog}
           contentStyle={{width: dialogWidth}}
           open={this.state.watchingTrailer}
           onRequestClose={this._handleHideTrailer.bind(this)}
@@ -148,15 +163,15 @@ export default class MovieDetailsDescription extends Component{
           </div>
         </Dialog>
         <div className="ratings-wrapper">
-          <FontIcon onClick={this._handleShowTrailer.bind(this)} style={{cursor: 'pointer'}} color={Color.indigo500} className="material-icons">movie</FontIcon>
-          <span onClick={this._handleShowTrailer.bind(this)} style={{marginLeft: '0.5em', color: Color.indigo500, cursor: 'pointer'}}>Trailer</span>
+          <FontIcon onClick={this._handleShowTrailer.bind(this)} style={styles.fontIcon} color={Color.indigo500} className="material-icons">movie</FontIcon>
+          <span onClick={this._handleShowTrailer.bind(this)} style={styles.trailer}>Trailer</span>
         </div>
       </div>);
   }
 
   _getPGRating(){
     const { movie } = this.props;
-    return movie.certification ? <p><span style={{color: Color.red500}}>Certification: </span><span style={this._getPGStyle(movie.certification)}>{movie.certification}</span></p> : null;
+    return movie.certification ? <p><span style={styles.redText}>Certification: </span><span style={this._getPGStyle(movie.certification)}>{movie.certification}</span></p> : <span/>;
   }
 
   _getPGStyle(certification){
@@ -180,11 +195,11 @@ export default class MovieDetailsDescription extends Component{
     const releaseDate = new Date(Date.parse(movie.released));
     const formatedReleased = releaseDate.toLocaleDateString('en-GB').replace(/\//g, '-');
     if (Date.parse(movie.released) <= Date.now()){
-      return <p><span style={{color: Color.red500}}>Released: </span> {formatedReleased}</p>;
+      return <p><span style={styles.redText}>Released: </span> {formatedReleased}</p>;
     }else {
       return (
       <div>
-        <h3 style={{textAlign: 'center', color: Color.red500}}>Movie release: <span style={{ color: Color.grey500 }}>{formatedReleased}</span></h3>
+        <h3 style={styles.release}>Movie release: <span style={styles.date}>{formatedReleased}</span></h3>
         <FlipClock date={movie.released}/>
       </div>
       );
@@ -194,7 +209,7 @@ export default class MovieDetailsDescription extends Component{
 
   _getRuntime(){
     const { movie } = this.props;
-    return movie.runtime ? <p><span style={{color: Color.red500}}>Runtime: </span> {movie.runtime}</p> : null;
+    return movie.runtime ? <p><span style={styles.redText}>Runtime: </span> {movie.runtime}</p> : <span/>;
   }
 
   _getGenres(){
@@ -203,7 +218,7 @@ export default class MovieDetailsDescription extends Component{
       const genres = movie.genres.map(genre => capitalize(genre));
       return (
         <p>
-          <span style={{color: Color.red500}}>Genres: </span>
+          <span style={styles.redText}>Genres: </span>
           <span>
           {
             genres.join(', ')
@@ -212,7 +227,7 @@ export default class MovieDetailsDescription extends Component{
         </p>
       );
     }else {
-      return null;
+      return <span/>;
     }
   }
 
@@ -221,11 +236,11 @@ export default class MovieDetailsDescription extends Component{
     const voteCount = movie.votes === 0 ? 'No votes' : movie.votes === 1 ? ' 1 vote' : movie.votes + ' votes';
     const percentRating = movie.votes === 0 ? '' : `${Math.round(movie.totalRating * 10 / movie.votes)} %`;
     const ratingWrap = isEmpty(user) ?
-      null
+      <span/>
       :
       (<div className="ratings-wrapper">
-        <FontIcon onClick={this._showPopover.bind(this)} style={{cursor: 'pointer'}} color={Color.red500} className="material-icons">favorite_border</FontIcon>
-        <span  ref="anchorEl" onClick={this._showPopover.bind(this)} style={{marginLeft: '0.5em', cursor: 'pointer'}}>{this._getRatingText.bind(this)()}</span>
+        <FontIcon onClick={this._showPopover.bind(this)} style={styles.fontIcon} color={Color.red500} className="material-icons">favorite_border</FontIcon>
+        <span  ref="anchorEl" onClick={this._showPopover.bind(this)} style={styles.ratings}>{this._getRatingText.bind(this)()}</span>
       </div>);
 
     return(
@@ -237,18 +252,18 @@ export default class MovieDetailsDescription extends Component{
                 placeholderSrc={defaultPoster}
                 src={this.props.movie.images.poster}
                 alt={this.props.movie.title}
-                style={{width: '10em', marginRight: '0.5em', float: 'left'}}
+                style={styles.img}
               />
               <div className="ratings-wrapper">
                 <FontIcon color={Color.red500} className="material-icons">favorite</FontIcon>
-                <span style={{marginLeft: '0.5em'}}>{percentRating} <small style={{marginLeft: '2em'}}>{voteCount}</small></span>
+                <span style={styles.percentRating}>{percentRating} <small style={styles.voteCount}>{voteCount}</small></span>
               </div>
               <hr/>
-              <p style={{fontStyle: "italic"}}>{movie.tagline}</p>
+              <p style={styles.tagLine}>{movie.tagline}</p>
               { ratingWrap }
               {this._getPopover.bind(this)()}
               {this._getTrailer.bind(this)()}
-              <br style={{clear: 'both'}}/>
+              <br style={styles.br}/>
             </div>
           </CardText>
           <CardText>
@@ -257,7 +272,7 @@ export default class MovieDetailsDescription extends Component{
             {this._getRuntime.bind(this)()}
             {this._getPGRating.bind(this)()}
           </CardText>
-          <CardText style={{padding: "1em", fontSize: "1em", clear: "left"}}>
+          <CardText style={styles.sinopsis}>
             {this.props.movie.sinopsis}
           </CardText>
       </Card>

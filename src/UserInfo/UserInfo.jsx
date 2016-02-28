@@ -11,10 +11,18 @@ import Tab from 'material-ui/lib/tabs/tab';
 import FontIcon from 'material-ui/lib/font-icon';
 import Color from 'material-ui/lib/styles/colors';
 import List from 'material-ui/lib/lists/list';
-import FollowList from '../Friends/FollowList';
-import CircularProgress from 'material-ui/lib/circular-progress';
 import ListItem from '../Lists/ListItem';
+import { createUsersTab } from '../utils/constructors';
 import { find } from 'lodash';
+
+const styles = {
+  label: { display: 'flex', justifyContent: 'center', alignItems: 'center' },
+  icon: { color: 'white', marginRight: '0.5em' },
+  inkBar: { backgroundColor: Color.deepOrange800, height:'0.3em', marginTop: '-0.3em' },
+  tabs: { marginTop: '2em' },
+  tab: { backgroundColor: Color.orange600},
+  card: { textAlign: 'center', padding:'1em', margin: '1em' }
+};
 
 export default class UserInfo extends Component {
   constructor(props) {
@@ -51,16 +59,6 @@ export default class UserInfo extends Component {
 
   render() {
     const { watchedUser, lists, navigate, auth, following, watchedUserFollowers, watchedUserFollowing } = this.props;
-    const styles = {
-     label: { display: 'flex', justifyContent: 'center', alignItems: 'center' },
-     icon: { color: 'white', marginRight: '0.5em' },
-     number: { marginLeft: '0.5em' },
-     inkBar: { backgroundColor: Color.deepOrange800, height:"0.3em", marginTop: "-0.3em" },
-     tabs: { marginTop: '2em' },
-     tab: { backgroundColor: Color.orange600},
-     miniSpinner: { textAlign: 'center', marginBottom: '1em'},
-    };
-
     const avatar = (
             <Avatar
               size={200}
@@ -68,15 +66,10 @@ export default class UserInfo extends Component {
             />
           );
 
-    const miniSpinner = (
-      <div style={styles.miniSpinner}>
-        <CircularProgress color={Color.deepOrangeA200} />
-      </div>);
-
     return isEmpty(watchedUser) || isEmpty(lists) ?
       <Spinner/>
       : (<div>
-          <Card style={{textAlign: "center", padding:"1em", margin: "1em"}}>
+          <Card style={styles.card}>
             {avatar}
             <CardTitle
               title={watchedUser.displayName}
@@ -84,9 +77,9 @@ export default class UserInfo extends Component {
             <CardActions>
               {
                 isEmpty(auth) ?
-                  null :
+                  <span/> :
                   following.loading ?
-                    null :
+                    <span/> :
                     find(following.users, { 'userName': watchedUser.userName }) ?
                     <RaisedButton label="Unfollow" onTouchTap={this._handleUnfollow.bind(this)}/> :
                     <RaisedButton label="Follow" onTouchTap={this._handleFollow.bind(this)}/>
@@ -99,8 +92,7 @@ export default class UserInfo extends Component {
              label={
               <div style={styles.label}>
                 <FontIcon className="material-icons" style={styles.icon}>playlist_play</FontIcon>
-                <span> Lists </span>
-                <span style={styles.number}>{lists.length}</span>
+                <span>{ `Lists ${lists.length}` }</span>
               </div>
               }
             >
@@ -115,46 +107,8 @@ export default class UserInfo extends Component {
                 }
               </List>
             </Tab>
-            <Tab
-             style={styles.tab}
-             label={
-              <div style={styles.label}>
-                <FontIcon className="material-icons" style={styles.icon}>people</FontIcon>
-                <span> Following </span>
-                {
-                  watchedUserFollowing.loading ?
-                  <span/> :
-                  <span style={styles.number}>{watchedUserFollowing.users.length}</span>
-                }
-              </div>
-              }
-            >
-            {
-              watchedUserFollowers.loading ?
-                miniSpinner :
-                <FollowList users={watchedUserFollowing.users}/>
-            }
-            </Tab>
-            <Tab
-             style={styles.tab}
-             label={
-              <div style={styles.label}>
-                <FontIcon className="material-icons" style={styles.icon}>people_outline</FontIcon>
-                <span> Followers </span>
-                {
-                  watchedUserFollowers.loading ?
-                  <span/> :
-                  <span style={styles.number}>{watchedUserFollowers.users.length}</span>
-                }
-              </div>
-              }
-            >
-            {
-              watchedUserFollowers.loading ?
-                miniSpinner :
-                <FollowList users={watchedUserFollowers.users}/>
-            }
-            </Tab>
+            { createUsersTab(watchedUserFollowing, 'people', `Following ${watchedUserFollowing.loading ? '' : watchedUserFollowing.users.length}`)}
+            { createUsersTab(watchedUserFollowers, 'people_outline', `Followers ${watchedUserFollowers.loading ? '' : watchedUserFollowers.users.length}`)}
           </Tabs>
         </div>
     );

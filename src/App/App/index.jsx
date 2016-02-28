@@ -9,6 +9,12 @@ import { userUid } from '../../utils';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
+const styles = {
+  menuItem: { padding: '0 1.5em' },
+  app: { backgroundColor: Color.orange600 },
+  hr: { margin: '-1 0 0 0', height: 1, border: 'none', backgroundColor: Color.grey300 }
+};
+
 export default class App extends Component {
 
   constructor(props) {
@@ -43,14 +49,11 @@ export default class App extends Component {
   }
 
   _getMenuItem(text){
-    return <MenuItem key={text} style={{padding: '0 1.5em'}} primaryText={text} onTouchTap={this._handleTouchTap.bind(this)} />;
+    return <MenuItem key={text} style={styles.menuItem} primaryText={text} onTouchTap={this._handleTouchTap.bind(this)} />;
   }
 
   render() {
     const { auth, user } = this.props;
-    const style = {
-      backgroundColor: Color.orange600
-    };
     const topMenuElements = ['News', 'Movies', 'Premieres'];
     const loggedElements = ['Log Out', 'Profile'];
 
@@ -58,7 +61,7 @@ export default class App extends Component {
       <div>
         <AppBar
           title="ManyMovies"
-          style={style}
+          style={styles.app}
           showMenuIconButton={false}
           iconElementRight={
             <IconMenu
@@ -74,24 +77,14 @@ export default class App extends Component {
               { !isEmpty(auth) ?
               <div>
                 { this._getMenuItem('Lists') }
-                <hr style={{
-                  margin: '-1 0 0 0',
-                  height: 1,
-                  border: 'none',
-                  backgroundColor: Color.grey300
-                }}/>
+                <hr style={styles.hr}/>
                 {
                   loggedElements.map(element => this._getMenuItem(element))
                 }
               </div>
               :
               <div>
-                <hr style={{
-                    margin: '-1 0 0 0',
-                    height: 1,
-                    border: 'none',
-                    backgroundColor: Color.grey300
-                  }}/>
+                <hr style={styles.hr}/>
                 { this._getMenuItem('Sign In') }
               </div>
               }

@@ -13,7 +13,27 @@ import Colors from 'material-ui/lib/styles/colors';
 import { throttle, isEmpty } from 'lodash';
 import { formatDate } from '../../utils/date';
 import { relativeScore } from '../../utils';
+import { createIconButton } from '../../utils/constructors';
 import defaultAvatar from '../../../images/avatar.png';
+
+const RED = Colors.red900;
+const GREEN = Colors.green900;
+
+const styles = {
+  cardActions: { float: 'right' },
+  greenColor: { color: GREEN },
+  redColor: { color: RED },
+  greyColor: { color: Colors.grey400 },
+  darkGreyColor: { color: Colors.grey700 },
+  textCenter: { textAlign: 'center' },
+  badRating: { fontWeight: 'bold', cursor: 'pointer' },
+  cardHeader: { backgroundColor: Colors.grey300 },
+  cardTitle: { paddingBottom: '3em' },
+  score: { display: 'inline-block', width: '3em', textAlign: 'center' },
+  subtitle: { float: 'right' },
+  card: { margin: '1em 0 0 0', backgroundColor: Colors.grey200 },
+  author: { cursor: 'pointer', color: Colors.deepOrange900, fontWeight: 'bolder' }
+};
 
 export default class Comment extends Component {
 
@@ -24,7 +44,7 @@ export default class Comment extends Component {
       deleting: false,
       hidingBadComment: true,
       creator: {
-        displayName: "Unknown",
+        displayName: 'Unknown',
         userName: props.comment.userName,
         avatarUrl: defaultAvatar
       }
@@ -127,42 +147,14 @@ export default class Comment extends Component {
 
   _getCardActions(){
     const cardActions = this.state.editing ? (
-      <CardActions style={{float: "right"}}>
-          <IconButton
-            iconClassName="material-icons"
-            iconStyle={{color:Colors.green500}}
-            tooltipPosition="top-left"
-            tooltip="Edit"
-            onTouchTap={this._handleTouchEditSubmit.bind(this)}>
-            done
-          </IconButton>
-          <IconButton
-            iconClassName="material-icons"
-            iconStyle={{color:Colors.red900}}
-            tooltipPosition="top-left"
-            tooltip="Cancel"
-            onTouchTap={this._handleTouchEditCancel.bind(this)}>
-            clear
-          </IconButton>
+      <CardActions style={styles.cardActions}>
+          { createIconButton(styles.greenColor, this._handleTouchEditSubmit.bind(this), 'Edit', 'done')}
+          { createIconButton(styles.redColor, this._handleTouchEditCancel.bind(this), 'Cancel', 'clear')}
         </CardActions>
       ) : (
-      <CardActions style={{float: "right"}}>
-          <IconButton
-            iconClassName="material-icons"
-            iconStyle={{color:Colors.grey400}}
-            tooltipPosition="top-left"
-            tooltip="Edit"
-            onTouchTap={this._handleTouchEdit.bind(this)}>
-            edit
-          </IconButton>
-          <IconButton
-            iconClassName="material-icons"
-            iconStyle={{color:Colors.red900}}
-            tooltipPosition="top-left"
-            tooltip="Delete"
-            onTouchTap={this._handleTouchDelete.bind(this)}>
-            clear
-          </IconButton>
+      <CardActions style={styles.cardActions}>
+          { createIconButton(styles.greyColor, this._handleTouchEdit.bind(this), 'Edit', 'edit')}
+          { createIconButton(styles.redColor, this._handleTouchDelete.bind(this), 'Delete', 'clear')}
         </CardActions>
     );
     return cardActions;
@@ -220,10 +212,10 @@ export default class Comment extends Component {
 
   _getScoreColor(score){
     return score > 0 ?
-            { color: Colors.green500 } :
+            styles.greenColor :
            score === 0 ?
             {} :
-            { color: Colors.red900 };
+            styles.redColor;
   }
 
   render() {
@@ -278,11 +270,11 @@ export default class Comment extends Component {
     );
 
     const showBadCommentBody = (
-      <CardText style={{textAlign: 'center'}}>
+      <CardText style={styles.textCenter}>
         Comment hidden due to bad ratings,
         <span
-          style={{fontWeight: 'bold', cursor: 'pointer'}}
-          onClick={() => this._handleShowHidden()}
+          style={styles.badRating}
+          onClick={this._handleShowHidden.bind(this)}
           > show </span>
         under your responsibility
       </CardText>
@@ -293,10 +285,10 @@ export default class Comment extends Component {
 
     const cardHeader = (
       <CardHeader
-        style={{backgroundColor: Colors.grey300}}
-        title={<span>Commented by <span onTouchTap={this._handleCreatorTouchTap.bind(this, this.state.creator.userName)} style={{cursor: 'pointer', color: Colors.deepOrange900, fontWeight: "bolder"}}>{this.state.creator.displayName}</span></span>}
+        style={styles.cardHeader}
+        title={<span>Commented by <span onTouchTap={this._handleCreatorTouchTap.bind(this, this.state.creator.userName)} style={styles.author}>{this.state.creator.displayName}</span></span>}
         subtitle={formatDate(time)}
-        subtitleStyle={{color: Colors.grey700}}
+        subtitleStyle={styles.darkGreyColor}
         avatar={userAvatar}
       />
     );
@@ -305,15 +297,15 @@ export default class Comment extends Component {
 
     const cardLikes = (
       <CardTitle
-        style={{paddingBottom: '3em'}}
+        style={styles.cardTitle}
         subtitle={
           <span>
-            {this._getVoteIcon.bind(this)(isLiked, isDisliked, 'up', likeCallbacks, Colors.green900)}
-            <span style={Object.assign({}, {display: 'inline-block', width: '3em', textAlign: 'center'}, scoreColor)}>{(score <= 0 ? '' : '+') + score}</span>
-            {this._getVoteIcon.bind(this)(isDisliked, isLiked, 'down', dislikeCallbacks, Colors.red900)}
+            {this._getVoteIcon.bind(this)(isLiked, isDisliked, 'up', likeCallbacks, GREEN)}
+            <span style={Object.assign({}, styles.score, scoreColor)}>{(score <= 0 ? '' : '+') + score}</span>
+            {this._getVoteIcon.bind(this)(isDisliked, isLiked, 'down', dislikeCallbacks, RED)}
           </span>
         }
-        subtitleStyle={{float: 'right'}}
+        subtitleStyle={styles.subtitle}
       />
     );
 
@@ -321,7 +313,7 @@ export default class Comment extends Component {
     const dialog = this._isCommentedByMe.bind(this)() ? this._getDeleteDialog.bind(this)() : '';
 
     return (
-      <Card style={{margin: "1em 0 0 0", backgroundColor: Colors.grey200}}>
+      <Card style={styles.card}>
         {cardHeader}
         {cardLikes}
         {filteredBody}

@@ -14,7 +14,6 @@ export default class FlipClock extends Component {
     clearInterval(this.state.interval);
   }
 
-
   _setRemainingTime(){
     this.setState({
       remainingTime: this._getTimeRemaining.bind(this)()
@@ -29,23 +28,22 @@ export default class FlipClock extends Component {
     const hours = Math.floor((t / ( 1000 * 60 * 60)) % 24 );
     const days = Math.floor(t / (1000 * 60 * 60 * 24));
     return {
-      'total': t,
-      'days': days,
-      'hours': hours,
-      'minutes': minutes,
-      'seconds': seconds
+      'Day': days,
+      'Hour': hours,
+      'Minute': minutes,
+      'Second': seconds
     };
   }
 
   render() {
     const { remainingTime } = this.state;
+    const labels = ['Day', 'Hour', 'Minute', 'Second'];
 
     return (
         <div className="countdown-clock">
-          <NumberDisplay label="Day" number={remainingTime.days}/>
-          <NumberDisplay label="Hour" number={remainingTime.hours}/>
-          <NumberDisplay label="Minute" number={remainingTime.minutes}/>
-          <NumberDisplay label="Second" number={remainingTime.seconds}/>
+          {
+            labels.map(label => <NumberDisplay key={label} label={label} number={remainingTime[label]}/>)
+          }
         </div>
     );
   }
@@ -53,8 +51,4 @@ export default class FlipClock extends Component {
 
 FlipClock.propTypes = {
   date: PropTypes.string,
-};
-
-FlipClock.defaultProps = {
-
 };

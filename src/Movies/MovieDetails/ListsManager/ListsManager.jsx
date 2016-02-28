@@ -5,7 +5,7 @@ import Dialog from 'material-ui/lib/dialog';
 import ListItem from 'material-ui/lib/lists/list-item';
 import FontIcon from 'material-ui/lib/font-icon';
 import Color from 'material-ui/lib/styles/colors';
-import { findKey, isEmpty, map, forEach } from 'lodash';
+import { findKey, isEmpty, find, reject } from 'lodash';
 
 export default class ListsManager extends Component {
   constructor(props) {
@@ -45,12 +45,12 @@ export default class ListsManager extends Component {
     const idMovie = movie.ids.trakt.toString();
     const isInList = entries[id] && entries[id][idMovie];
     const itemStyle = isInList ?
-      {color: Color.white, backgroundColor: color, border: `2px solid ${color}`, marginBottom: '1em', fontWeight: 'bold', textAlign: 'center'} :
-      {color: color, border: `2px solid ${color}`, marginBottom: '1em', fontWeight: 'bold', textAlign: 'center'};
+      { color: Color.white, backgroundColor: color, border: `2px solid ${color}`, marginBottom: '1em', fontWeight: 'bold', textAlign: 'center' } :
+      { color: color, border: `2px solid ${color}`, marginBottom: '1em', fontWeight: 'bold', textAlign: 'center' };
     const iconColor = isInList ? Color.white : color;
     const handler = isInList ?
-      () => {removeEntry(id, idMovie, user.userName);} :
-      () => {addEntry(id, idMovie, user.userName);};
+      () => { removeEntry(id, idMovie, user.userName); } :
+      () => { addEntry(id, idMovie, user.userName); };
     const label = isInList ? 'IN' : 'ADD TO';
     return iconName !== 'none' ? (
       <ListItem
@@ -73,8 +73,8 @@ export default class ListsManager extends Component {
   _getGeneralListsItem(){
     const isInGeneralLists = this._isInGeneralLists();
     const itemStyle = isInGeneralLists ?
-      {color: Color.white, backgroundColor: Color.red900, border: `2px solid ${Color.red900}`, fontWeight: 'bold', textAlign: 'center'} :
-      {color: Color.red900, border: `2px solid ${Color.red900}`, fontWeight: 'bold', textAlign: 'center'};
+      { color: Color.white, backgroundColor: Color.red900, border: `2px solid ${Color.red900}`, fontWeight: 'bold', textAlign: 'center' } :
+      { color: Color.red900, border: `2px solid ${Color.red900}`, fontWeight: 'bold', textAlign: 'center' };
     const iconColor = isInGeneralLists ? Color.white : Color.red900;
     const label = isInGeneralLists ? 'IN' : 'ADD TO';
     return (
@@ -90,24 +90,13 @@ export default class ListsManager extends Component {
   _isInGeneralLists(){
     const { movie, entries } = this.props;
     const generalLists = this._getGeneralLists();
-    let answer = false;
     const idMovie = movie.ids.trakt.toString();
-    forEach( generalLists, function(n, key) {
-      if (entries[key] && entries[key].indexOf(idMovie) !== -1){
-        answer = true;
-      }
-    });
-    return answer;
+    return find(generalLists, list => entries[list.id] && entries[list.id][idMovie]);
   }
 
   _getGeneralLists(){
     const { lists } = this.props;
-    const idHistory = findKey(lists, { slug: 'history' });
-    const idCollection = findKey(lists, { slug: 'collection'});
-    const generalLists = Object.assign({}, lists);
-    delete generalLists[idHistory];
-    delete generalLists[idCollection];
-    return generalLists;
+    return reject(lists, list => list.slug === 'history' || list.slug === 'collection');
   }
 
   _getAddToListsDialog(){
@@ -142,7 +131,7 @@ export default class ListsManager extends Component {
         >
         <List>
         {
-          map( lists, (list, key) => this._getListItem(list.id, listColors[index++ % listColors.length], 'none', list.title, key))
+          lists.map((list, key) => this._getListItem(list.id, listColors[index++ % listColors.length], 'none', list.title, key))
         }
         </List>
       </Dialog>);

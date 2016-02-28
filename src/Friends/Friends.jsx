@@ -4,10 +4,22 @@ import Tab from 'material-ui/lib/tabs/tab';
 import FontIcon from 'material-ui/lib/font-icon';
 import Color from 'material-ui/lib/styles/colors';
 import FollowList from './FollowList';
-import CircularProgress from 'material-ui/lib/circular-progress';
 import TextField from 'material-ui/lib/text-field';
 import { debounce } from 'lodash';
 import { userUid } from '../utils';
+import { createUsersTab } from '../utils/constructors';
+
+const styles = {
+  label: { display: 'flex', justifyContent: 'center', alignItems: 'center' },
+  icon: { color: 'white', marginRight: '0.5em' },
+  miniSpinner: { textAlign: 'center', marginBottom: '1em' },
+  inkBar: { backgroundColor: Color.deepOrange800, height:'0.3em', marginTop: '-0.3em' },
+  tabs: { marginTop: '2em' },
+  tab: { backgroundColor: Color.orange600 },
+  container: { display: 'flex', justifyContent: 'center', padding: '1em' },
+  fontIcon: { lineHeight: '2em' },
+  input: { flexGrow: '20' }
+};
 
 export default class Friends extends Component {
 
@@ -32,53 +44,11 @@ export default class Friends extends Component {
   }
 
   render() {
-    const styles = {
-      label: { display: 'flex', justifyContent: 'center', alignItems: 'center' },
-      icon: { color: 'white', marginRight: '0.5em' },
-      miniSpinner: { textAlign: 'center', marginBottom: '1em' },
-      inkBar: { backgroundColor: Color.deepOrange800, height:"0.3em", marginTop: "-0.3em" },
-      tabs: { marginTop: '2em' },
-      tab: { backgroundColor: Color.orange600 }
-    };
-
-    const miniSpinner = (
-      <div style={styles.miniSpinner}>
-        <CircularProgress color={Color.deepOrangeA200} />
-      </div>);
-
     const { followers, following, watchedPeople } = this.props;
     return(
       <Tabs style={styles.tabs} inkBarStyle={styles.inkBar}>
-        <Tab
-          style={styles.tab}
-          label={
-            <div style={styles.label}>
-              <FontIcon className="material-icons" style={styles.icon}>people</FontIcon>
-              <span> Following </span>
-            </div>
-          }
-        >
-          {
-            following.loading ?
-              miniSpinner :
-              <FollowList users={following.users}/>
-          }
-        </Tab>
-        <Tab
-          style={styles.tab}
-          label={
-            <div style={styles.label}>
-              <FontIcon className="material-icons" style={styles.icon}>people_outline</FontIcon>
-              <span> Followers </span>
-            </div>
-          }
-        >
-          {
-            followers.loading ?
-              miniSpinner :
-              <FollowList users={followers.users}/>
-          }
-        </Tab>
+        { createUsersTab(following, 'people', 'Following' )}
+        { createUsersTab(followers, 'people_outline', 'Followers' )}
         <Tab
           style={styles.tab}
           label={
@@ -88,11 +58,11 @@ export default class Friends extends Component {
             </div>
           }
         >
-          <div style={{display: "flex", justifyContent: "center", padding: "1em"}}>
-            <FontIcon style={{lineHeight: "2em"}} className="material-icons">search</FontIcon>
+          <div style={styles.container}>
+            <FontIcon style={styles.fontIcon} className="material-icons">search</FontIcon>
             <TextField
               ref="search"
-              style={{flexGrow: "20"}}
+              style={styles.input}
               hintText="Look for people"
               onChange={debounce(this._handleSearchChange.bind(this), 300)}
             />

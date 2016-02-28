@@ -8,6 +8,13 @@ import Colors from 'material-ui/lib/styles/colors';
 import defaultPosterSrc from '../../../../images/mm-poster.png';
 import { userUid } from '../../../utils';
 
+const styles = {
+  img: { width: '4em', margin: '0 1em 1em 0', float: 'left' },
+  card: { margin: '1em' },
+  hr: { clear: 'both' },
+  container: { textAlign: 'center' }
+};
+
 export default class PremiereItem extends Component {
 
   constructor(props) {
@@ -24,30 +31,26 @@ export default class PremiereItem extends Component {
     }, 200);
   }
 
-  _handleRemoveButton(e){
-    e.stopPropagation();
-    const { premiere, wishedMovies, auth, removeEntry } = this.props;
-    const idEntry = premiere.ids.trakt;
-    const idList = wishedMovies.listId;
-    const idUser = userUid(auth.uid);
-    removeEntry(idList, idEntry, idUser);
+  _getButton(label, callback){
+    return <RaisedButton label={label} onTouchTap={this._handleButtonTouchTap.bind(this, callback)}/>;
   }
 
-  _handleAddButton(e){
+  _handleButtonTouchTap(callback, e){
     e.stopPropagation();
-    const { premiere, wishedMovies, auth, addEntry } = this.props;
+    const { premiere, wishedMovies, auth } = this.props;
     const idEntry = premiere.ids.trakt;
     const idList = wishedMovies.listId;
     const idUser = userUid(auth.uid);
-    addEntry(idList, idEntry, idUser);
+    callback(idList, idEntry, idUser);
   }
 
   render() {
-    const { premiere, wishedMovies } = this.props;
+    const { premiere, wishedMovies, addEntry, removeEntry } = this.props;
     const releaseDate = new Date(Date.parse(premiere.released));
     const formatedReleased = releaseDate.toLocaleDateString('en-GB').replace(/\//g, '-');
+
     return (
-      <Card onTouchTap={() => {this._handleTouchTap();}} style={{margin: '1em'}}>
+      <Card onTouchTap={() => {this._handleTouchTap();}} style={styles.card}>
         <CardTitle
           title={premiere.title}
           subtitle={formatedReleased}
@@ -58,17 +61,17 @@ export default class PremiereItem extends Component {
             placeholderSrc={defaultPosterSrc}
             src={premiere.images.poster}
             alt={premiere.title}
-            style={{width: "4em", margin: "0 1em 1em 0", float: "left"}}
+            style={styles.img}
           />
           {premiere.sinopsis}
-          <hr style={{clear: 'both'}}/>
-          <div style={{textAlign: 'center'}}>
+          <hr style={styles.hr}/>
+          <div style={styles.container}>
           {
             wishedMovies.loading ?
               <span/> :
               wishedMovies.movies[premiere.ids.trakt] ?
-              <RaisedButton label="In WatchList" onTouchTap={this._handleRemoveButton.bind(this)}/> :
-              <RaisedButton label="Add to WatchList" onTouchTap={this._handleAddButton.bind(this)}/>
+                this._getButton.bind(this)("In WatchList", removeEntry) :
+                this._getButton.bind(this)("Add to WatchList", addEntry)
           }
           </div>
         </CardText>

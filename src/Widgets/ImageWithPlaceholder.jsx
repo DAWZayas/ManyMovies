@@ -33,6 +33,3 @@ ImageWithPlaceholder.propTypes = {
   alt: PropTypes.string,
   style: PropTypes.object
 };
-
-ImageWithPlaceholder.defaultProps = {
-};

@@ -4,6 +4,10 @@ import TableHeader from 'material-ui/lib/table/table-header';
 import TableHeaderColumn from 'material-ui/lib/table/table-header-column';
 import TableRow from 'material-ui/lib/table/table-row';
 
+const styles = {
+  header: { textAlign: 'center', color: Color.deepOrange800, fontSize: '1.3em' }
+};
+
 export default class MoviesListHeader extends Component {
 
   constructor(props) {
@@ -18,7 +22,7 @@ export default class MoviesListHeader extends Component {
         adjustForCheckbox={false}
       >
         <TableRow>
-          <TableHeaderColumn colSpan="2" style={{textAlign: "center", color: Color.deepOrange800, fontSize: "1.3em"}}>
+          <TableHeaderColumn colSpan="2" style={styles.header}>
             Movies
           </TableHeaderColumn>
         </TableRow>
@@ -26,9 +30,3 @@ export default class MoviesListHeader extends Component {
     );
   }
 }
-
-MoviesListHeader.propTypes = {
-};
-
-MoviesListHeader.defaultProps = {
-};

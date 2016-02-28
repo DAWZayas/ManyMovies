@@ -1,7 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { isEqual, values } from 'lodash';
-import Table from 'material-ui/lib/table/table';
-import TableBody from 'material-ui/lib/table/table-body';
+import { isEqual } from 'lodash';
 import RaisedButton from 'material-ui/lib/raised-button';
 import Dialog from 'material-ui/lib/dialog';
 import List from 'material-ui/lib/lists/list';
@@ -11,12 +9,19 @@ import ScrollTop from '../../../Widgets/ScrollTop';
 import Colors from 'material-ui/lib/styles/colors';
 import TextField from 'material-ui/lib/text-field';
 import Spinner from '../../../Widgets/Spinner';
-import MovieRow from '../../Movies/MovieRow';
-import MoviesListHeader from '../../Movies/MoviesListHeader';
+import MoviesTable from '../../Movies/MoviesTable';
 import $ from 'jquery';
 import { getDocHeight } from '../../../utils';
 import { capitalize } from 'lodash';
 import { genres } from '../../../utils/examples';
+
+const styles = {
+  paper: { padding: '1em 1em 2em 1em'},
+  container: { display: 'flex', justifyContent: 'center' },
+  fontIcon: { lineHeight: '2em' },
+  textInput: { padding: '0 0.3em' },
+  underLine: { border: `1px solid ${Colors.grey200}` }
+};
 
 export default class Movies extends Component {
 
@@ -62,7 +67,8 @@ export default class Movies extends Component {
     }, 250);
   }
 
-  _handleGenreClick(genre){
+  _handleGenreClick(genre, e){
+    e.stopPropagation();
     this.setState({ genre, choosingGenre: false });
   }
 
@@ -82,7 +88,6 @@ export default class Movies extends Component {
   }
 
   render() {
-    const { movies } = this.props;
     const { genre } = this.state;
     const genreDialog = (
       <Dialog
@@ -111,45 +116,28 @@ export default class Movies extends Component {
       <Spinner/>
       :
       (<div>
-        <Paper style={{padding: '1em 1em 2em 1em'}}>
-          <div style={{display: "flex", justifyContent: "center"}}>
+        <Paper style={styles.paper}>
+          <div style={styles.container}>
             <TextField
               onTouchTap={this._handleChooseGenreTap.bind(this)}
-              style={{padding: "0 0.3em"}}
+              style={styles.textInput}
               floatingLabelText=" Choose a genre"
               defaultValue="All"
               disabled
               value={` ${capitalize(genre)}`}
               fullWidth
-              underlineDisabledStyle={{border: `1px solid ${Colors.grey200}`}}
+              underlineDisabledStyle={styles.underline}
             />
             {genreDialog}
           </div>
-          <div style={{display: "flex", justifyContent: "center"}}>
+          <div style={styles.container}>
             <RaisedButton
               label="Search by title"
               onTouchTap={this._handleTitleSearcher.bind(this)}
               />
           </div>
         </Paper>
-        <Table
-          fixedHeader
-          selectable={false}
-        >
-          { MoviesListHeader }
-          <TableBody
-            displayRowCheckbox={false}
-            showRowHover
-            stripedRows={false}
-          >
-            {
-              values(movies).map((movie) => (
-                  <MovieRow key={movie.ids.trakt} navigate={this.props.navigate} movie={movie}/>
-                )
-              )
-            }
-          </TableBody>
-        </Table>
+        <MoviesTable {...this.props} />
       </div>
       );
 
@@ -163,12 +151,7 @@ export default class Movies extends Component {
 }
 
 Movies.propTypes = {
-  movies: PropTypes.object,
   navigate: PropTypes.func,
   registerListeners: PropTypes.func,
   unregisterListeners: PropTypes.func
-};
-
-Movies.defaultProps = {
-  movies: {}
 };

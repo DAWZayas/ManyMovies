@@ -5,6 +5,12 @@ import CardTitle from 'material-ui/lib/card/card-title';
 import Colors from 'material-ui/lib/styles/colors';
 import placeholder from '../../../images/mm-fanart.png';
 
+const styles = {
+  card: { margin: '1em' },
+  title: { textAlign: 'center', fontSize: '1.5em' },
+  img: { width: '10em', float: 'left', margin: '0 1em 1em 0' }
+};
+
 export default class NewsItem extends Component {
 
   constructor(props) {
@@ -42,15 +48,15 @@ export default class NewsItem extends Component {
     const { newItem } = this.props;
     const image  = this.state.image ? this.state.image : placeholder;
     return (
-      <Card onTouchTap={() => {this._handleTouchTap();}} style={{margin: '1em'}}>
+      <Card onTouchTap={this._handleTouchTap.bind(this)} style={styles.card}>
         <CardTitle
           title={newItem.title}
           titleColor={Colors.deepOrange900}
-          titleStyle={{textAlign: 'center', fontSize: '1.5em'}}
+          titleStyle={styles.title}
           />
         <CardText>
         <img
-          style={{width: '10em', float: 'left', margin: '0 1em 1em 0'}}
+          style={styles.img}
           alt={newItem.title}
           src={image}
         />
