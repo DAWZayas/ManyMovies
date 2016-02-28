@@ -20,21 +20,6 @@ export default class App extends Component {
     auth.uid && registerListeners(userUid(auth.uid));
   }
 
-  componentDidMount(){
-    const { navigate } = this.props;
-    if (annyang) {
-      const commands = {
-        'movies': function() { navigate('/movies');},
-        'profile': function() { navigate('/profile');},
-        'listing': function() { navigate('/lists');},
-        'coming': function() { navigate('/premieres');},
-        'news': function() { navigate('/news');}
-      };
-      annyang.addCommands(commands);
-      annyang.start();
-    }
-  }
-
   componentWillReceiveProps(nextProps){
     const { registerListeners, unregisterListeners, auth } = this.props;
     if (nextProps.auth.uid !== auth.uid){
@@ -44,7 +29,6 @@ export default class App extends Component {
   }
 
   componentWillUnmount(){
-    annyang = null;
     const { unregisterListeners, auth } = this.props;
     auth.uid && unregisterListeners(userUid(auth.uid));
   }
