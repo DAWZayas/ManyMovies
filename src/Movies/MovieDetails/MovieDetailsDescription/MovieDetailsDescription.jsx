@@ -142,7 +142,7 @@ export default class MovieDetailsDescription extends Component{
             <iframe
               id="ytplayer"
               type="text/html"
-              src={`http://www.youtube.com/embed/${trailerId}?autoplay=1`}
+              src={`https://www.youtube.com/embed/${trailerId}?autoplay=1`}
               frameBorder="0"
             />
           </div>

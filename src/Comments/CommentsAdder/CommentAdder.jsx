@@ -110,7 +110,7 @@ export default class CommentAdder extends Component {
       ) : '';
 
     return isEmpty(user) ?
-      null
+      <span/>
      :
      (
       <Card style={{margin: "0 0 1em 0", backgroundColor: Colors.grey200}}>

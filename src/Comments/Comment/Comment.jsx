@@ -32,7 +32,8 @@ export default class Comment extends Component {
   }
 
   componentWillMount(){
-    this.props.registerListeners(this.props.comment.userName, this);
+    const { registerListeners, comment } = this.props;
+    registerListeners(comment.userName, this._listenerCallback.bind(this));
   }
 
   componentDidUpdate(){
@@ -85,49 +86,24 @@ export default class Comment extends Component {
     }
   }
 
-  _handleLike(){
-    const { likeComment, comment, idCommented, user } = this.props;
-    const { id } = comment;
-    likeComment(id, idCommented, user.userName);
-  }
-
-  _handleUnlike(){
-    const { unlikeComment, comment, idCommented, user } = this.props;
-    const { id } = comment;
-    unlikeComment(id, idCommented, user.userName);
-  }
-
-  _handleUndislikeAndLike(){
-    const { undislikeAndLikeComment, comment, idCommented, user } = this.props;
-    const { id } = comment;
-    undislikeAndLikeComment(id, idCommented, user.userName);
-  }
-
-  _handleDislike(){
-    const { dislikeComment, comment, idCommented, user } = this.props;
-    const { id } = comment;
-    dislikeComment(id, idCommented, user.userName);
-  }
-
-  _handleUnDislike(){
-    const { undislikeComment, comment, idCommented, user } = this.props;
-    const { id } = comment;
-    undislikeComment(id, idCommented, user.userName);
-  }
-
-  _handleUnlikeAndDislike(){
-    const { unlikeAndDislikeComment, comment, idCommented, user } = this.props;
-    const { id } = comment;
-    unlikeAndDislikeComment(id, idCommented, user.userName);
-  }
-
   _handleShowHidden(){
     this.setState({ hidingBadComment: false});
+  }
+
+  _handleCommentVote(callback){
+    return () => {
+      const { comment, idCommented, user } = this.props;
+      callback(comment.id, idCommented, user.userName);
+    };
   }
 
   _handleCreatorTouchTap(user){
     const { navigate } = this.props;
     navigate(`/userinfo/${user}`);
+  }
+
+  _listenerCallback(creator){
+    this.setState({creator});
   }
 
   _submitChanges(){
@@ -220,52 +196,52 @@ export default class Comment extends Component {
     return dialog;
   }
 
-  _getLikeIcon(){
-    const { isLiked, isDisliked, user } = this.props;
+  _getVoteIcon(active, oppositeActive, thumb, callbacks, color){
+    const { user } = this.props;
     if (isEmpty(user)){
-      return null;
+      return <span/>;
     }
-    const buttonAction = isLiked ? this._handleUnlike.bind(this) :
-                         isDisliked ? this._handleUndislikeAndLike.bind(this) :
-                         this._handleLike.bind(this);
 
-    const likeClass = isLiked ? "fa fa-thumbs-up" : "fa fa-thumbs-o-up";
+    const handleInactive = this._handleCommentVote(callbacks.inactive);
+    const handleActive = this._handleCommentVote(callbacks.active);
+    const handleInactiveAndOppositeActive = this._handleCommentVote(callbacks.inactiveAndOppositeActive);
+
+    const buttonAction = active ? handleActive.bind(this) :
+                         oppositeActive ? handleInactiveAndOppositeActive.bind(this) :
+                         handleInactive.bind(this);
+
+    const iconClass = active ? `fa fa-thumbs-${thumb}` : `fa fa-thumbs-o-${thumb}`;
     const icon = (<IconButton
-            iconClassName={likeClass}
-            iconStyle={{color:Colors.green900}}
-            onTouchTap={throttle(buttonAction, 10000)}/>);
-    return icon;
-  }
-
-  _getDislikeIcon(){
-    const { isLiked, isDisliked, user } = this.props;
-    if (isEmpty(user)){
-      return null;
-    }
-    const buttonAction = isDisliked ? this._handleUnDislike.bind(this) :
-                         isLiked ? this._handleUnlikeAndDislike.bind(this) :
-                         this._handleDislike.bind(this);
-
-    const likeClass = isDisliked ? "fa fa-thumbs-down" : "fa fa-thumbs-o-down";
-    const icon = (<IconButton
-            iconClassName={likeClass}
-            iconStyle={{color:Colors.red900}}
+            iconClassName={iconClass}
+            iconStyle={{ color }}
             onTouchTap={throttle(buttonAction, 10000)}/>);
     return icon;
   }
 
   _getScoreColor(score){
-    if (score < 0){
-      return { color: Colors.red900 };
-    }
-    if (score > 0){
-      return { color: Colors.green500 };
-    }
-    return {};
+    return score > 0 ?
+            { color: Colors.green500 } :
+           score === 0 ?
+            {} :
+            { color: Colors.red900 };
   }
 
   render() {
     const { time, text, modified, likes, dislikes } = this.props.comment;
+    const {
+      likeComment,
+      unlikeComment,
+      undislikeAndLikeComment,
+      dislikeComment,
+      undislikeComment,
+      unlikeAndDislikeComment,
+      isLiked,
+      isDisliked
+    } = this.props;
+
+    const likeCallbacks = { active: unlikeComment, inactive: likeComment, inactiveAndOppositeActive: undislikeAndLikeComment };
+    const dislikeCallbacks = { active: undislikeComment, inactive: dislikeComment, inactiveAndOppositeActive: unlikeAndDislikeComment };
+
     const formatedText = text.split(/\r?\n/);
     const score = likes - dislikes;
     const isBadComment = relativeScore(dislikes, likes + dislikes) > 0.4 ? true : false;
@@ -332,9 +308,9 @@ export default class Comment extends Component {
         style={{paddingBottom: '3em'}}
         subtitle={
           <span>
-            {this._getLikeIcon()}
+            {this._getVoteIcon.bind(this)(isLiked, isDisliked, 'up', likeCallbacks, Colors.green900)}
             <span style={Object.assign({}, {display: 'inline-block', width: '3em', textAlign: 'center'}, scoreColor)}>{(score <= 0 ? '' : '+') + score}</span>
-            {this._getDislikeIcon()}
+            {this._getVoteIcon.bind(this)(isDisliked, isLiked, 'down', dislikeCallbacks, Colors.red900)}
           </span>
         }
         subtitleStyle={{float: 'right'}}

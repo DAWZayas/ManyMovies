@@ -22,11 +22,15 @@ export function likeComment(id, idCommented, userId) {
 export function unlikeComment(id, idCommented, userId) {
   const userlikesRef = firebase.child(`userLikes/${userId}/${idCommented}/${id}/`);
   const commentsRef = firebase.child(`comments/${idCommented}/${id}/likes`);
-  userlikesRef.remove(error => {
-    if (error){
-      console.log(error);
-    } else {
-      commentsRef.transaction((val) => val - 1);
+  userlikesRef.once('value', snap => {
+    if (snap.exists()){
+      userlikesRef.remove(error => {
+        if (error){
+          console.log(error);
+        } else {
+          commentsRef.transaction((val) => val - 1);
+        }
+      });
     }
   });
 }
@@ -57,11 +61,15 @@ export function dislikeComment(id, idCommented, userId) {
 export function undislikeComment(id, idCommented, userId) {
   const userdislikesRef = firebase.child(`userDislikes/${userId}/${idCommented}/${id}/`);
   const commentsRef = firebase.child(`comments/${idCommented}/${id}/dislikes`);
-  userdislikesRef.remove(error =>{
-    if (error){
-      console.log(error);
-    }else {
-      commentsRef.transaction((val) => val - 1);
+  userdislikesRef.once('value', snap => {
+    if (snap.exists()){
+      userdislikesRef.remove(error =>{
+        if (error){
+          console.log(error);
+        }else {
+          commentsRef.transaction((val) => val - 1);
+        }
+      });
     }
   });
 }

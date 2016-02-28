@@ -1,9 +1,9 @@
 import firebase from '../../utils/firebase';
 
-export function registerListeners(userId, component) {
+export function registerListeners(userId, callback) {
   const creatorRef = firebase.child(`users/${userId}`);
   creatorRef.on('value', function(snap){
-    component.setState({ creator: snap.val()});
+    callback(snap.val());
   });
 }
 

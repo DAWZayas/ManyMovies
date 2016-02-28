@@ -49,7 +49,7 @@ export default class CommentsManager extends Component {
       setTimeout(() => {
         $('body').css('cursor', 'initial');
         this.setState({maxComments: this.state.maxComments + PAGE_SIZE, loading: false});
-      }, 3000);
+      }, 1000);
     }
   }
 
@@ -67,7 +67,7 @@ export default class CommentsManager extends Component {
         />
       </CardText>
     </Card>
-    : null;
+    : <span/>;
 
     return (
       <div style={{margin: '0 0 10em'}}>
