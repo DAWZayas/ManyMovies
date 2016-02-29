@@ -3,6 +3,7 @@ import Tabs from 'material-ui/lib/tabs/tabs';
 import Tab from 'material-ui/lib/tabs/tab';
 import FontIcon from 'material-ui/lib/font-icon';
 import Color from 'material-ui/lib/styles/colors';
+import CircularProgress from 'material-ui/lib/circular-progress';
 import FollowList from './FollowList';
 import TextField from 'material-ui/lib/text-field';
 import { debounce } from 'lodash';
@@ -25,6 +26,7 @@ export default class Friends extends Component {
 
   constructor(props) {
     super(props);
+    this.state = { searching: false };
   }
 
   componentWillMount(){
@@ -40,7 +42,12 @@ export default class Friends extends Component {
   _handleSearchChange(){
     const { searchPeople } = this.props;
     const searchTerm = this.refs.search.getValue();
-    searchPeople(searchTerm);
+    this.setState({ searching: true });
+    searchPeople(searchTerm, this._searchCallback.bind(this));
+  }
+
+  _searchCallback(){
+    this.setState({ searching: false });
   }
 
   render() {
@@ -68,6 +75,9 @@ export default class Friends extends Component {
             />
           </div>
           <FollowList users={watchedPeople}/>
+          <div style={styles.container}>
+            { this.state.searching ? <CircularProgress color={Color.deepOrange800} /> : <span/> }
+          </div>
         </Tab>
     </Tabs>
     );

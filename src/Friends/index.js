@@ -14,7 +14,7 @@ const mapStateToProps = state => {
 function mapDispatchToProps(dispatch) {
   return {
 		navigate: path => dispatch(pushState(null, path)),
-    searchPeople: term => searchPeople(term, dispatch),
+    searchPeople: (term, callback) => searchPeople(term, callback, dispatch),
     registerListeners: id  => registerListeners(dispatch, id),
     unregisterListeners: id => unregisterListeners(dispatch, id)
   };

@@ -4,7 +4,7 @@ import Card from 'material-ui/lib/card/card';
 import CardTitle from 'material-ui/lib/card/card-title';
 import CardText from 'material-ui/lib/card/card-text';
 import Color from 'material-ui/lib/styles/colors';
-import { capitalize } from 'lodash';
+import { capitalize, throttle } from 'lodash';
 import poster from '../../images/mm-fanart-login.png';
 
 const styles = {
@@ -32,7 +32,7 @@ export default class SignIn extends Component {
         hoverColor={hoverColor}
         label={`Sign in with ${capitalize(provider)}`}
         labelPosition="after"
-        onTouchTap={this._handleSignInWith.bind(this, provider)}>
+        onTouchTap={throttle(this._handleSignInWith).bind(this, provider)}>
         <i style={{marginLeft: '3em', color}} className={`fa fa-${provider}`}/>
       </FlatButton>);
   }
