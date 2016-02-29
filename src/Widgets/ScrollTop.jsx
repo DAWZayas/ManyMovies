@@ -37,7 +37,7 @@ export default class ScrollTop extends Component {
     return (
       <div
         style={style}
-        onTouchTap={() => scrollTo(0, top, {ease, duration})}
+        onTouchTap={(e) => {e.stopPropagation(); scrollTo(0, top, {ease, duration});}}
       >
         <FloatingActionButton backgroundColor={Colors.orange600}>
           <FontIcon className="material-icons">arrow_upward</FontIcon>

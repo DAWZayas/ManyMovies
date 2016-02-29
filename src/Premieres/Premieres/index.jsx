@@ -4,6 +4,7 @@ import { isEqual, values } from 'lodash';
 import $ from 'jquery';
 import { getDocHeight } from '../../utils';
 import Spinner from '../../Widgets/Spinner';
+import ScrollTop from '../../Widgets/ScrollTop';
 
 export default class Premieres extends Component {
 
@@ -63,6 +64,7 @@ export default class Premieres extends Component {
           values(premieres).map(premiere => <PremiereItem auth={auth} addEntry={addEntry} removeEntry={removeEntry} wishedMovies={wishedMovies} navigate={navigate} key={premiere.ids.trakt} premiere={premiere}/>)
         }
         {progress}
+        <ScrollTop />
       </div>
     );
   }
