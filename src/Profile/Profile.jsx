@@ -74,7 +74,11 @@ export default class Profile extends Component {
   }
 
   stopEditing(){
-    this.setState({editing: false});
+    this.setState({
+        editing: false,
+        name: this.props.user.displayName,
+        avatar: this.props.user.avatarUrl
+      });
   }
 
   render() {
