@@ -1,6 +1,6 @@
 # ManyMovies
 
-Project developed by: Alexandra Martín, Alexia Torres and Sergio Panadero.
+Project developed by: Alexia Torres and Sergio Panadero.
 
 ##Reason of the project:
 
